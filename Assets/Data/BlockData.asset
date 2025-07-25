@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f308ed8e316c84faf6dc194046ee15, type: 3}
+  m_Name: BlockData
+  m_EditorClassIdentifier: 
+  BlockDetails:
+  - BlockID: 1
+    Blocks:
+    - numOfBlocks: 3
+      BlockPosList:
+      - {x: -12, y: -18}
+      groundPosList:
+      - {x: -10, y: -13}
+      keyTypeList: 02000000
+      groundTileList:
+      - {fileID: 11400000, guid: e97b5c0ee249920428c6c6b005436616, type: 2}
+    - numOfBlocks: 3
+      BlockPosList:
+      - {x: -7, y: -10}
+      groundPosList:
+      - {x: -9, y: -8}
+      keyTypeList: 03000000
+      groundTileList:
+      - {fileID: 11400000, guid: e97b5c0ee249920428c6c6b005436616, type: 2}
+    - numOfBlocks: 3
+      BlockPosList:
+      - {x: -1, y: -3}
+      - {x: 0, y: -1}
+      - {x: -2, y: -1}
+      groundPosList:
+      - {x: 2, y: 0}
+      keyTypeList: 030000000200000001000000
+      groundTileList:
+      - {fileID: 11400000, guid: e97b5c0ee249920428c6c6b005436616, type: 2}
+    - numOfBlocks: 3
+      BlockPosList:
+      - {x: 6, y: 7}
+      groundPosList:
+      - {x: 11, y: 9}
+      keyTypeList: 01000000
+      groundTileList:
+      - {fileID: 11400000, guid: e97b5c0ee249920428c6c6b005436616, type: 2}
+    - numOfBlocks: 3
+      BlockPosList:
+      - {x: 12, y: 9}
+      - {x: 13, y: 9}
+      groundPosList:
+      - {x: 13, y: 8}
+      - {x: 11, y: 10}
+      keyTypeList: 0200000001000000
+      groundTileList:
+      - {fileID: 11400000, guid: e97b5c0ee249920428c6c6b005436616, type: 2}

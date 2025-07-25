@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6b968e2b868b944886ac2c0df0579e, type: 3}
+  m_Name: ItemData
+  m_EditorClassIdentifier: 
+  ItemDetails:
+  - ItemId: 1
+    WeaponPosList:
+    - {x: 2, y: 22}
+    - {x: 5, y: 24}
+    - {x: -7, y: 34}
+    - {x: -7, y: 35}
+    - {x: -7, y: 36}
+    - {x: 4, y: 43}
+    - {x: 3, y: 44}
+    - {x: 7, y: 43}
+    - {x: 8, y: 44}
+    - {x: 4, y: 52}
+    - {x: 3, y: 52}
+    - {x: 3, y: 53}
+    - {x: 3, y: 56}
+    - {x: -4, y: 39}
+    KeyPosList: []
+    KeyTypeList: 
+  - ItemId: 2
+    WeaponPosList:
+    - {x: -7, y: -3}
+    - {x: -7, y: -2}
+    - {x: -7, y: -1}
+    - {x: -7, y: -9}
+    - {x: -13, y: -23}
+    - {x: -16, y: -24}
+    - {x: -3, y: 9}
+    KeyPosList: []
+    KeyTypeList: 
+  - ItemId: 3
+    WeaponPosList:
+    - {x: -5, y: -23}
+    - {x: -4, y: -17}
+    - {x: -8, y: -7}
+    - {x: 14, y: 7}
+    KeyPosList:
+    - {x: -12, y: -14}
+    - {x: -9, y: -10}
+    - {x: -4, y: -4}
+    - {x: 0, y: -2}
+    - {x: -2, y: 0}
+    - {x: 6, y: 4}
+    - {x: 6, y: 9}
+    - {x: 5, y: 3}
+    KeyTypeList: 0200000003000000030000000200000001000000010000000200000001000000
