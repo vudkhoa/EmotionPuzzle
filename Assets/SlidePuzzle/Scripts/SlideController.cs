@@ -173,7 +173,7 @@ public class SlideController : SingletonMono<SlideController>
 
     private void ResetCanSlide()
     {
-        float time = 0.26f;
+        float time = 0.28f;
         if (isWaitMore)
         {
             time += 0.16f;
