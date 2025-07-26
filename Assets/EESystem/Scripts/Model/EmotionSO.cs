@@ -56,12 +56,3 @@ public enum EmotionType
     Happy = 3,
     Sad = 4,
 }
-
-[Serializable]
-public enum ItemType
-{
-    None = 0,
-    MakeAngry = 2,
-    MakeHappy = 3,
-    MakeSad = 4,
-}

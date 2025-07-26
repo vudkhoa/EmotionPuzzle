@@ -11,6 +11,6 @@ public class AirElement : Element
 
     public override void Power()
     {
-        base.Power();
+
     }
 }

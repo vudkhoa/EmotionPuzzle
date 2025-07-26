@@ -11,6 +11,6 @@ public class WindElement : Element
 
     public override void Power()
     {
-        base.Power();
+
     }
 }

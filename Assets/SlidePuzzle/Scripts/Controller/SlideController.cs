@@ -9,17 +9,21 @@ using DG.Tweening;
 public class SlideController : SingletonMono<SlideController> 
 {
     [Header(" Tile Fake ")]
-    [SerializeField] private TileFake groudTileFakePrefab;
-    [SerializeField] private TileFake itemTileFakePrefab;
-    [SerializeField] private TileFake enemyNotMoveTileFakePrefab;
-    [SerializeField] private TileFake bossLongTileFakePrefab;
+    public TileFake groudTileFakePrefab;
+    public TileFake itemTileFakePrefab;
 
     [Header(" Player ")]
     [SerializeField] private Player playerPrefab;
 
     [Header(" TileMap ")]
     public Tilemap groundTilemap;
+    public Tilemap itemTilemap;
     public Tilemap obstacleTilemap;
+    public Tilemap elementTilemap;
+
+    [Header(" Id Tile ")]
+    public int itemId;
+    public int elementId;
 
     private Player _player;
     public bool canSlide;
@@ -168,6 +172,8 @@ public class SlideController : SingletonMono<SlideController>
         }
         
         MoveGroundTile(cellMovePosList, direction);
+        MoveItemTile(cellMovePosList, direction);
+        MoveElement(cellMovePosList, direction);
         ResetCanSlide();
     }
 
@@ -189,6 +195,15 @@ public class SlideController : SingletonMono<SlideController>
 
     private bool CheckPlayerCanMove(Vector3Int cellPlayer, List<Vector2Int> cellMoveList, Direction direction = Direction.None)
     {
+        if (itemId != 0)
+        {
+            if (CheckItemCollideWithObstacle(cellMoveList))
+            {
+                return false;
+            }
+        }    
+            
+
         if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
         {
             return false;
@@ -196,74 +211,43 @@ public class SlideController : SingletonMono<SlideController>
         return true;
     }
 
-    public void MoveGroundTile(List<Vector2Int> cellsToSlides, Direction direction, bool inPuzzleSort = false)
+    private bool CheckItemCollideWithObstacle(List<Vector2Int> cellMoveList)
     {
-        List<Vector2Int> cellsToSlide = new List<Vector2Int>(cellsToSlides);
-
-        //Spawn các tile động theo thứ tự cells
-        List<TileFake> clones = new List<TileFake>();
-        List<TileBase> tileOrder = new List<TileBase>();
-
-        foreach (Vector2Int cellPos in cellsToSlide)
+        for (int i = 0; i < cellMoveList.Count; i++)
         {
-            Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
-            TileBase tile = groundTilemap.GetTile(cell);
-            if (tile == null) continue;
+            Vector3Int cell = new Vector3Int(cellMoveList[i].x, cellMoveList[i].y, 0);
 
-            // Lưu thứ tự tile để xử lý logic wrap-around
-            tileOrder.Add(tile);
-
-            // Tạo GameObject clone để tween
-            TileFake obj = Instantiate(groudTileFakePrefab, groundTilemap.GetCellCenterWorld(cell), Quaternion.identity);
-            Sprite sprite = GetSpriteFromTile(tile);
-            if (sprite != null)
-                obj.SetSprite(sprite);
-
-            obj.gridPos = cellPos;
-            clones.Add(obj);
-
-            groundTilemap.SetTile(cell, null);
-        }
-
-        //Di chuyển các tile
-        int count = cellsToSlide.Count;
-        for (int i = 1; i < count; i++)
-        {
-            Vector2Int toGrid = cellsToSlide[i - 1];
-            Vector3 worldPos = groundTilemap.GetCellCenterWorld(new Vector3Int(toGrid.x, toGrid.y, 0));
-
-            clones[i].MoveTo(toGrid, worldPos);
-        }
-
-        // Tile cuối
-        TileFake wrapTile = clones[0];
-        Vector2Int wrapToGrid = cellsToSlide[count - 1];
-        Vector3 wrapToPos = groundTilemap.GetCellCenterWorld((Vector3Int)cellsToSlide[count - 1]);
-
-        // 1. Scale nhỏ dần để ẩn tile
-        wrapTile.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack).OnComplete(() =>
-        {
-            // 2. Di chuyển đến đầu hàng
-            wrapTile.transform.position = wrapToPos;
-            wrapTile.gridPos = wrapToGrid;
-
-            // 3. Scale lớn lên để hiện tile lại
-            wrapTile.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack);
-        });
-
-        //Bước 3: Sau khi tween xong → cập nhật lại Tilemap và xóa clone
-        DOVirtual.DelayedCall(0.25f, () =>
-        {
-            for (int i = 0; i < count; i++)
+            if (itemTilemap.HasTile(cell))
             {
-                int fromIndex = (i + 1) % count;
-                Vector2Int toCell = cellsToSlide[i];
-                groundTilemap.SetTile(new Vector3Int(toCell.x, toCell.y, 0), tileOrder[fromIndex]);
-            }
+                int fromIndex = cellMoveList.Count - 1;
+                if (i > 0)
+                    fromIndex = i - 1;
 
-            foreach (var obj in clones)
-                Destroy(obj.gameObject);
-        });
+                cell = new Vector3Int(cellMoveList[fromIndex].x, cellMoveList[fromIndex].y, 0);
+
+                if (obstacleTilemap.HasTile(cell))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void MoveGroundTile(List<Vector2Int> cellsToSlides, Direction direction)
+    {
+        GroundTileController.Instance.MoveGroundTile(cellsToSlides, direction);
+    }
+
+    public void MoveItemTile(List<Vector2Int> cellsToSlides, Direction direction)
+    {
+        ItemTileController.Instance.MoveItemTile(cellsToSlides, direction);
+    }
+
+    public void MoveElement(List<Vector2Int> cellsToSlides, Direction direction)
+    {
+        ElementController.Instance.MoveElement(cellsToSlides, direction);
     }
 
     public Sprite GetSpriteFromTile(TileBase tile)
@@ -278,7 +262,10 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 1;
         CreateGridPrefab();
+        SetItemTile();
+        SetElement();
         SpawnPlayer();
     }
 
@@ -293,10 +280,35 @@ public class SlideController : SingletonMono<SlideController>
                 case "Ground":
                     this.groundTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Item":
+                    this.itemTilemap = c.GetComponent<Tilemap>();
+                    break;
                 case "Obstacle":
                     this.obstacleTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Element":
+                    this.elementTilemap = c.GetComponent<Tilemap>();
+                    break;
             }
+        }
+    }
+
+    private void SetItemTile()
+    {
+        itemId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].ItemId;
+        if (itemId != 0)
+        {
+            ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
+            ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
+        }    
+    }
+
+    private void SetElement()
+    {
+        elementId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].ElementId;
+        if (elementId != 0)
+        {
+            ElementController.Instance.SpawnElement(DataManager.Instance.ElementData.ElementLevelDetails[elementId - 1].ElementDetails);
         }
     }
 

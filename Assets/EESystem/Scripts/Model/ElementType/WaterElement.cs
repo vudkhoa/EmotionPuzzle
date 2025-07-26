@@ -11,6 +11,6 @@ public class WaterElement : Element
 
     public override void Power()
     {
-        base.Power();
+
     }
 }

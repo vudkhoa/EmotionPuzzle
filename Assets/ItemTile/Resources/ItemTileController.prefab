@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7935007818536750716
+--- !u!1 &5893572336242656698
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6723336355934539783}
-  - component: {fileID: 6343528774956642268}
+  - component: {fileID: 5881318923900111743}
+  - component: {fileID: 1582269494707843945}
   m_Layer: 0
-  m_Name: DataManager
+  m_Name: ItemTileController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6723336355934539783
+--- !u!4 &5881318923900111743
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935007818536750716}
+  m_GameObject: {fileID: 5893572336242656698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,19 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6343528774956642268
+--- !u!114 &1582269494707843945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935007818536750716}
+  m_GameObject: {fileID: 5893572336242656698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d49a9e74c3df3740817c8cfe0f7ac37, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fb904f2ac36454429a3a9052fbcc25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelData: {fileID: 11400000, guid: 8c6e6ca4d117d4e47bcd65140dd42d81, type: 2}
-  ItemData: {fileID: 11400000, guid: ee86da8c514fe0f4f9a4d3a686b0dcd4, type: 2}
-  EmotionCoordinationData: {fileID: 0}
-  ElementData: {fileID: 11400000, guid: 3b0318dd20cce1a4d972898dce76b5d0, type: 2}
+  weaponPosList: []
+  keyPosList: []
+  keyTypeList: 
