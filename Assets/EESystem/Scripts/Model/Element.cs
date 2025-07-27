@@ -51,6 +51,6 @@ public abstract class Element : MonoBehaviour
             transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine);
         }
 
-        Invoke(nameof(Power), 0.25f);
+        Invoke(nameof(Power), 0.28f);
     }
 }

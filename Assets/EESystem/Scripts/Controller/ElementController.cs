@@ -1,6 +1,7 @@
-using UnityEngine;
-using CustomUtils;
+﻿using CustomUtils;
 using System.Collections.Generic;
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ElementController : SingletonMono<ElementController>
 {
@@ -19,17 +20,96 @@ public class ElementController : SingletonMono<ElementController>
         }
     }
 
+    public bool CheckCanMoveElement(List<Vector2Int> cellMovePosList, Direction direction, Player player)
+    {
+        Vector2Int offset = Vector2Int.zero;
+        switch (direction)
+        {
+            case Direction.Left:
+                offset = Vector2Int.left;
+                break;
+            case Direction.Right:
+                offset = Vector2Int.right;
+                break;
+            case Direction.Up:
+                offset = Vector2Int.up;
+                break;
+            case Direction.Down:
+                offset = Vector2Int.down;
+                break;
+        }
+
+        foreach (Element e in this.ElementList)
+        {
+            Vector2Int newPos = new Vector2Int(0, 0);
+            if (((direction == Direction.Up || direction == Direction.Down) &&
+                e.CurrentPos.x == player.GetCurrentPos().x) ||
+                ((direction == Direction.Left || direction == Direction.Right) &&
+                e.CurrentPos.y == player.GetCurrentPos().y)
+                )
+            {
+                Vector2Int tmp = player.GetCurrentPos() - e.CurrentPos;
+                Vector2Int o = new Vector2Int(0, 0);
+                if (tmp.x < 0)
+                {
+                    o.x = -1;
+                }
+                else if (tmp.x > 0)
+                {
+                    o.x = 1;
+                }
+                else if (tmp.y < 0)
+                {
+                    o.y = -1;
+                }
+                else if (tmp.y > 0)
+                {
+                    o.y = 1;
+                }
+
+                Vector2Int nextPos = e.CurrentPos;
+                for (int i = 0; i <= 100; i++)
+                {
+                    nextPos += o;
+                    if (nextPos == player.GetCurrentPos())
+                    {
+                        break;
+                    }
+                    else if (!SlideController.Instance.groundTilemap.HasTile(new Vector3Int(nextPos.x, nextPos.y, 0)))
+                    {
+                        return true;
+                    }
+                }
+
+                if (cellMovePosList[0] == e.CurrentPos)
+                {
+                    newPos = cellMovePosList[cellMovePosList.Count - 1];
+                }
+                else
+                {
+                    newPos = e.CurrentPos + offset;
+                }
+                
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0)))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public void MoveElement(List<Vector2Int> cellsToSlide, Direction direction)
     {
-        if (SlideController.Instance.elementId == 0)
+        if (SlideController.Instance.elementId <= 0)
         {
             return;
         }
 
         int count = cellsToSlide.Count;
-        for (int i = 0; i < count; i++) 
+        foreach (Element e in this.ElementList)
         {
-            foreach (Element e in this.ElementList)
+            for (int i = 0; i < count; i++) 
             {
                 if (e.CurrentPos == cellsToSlide[i])
                 {

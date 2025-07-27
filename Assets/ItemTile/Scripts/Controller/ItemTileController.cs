@@ -116,6 +116,14 @@ public class ItemTileController : SingletonMono<ItemTileController>
                 if (obj != null)
                     Destroy(obj.gameObject);
             }
+
+            foreach (Element e in ElementController.Instance.ElementList)
+            {
+                if (e.ElementType == ElementType.Ice)
+                {
+                    e.Power();
+                }
+            }    
         });
     }
 

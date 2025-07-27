@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelDetails:
   - LevelId: 1
     PlayerPosition: {x: 3, y: 15}
-    ItemId: 0
+    ItemId: 1
     ElementId: 1
   - LevelId: 2
     PlayerPosition: {x: -16, y: -26}

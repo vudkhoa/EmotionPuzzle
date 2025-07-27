@@ -20,6 +20,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap itemTilemap;
     public Tilemap obstacleTilemap;
     public Tilemap elementTilemap;
+    public Tilemap bgSmallTilemap;
 
     [Header(" Id Tile ")]
     public int itemId;
@@ -201,8 +202,15 @@ public class SlideController : SingletonMono<SlideController>
             {
                 return false;
             }
-        }    
-            
+        }
+
+        if (elementId > 0) 
+        {
+            if (!ElementController.Instance.CheckCanMoveElement(cellMoveList, direction, _player))
+            {
+                return false;
+            }
+        }
 
         if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
         {
@@ -288,6 +296,9 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "BgSmall":
+                    this.bgSmallTilemap = c.GetComponent<Tilemap>();
                     break;
             }
         }
