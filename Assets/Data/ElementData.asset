@@ -21,12 +21,9 @@ MonoBehaviour:
     - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
       EmotionType: 4
       ElementPos: {x: 6, y: 56}
-    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
-      EmotionType: 3
-      ElementPos: {x: -3, y: 31}
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 2
       ElementPos: {x: 10, y: 52}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 3
-      ElementPos: {x: -2, y: 30}
+      ElementPos: {x: -3, y: 31}

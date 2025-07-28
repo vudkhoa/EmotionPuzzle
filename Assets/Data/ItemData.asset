@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemDetails:
   - ItemId: 1
-    ItemTypes: 02000000
+    ItemTypes: 0200000002000000
     ItemPos:
     - {x: 4, y: 53}
+    - {x: -2, y: 30}
   - ItemId: 2
     ItemTypes: 
     ItemPos: []
