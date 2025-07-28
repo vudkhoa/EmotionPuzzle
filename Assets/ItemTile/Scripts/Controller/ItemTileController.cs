@@ -127,4 +127,35 @@ public class ItemTileController : SingletonMono<ItemTileController>
         });
     }
 
+    public ItemType GetItemType(Vector2Int itemPos)
+    {
+        for (int i=0; i<ItemPosList.Count; i++)
+        {
+            if (itemPos == ItemPosList[i])
+            {
+                return ItemTypeList[i];
+            }
+        }
+
+        return ItemType.None;
+    }
+
+    public void RemoveItem(Vector2Int itemPos)
+    {
+        Vector3Int gridPos = new Vector3Int(itemPos.x, itemPos.y, 0);
+        Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.itemTilemap.GetTile(gridPos));
+        SlideController.Instance.itemTilemap.SetTile(gridPos, null);
+        TileFake ob = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
+        ob.SetSprite(sp);
+
+        int index = this.ItemPosList.IndexOf(itemPos);
+        this.ItemPosList.RemoveAt(index);
+        this.ItemTypeList.RemoveAt(index);
+
+        //effect
+        ob.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            Destroy(ob.gameObject);
+        });
+    }
 }

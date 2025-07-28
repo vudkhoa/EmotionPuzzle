@@ -143,6 +143,7 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         Invoke(nameof(CoordinateElement), 0.28f);
+        Invoke(nameof(CoordinateItem), 0.28f);
     }
 
     private void CoordinateElement()
@@ -214,6 +215,55 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         this.ElementList.RemoveAll(e => e == null);
+    }
+
+    private void CoordinateItem()
+    {
+        foreach (Element e in ElementList)
+        {
+            Vector2Int currentPos = e.CurrentPos;
+            Vector2Int nearPos = new Vector2Int(0, 0);
+
+            nearPos = currentPos + new Vector2Int(1, 0);
+            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
+            {
+                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                {
+                    ItemTileController.Instance.RemoveItem(nearPos);
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(-1, 0);
+            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
+            {
+                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                {
+                    ItemTileController.Instance.RemoveItem(nearPos);
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(0, 1);
+            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
+            {
+                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                {
+                    ItemTileController.Instance.RemoveItem(nearPos);
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(0, -1);
+            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
+            {
+                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                {
+                    ItemTileController.Instance.RemoveItem(nearPos);
+                    continue;
+                }
+            }
+        }
     }
 
     public Element GetElement(Vector2Int pos)

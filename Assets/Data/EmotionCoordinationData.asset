@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: EmotionCoordinationData
   m_EditorClassIdentifier: 
   EmotionCoordinationDetails:
-  - ElementEmotionType: 0
-    ItemType: 0
-    Result: 0
-  - ElementEmotionType: 0
-    ItemType: 0
-    Result: 0
+  - ElementEmotionType: 1
+    ItemType: 2
+    Result: 2
+  - ElementEmotionType: 3
+    ItemType: 2
+    Result: 1
+  - ElementEmotionType: 1
+    ItemType: 3
+    Result: 3
+  - ElementEmotionType: 2
+    ItemType: 3
+    Result: 1
+  - ElementEmotionType: 4
+    ItemType: 3
+    Result: 1
+  - ElementEmotionType: 1
+    ItemType: 4
+    Result: 4
+  - ElementEmotionType: 3
+    ItemType: 4
+    Result: 1

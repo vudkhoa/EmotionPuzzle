@@ -21,18 +21,17 @@ public abstract class Element : MonoBehaviour
         this.CurrentPos = currentPos;
     }
 
-    public virtual void InteractWithItem(ItemType itemType, Vector2Int itemPos)
+    public virtual bool InteractWithItem(ItemType itemType, Vector2Int itemPos)
     {
         EmotionType newEmotionType = DataManager.Instance.EmotionCoordinationData.GetResult(this.EmotionType, itemType);
         if (newEmotionType == EmotionType.None)
         {
-            return;
+            return false;
         }
 
         this.EmotionType = newEmotionType;
 
-        //Remove (animation later)
-        SlideController.Instance.itemTilemap.SetTile(new Vector3Int(itemPos.x, itemPos.y, 0), null);
+        return true;
     }
 
     public virtual bool CoordinateWithElement(ElementType elementType, Element eGO)
