@@ -17,7 +17,7 @@ MonoBehaviour:
     ItemTypes: 0200000002000000
     ItemPos:
     - {x: 4, y: 53}
-    - {x: -3, y: 31}
+    - {x: -2, y: 30}
   - ItemId: 2
     ItemTypes: 
     ItemPos: []

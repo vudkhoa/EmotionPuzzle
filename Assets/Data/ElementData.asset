@@ -26,4 +26,4 @@ MonoBehaviour:
       ElementPos: {x: 10, y: 52}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 3
-      ElementPos: {x: -2, y: 30}
+      ElementPos: {x: -3, y: 31}

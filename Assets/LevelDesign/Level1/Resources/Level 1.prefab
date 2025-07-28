@@ -3704,7 +3704,7 @@ Tilemap:
   m_GameObject: {fileID: 2186026521170243277}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -3, y: 31, z: 0}
+  - first: {x: -2, y: 30, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
