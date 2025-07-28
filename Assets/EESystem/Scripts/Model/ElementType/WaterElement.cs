@@ -46,10 +46,11 @@ public class WaterElement : Element
             nearPos2 = offset + this.CurrentPos;
             nearPos3 = new Vector3Int(nearPos2.x, nearPos2.y, 0);
 
-            if (SlideController.Instance.bgSmallTilemap.HasTile(nearPos3) &&
-            !SlideController.Instance.groundTilemap.HasTile(nearPos3))
+            if (SlideController.Instance.bgWaterTilemap.HasTile(nearPos3) &&
+            !SlideController.Instance.waterTilemap.HasTile(nearPos3))
             {
                 FillWater(nearPos3, offset);
+                SlideController.Instance.SpawnRaft(nearPos2);
             }
         }
     }
@@ -89,12 +90,13 @@ public class WaterElement : Element
                 {
                     waterPos.x += j;
                 }
-                if (SlideController.Instance.bgSmallTilemap.HasTile(waterPos) &&
-                !SlideController.Instance.groundTilemap.HasTile(waterPos))
+                Debug.Log($"Water pos: {waterPos}");
+                if (SlideController.Instance.bgWaterTilemap.HasTile(waterPos) &&
+                !SlideController.Instance.waterTilemap.HasTile(waterPos))
                 {
-                    SlideController.Instance.groundTilemap.SetTile(waterPos, WaterTile);
+                    SlideController.Instance.waterTilemap.SetTile(waterPos, WaterTile);
                 }
-                else if (!SlideController.Instance.bgSmallTilemap.HasTile(waterPos))
+                else if (!SlideController.Instance.bgWaterTilemap.HasTile(waterPos))
                 {
                     break;
                 }
@@ -118,12 +120,12 @@ public class WaterElement : Element
                 {
                     waterPos.x -= j;
                 }
-                if (SlideController.Instance.bgSmallTilemap.HasTile(waterPos) &&
-                !SlideController.Instance.groundTilemap.HasTile(waterPos))
+                if (SlideController.Instance.bgWaterTilemap.HasTile(waterPos) &&
+                !SlideController.Instance.waterTilemap.HasTile(waterPos))
                 {
-                    SlideController.Instance.groundTilemap.SetTile(waterPos, WaterTile);
+                    SlideController.Instance.waterTilemap.SetTile(waterPos, WaterTile);
                 }
-                else if (!SlideController.Instance.bgSmallTilemap.HasTile(waterPos))
+                else if (!SlideController.Instance.bgWaterTilemap.HasTile(waterPos))
                 {
                     break;
                 }

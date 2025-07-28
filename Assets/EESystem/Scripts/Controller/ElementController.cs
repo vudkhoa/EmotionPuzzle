@@ -144,6 +144,7 @@ public class ElementController : SingletonMono<ElementController>
 
         Invoke(nameof(CoordinateElement), 0.28f);
         Invoke(nameof(CoordinateItem), 0.28f);
+        Invoke(nameof(SadFunction), 0.28f);
     }
 
     public bool CheckExitsElement(Vector3Int pos)
@@ -168,7 +169,7 @@ public class ElementController : SingletonMono<ElementController>
             {
                 Vector2Int posItem = ItemTileController.Instance.ItemPosList[index];
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
-                Debug.Log(posItem);
+                ItemTileController.Instance.RemoveItem(posItem);
             }
         }
     }

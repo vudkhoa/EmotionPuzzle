@@ -11,6 +11,7 @@ public class SlideController : SingletonMono<SlideController>
     [Header(" Tile Fake ")]
     public TileFake groudTileFakePrefab;
     public TileFake itemTileFakePrefab;
+    public Raft RaftPrefab;
 
     [Header(" Player ")]
     [SerializeField] private Player playerPrefab;
@@ -20,13 +21,15 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap itemTilemap;
     public Tilemap obstacleTilemap;
     public Tilemap elementTilemap;
-    public Tilemap bgSmallTilemap;
+    public Tilemap bgWaterTilemap;
+    public Tilemap waterTilemap;
 
     [Header(" Id Tile ")]
     public int itemId;
     public int elementId;
 
     private Player _player;
+    private Raft _raft;
     public bool canSlide;
     public bool isWaitMore;
     private int curLevelId;
@@ -302,8 +305,11 @@ public class SlideController : SingletonMono<SlideController>
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
                     break;
-                case "BgSmall":
-                    this.bgSmallTilemap = c.GetComponent<Tilemap>();
+                case "BgWater":
+                    this.bgWaterTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "Water":
+                    this.waterTilemap = c.GetComponent<Tilemap>();
                     break;
             }
         }
@@ -336,6 +342,13 @@ public class SlideController : SingletonMono<SlideController>
         _player = Instantiate(playerPrefab, groundTilemap.CellToWorld(initPlayerPos) + groundTilemap.cellSize / 2, Quaternion.identity);
         _player.SetCurrentPos(pp);
         CameraFollower.Instance.target = _player.transform;
+    }
+
+    public void SpawnRaft(Vector2Int pos)
+    {
+        Vector3Int initRaftPos = new Vector3Int(pos.x, pos.y, 0);
+        _raft = Instantiate(RaftPrefab, groundTilemap.CellToWorld(initRaftPos) + groundTilemap.cellSize / 2, Quaternion.identity);
+        _raft.SetCurrentPos(pos);
     }
 
 }
