@@ -7,6 +7,8 @@ public class ElementController : SingletonMono<ElementController>
 {
     public List<Element> ElementList;
 
+    private List<int> elementIdHasJustMove;
+
     public void SpawnElement(List<ElementDetail> elementDetails)
     {
         foreach (ElementDetail elementDetail in elementDetails)
@@ -107,8 +109,16 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         int count = cellsToSlide.Count;
+        elementIdHasJustMove = new List<int>();
+        int id = -1;
         foreach (Element e in this.ElementList)
         {
+            if (e.EmotionType != EmotionType.Happy && e.EmotionType != EmotionType.Angry)
+            {
+                continue;
+            }
+
+            id++;
             for (int i = 0; i < count; i++) 
             {
                 if (e.CurrentPos == cellsToSlide[i])
@@ -125,10 +135,97 @@ public class ElementController : SingletonMono<ElementController>
                     Vector3 worldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(new Vector3Int(toGrid.x, toGrid.y, 0));
 
                     e.MoveTo(toGrid, worldPos);
+                    elementIdHasJustMove.Add(id);
 
                     break;
                 }
             }
         }
+
+        Invoke(nameof(CoordinateElement), 0.28f);
+    }
+
+    private void CoordinateElement()
+    {
+        foreach (int id in this.elementIdHasJustMove)
+        {
+            Element e = this.ElementList[id];
+
+            if (e.EmotionType != EmotionType.Happy)
+            {
+                continue;
+            }
+
+            Vector2Int currentPos = e.CurrentPos;
+            Vector2Int nearPos = new Vector2Int(0, 0);
+            Element er = null;
+
+            nearPos = currentPos + new Vector2Int(1, 0);
+            er = this.GetElement(nearPos);
+            if (er != null && er.EmotionType == EmotionType.Happy)
+            {
+                if (e.CoordinateWithElement(er.ElementType, er))
+                {
+                    int index = this.ElementList.IndexOf(er);
+                    this.ElementList[index] = null;
+                    this.ElementList[id] = null;
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(-1, 0);
+            er = this.GetElement(nearPos);
+            if (er != null && er.EmotionType == EmotionType.Happy)
+            {
+                if (e.CoordinateWithElement(er.ElementType, er))
+                {
+                    int index = this.ElementList.IndexOf(er);
+                    this.ElementList[index] = null;
+                    this.ElementList[id] = null;
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(0, -1);
+            er = this.GetElement(nearPos);
+            if (er != null && er.EmotionType == EmotionType.Happy)
+            {
+                if (e.CoordinateWithElement(er.ElementType, er))
+                {
+                    int index = this.ElementList.IndexOf(er);
+                    this.ElementList[index] = null;
+                    this.ElementList[id] = null;
+                    continue;
+                }
+            }
+
+            nearPos = currentPos + new Vector2Int(0, 1);
+            er = this.GetElement(nearPos);
+            if (er != null && er.EmotionType == EmotionType.Happy)
+            {
+                if (e.CoordinateWithElement(er.ElementType, er))
+                {
+                    int index = this.ElementList.IndexOf(er);
+                    this.ElementList[index] = null;
+                    this.ElementList[id] = null;
+                    continue;
+                }
+            }
+        }
+
+        this.ElementList.RemoveAll(e => e == null);
+    }
+
+    public Element GetElement(Vector2Int pos)
+    {
+        foreach (Element e in this.ElementList)
+        {
+            if (e.CurrentPos == pos)
+            {
+                return e;
+            }
+        }
+
+        return null;
     }
 }

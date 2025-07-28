@@ -11,7 +11,7 @@ public class WaterElement : Element
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
-        this.ElementType = ElementType.Wind;
+        this.ElementType = ElementType.Water;
         InitOffsetList();
     }
 
@@ -30,11 +30,6 @@ public class WaterElement : Element
                 this._offsetList.Add(pos);
             }
         }
-    }
-
-    public override void CoordinateWithElement(ElementType elementType)
-    {
-
     }
 
     public override void Power()

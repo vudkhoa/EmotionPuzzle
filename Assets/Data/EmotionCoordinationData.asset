@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9e03db631a7c444b185fe4a16ce8d4, type: 3}
+  m_Name: EmotionCoordinationData
+  m_EditorClassIdentifier: 
+  EmotionCoordinationDetails:
+  - ElementEmotionType: 0
+    ItemType: 0
+    Result: 0
+  - ElementEmotionType: 0
+    ItemType: 0
+    Result: 0

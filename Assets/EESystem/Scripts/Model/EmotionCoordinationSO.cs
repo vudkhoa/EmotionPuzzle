@@ -8,11 +8,11 @@ public class EmotionCoordinationSO : ScriptableObject
 {
     public List<EmotionCoordinationDetail> EmotionCoordinationDetails;
 
-    public EmotionType GetResult(EmotionType emotionType, ItemType itemType)
+    public EmotionType GetResult(EmotionType elementEmotionType, ItemType itemType)
     {
         foreach (var item in EmotionCoordinationDetails)
         {
-            if (item.EmotionType == emotionType && item.ItemType == itemType)
+            if (item.ElementEmotionType == elementEmotionType && item.ItemType == itemType)
             {
                 return item.Result;
             }
@@ -25,7 +25,7 @@ public class EmotionCoordinationSO : ScriptableObject
 [Serializable]
 public class EmotionCoordinationDetail
 {
-    public EmotionType EmotionType;
+    public EmotionType ElementEmotionType;
     public ItemType ItemType;
     public EmotionType Result;
 }

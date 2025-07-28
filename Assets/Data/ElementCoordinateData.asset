@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adff55b89a37b7b41acec9178bac0ffd, type: 3}
+  m_Name: ElementCoordinateData
+  m_EditorClassIdentifier: 
+  ElementCoordinationDetail:
+  - ElementType1: 1
+    ElementType2: 4
+    ElementResult: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
+  - ElementType1: 1
+    ElementType2: 3
+    ElementResult: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
+  - ElementType1: 3
+    ElementType2: 2
+    ElementResult: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
+  - ElementType1: 3
+    ElementType2: 1
+    ElementResult: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
+  - ElementType1: 4
+    ElementType2: 1
+    ElementResult: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
+  - ElementType1: 2
+    ElementType2: 3
+    ElementResult: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
