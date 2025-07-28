@@ -55,7 +55,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         .SetEase(Ease.OutQuad));
 
         throwSequence.Join(obGO.transform
-            .DOScale(Vector3.zero, 0.15f) 
+            .DOScale(Vector3.zero, 0.10f) 
             .SetEase(Ease.InQuad)
             .SetDelay(0.05f));
 

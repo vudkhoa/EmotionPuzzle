@@ -123,8 +123,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
                 {
                     e.Power();
                 }
-            }    
+            }   
         });
     }
-
 }

@@ -210,6 +210,11 @@ public class SlideController : SingletonMono<SlideController>
             {
                 return false;
             }
+
+            if (ElementController.Instance.CheckExitsElement(cellPlayer))
+            {
+                return false;
+            }
         }
 
         if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))

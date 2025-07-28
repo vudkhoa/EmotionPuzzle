@@ -145,6 +145,33 @@ public class ElementController : SingletonMono<ElementController>
         Invoke(nameof(CoordinateElement), 0.28f);
     }
 
+    public bool CheckExitsElement(Vector3Int pos)
+    {
+        foreach (Element element in this.ElementList)
+        {
+            if  (element.CurrentPos == new Vector2Int(pos.x, pos.y) && 
+                (element.EmotionType == EmotionType.Sad || element.EmotionType == EmotionType.Neutral)) 
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void SadFunction()
+    {
+        foreach (Element e in this.ElementList)
+        {
+            int index = ItemTileController.Instance.ItemPosList.IndexOf(e.CurrentPos);
+            if (index != -1)
+            {
+                Vector2Int posItem = ItemTileController.Instance.ItemPosList[index];
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
+                Debug.Log(posItem);
+            }
+        }
+    }
+
     private void CoordinateElement()
     {
         foreach (int id in this.elementIdHasJustMove)
