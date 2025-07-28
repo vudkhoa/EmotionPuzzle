@@ -90,7 +90,7 @@ public class WaterElement : Element
                 {
                     waterPos.x += j;
                 }
-                Debug.Log($"Water pos: {waterPos}");
+                //Debug.Log($"Water pos: {waterPos}");
                 if (SlideController.Instance.bgWaterTilemap.HasTile(waterPos) &&
                 !SlideController.Instance.waterTilemap.HasTile(waterPos))
                 {

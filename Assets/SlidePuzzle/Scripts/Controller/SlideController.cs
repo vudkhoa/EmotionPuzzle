@@ -144,6 +144,50 @@ public class SlideController : SingletonMono<SlideController>
         }
 
         Vector2Int newPlayerPos = new Vector2Int(0, 0);
+
+        //Move water
+        if (_raft != null)
+        {
+            newPlayerPos = _player.GetCurrentPos() + offset;
+            //Move to craft if can
+            if (newPlayerPos == _raft.GetCurrentPos())
+            {
+                Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
+                Vector3 p = groundTilemap.GetCellCenterWorld(gp);
+                _player.MoveTo(newPlayerPos, p);
+                ResetCanSlide();
+                return;
+            }
+            
+            if (_player.GetCurrentPos() == _raft.GetCurrentPos())
+            {
+                //Move return to ground if can
+                if (this.groundTilemap.HasTile(new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0)))
+                {
+                    Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
+                    Vector3 p = groundTilemap.GetCellCenterWorld(gp);
+                    _player.MoveTo(newPlayerPos, p);
+                    ResetCanSlide();
+                    return;
+                }
+
+                //Move above water
+                if (this.waterTilemap.HasTile(new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0)))
+                {
+                    Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
+                    Vector3 p = groundTilemap.GetCellCenterWorld(gp);
+                    _player.MoveTo(newPlayerPos, p);
+                    _raft.MoveTo(newPlayerPos, p);
+                    ResetCanSlide();
+                    return;
+                }
+
+                _player.Shake();
+            }
+        }
+
+        newPlayerPos = new Vector2Int(0, 0);
+
         bool isTeleport = false;
         if (cellMovePosList[0] == _player.GetCurrentPos())
         {
@@ -154,6 +198,7 @@ public class SlideController : SingletonMono<SlideController>
         {
             newPlayerPos = _player.GetCurrentPos() + offset;
         }
+
         Vector3Int newPlayerGridPos = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
         if (!CheckPlayerCanMove(newPlayerGridPos, cellMovePosList, direction))
         {
@@ -165,7 +210,7 @@ public class SlideController : SingletonMono<SlideController>
         isWaitMore = false;
 
         Vector3 pos = groundTilemap.GetCellCenterWorld(newPlayerGridPos);
-        
+
         if (isTeleport)
         {
             _player.Teleport(newPlayerPos, pos);
