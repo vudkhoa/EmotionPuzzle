@@ -17,7 +17,6 @@ public class ElementController : SingletonMono<ElementController>
             Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
             Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
             eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
-
             this.ElementList.Add(eGO);
         }
     }
@@ -305,5 +304,13 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         return null;
+    }
+
+    public void SetPowerRings()
+    {
+        foreach (Element e in this.ElementList)
+        {
+            e.SetPowerRing(e.CurrentPos);
+        }
     }
 }

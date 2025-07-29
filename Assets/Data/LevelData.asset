@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
-    PlayerPosition: {x: 11, y: 53}
+    PlayerPosition: {x: 1, y: -5}
     ItemId: 1
     ElementId: 1
   - LevelId: 2

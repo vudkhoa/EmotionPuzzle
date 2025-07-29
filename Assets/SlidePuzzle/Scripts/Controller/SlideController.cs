@@ -1,10 +1,9 @@
-﻿using System.Collections;
+﻿using CustomUtils;
+using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using CustomUtils;
 using UnityEngine.Tilemaps;
-using System;
-using DG.Tweening;
 
 public class SlideController : SingletonMono<SlideController> 
 {
@@ -23,13 +22,15 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap elementTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
+    public Tilemap limitationTilemap;
+    public Tilemap bgSmallTilemap;
 
     [Header(" Id Tile ")]
     public int itemId;
     public int elementId;
 
     private Player _player;
-    private Raft _raft;
+    public List<Raft> RaftList;
     public bool canSlide;
     public bool isWaitMore;
     private int curLevelId;
@@ -146,22 +147,22 @@ public class SlideController : SingletonMono<SlideController>
         Vector2Int newPlayerPos = new Vector2Int(0, 0);
 
         //Move water
-        if (_raft != null)
+        newPlayerPos = _player.GetCurrentPos() + offset;
+        int raftIndex = RaftList.FindIndex(r => r.GetCurrentPos() == newPlayerPos);
+        if (raftIndex >= 0)
         {
-            newPlayerPos = _player.GetCurrentPos() + offset;
-            //Move to craft if can
-            if (newPlayerPos == _raft.GetCurrentPos())
-            {
-                Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
-                Vector3 p = groundTilemap.GetCellCenterWorld(gp);
-                _player.MoveTo(newPlayerPos, p);
-                ResetCanSlide();
-                return;
-            }
+            Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
+            Vector3 p = groundTilemap.GetCellCenterWorld(gp);
+            _player.MoveTo(newPlayerPos, p);
+            ResetCanSlide();
+            return;
+        }
+        else if (raftIndex < 0)
+        {
+            raftIndex = RaftList.FindIndex(r => r.GetCurrentPos() == _player.GetCurrentPos());
             
-            if (_player.GetCurrentPos() == _raft.GetCurrentPos())
+            if (raftIndex >= 0)
             {
-                //Move return to ground if can
                 if (this.groundTilemap.HasTile(new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0)))
                 {
                     Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
@@ -171,13 +172,12 @@ public class SlideController : SingletonMono<SlideController>
                     return;
                 }
 
-                //Move above water
                 if (this.waterTilemap.HasTile(new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0)))
                 {
                     Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
                     Vector3 p = groundTilemap.GetCellCenterWorld(gp);
                     _player.MoveTo(newPlayerPos, p);
-                    _raft.MoveTo(newPlayerPos, p);
+                    this.RaftList[raftIndex].MoveTo(newPlayerPos, p);
                     ResetCanSlide();
                     return;
                 }
@@ -328,6 +328,7 @@ public class SlideController : SingletonMono<SlideController>
         SetItemTile();
         SetElement();
         SpawnPlayer();
+        this.RaftList = new List<Raft>();
     }
 
     private void CreateGridPrefab()
@@ -355,6 +356,12 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "Water":
                     this.waterTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "Limitation":
+                    this.limitationTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "BgSmall":
+                    this.bgSmallTilemap = c.GetComponent<Tilemap>();
                     break;
             }
         }
@@ -392,8 +399,9 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnRaft(Vector2Int pos)
     {
         Vector3Int initRaftPos = new Vector3Int(pos.x, pos.y, 0);
-        _raft = Instantiate(RaftPrefab, groundTilemap.CellToWorld(initRaftPos) + groundTilemap.cellSize / 2, Quaternion.identity);
-        _raft.SetCurrentPos(pos);
+        Raft RaftGO = Instantiate(RaftPrefab, groundTilemap.CellToWorld(initRaftPos) + groundTilemap.cellSize / 2, Quaternion.identity);
+        RaftGO.SetCurrentPos(pos);
+        RaftList.Add(RaftGO);
     }
 
 }

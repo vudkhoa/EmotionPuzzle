@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public abstract class Element : MonoBehaviour
 {
@@ -15,10 +17,20 @@ public abstract class Element : MonoBehaviour
     public EmotionType EmotionType;
     public Vector2Int CurrentPos;
 
+
+    [Header(" Tile ")]
+    public Tile ElementPowerTile;
+    public List<bool> ActivePowerList;
+    public List<Vector2Int> _offsetList;
+
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         this.EmotionType = emotionType;
         this.CurrentPos = currentPos;
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivePower();
+        }
     }
 
     public virtual bool InteractWithItem(ItemType itemType, Vector2Int itemPos)
@@ -30,6 +42,11 @@ public abstract class Element : MonoBehaviour
         }
 
         this.EmotionType = newEmotionType;
+
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivePower();
+        }
 
         return true;
     }
@@ -73,25 +90,102 @@ public abstract class Element : MonoBehaviour
 
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
     {
+        Vector2Int oldGridPos = this.CurrentPos;
         if (Vector2Int.Distance(newGridPos, this.CurrentPos) != 1f)
         {
+            this.CurrentPos = newGridPos;
             // 1. Scale nhỏ dần để ẩn tile
             this.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack).OnComplete(() =>
             {
                 // 2. Di chuyển đến đầu hàng
                 this.transform.position = worldPos;
-                this.CurrentPos = newGridPos;
+
 
                 // 3. Scale lớn lên để hiện tile lại
-                this.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack);
+                this.transform.DOScale(Vector3.one, 0.15f);
             });
         }
         else
         {
             CurrentPos = newGridPos;
-            transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine);
+            transform.DOMove(worldPos, 0.25f);
+        }
+        Power();
+        SetPowerRing(oldGridPos);
+        ElementController.Instance.SetPowerRings();
+    }
+
+    public void SetActivePower()
+    {
+        for (int i = 0; i < this.ActivePowerList.Count; ++i)
+        {
+            this.ActivePowerList[i] = true;
+        }
+        this.SetPowerRing(this.CurrentPos);
+    }
+
+    public void SetPowerRing(Vector2Int elementOldPos)
+    {
+        List<TileFake> tileFakes = new List<TileFake>();
+        if (elementOldPos != this.CurrentPos) 
+        {
+            for (int i = 0; i < this.ActivePowerList.Count; ++i)
+            {
+                Vector3Int pos = new Vector3Int(elementOldPos.x + this._offsetList[i].x, elementOldPos.y + this._offsetList[i].y, 0);
+                if (SlideController.Instance.limitationTilemap.HasTile(pos))
+                {
+                    Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.limitationTilemap.GetTile(pos));
+                    TileFake tempGO = GameObject.Instantiate(
+                        SlideController.Instance.groudTileFakePrefab,
+                        SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos),
+                        Quaternion.identity
+                    );
+                    tempGO.SetSprite(sp);
+                    SlideController.Instance.limitationTilemap.SetTile(pos, null);
+                    tileFakes.Add(tempGO);
+                }
+                else
+                {
+                    TileFake tempGO = GameObject.Instantiate(
+                        SlideController.Instance.groudTileFakePrefab,
+                        SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos),
+                        Quaternion.identity
+                    );
+                    tileFakes.Add(tempGO);
+                }
+
+            }
         }
 
-        Invoke(nameof(Power), 0.28f);
+        for (int i = 0; i < this.ActivePowerList.Count; ++i)
+        {
+            Vector3Int pos = new Vector3Int(this.CurrentPos.x + this._offsetList[i].x, this.CurrentPos.y + this._offsetList[i].y, 0);
+            if (elementOldPos != this.CurrentPos)
+            {
+                if (this.ActivePowerList[i] == true)
+                {
+                    int index = i;
+                    tileFakes[i].transform.DOMove(SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos), 0.2f)
+                        .SetEase(Ease.OutQuad).OnComplete(() =>
+                    {
+                        SlideController.Instance.limitationTilemap.SetTile(pos, this.ElementPowerTile);
+                        Destroy(tileFakes[index].gameObject);
+                    });
+                }
+                else
+                {
+                    int index = i;
+                    tileFakes[index].gameObject.SetActive(false);
+                    Destroy(tileFakes[index].gameObject);
+                }
+            }
+            else
+            {
+                if (this.ActivePowerList[i] == true)
+                {
+                    SlideController.Instance.limitationTilemap.SetTile(pos, this.ElementPowerTile);
+                } 
+            }
+        }
     }
 }

@@ -129,6 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0baefa94cfaffce4badac55974f8093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neutralSprite: {fileID: 0}
+  angrySprite: {fileID: 0}
+  happySprtie: {fileID: 0}
+  sadSprtie: {fileID: 0}
   ElementType: 0
   EmotionType: 0
   CurrentPos: {x: 0, y: 0}
+  ElementPowerTile: {fileID: 11400000, guid: 90e65cb6e0895524a92a0b35c9bf9095, type: 2}

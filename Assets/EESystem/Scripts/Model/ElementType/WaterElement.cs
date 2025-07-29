@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.PlayerSettings;
 
 public class WaterElement : Element
 {
-    private List<Vector2Int> _offsetList;
-    [SerializeField] private Tile WaterTile;
+    private List<Vector3Int> _fillWaterList;
 
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
+        InitOffsetList();
         base.Setup(emotionType, currentPos);
         this.ElementType = ElementType.Water;
-        InitOffsetList();
     }
 
     private void InitOffsetList()
     {
         this._offsetList = new List<Vector2Int>();
+        this.ActivePowerList = new List<bool>();
         for (int i = -1; i <= 1; ++i)
         {
             for (int j = -1; j <= 1; ++j)
@@ -28,6 +30,7 @@ public class WaterElement : Element
                 }
                 Vector2Int pos = new Vector2Int(i, j);
                 this._offsetList.Add(pos);
+                this.ActivePowerList.Add(false);
             }
         }
     }
@@ -41,93 +44,39 @@ public class WaterElement : Element
 
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         Vector2Int nearPos2 = new Vector2Int(0, 0);
+        int count = -1;
         foreach (Vector2Int offset in this._offsetList)
         {
+            count++;
             nearPos2 = offset + this.CurrentPos;
             nearPos3 = new Vector3Int(nearPos2.x, nearPos2.y, 0);
 
             if (SlideController.Instance.bgWaterTilemap.HasTile(nearPos3) &&
-            !SlideController.Instance.waterTilemap.HasTile(nearPos3))
+            !SlideController.Instance.waterTilemap.HasTile(nearPos3) &&
+            this.ActivePowerList[count] == true)
             {
-                FillWater(nearPos3, offset);
+                FillWater(nearPos3);
                 SlideController.Instance.SpawnRaft(nearPos2);
+                this.ActivePowerList[count] = false;
             }
         }
     }
 
-    private void FillWater(Vector3Int nearPos3, Vector2Int offset)
+    private void FillWater(Vector3Int nearPos3)
     {
-        Vector3Int waterPos = new Vector3Int(0, 0);
-        for (int i = 0; i <= 100 ; ++i)
+        this._fillWaterList = new List<Vector3Int>();
+        this._fillWaterList.Add(nearPos3);
+        while (this._fillWaterList.Count > 0)
         {
-            waterPos = nearPos3;
-            if (offset.x < 0)
+            Vector3Int newFillPos = this._fillWaterList[0];
+            this._fillWaterList.RemoveAt(0);
+            foreach (Vector2Int offset in this._offsetList)
             {
-                waterPos.x -= i;
-            }
-            else if (offset.x > 0)
-            {
-                waterPos.x += i;
-            }
-            else if (offset.y > 0)
-            {
-                waterPos.y += i;
-            }
-            else if (offset.y < 0)
-            {
-                waterPos.y -= i;
-            }
-            
-
-            // Lên
-            for (int j = 0; j <= 100; ++j)
-            {
-                if (offset.x != 0)
+                if (SlideController.Instance.bgWaterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)) &&
+                    !SlideController.Instance.waterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)))
                 {
-                    waterPos.y += j;
-                }
-                else
-                {
-                    waterPos.x += j;
-                }
-                //Debug.Log($"Water pos: {waterPos}");
-                if (SlideController.Instance.bgWaterTilemap.HasTile(waterPos) &&
-                !SlideController.Instance.waterTilemap.HasTile(waterPos))
-                {
-                    SlideController.Instance.waterTilemap.SetTile(waterPos, WaterTile);
-                }
-                else if (!SlideController.Instance.bgWaterTilemap.HasTile(waterPos))
-                {
-                    break;
-                }
-            }
-            
-            if (offset.x != 0)
-            {
-                waterPos.y = nearPos3.y;
-            }
-            else
-            {
-                waterPos.x = nearPos3.x;
-            }
-            for (int j = 0; j <= 100; ++j)
-            {
-                if (offset.x != 0)
-                {
-                    waterPos.y -= j;
-                }
-                else
-                {
-                    waterPos.x -= j;
-                }
-                if (SlideController.Instance.bgWaterTilemap.HasTile(waterPos) &&
-                !SlideController.Instance.waterTilemap.HasTile(waterPos))
-                {
-                    SlideController.Instance.waterTilemap.SetTile(waterPos, WaterTile);
-                }
-                else if (!SlideController.Instance.bgWaterTilemap.HasTile(waterPos))
-                {
-                    break;
+                    this._fillWaterList.Add(newFillPos + new Vector3Int(offset.x, offset.y, 0));
+                    SlideController.Instance.waterTilemap.SetTile(newFillPos + new Vector3Int(offset.x, offset.y, 0), this.ElementPowerTile);
                 }
             }
         }
