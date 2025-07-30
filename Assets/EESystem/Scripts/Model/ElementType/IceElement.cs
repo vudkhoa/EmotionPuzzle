@@ -14,7 +14,7 @@ public class IceElement : Element
 
     private void InitOffsetList()
     {
-        this._offsetList = new List<Vector2Int>();
+        this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
         for (int i = -1; i <= 1; ++i)
         {
@@ -25,7 +25,7 @@ public class IceElement : Element
                     continue;
                 }
                 Vector2Int pos = new Vector2Int(i, j);
-                this._offsetList.Add(pos);
+                this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
             }
         }
@@ -44,7 +44,7 @@ public class IceElement : Element
         }
 
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
-        List<Vector2Int> scopePosList = new List<Vector2Int>(this._offsetList);
+        List<Vector2Int> scopePosList = new List<Vector2Int>(this.OffsetList);
         int count = -1;
         for (int i = 0; i < scopePosList.Count; ++i)
         {

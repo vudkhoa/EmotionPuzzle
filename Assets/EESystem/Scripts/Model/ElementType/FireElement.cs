@@ -13,7 +13,7 @@ public class FireElement : Element
 
     private void InitOffsetList()
     {
-        this._offsetList = new List<Vector2Int>();
+        this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
         for (int i = -1; i <= 1; ++i)
         {
@@ -24,7 +24,7 @@ public class FireElement : Element
                     continue;
                 }
                 Vector2Int pos = new Vector2Int(i, j);
-                this._offsetList.Add(pos);
+                this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
             }
         }
@@ -43,7 +43,7 @@ public class FireElement : Element
 
         nearPos = currentPos + new Vector2Int(1, 0);
         int count = -1;
-        foreach (Vector2Int offset in this._offsetList)
+        foreach (Vector2Int offset in this.OffsetList)
         {
             count++;
             nearPos = currentPos + offset;

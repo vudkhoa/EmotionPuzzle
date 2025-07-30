@@ -306,7 +306,7 @@ public class ElementController : SingletonMono<ElementController>
         return null;
     }
 
-    public void SetPowerRings()
+    public void SetPowerRingAll()
     {
         foreach (Element e in this.ElementList)
         {

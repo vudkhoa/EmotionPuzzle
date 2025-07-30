@@ -21,7 +21,7 @@ public abstract class Element : MonoBehaviour
     [Header(" Tile ")]
     public Tile ElementPowerTile;
     public List<bool> ActivePowerList;
-    public List<Vector2Int> _offsetList;
+    public List<Vector2Int> OffsetList;
 
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
@@ -112,7 +112,7 @@ public abstract class Element : MonoBehaviour
         }
         Power();
         SetPowerRing(oldGridPos);
-        ElementController.Instance.SetPowerRings();
+        ElementController.Instance.SetPowerRingAll();
     }
 
     public void SetActivePower()
@@ -131,7 +131,7 @@ public abstract class Element : MonoBehaviour
         {
             for (int i = 0; i < this.ActivePowerList.Count; ++i)
             {
-                Vector3Int pos = new Vector3Int(elementOldPos.x + this._offsetList[i].x, elementOldPos.y + this._offsetList[i].y, 0);
+                Vector3Int pos = new Vector3Int(elementOldPos.x + this.OffsetList[i].x, elementOldPos.y + this.OffsetList[i].y, 0);
                 if (SlideController.Instance.limitationTilemap.HasTile(pos))
                 {
                     Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.limitationTilemap.GetTile(pos));
@@ -159,7 +159,7 @@ public abstract class Element : MonoBehaviour
 
         for (int i = 0; i < this.ActivePowerList.Count; ++i)
         {
-            Vector3Int pos = new Vector3Int(this.CurrentPos.x + this._offsetList[i].x, this.CurrentPos.y + this._offsetList[i].y, 0);
+            Vector3Int pos = new Vector3Int(this.CurrentPos.x + this.OffsetList[i].x, this.CurrentPos.y + this.OffsetList[i].y, 0);
             if (elementOldPos != this.CurrentPos)
             {
                 if (this.ActivePowerList[i] == true)
@@ -174,9 +174,8 @@ public abstract class Element : MonoBehaviour
                 }
                 else
                 {
-                    int index = i;
-                    tileFakes[index].gameObject.SetActive(false);
-                    Destroy(tileFakes[index].gameObject);
+                    tileFakes[i].gameObject.SetActive(false);
+                    Destroy(tileFakes[i].gameObject);
                 }
             }
             else

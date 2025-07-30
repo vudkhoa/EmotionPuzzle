@@ -18,7 +18,7 @@ public class WaterElement : Element
 
     private void InitOffsetList()
     {
-        this._offsetList = new List<Vector2Int>();
+        this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
         for (int i = -1; i <= 1; ++i)
         {
@@ -29,7 +29,7 @@ public class WaterElement : Element
                     continue;
                 }
                 Vector2Int pos = new Vector2Int(i, j);
-                this._offsetList.Add(pos);
+                this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
             }
         }
@@ -45,7 +45,7 @@ public class WaterElement : Element
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         Vector2Int nearPos2 = new Vector2Int(0, 0);
         int count = -1;
-        foreach (Vector2Int offset in this._offsetList)
+        foreach (Vector2Int offset in this.OffsetList)
         {
             count++;
             nearPos2 = offset + this.CurrentPos;
@@ -70,7 +70,7 @@ public class WaterElement : Element
         {
             Vector3Int newFillPos = this._fillWaterList[0];
             this._fillWaterList.RemoveAt(0);
-            foreach (Vector2Int offset in this._offsetList)
+            foreach (Vector2Int offset in this.OffsetList)
             {
                 if (SlideController.Instance.bgWaterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)) &&
                     !SlideController.Instance.waterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)))

@@ -14,7 +14,7 @@ public class WindElement : Element
 
     private void InitOffsetList()
     {
-        this._offsetList = new List<Vector2Int>();
+        this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
         for (int i = -1; i <= 1; ++i)
         {
@@ -25,7 +25,7 @@ public class WindElement : Element
                     continue;
                 }
                 Vector2Int pos = new Vector2Int(i, j);
-                this._offsetList.Add(pos);
+                this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
             }
         }
@@ -41,7 +41,7 @@ public class WindElement : Element
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         Vector2Int nearPos2 = new Vector2Int(0, 0);
         int count = -1;
-        foreach (Vector2Int offset in this._offsetList)
+        foreach (Vector2Int offset in this.OffsetList)
         {
             nearPos2 = offset + this.CurrentPos;
             nearPos3 = new Vector3Int(nearPos2.x, nearPos2.y, 0);
