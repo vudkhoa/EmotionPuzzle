@@ -1,0 +1,90 @@
+﻿using DG.Tweening;
+using UnityEngine;
+
+public class SadBoss : Boss
+{
+    [Header(" SkilSprite ")]
+    [SerializeField] private GameObject SkillPrefab;
+
+    public override void Setup( float health, float cooldownTimeSkill, int totalItems, 
+                                Vector2Int startPos, Vector2Int endPos, int totalPhases)
+    {
+        base.Setup(health, cooldownTimeSkill, totalItems, startPos, endPos, totalPhases);
+        this.BossType = BossType.SadBoss;
+        this.Phase = 1;
+    }
+
+    public override void ActiveSkill()
+    {
+        if (this.BossState == BossState.Dead)
+        {
+            return;
+        }
+
+        this.IsActingSkill = true;
+        if (Phase == 1)
+        {
+            Invoke(nameof(ActiveSkillPhase1), 0.25f);
+        }
+        else
+        {
+            Invoke(nameof(ActiveSkillPhase2), 0.25f);
+        }
+
+        // Cho Player bị khựng lại 1 nhịp cảm giác tốt hơn
+        Invoke(nameof(ResetIsActingSkill), 0.35f);
+    }
+
+    public void ActiveSkillPhase1()
+    {
+        this.ItemList = ItemTileController.Instance.FindItemCluster();
+        this.RemoveItems();
+    }
+
+    public void ActiveSkillPhase2()
+    {
+        this.ItemList = ItemTileController.Instance.FindItemAbsMin();
+        this.RemoveItems();
+    }
+
+    public void RemoveItems()
+    {
+        foreach (Vector2Int posItem in this.ItemList)
+        {
+            Sprite sp = this.SkillPrefab.GetComponent<SpriteRenderer>().sprite;
+            Vector3Int pos = new Vector3Int(posItem.x, posItem.y, 0);
+            TileFake ob = Instantiate(SlideController.Instance.itemTileFakePrefab,
+                            SlideController.Instance.itemTilemap.GetCellCenterWorld(pos), Quaternion.identity);
+            ob.SetSprite(sp);
+            ob.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                Destroy(ob.gameObject);
+            });
+
+            ItemTileController.Instance.RemoveItem(posItem);
+            
+            this.TotalItems--;
+        }
+        BossController.Instance.SpawnItems();
+    }
+
+    public override void CheckDie()
+    {
+        if (Phase == 1)
+        {
+            this.NextPhase();
+        }
+        else
+        {
+            this.BossState = BossState.Dead;
+            SlideController.Instance.BossId = 0;
+            Destroy(this.gameObject);
+        }
+    }
+
+    public override void NextPhase()
+    {
+        this.Phase++;
+        base.NextPhase();
+    }
+}

@@ -24,10 +24,14 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap waterTilemap;
     public Tilemap limitationTilemap;
     public Tilemap bgSmallTilemap;
+    public Tilemap bossTilemap;
+    public Tilemap iceStarTilemap;
 
     [Header(" Id Tile ")]
     public int itemId;
     public int elementId;
+    public int BossId;
+    public int IceStarId;
 
     private Player _player;
     public List<Raft> RaftList;
@@ -211,6 +215,11 @@ public class SlideController : SingletonMono<SlideController>
 
         Vector3 pos = groundTilemap.GetCellCenterWorld(newPlayerGridPos);
 
+        if (IceStarId > 0)
+        {
+            IceStarController.Instance.pos2Player = newPlayerPos;
+        }
+
         if (isTeleport)
         {
             _player.Teleport(newPlayerPos, pos);
@@ -218,6 +227,11 @@ public class SlideController : SingletonMono<SlideController>
         else
         {
             _player.MoveTo(newPlayerPos, pos);
+        }
+
+        if (BossId > 0)
+        {
+            BossController.Instance.Boss.AttackingPlayer();
         }
         
         MoveGroundTile(cellMovePosList, direction);
@@ -259,10 +273,33 @@ public class SlideController : SingletonMono<SlideController>
                 return false;
             }
 
-            if (ElementController.Instance.CheckExitsElement(cellPlayer))
+            if (ElementController.Instance.CheckExistsElement(cellPlayer))
             {
                 return false;
             }
+        }
+
+        if (BossId > 0)
+        {
+            if (BossController.Instance.CheckExistsBoss(new Vector2Int(cellPlayer.x, cellPlayer.y)))
+            {
+                return false;
+            }
+
+            if (BossController.Instance.Boss.IsActingSkill)
+            {
+                return false;
+            }
+
+            if (bossTilemap.HasTile(cellPlayer))
+            {
+                return false;
+            }
+        }
+
+        if (IceStarId > 0 && !IceStarController.Instance.CheckPlayerCanMove(cellPlayer))
+        {
+            return false;
         }
 
         if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
@@ -289,6 +326,25 @@ public class SlideController : SingletonMono<SlideController>
                 if (obstacleTilemap.HasTile(cell))
                 {
                     return true;
+                }
+
+                if (this.BossId > 0)
+                {
+                    if (this.bossTilemap.HasTile(cell))
+                    {
+                        return true;
+                    }
+                }
+
+                if (IceStarId > 0)
+                {
+                    foreach (Vector2Int pos2Laze in IceStarController.Instance.IceStarPostList)
+                    {
+                        if (pos2Laze == new Vector2Int(cell.x, cell.y))
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
         }
@@ -322,19 +378,34 @@ public class SlideController : SingletonMono<SlideController>
 
     public void SpawnLevel()
     {
-        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 1;
+        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 4;
         CreateGridPrefab();
         SetItemTile();
         SetElement();
         SpawnPlayer();
+        this.SetAngryBoss();
+        this.SetSadBoss();
+        this.SetHappyBoss();
+
+        // Mini-game Mechanics
+        this.SetIceStar();
         this.RaftList = new List<Raft>();
     }
 
     private void CreateGridPrefab()
     {
-        GameObject gridGO = Instantiate(Resources.Load<GameObject>("Level " + curLevelId.ToString()));
-        for (int i =0; i < gridGO.transform.childCount; i++)
+        GameObject gridGO = new GameObject();
+        if (curLevelId % 2 != 0)
+        {
+            gridGO = Instantiate(Resources.Load<GameObject>("Level " + ((int)(curLevelId / 2) + 1).ToString()));
+        }
+        else
+        {
+            gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + ((int)(curLevelId / 2)).ToString()));
+        }
+
+        for (int i = 0; i < gridGO.transform.childCount; i++)
         {
             Transform c = gridGO.transform.GetChild(i);
             switch (c.gameObject.name)
@@ -363,6 +434,12 @@ public class SlideController : SingletonMono<SlideController>
                 case "BgSmall":
                     this.bgSmallTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Boss":
+                    this.bossTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "IceStar":
+                    this.iceStarTilemap = c.GetComponent<Tilemap>();
+                    break;
             }
         }
     }
@@ -389,7 +466,6 @@ public class SlideController : SingletonMono<SlideController>
     private void SpawnPlayer()
     {
         Vector2Int pp = DataManager.Instance.LevelData.LevelDetails[curLevelId-1].PlayerPosition;
-        //Vector2Int pp = new Vector2Int(-10, 0);
         Vector3Int initPlayerPos = new Vector3Int(pp.x, pp.y, 0);
         _player = Instantiate(playerPrefab, groundTilemap.CellToWorld(initPlayerPos) + groundTilemap.cellSize / 2, Quaternion.identity);
         _player.SetCurrentPos(pp);
@@ -404,6 +480,66 @@ public class SlideController : SingletonMono<SlideController>
         RaftList.Add(RaftGO);
     }
 
+    public void SetAngryBoss()
+    {
+        if (this.BossId > 0) { return; }
+        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].AngryBossId;
+        if (BossId > 0)
+        {
+            AngryBossDetail AngryBossDetail = DataManager.Instance.AngryBossData.BossList[BossId - 1];
+            BossController.Instance.SpawnBoss(AngryBossDetail.Health, AngryBossDetail.CooldownTimeSkill,
+                AngryBossDetail.TotalItems, AngryBossDetail.StartPos, AngryBossDetail.EndPos, AngryBossDetail.BossPrefab,
+                AngryBossDetail.TotalPhases);
+        }
+    }
+
+    public void SetSadBoss()
+    {
+        if (this.BossId > 0) { return; }
+        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].SadBossId;
+        if (BossId > 0)
+        {
+            SadBossDetail sadBossDetail = DataManager.Instance.SadBossData.BossList[BossId - 1];
+            BossController.Instance.SpawnBoss(sadBossDetail.Health, sadBossDetail.CooldownTimeSkill, 
+                sadBossDetail.TotalItems, sadBossDetail.StartPos, sadBossDetail.EndPos, sadBossDetail.BossPrefab, 
+                sadBossDetail.TotalPhases);
+        }
+    }
+
+    public void SetHappyBoss()
+    {
+        if (this.BossId > 0) { return; }
+        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
+        if (BossId > 0)
+        {
+            HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
+            BossController.Instance.SpawnBoss(happyBossDetail.Health, happyBossDetail.CooldownTimeSkill, 
+                happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos, 
+                happyBossDetail.BossPrefab, happyBossDetail.TotalPhases);
+        }
+    }
+
+    // Mini-game Mechanics
+    public void SetIceStar()
+    {
+        IceStarId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IceStarId;
+        if (IceStarId > 0)
+        {
+            IceStarController.Instance.pos2Player = _player.GetCurrentPos();
+            IceStarController.Instance.SetInitIceStar(IceStarId);
+        }
+    }
+
+    // Bonus
+    public Vector2Int GetPlayerPos()
+    {
+        return _player.GetCurrentPos();
+    }
+
+    public void PlayerTakeDamage()
+    {
+        _player.TakeDamage();
+    }
 }
 
 [Serializable]

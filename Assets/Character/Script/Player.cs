@@ -48,4 +48,16 @@ public class Player : MonoBehaviour
             randomness: 90f       // Ngẫu nhiên góc
         ).SetEase(Ease.OutQuad);
     }
+
+    public void TakeDamage()
+    {
+        this.transform.DOShakePosition(
+            duration: 0.1f,
+            strength: new Vector3(0.2f, 0.2f, 0),
+            vibrato: 1000,
+            randomness: 90,
+            snapping: false,
+            fadeOut: true
+        );
+    }
 }

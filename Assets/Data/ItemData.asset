@@ -14,13 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemDetails:
   - ItemId: 1
-    ItemTypes: 0200000002000000
+    ItemTypes: 020000000200000002000000
     ItemPos:
     - {x: 4, y: 53}
     - {x: -2, y: 30}
+    - {x: 3, y: 40}
   - ItemId: 2
     ItemTypes: 
     ItemPos: []
   - ItemId: 3
-    ItemTypes: 
-    ItemPos: []
+    ItemTypes: 0200000002000000020000000200000002000000
+    ItemPos:
+    - {x: -7, y: -3}
+    - {x: -7, y: -2}
+    - {x: -7, y: -1}
+    - {x: -7, y: -9}
+    - {x: -13, y: -23}

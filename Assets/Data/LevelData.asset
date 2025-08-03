@@ -14,14 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
-    PlayerPosition: {x: -2, y: 27}
+    PlayerPosition: {x: -1, y: 26}
     ItemId: 1
     ElementId: 1
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
   - LevelId: 2
-    PlayerPosition: {x: -16, y: -26}
+    PlayerPosition: {x: 0, y: 0}
     ItemId: 2
     ElementId: 0
+    AngryBossId: 1
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
   - LevelId: 3
+    PlayerPosition: {x: -16, y: -26}
+    ItemId: 3
+    ElementId: 0
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 2
+  - LevelId: 4
+    PlayerPosition: {x: 0, y: 0}
+    ItemId: 2
+    ElementId: 0
+    AngryBossId: 0
+    SadBossId: 1
+    HappyBossId: 0
+    IceStarId: 0
+  - LevelId: 5
     PlayerPosition: {x: -5, y: -28}
     ItemId: 3
     ElementId: 0
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
+  - LevelId: 6
+    PlayerPosition: {x: 0, y: 0}
+    ItemId: 2
+    ElementId: 0
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 1
+    IceStarId: 0
