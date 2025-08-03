@@ -37,6 +37,40 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         });
     }
 
+    public void RotateObstacleTile(Vector2Int pivot, List<Vector2Int> posList)
+    {
+        foreach (Vector2Int pos in posList)
+        {
+            Vector3Int gridPos = new Vector3Int(pos.x, pos.y, 0);
+            if (SlideController.Instance.obstacleTilemap.HasTile(gridPos))
+            {
+                Vector2Int newP = RotateObjectController.Instance.RotateAroundPivot(pos, pivot, 90f);
+                Vector3Int newGP = new Vector3Int(newP.x, newP.y, 0);
+                Vector3 p = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(newGP);
+
+                //Animation
+                TileBase tile = SlideController.Instance.obstacleTilemap.GetTile(gridPos);
+
+                TileFake obj = Instantiate(SlideController.Instance.obstacleTileFakePrefab, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
+                Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+                if (sprite != null)
+                    obj.SetSprite(sprite);
+
+                obj.gridPos = pos;
+
+                SlideController.Instance.obstacleTilemap.SetTile(gridPos, null);
+
+                obj.transform.DOMove(p, 0.2f).SetEase(Ease.OutQuad);
+
+                DOVirtual.DelayedCall(0.2f, () =>
+                {
+                    Destroy(obj.gameObject);
+                    SlideController.Instance.obstacleTilemap.SetTile(newGP, tile);
+                });
+            }
+        }
+    }
+
     public void ThrowObstacleTile(Vector3Int oldPos, Vector3Int newPos)
     {
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.obstacleTilemap.GetTile(oldPos));

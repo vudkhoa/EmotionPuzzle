@@ -11,10 +11,17 @@ public abstract class Element : MonoBehaviour
     public Sprite angrySprite;
     public Sprite happySprtie;
     public Sprite sadSprtie;
+    public SpriteRenderer spr;
 
     [Header(" Info ")]
     public ElementType ElementType;
     public EmotionType EmotionType;
+    public void SetEmotionType(EmotionType emotionType)
+    {
+        this.EmotionType = emotionType;
+        ChangeEmotionAni(emotionType);
+    }
+
     public Vector2Int CurrentPos;
 
 
@@ -26,6 +33,7 @@ public abstract class Element : MonoBehaviour
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         this.EmotionType = emotionType;
+        ChangeEmotion(emotionType);
         this.CurrentPos = currentPos;
         if (this.EmotionType == EmotionType.Angry)
         {
@@ -41,7 +49,8 @@ public abstract class Element : MonoBehaviour
             return false;
         }
 
-        this.EmotionType = newEmotionType;
+        //this.EmotionType = newEmotionType;
+        this.SetEmotionType(newEmotionType);
 
         if (this.EmotionType == EmotionType.Angry)
         {
@@ -86,6 +95,48 @@ public abstract class Element : MonoBehaviour
         return true;
     }
 
+    public void ChangeEmotionAni(EmotionType emotionType)
+    {
+        this.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.OutBack);
+        if (emotionType == EmotionType.Neutral)
+        {
+            this.spr.sprite = neutralSprite;
+        }
+        else if (emotionType == EmotionType.Angry)
+        {
+            this.spr.sprite = angrySprite;
+        }
+        else if (emotionType == EmotionType.Sad)
+        {
+            this.spr.sprite = sadSprtie;
+        }
+        else if (emotionType == EmotionType.Happy)
+        {
+            this.spr.sprite = happySprtie;
+        }
+        this.transform.DOScale(Vector3.one, 0.1f).SetEase(Ease.OutBack);
+    }
+
+    public void ChangeEmotion(EmotionType emotionType)
+    {
+        if (emotionType == EmotionType.Neutral)
+        {
+            this.spr.sprite = neutralSprite;
+        }
+        else if (emotionType == EmotionType.Angry)
+        {
+            this.spr.sprite = angrySprite;
+        }
+        else if (emotionType == EmotionType.Sad)
+        {
+            this.spr.sprite = sadSprtie;
+        }
+        else if (emotionType == EmotionType.Happy)
+        {
+            this.spr.sprite = happySprtie;
+        }
+    }
+
     public abstract void Power();
 
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
@@ -110,6 +161,17 @@ public abstract class Element : MonoBehaviour
             CurrentPos = newGridPos;
             transform.DOMove(worldPos, 0.25f);
         }
+        Power();
+        SetPowerRing(oldGridPos);
+        ElementController.Instance.SetPowerRingAll();
+    }
+
+    public void Rotate(Vector2Int newGridPos, Vector3 worldPos)
+    {
+        Vector2Int oldGridPos = this.CurrentPos;
+        this.CurrentPos = newGridPos;
+        this.transform.DOMove(worldPos, 0.2f).SetEase(Ease.OutQuad);
+
         Power();
         SetPowerRing(oldGridPos);
         ElementController.Instance.SetPowerRingAll();

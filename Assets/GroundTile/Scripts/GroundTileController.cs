@@ -10,6 +10,17 @@ public class GroundTileController : SingletonMono<GroundTileController>
     {
         List<Vector2Int> cellsToSlide = new List<Vector2Int>(cellsToSlides);
 
+        for (int i = cellsToSlide.Count - 1; i >= 0; i--)
+        {
+            Vector2Int cell = cellsToSlide[i];
+            Vector3Int gridPos = new Vector3Int(cell.x, cell.y, 0);
+            TileBase tile = SlideController.Instance.groundTilemap.GetTile(gridPos);
+            if (SlideController.Instance.GetSpriteFromTile(tile) == null)
+            {
+                cellsToSlide.Remove(cell);
+            }
+        }
+
         //Spawn các tile động theo thứ tự cells
         List<TileFake> clones = new List<TileFake>();
         List<TileBase> tileOrder = new List<TileBase>();
@@ -66,5 +77,41 @@ public class GroundTileController : SingletonMono<GroundTileController>
             foreach (var obj in clones)
                 Destroy(obj.gameObject);
         });
+    }
+
+    public void SetGroundTileForRotateObj(List<Vector2Int> posList)
+    {
+        foreach (Vector2Int pos in posList)
+        {
+            Vector3Int p = new Vector3Int(pos.x, pos.y, 0);
+            if (!SlideController.Instance.groundTilemap.HasTile(p))
+            {
+                SlideController.Instance.groundTilemap.SetTile(p, SlideController.Instance.groundNoneSprite);
+            }
+        }
+    }
+
+    public void RemoveGroundTileForRotateObj(List<Vector2Int> posList)
+    {
+        foreach (Vector2Int pos in posList)
+        {
+            if (!this.HasSpriteInTile(pos))
+            {
+                Vector3Int p = new Vector3Int(pos.x, pos.y, 0);
+                SlideController.Instance.groundTilemap.SetTile(p, null);
+            }
+        }
+    }
+
+    private bool HasSpriteInTile(Vector2Int pos)
+    {
+        Vector3Int p = new Vector3Int(pos.x, pos.y, 0);
+        TileBase tile = SlideController.Instance.groundTilemap.GetTile(p);
+        if (SlideController.Instance.GetSpriteFromTile(tile) == null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

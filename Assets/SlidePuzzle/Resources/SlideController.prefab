@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eded10b12dfc74543895cd80fcb3322b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundNoneSprite: {fileID: 11400000, guid: 0f21f19bee90350468aeffb7734ffb1a, type: 2}
   groudTileFakePrefab: {fileID: 5901420331145464749, guid: 555ab444c585ab141ac9c80170511fd3, type: 3}
+  obstacleTileFakePrefab: {fileID: 3108782829360668215, guid: 402c2e007250d894e9cd371a138d4cfc, type: 3}
   itemTileFakePrefab: {fileID: 5901420331145464749, guid: 1d85707e48d896748a50ce29b152b06e, type: 3}
   RaftPrefab: {fileID: 7442249766866415490, guid: b1cbf3506fea8ab48b9b7036322317a2, type: 3}
   playerPrefab: {fileID: 2165942121257486253, guid: 5fec3d4a25f004b438e87b2e436fc08e, type: 3}
@@ -54,7 +56,15 @@ MonoBehaviour:
   elementTilemap: {fileID: 0}
   bgWaterTilemap: {fileID: 0}
   waterTilemap: {fileID: 0}
+  limitationTilemap: {fileID: 0}
+  bgSmallTilemap: {fileID: 0}
+  bossTilemap: {fileID: 0}
+  iceStarTilemap: {fileID: 0}
   itemId: 0
   elementId: 0
+  BossId: 0
+  IceStarId: 0
+  rotateObId: 0
+  RaftList: []
   canSlide: 0
   isWaitMore: 0

@@ -53,3 +53,4 @@ MonoBehaviour:
   HappyBossData: {fileID: 11400000, guid: fb67418c07cef524e98745ccd363d420, type: 2}
   AngryBossData: {fileID: 11400000, guid: 75f64482956960d48a45c08669700d2e, type: 2}
   IceStarData: {fileID: 11400000, guid: afc9234fab2061044850e2ecb248c69b, type: 2}
+  RotateObjectData: {fileID: 11400000, guid: 94349ba2258ede944b0402ebca021f85, type: 2}

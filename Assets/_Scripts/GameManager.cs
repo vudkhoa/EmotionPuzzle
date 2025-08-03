@@ -28,6 +28,7 @@ public class GameManager : SingletonMono<GameManager>
         CreateModule("ElementController", "ElementController");
         CreateModule("BossController", "BossController");
         CreateModule("IceStarController", "IceStarController");
+        CreateModule("RotateObjectController", "RotateObjectController");
     }
 
     private GameObject CreateObject(string module, string nameModule)
