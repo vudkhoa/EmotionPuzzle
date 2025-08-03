@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using CustomUtils;
+﻿using CustomUtils;
 using DG.Tweening;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class ItemTileController : SingletonMono<ItemTileController>
@@ -48,12 +48,21 @@ public class ItemTileController : SingletonMono<ItemTileController>
         foreach (Vector2Int cellPos in cellsToSlide)
         {
             Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
+            
             TileBase tile = SlideController.Instance.itemTilemap.GetTile(cell);
             if (tile == null)
             {
                 clones.Add(null);
                 tileOrder.Add(null);
 
+                continue;
+            }
+
+            if (tile != null && !this.ItemPosList.Contains(new Vector2Int(cell.x, cell.y)))
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cell.x, cell.y, 0), null);
+                clones.Add(null);
+                tileOrder.Add(null);
                 continue;
             }
 
@@ -80,6 +89,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
             {
                 continue;
             }
+
             Vector2Int toGrid = new Vector2Int(0, 0);
             if (i == 0)
             {
@@ -107,8 +117,17 @@ public class ItemTileController : SingletonMono<ItemTileController>
                 }
 
                 Vector2Int toCell = cellsToSlide[i];
-                ItemTileController.Instance.UpdateItemPosList(cellsToSlide[fromIndex], toCell); //Update Item Pos List
+                this.UpdateItemPosList(cellsToSlide[fromIndex], toCell); //Update Item Pos List
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(toCell.x, toCell.y, 0), tileOrder[fromIndex]);
+                
+                if (SlideController.Instance.BossId > 0)
+                {
+                    int id = BossController.Instance.Boss.ItemList.IndexOf(cellsToSlide[fromIndex]);
+                    if (id >= 0)
+                    {
+                        BossController.Instance.Boss.ItemList[id] = toCell;
+                    }
+                }
             }
 
             foreach (var obj in clones)
@@ -117,13 +136,27 @@ public class ItemTileController : SingletonMono<ItemTileController>
                     Destroy(obj.gameObject);
             }
 
-            foreach (Element e in ElementController.Instance.ElementList)
+            if (SlideController.Instance.elementId > 0)
             {
-                if (e.ElementType == ElementType.Ice)
+                foreach (Element e in ElementController.Instance.ElementList)
                 {
-                    e.Power();
+                    if (e.ElementType == ElementType.Ice)
+                    {
+                        e.Power();
+                    }
                 }
-            }   
+            }
+            
+            if (SlideController.Instance.BossId > 0)
+            {
+                BossController.Instance.TakeDamage();
+            }
+
+            if (SlideController.Instance.IceStarId > 0)
+            {
+                IceStarController.Instance.SetIceStars();
+            }
+
         });
     }
 
@@ -144,18 +177,148 @@ public class ItemTileController : SingletonMono<ItemTileController>
     {
         Vector3Int gridPos = new Vector3Int(itemPos.x, itemPos.y, 0);
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.itemTilemap.GetTile(gridPos));
-        SlideController.Instance.itemTilemap.SetTile(gridPos, null);
+        int index = this.ItemPosList.IndexOf(itemPos);
+       
+        SlideController.Instance.itemTilemap.SetTile(new Vector3Int(this.ItemPosList[index].x, this.ItemPosList[index].y, 0), null);
+
         TileFake ob = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
         ob.SetSprite(sp);
 
-        int index = this.ItemPosList.IndexOf(itemPos);
+        
         this.ItemPosList.RemoveAt(index);
         this.ItemTypeList.RemoveAt(index);
 
         //effect
+        ob.transform.DORotate(new Vector3(0, 0, 360f), 0.15f, RotateMode.FastBeyond360);
         ob.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InBack).OnComplete(() =>
         {
             Destroy(ob.gameObject);
         });
+    }
+
+    public List<Vector2Int> FindItemCluster()
+    {
+        List<Vector2Int> resultList = new List<Vector2Int>();
+        List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
+        List<Vector2Int> offsetList = new List<Vector2Int>();
+
+        offsetList = Library.Instance.LibOffsets8;
+
+        for (int i = 0; i < this.ItemPosList.Count; i++)
+        {
+            List<Vector2Int> tempList = new List<Vector2Int>();
+            tempList.Add(this.ItemPosList[i]);
+            posList.Remove(this.ItemPosList[i]);
+            Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
+
+            while (itemPos != new Vector2Int(-1000, -1000))
+            {
+                tempList.Add(itemPos);
+                posList.Remove(itemPos);
+                itemPos = FindItemNear(tempList, posList, offsetList);
+            }
+
+            if (tempList.Count > resultList.Count)
+            {
+                resultList = new List<Vector2Int>(tempList);
+            }
+            posList = new List<Vector2Int>(this.ItemPosList);
+        }
+
+        if (resultList.Count == 1)
+        {
+            resultList = this.FindItemAbsMin();
+        }
+
+        return resultList;
+    }
+
+    public Vector2Int FindItemNear(List<Vector2Int> tempList, List<Vector2Int> posList, List<Vector2Int> offsetList)
+    {
+        foreach (Vector2Int posItem in posList)
+        {
+            foreach (Vector2Int offset in offsetList)
+            {
+                Vector2Int checkPos = posItem + offset;
+                if (tempList.Contains(checkPos))
+                {
+                    return posItem;
+                }
+            }
+        }
+        return new Vector2Int(-1000, -1000);
+    }
+
+    public List<Vector2Int> FindItemAbsMin()
+    {
+        List<Vector2Int> resultList = new List<Vector2Int>();
+        
+        Vector2Int minPos = new Vector2Int(-1000, -1000);
+        float minDistance = float.MaxValue; 
+        foreach (Vector2Int pos in this.ItemPosList) 
+        {
+            float distance = 0;
+            distance = CaculateDistance(pos, SlideController.Instance.GetPlayerPos());
+            Vector2Int midPos = new Vector2Int(7, 7);
+            distance += CaculateDistance(pos, midPos);
+            if (minDistance > distance)
+            {
+                minDistance = distance;
+                minPos = pos;
+            }
+        }
+
+        List<Vector2Int> offsetList = new List<Vector2Int>();
+        List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
+
+        offsetList = Library.Instance.LibOffsets8;
+
+        List<Vector2Int> tempList = new List<Vector2Int>();
+
+        tempList.Add(minPos);
+        posList.Remove(minPos);
+        Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
+
+        while (itemPos != new Vector2Int(-1000, -1000))
+        {
+            tempList.Add(itemPos);
+            posList.Remove(itemPos);
+            itemPos = FindItemNear(tempList, posList, offsetList);
+        }
+        
+        resultList = new List<Vector2Int>(tempList);
+        return resultList;
+    }
+
+    public float CaculateDistance(Vector2Int pos1, Vector2Int pos2)
+    {
+        float distance = 0;
+        distance = Mathf.Abs(pos1.x - pos2.x) + Mathf.Abs(pos1.y - pos2.y);
+        return distance;
+    }
+
+    private void Update()
+    {
+        if (SlideController.Instance.itemId <= 0 || SlideController.Instance.BossId <= 0)
+        {
+            return;
+        }
+        this.ResetTile();
+    }
+
+    public void ResetTile()
+    {
+        for (int i = 0; i < 100; ++i)
+        {
+            for (int j = 0; j < 100; ++j)
+            {
+                Vector3Int cell = new Vector3Int(i, j, 0);
+                if (SlideController.Instance.itemTilemap.HasTile(cell) &&
+                    !this.ItemPosList.Contains(new Vector2Int(cell.x, cell.y)))
+                {
+                    SlideController.Instance.itemTilemap.SetTile(cell, null);
+                }
+            }
+        }
     }
 }

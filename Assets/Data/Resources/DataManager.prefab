@@ -49,3 +49,7 @@ MonoBehaviour:
   ElementData: {fileID: 11400000, guid: 3b0318dd20cce1a4d972898dce76b5d0, type: 2}
   EmotionCoordinationData: {fileID: 11400000, guid: a06a38ff7ae8322458683624a19537fd, type: 2}
   ElementCoordinateData: {fileID: 11400000, guid: aa073e6123a224e4991b5a2a6f7bc06e, type: 2}
+  SadBossData: {fileID: 11400000, guid: be9e106cdd7b64c40a529ec8c5303332, type: 2}
+  HappyBossData: {fileID: 11400000, guid: fb67418c07cef524e98745ccd363d420, type: 2}
+  AngryBossData: {fileID: 11400000, guid: 75f64482956960d48a45c08669700d2e, type: 2}
+  IceStarData: {fileID: 11400000, guid: afc9234fab2061044850e2ecb248c69b, type: 2}

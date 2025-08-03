@@ -15,4 +15,10 @@ public class LevelDetail
     public Vector2Int PlayerPosition;
     public int ItemId;
     public int ElementId;
+    public int AngryBossId;
+    public int SadBossId;
+    public int HappyBossId;
+
+    [Header(" Mini-game Mechanics ")]
+    public int IceStarId;
 }

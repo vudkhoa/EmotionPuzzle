@@ -146,7 +146,7 @@ public class ElementController : SingletonMono<ElementController>
         Invoke(nameof(SadFunction), 0.28f);
     }
 
-    public bool CheckExitsElement(Vector3Int pos)
+    public bool CheckExistsElement(Vector3Int pos)
     {
         foreach (Element element in this.ElementList)
         {
