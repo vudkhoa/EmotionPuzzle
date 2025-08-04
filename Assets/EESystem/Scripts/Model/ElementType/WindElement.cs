@@ -55,7 +55,8 @@ public class WindElement : Element
                 {
                     ObstacleTileController.Instance.ThrowObstacleTile(nearPos3, newObstaclePos);
                 }
-                if (!SlideController.Instance.obstacleTilemap.HasTile(newObstaclePos))
+                if (!SlideController.Instance.obstacleTilemap.HasTile(newObstaclePos) &&
+                    !ElementController.Instance.CheckExistsElement(newObstaclePos))
                 {
                     ObstacleTileController.Instance.MoveObsatcleTile(nearPos3, newObstaclePos);
                 }

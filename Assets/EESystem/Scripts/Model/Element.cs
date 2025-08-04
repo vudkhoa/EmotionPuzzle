@@ -121,6 +121,8 @@ public abstract class Element : MonoBehaviour
         {
             this.ActivePowerList[i] = true;
         }
+        // Fix: Nếu Element đã có Power thì thi triển ngay khả năng.
+        this.Power();
         this.SetPowerRing(this.CurrentPos);
     }
 
@@ -153,7 +155,6 @@ public abstract class Element : MonoBehaviour
                     );
                     tileFakes.Add(tempGO);
                 }
-
             }
         }
 
