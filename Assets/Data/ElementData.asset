@@ -32,7 +32,7 @@ MonoBehaviour:
       ElementPos: {x: 9, y: 30}
     - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
       EmotionType: 1
-      ElementPos: {x: 9, y: 38}
+      ElementPos: {x: 9, y: 39}
   - ElementId: 1
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
