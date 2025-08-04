@@ -1,6 +1,8 @@
 ﻿using CustomUtils;
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ElementController : SingletonMono<ElementController>
@@ -153,6 +155,28 @@ public class ElementController : SingletonMono<ElementController>
         Invoke(nameof(CoordinateElement), 0.28f);
         Invoke(nameof(CoordinateItem), 0.28f);
         Invoke(nameof(SadFunction), 0.28f);
+    }
+
+    public void RotateElement(Vector2Int pivot, List<Vector2Int> posList)
+    {
+        for (int i = 0; i < this.ElementList.Count; i++)
+        {
+            Element e = this.ElementList[i];
+            foreach (Vector2Int pos in posList)
+            {
+                if (e.CurrentPos == pos)
+                {
+                    Vector2Int newP = RotateObjectController.Instance.RotateAroundPivot(pos, pivot, 90f);
+                    Vector3Int newGP = new Vector3Int(newP.x, newP.y, 0);
+                    Vector3 p = SlideController.Instance.itemTilemap.GetCellCenterWorld(newGP);
+
+                    //Animation
+                    e.Rotate(newP, p);
+
+                    break;
+                }
+            }
+        }
     }
 
     public bool CheckExistsElement(Vector3Int pos)

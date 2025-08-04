@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class ItemTileController : SingletonMono<ItemTileController>
 {
@@ -158,6 +159,50 @@ public class ItemTileController : SingletonMono<ItemTileController>
             }
 
         });
+    }
+
+    public void RotateItemTile(Vector2Int pivot, List<Vector2Int> posList)
+    {
+        for (int i=0; i<this.ItemPosList.Count; i++)
+        {
+            Vector2Int itemPos = this.ItemPosList[i];
+            foreach (Vector2Int pos in posList)
+            {
+                if (itemPos == pos)
+                {
+                    Vector2Int newP = RotateObjectController.Instance.RotateAroundPivot(pos, pivot, 90f);
+                    Vector3Int newGP = new Vector3Int(newP.x, newP.y, 0);
+                    Vector3 p = SlideController.Instance.itemTilemap.GetCellCenterWorld(newGP);
+
+                    //Update Pos List
+                    this.ItemPosList[i] = newP;
+
+                    //Animation
+                    Vector3Int cell = new Vector3Int(itemPos.x, itemPos.y, 0);
+
+                    TileBase tile = SlideController.Instance.itemTilemap.GetTile(cell);
+
+                    TileFake obj = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(cell), Quaternion.identity);
+                    Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+                    if (sprite != null)
+                        obj.SetSprite(sprite);
+
+                    obj.gridPos = itemPos;
+
+                    SlideController.Instance.itemTilemap.SetTile(cell, null);
+
+                    obj.transform.DOMove(p, 0.2f).SetEase(Ease.OutQuad);
+
+                    DOVirtual.DelayedCall(0.2f, () =>
+                    {
+                        Destroy(obj.gameObject);
+                        SlideController.Instance.itemTilemap.SetTile(newGP, tile);
+                    });
+
+                    break;
+                }
+            }
+        }
     }
 
     public ItemType GetItemType(Vector2Int itemPos)

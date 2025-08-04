@@ -21,4 +21,5 @@ public class LevelDetail
 
     [Header(" Mini-game Mechanics ")]
     public int IceStarId;
+    public int RotateObId;
 }

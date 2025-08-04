@@ -29,6 +29,7 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
+    RotateObId: 1
   - LevelId: 2
     PlayerPosition: {x: 0, y: 0}
     ItemId: 2
@@ -37,6 +38,7 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
+    RotateObId: 0
   - LevelId: 3
     PlayerPosition: {x: -16, y: -26}
     ItemId: 3
@@ -45,6 +47,7 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 2
+    RotateObId: 0
   - LevelId: 4
     PlayerPosition: {x: 0, y: 0}
     ItemId: 2
@@ -53,6 +56,7 @@ MonoBehaviour:
     SadBossId: 1
     HappyBossId: 0
     IceStarId: 0
+    RotateObId: 0
   - LevelId: 5
     PlayerPosition: {x: -5, y: -28}
     ItemId: 3
@@ -61,6 +65,7 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
+    RotateObId: 0
   - LevelId: 6
     PlayerPosition: {x: 0, y: 0}
     ItemId: 2
@@ -69,3 +74,4 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 1
     IceStarId: 0
+    RotateObId: 0

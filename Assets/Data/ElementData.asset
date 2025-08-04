@@ -59,3 +59,9 @@ MonoBehaviour:
     - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
       EmotionType: 4
       ElementPos: {x: 7, y: 40}
+    - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
+      EmotionType: 3
+      ElementPos: {x: 1, y: 1}
+    - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
+      EmotionType: 4
+      ElementPos: {x: 2, y: 2}

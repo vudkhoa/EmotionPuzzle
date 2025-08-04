@@ -8,7 +8,9 @@ using UnityEngine.Tilemaps;
 public class SlideController : SingletonMono<SlideController> 
 {
     [Header(" Tile Fake ")]
+    public Tile groundNoneSprite;
     public TileFake groudTileFakePrefab;
+    public TileFake obstacleTileFakePrefab;
     public TileFake itemTileFakePrefab;
     public Raft RaftPrefab;
 
@@ -31,16 +33,19 @@ public class SlideController : SingletonMono<SlideController>
     public int elementId;
     public int BossId;
     public int IceStarId;
+    public int rotateObId;
 
     private Player _player;
     public List<Raft> RaftList;
     public bool canSlide;
+    public bool canF;
     public bool isWaitMore;
     private int curLevelId;
 
     private void Start()
     {
         canSlide = true;
+        canF = true;
     }
 
     private void Update()
@@ -66,6 +71,48 @@ public class SlideController : SingletonMono<SlideController>
         {
             Slide(Direction.Down);
         }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            FunctionedObject();
+        }
+    }
+
+    private void FunctionedObject()
+    {
+        if (!canF)
+        {
+            return;
+        }
+
+        canF = false;
+
+        if (rotateObId != 0)
+        {
+            if (RotateObjectController.Instance.RotateFunction(_player.GetCurrentPos()))
+            {
+                ResetCanF();
+            }
+            else
+            {
+                canF = true;
+            }
+        }
+        else 
+        {  
+            canF = true; 
+        }
+    }
+
+    private void ResetCanF()
+    {
+        float time = 0.22f;
+
+        Invoke(nameof(SetCanF), time);
+    }
+
+    private void SetCanF()
+    {
+        canF = true;
     }
 
     private void Slide(Direction direction)
@@ -389,7 +436,8 @@ public class SlideController : SingletonMono<SlideController>
 
         // Mini-game Mechanics
         this.SetIceStar();
-        this.RaftList = new List<Raft>();
+        this.RaftList = new List<Raft>(); //Remember to adjust this to new controller (VDKHOA thich 2 con meo!!!!!)
+        this.SetRotateObject();
     }
 
     private void CreateGridPrefab()
@@ -437,6 +485,15 @@ public class SlideController : SingletonMono<SlideController>
                     this.iceStarTilemap = c.GetComponent<Tilemap>();
                     break;
             }
+        }
+    }
+
+    private void SetRotateObject()
+    {
+        rotateObId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].RotateObId;
+        if (rotateObId != 0)
+        {
+            RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
         }
     }
 
