@@ -13,6 +13,7 @@ public class LevelDetail
 {
     public int LevelId;
     public Vector2Int PlayerPosition;
+    public int TutorialId;
     public int ItemId;
     public int ElementId;
     public int AngryBossId;

@@ -241,6 +241,34 @@ public class ItemTileController : SingletonMono<ItemTileController>
         });
     }
 
+    public void InteractWithElement(Vector2Int itemPos, Vector3 eWorldPos)
+    {
+        Vector3Int gridPos = new Vector3Int(itemPos.x, itemPos.y, 0);
+        Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.itemTilemap.GetTile(gridPos));
+        int index = this.ItemPosList.IndexOf(itemPos);
+
+        SlideController.Instance.itemTilemap.SetTile(new Vector3Int(this.ItemPosList[index].x, this.ItemPosList[index].y, 0), null);
+
+        TileFake ob = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
+        ob.SetSprite(sp);
+
+
+        this.ItemPosList.RemoveAt(index);
+        this.ItemTypeList.RemoveAt(index);
+
+        //effect
+        ob.transform.DOMove(eWorldPos, 0.1f)
+            .SetEase(Ease.InQuad)
+            .OnComplete(() =>
+            {
+                ob.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.OutBack)
+                .OnComplete(() =>
+                {
+                    Destroy(ob.gameObject);
+                });
+            });
+    }
+
     public List<Vector2Int> FindItemCluster()
     {
         List<Vector2Int> resultList = new List<Vector2Int>();

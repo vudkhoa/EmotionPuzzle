@@ -8,13 +8,15 @@ public class GameManager : SingletonMono<GameManager>
 
     private void Start()
     {
+        PlayerPrefs.SetInt(Constant.TUTORIALID, 0);
+
         GameModeContainer.Instance.InitGame();
         InitController();
 
         SlideController.Instance.SpawnLevel();
         
         State = GameState.Playing;
-        //UIManager.Instance.OpenUI<GameplayUI>();
+        UIManager.Instance.OpenUI<GameplayUI>();
 
     }
 
@@ -29,6 +31,7 @@ public class GameManager : SingletonMono<GameManager>
         CreateModule("BossController", "BossController");
         CreateModule("IceStarController", "IceStarController");
         CreateModule("RotateObjectController", "RotateObjectController");
+        CreateModule("TutorialManager", "TutorialManager");
     }
 
     private GameObject CreateObject(string module, string nameModule)

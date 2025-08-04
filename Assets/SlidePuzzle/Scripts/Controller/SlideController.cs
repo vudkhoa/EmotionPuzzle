@@ -41,6 +41,7 @@ public class SlideController : SingletonMono<SlideController>
     public bool canF;
     public bool isWaitMore;
     private int curLevelId;
+    private int tutorialId;
 
     private void Start()
     {
@@ -283,6 +284,7 @@ public class SlideController : SingletonMono<SlideController>
         MoveGroundTile(cellMovePosList, direction);
         MoveItemTile(cellMovePosList, direction);
         MoveElement(cellMovePosList, direction);
+        ShowTutorial();
         ResetCanSlide();
     }
 
@@ -413,6 +415,11 @@ public class SlideController : SingletonMono<SlideController>
         ElementController.Instance.MoveElement(cellsToSlides, direction);
     }
 
+    public void ShowTutorial()
+    {
+        TutorialManager.Instance.ShowTutorial(GetPlayerPos());
+    }
+
     public Sprite GetSpriteFromTile(TileBase tile)
     {
         if (tile is Tile t)
@@ -426,6 +433,9 @@ public class SlideController : SingletonMono<SlideController>
     {
         //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
         curLevelId = 1;
+        SetTutorial();
+
+        //Set map
         CreateGridPrefab();
         SetItemTile();
         SetElement();
@@ -438,6 +448,15 @@ public class SlideController : SingletonMono<SlideController>
         this.SetIceStar();
         this.RaftList = new List<Raft>(); //Remember to adjust this to new controller (VDKHOA thich 2 con meo!!!!!)
         this.SetRotateObject();
+    }
+
+    private void SetTutorial()
+    {
+        tutorialId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].TutorialId;
+        if (tutorialId != 0)
+        {
+            TutorialManager.Instance.SetTutorialDetail(DataManager.Instance.TutorialData.TutorialLevelDetails[tutorialId - 1].TutorialDetails);
+        }
     }
 
     private void CreateGridPrefab()

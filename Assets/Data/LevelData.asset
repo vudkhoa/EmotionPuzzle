@@ -15,14 +15,17 @@ MonoBehaviour:
   LevelDetails:
   - LevelId: 1
     PlayerPosition: {x: -1, y: 0}
+    TutorialId: 1
     ItemId: 1
     ElementId: 1
     AngryBossId: 0
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
+    RotateObId: 0
   - LevelId: 2
     PlayerPosition: {x: -1, y: 26}
+    TutorialId: 0
     ItemId: 1
     ElementId: 1
     AngryBossId: 0
@@ -32,6 +35,7 @@ MonoBehaviour:
     RotateObId: 1
   - LevelId: 2
     PlayerPosition: {x: 0, y: 0}
+    TutorialId: 0
     ItemId: 2
     ElementId: 0
     AngryBossId: 1
@@ -41,6 +45,7 @@ MonoBehaviour:
     RotateObId: 0
   - LevelId: 3
     PlayerPosition: {x: -16, y: -26}
+    TutorialId: 0
     ItemId: 3
     ElementId: 0
     AngryBossId: 0
@@ -50,6 +55,7 @@ MonoBehaviour:
     RotateObId: 0
   - LevelId: 4
     PlayerPosition: {x: 0, y: 0}
+    TutorialId: 0
     ItemId: 2
     ElementId: 0
     AngryBossId: 0
@@ -59,6 +65,7 @@ MonoBehaviour:
     RotateObId: 0
   - LevelId: 5
     PlayerPosition: {x: -5, y: -28}
+    TutorialId: 0
     ItemId: 3
     ElementId: 0
     AngryBossId: 0
@@ -68,6 +75,7 @@ MonoBehaviour:
     RotateObId: 0
   - LevelId: 6
     PlayerPosition: {x: 0, y: 0}
+    TutorialId: 0
     ItemId: 2
     ElementId: 0
     AngryBossId: 0
