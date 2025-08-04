@@ -6,11 +6,14 @@ namespace CustomUtils
     public class Library : SingletonMono<Library>
     {
         public List<Vector2Int> LibOffsets8;
+        public List<Vector2Int> LibOffsets4;
 
         private void Start()
         {
             this.LibOffsets8 = new List<Vector2Int>();
             this.LibOffsets8 = GetOffset8();
+            this.LibOffsets4 = new List<Vector2Int>();
+            this.LibOffsets4 = GetOffset4();
         }
 
         public List<Vector2Int> GetOffset8()
@@ -29,6 +32,24 @@ namespace CustomUtils
                 }
             }
             return LibOffsets8;
+        }
+
+        public List<Vector2Int> GetOffset4()
+        {
+            LibOffsets4 = new List<Vector2Int>();
+            for (int i = -1; i <= 1; ++i)
+            {
+                for (int j = -1; j <= 1; ++j)
+                {
+                    if ((i == 0 && j == 0) || (i != 0 && j != 0))
+                    {
+                        continue;
+                    }
+                    Vector2Int pos = new Vector2Int(i, j);
+                    LibOffsets4.Add(pos);
+                }
+            }
+            return LibOffsets4;
         }
     }
 }

@@ -52,9 +52,10 @@ MonoBehaviour:
   ElementType: 0
   EmotionType: 0
   CurrentPos: {x: 0, y: 0}
-  ElementPowerTile: {fileID: 11400000, guid: 0190aaefc1b3007489b518c7cddf41cf, type: 2}
+  PowerRingPrefab: {fileID: 5577221727646326776, guid: c5a2282590e67cc4f94d522066633dcb, type: 3}
   ActivePowerList: 
   OffsetList: []
+  PowerRingList: []
 --- !u!1 &374365929313119153
 GameObject:
   m_ObjectHideFlags: 0

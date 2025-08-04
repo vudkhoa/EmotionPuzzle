@@ -22,7 +22,6 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap elementTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
-    public Tilemap limitationTilemap;
     public Tilemap bgSmallTilemap;
     public Tilemap bossTilemap;
     public Tilemap iceStarTilemap;
@@ -427,9 +426,6 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "Water":
                     this.waterTilemap = c.GetComponent<Tilemap>();
-                    break;
-                case "Limitation":
-                    this.limitationTilemap = c.GetComponent<Tilemap>();
                     break;
                 case "BgSmall":
                     this.bgSmallTilemap = c.GetComponent<Tilemap>();

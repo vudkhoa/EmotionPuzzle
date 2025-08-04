@@ -23,25 +23,26 @@ public class ElementController : SingletonMono<ElementController>
 
     public bool CheckCanMoveElement(List<Vector2Int> cellMovePosList, Direction direction, Player player)
     {
-        Vector2Int offset = Vector2Int.zero;
+        Vector2Int offset = new Vector2Int(0, 0);
         switch (direction)
         {
             case Direction.Left:
-                offset = Vector2Int.left;
+                offset = new Vector2Int(-1, 0);
                 break;
             case Direction.Right:
-                offset = Vector2Int.right;
+                offset = new Vector2Int(1, 0);
                 break;
             case Direction.Up:
-                offset = Vector2Int.up;
+                offset = new Vector2Int(0, 1);
                 break;
             case Direction.Down:
-                offset = Vector2Int.down;
+                offset = new Vector2Int(0, -1);
                 break;
         }
 
         foreach (Element e in this.ElementList)
         {
+            bool checkElementMove = false;
             Vector2Int newPos = new Vector2Int(0, 0);
             if (((direction == Direction.Up || direction == Direction.Down) &&
                 e.CurrentPos.x == player.GetCurrentPos().x) ||
@@ -76,10 +77,16 @@ public class ElementController : SingletonMono<ElementController>
                     {
                         break;
                     }
-                    else if (!SlideController.Instance.groundTilemap.HasTile(new Vector3Int(nextPos.x, nextPos.y, 0)))
+                    else if (!SlideController.Instance.bgSmallTilemap.HasTile(new Vector3Int(nextPos.x, nextPos.y, 0)))
                     {
-                        return true;
+                        checkElementMove = true;
+                        break;
                     }
+                }
+
+                if (checkElementMove ||  e.EmotionType == EmotionType.Neutral || e.EmotionType == EmotionType.Neutral)
+                {
+                    continue;
                 }
 
                 if (cellMovePosList[0] == e.CurrentPos)
@@ -90,8 +97,10 @@ public class ElementController : SingletonMono<ElementController>
                 {
                     newPos = e.CurrentPos + offset;
                 }
-                
-                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0)))
+
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0)) ||
+                    this.CheckExistsElement(new Vector3Int(newPos.x, newPos.y, 0))
+                    )
                 {
                     return false;
                 }
@@ -251,43 +260,21 @@ public class ElementController : SingletonMono<ElementController>
             Vector2Int currentPos = e.CurrentPos;
             Vector2Int nearPos = new Vector2Int(0, 0);
 
-            nearPos = currentPos + new Vector2Int(1, 0);
-            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
+            List<Vector2Int> offset4 = Library.Instance.LibOffsets4;
+            foreach (Vector2Int offset in offset4)
             {
-                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                nearPos = currentPos + offset;
+                if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
                 {
-                    ItemTileController.Instance.RemoveItem(nearPos);
-                    continue;
-                }
-            }
-
-            nearPos = currentPos + new Vector2Int(-1, 0);
-            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
-            {
-                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
-                {
-                    ItemTileController.Instance.RemoveItem(nearPos);
-                    continue;
-                }
-            }
-
-            nearPos = currentPos + new Vector2Int(0, 1);
-            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
-            {
-                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
-                {
-                    ItemTileController.Instance.RemoveItem(nearPos);
-                    continue;
-                }
-            }
-
-            nearPos = currentPos + new Vector2Int(0, -1);
-            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)))
-            {
-                if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
-                {
-                    ItemTileController.Instance.RemoveItem(nearPos);
-                    continue;
+                    if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
+                    {
+                        ItemTileController.Instance.RemoveItem(nearPos);
+                        if (e.EmotionType == EmotionType.Angry)
+                        {
+                            e.SetActivePower();
+                        }
+                        continue;
+                    }
                 }
             }
         }

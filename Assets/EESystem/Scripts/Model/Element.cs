@@ -19,18 +19,15 @@ public abstract class Element : MonoBehaviour
 
 
     [Header(" Tile ")]
-    public Tile ElementPowerTile;
+    public GameObject PowerRingPrefab;
     public List<bool> ActivePowerList;
     public List<Vector2Int> OffsetList;
+    public List<GameObject> PowerRingList;
 
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         this.EmotionType = emotionType;
         this.CurrentPos = currentPos;
-        if (this.EmotionType == EmotionType.Angry)
-        {
-            this.SetActivePower();
-        }
     }
 
     public virtual bool InteractWithItem(ItemType itemType, Vector2Int itemPos)
@@ -42,11 +39,6 @@ public abstract class Element : MonoBehaviour
         }
 
         this.EmotionType = newEmotionType;
-
-        if (this.EmotionType == EmotionType.Angry)
-        {
-            this.SetActivePower();
-        }
 
         return true;
     }
@@ -112,7 +104,7 @@ public abstract class Element : MonoBehaviour
         }
         Power();
         SetPowerRing(oldGridPos);
-        ElementController.Instance.SetPowerRingAll();
+        //ElementController.Instance.SetPowerRingAll();
     }
 
     public void SetActivePower()
@@ -121,71 +113,80 @@ public abstract class Element : MonoBehaviour
         {
             this.ActivePowerList[i] = true;
         }
-        // Fix: Nếu Element đã có Power thì thi triển ngay khả năng.
+
+        //Fix: Nếu Element đã có Power thì thi triển ngay khả năng.
+        //Invoke(nameof(Power), 0.28f);
         this.Power();
         this.SetPowerRing(this.CurrentPos);
     }
 
     public void SetPowerRing(Vector2Int elementOldPos)
     {
-        List<TileFake> tileFakes = new List<TileFake>();
-        if (elementOldPos != this.CurrentPos) 
-        {
-            for (int i = 0; i < this.ActivePowerList.Count; ++i)
-            {
-                Vector3Int pos = new Vector3Int(elementOldPos.x + this.OffsetList[i].x, elementOldPos.y + this.OffsetList[i].y, 0);
-                if (SlideController.Instance.limitationTilemap.HasTile(pos))
-                {
-                    Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.limitationTilemap.GetTile(pos));
-                    TileFake tempGO = GameObject.Instantiate(
-                        SlideController.Instance.groudTileFakePrefab,
-                        SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos),
-                        Quaternion.identity
-                    );
-                    tempGO.SetSprite(sp);
-                    SlideController.Instance.limitationTilemap.SetTile(pos, null);
-                    tileFakes.Add(tempGO);
-                }
-                else
-                {
-                    TileFake tempGO = GameObject.Instantiate(
-                        SlideController.Instance.groudTileFakePrefab,
-                        SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos),
-                        Quaternion.identity
-                    );
-                    tileFakes.Add(tempGO);
-                }
-            }
-        }
-
         for (int i = 0; i < this.ActivePowerList.Count; ++i)
         {
-            Vector3Int pos = new Vector3Int(this.CurrentPos.x + this.OffsetList[i].x, this.CurrentPos.y + this.OffsetList[i].y, 0);
-            if (elementOldPos != this.CurrentPos)
+            if (this.ActivePowerList[i] != false)
             {
-                if (this.ActivePowerList[i] == true)
-                {
-                    int index = i;
-                    tileFakes[i].transform.DOMove(SlideController.Instance.limitationTilemap.GetCellCenterWorld(pos), 0.2f)
-                        .SetEase(Ease.OutQuad).OnComplete(() =>
-                    {
-                        SlideController.Instance.limitationTilemap.SetTile(pos, this.ElementPowerTile);
-                        Destroy(tileFakes[index].gameObject);
-                    });
-                }
-                else
-                {
-                    tileFakes[i].gameObject.SetActive(false);
-                    Destroy(tileFakes[i].gameObject);
-                }
+                this.PowerRingList[i].SetActive(true);
             }
             else
             {
-                if (this.ActivePowerList[i] == true)
-                {
-                    SlideController.Instance.limitationTilemap.SetTile(pos, this.ElementPowerTile);
-                } 
+                this.PowerRingList[i].SetActive(false);
             }
+            
+
+            //Vector3Int pos = new Vector3Int(elementOldPos.x + this.OffsetList[i].x, elementOldPos.y + this.OffsetList[i].y, 0);
+            //if (limitationTilemap.HasTile(pos))
+            //{
+            //    Sprite sp = SlideController.Instance.GetSpriteFromTile(limitationTilemap.GetTile(pos));
+            //    TileFake tempGO = GameObject.Instantiate(
+            //        SlideController.Instance.groudTileFakePrefab,
+            //        limitationTilemap.GetCellCenterWorld(pos),
+            //        Quaternion.identity
+            //    );
+            //    tempGO.SetSprite(sp);
+            //    limitationTilemap.SetTile(pos, null);
+            //    tileFakes.Add(tempGO);
+            //}
+            //else
+            //{
+            //    TileFake tempGO = GameObject.Instantiate(
+            //        SlideController.Instance.groudTileFakePrefab,
+            //        limitationTilemap.GetCellCenterWorld(pos),
+            //        Quaternion.identity
+            //    );
+            //    tileFakes.Add(tempGO);
+            //}
         }
+
+        //for (int i = 0; i < this.ActivePowerList.Count; ++i)
+        //{
+        //    Vector3Int pos = new Vector3Int(this.CurrentPos.x + this.OffsetList[i].x, this.CurrentPos.y + this.OffsetList[i].y, 0);
+        //    if (elementOldPos != this.CurrentPos)
+        //    {
+        //        if (this.ActivePowerList[i] == true)
+        //        {
+        //            int index = i;
+        //            //TileBase tileBase = limitationTilemap.GetTile(pos);
+        //            tileFakes[i].transform.DOMove(limitationTilemap.GetCellCenterWorld(pos), 0.2f)
+        //                .SetEase(Ease.OutQuad).OnComplete(() =>
+        //            {
+        //                limitationTilemap.SetTile(pos, this.ElementPowerTile);
+        //                Destroy(tileFakes[index].gameObject);
+        //            });
+        //        }
+        //        else
+        //        {
+        //            tileFakes[i].gameObject.SetActive(false);
+        //            Destroy(tileFakes[i].gameObject);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (this.ActivePowerList[i] == true)
+        //        {
+        //            limitationTilemap.SetTile(pos, this.ElementPowerTile);
+        //        } 
+        //    }
+        //}
     }
 }

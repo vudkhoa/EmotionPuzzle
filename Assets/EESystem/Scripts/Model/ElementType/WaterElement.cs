@@ -8,18 +8,24 @@ using static UnityEditor.PlayerSettings;
 public class WaterElement : Element
 {
     private List<Vector3Int> _fillWaterList;
+    [SerializeField] TileBase WaterTile;
 
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
-        InitOffsetList();
         base.Setup(emotionType, currentPos);
+        InitOffsetList();
         this.ElementType = ElementType.Water;
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivePower();
+        }
     }
 
     private void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
+        this.PowerRingList = new List<GameObject>();
         for (int i = -1; i <= 1; ++i)
         {
             for (int j = -1; j <= 1; ++j)
@@ -31,6 +37,14 @@ public class WaterElement : Element
                 Vector2Int pos = new Vector2Int(i, j);
                 this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
+                GameObject go = Instantiate(
+                    this.PowerRingPrefab,
+                    SlideController.Instance.bgSmallTilemap.GetCellCenterWorld(new Vector3Int(CurrentPos.x + pos.x, CurrentPos.y + pos.y, 0)),
+                    Quaternion.identity,
+                    this.transform
+                    );
+                go.gameObject.SetActive(false);
+                this.PowerRingList.Add(go);
             }
         }
     }
@@ -76,7 +90,7 @@ public class WaterElement : Element
                     !SlideController.Instance.waterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)))
                 {
                     this._fillWaterList.Add(newFillPos + new Vector3Int(offset.x, offset.y, 0));
-                    SlideController.Instance.waterTilemap.SetTile(newFillPos + new Vector3Int(offset.x, offset.y, 0), this.ElementPowerTile);
+                    SlideController.Instance.waterTilemap.SetTile(newFillPos + new Vector3Int(offset.x, offset.y, 0), this.WaterTile);
                 }
             }
         }

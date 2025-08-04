@@ -6,15 +6,20 @@ public class FireElement : Element
 {
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
-        InitOffsetList();
         base.Setup(emotionType, currentPos);
+        InitOffsetList();
         this.ElementType = ElementType.Fire;
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivePower();
+        }
     }
 
     private void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
+        this.PowerRingList = new List<GameObject>();
         for (int i = -1; i <= 1; ++i)
         {
             for (int j = -1; j <= 1; ++j)
@@ -26,6 +31,14 @@ public class FireElement : Element
                 Vector2Int pos = new Vector2Int(i, j);
                 this.OffsetList.Add(pos);
                 this.ActivePowerList.Add(false);
+                GameObject go = Instantiate(
+                    this.PowerRingPrefab,
+                    SlideController.Instance.bgSmallTilemap.GetCellCenterWorld(new Vector3Int(CurrentPos.x + pos.x, CurrentPos.y + pos.y, 0)),
+                    Quaternion.identity,
+                    this.transform
+                    );
+                go.gameObject.SetActive(false);
+                this.PowerRingList.Add(go);
             }
         }
     }
