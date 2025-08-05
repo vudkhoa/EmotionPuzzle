@@ -9,8 +9,8 @@ public class BlockTileController : SingletonMono<BlockTileController>
     public TileBase blockTile;
     public TileBase unBlockTile;
 
-    private List<Block> blocks;
-    private List<Vector3Int> unBlockTileList = new List<Vector3Int>();
+    public List<Block> blocks;
+    public List<Vector3Int> unBlockTileList = new List<Vector3Int>();
 
     public void Setup(List<Block> blocks)
     {
@@ -19,12 +19,23 @@ public class BlockTileController : SingletonMono<BlockTileController>
 
     public void UnBlockTile()
     {
+        //Reset
         foreach (Vector3Int tile in unBlockTileList)
         {
             SlideController.Instance.blockTilemap.SetTile(tile, blockTile);
         }
 
         unBlockTileList = new List<Vector3Int>();
+
+        foreach (Block block in blocks)
+        {
+            for (int i = 0; i < block.groundPosList.Count; i++)
+            {
+                Vector2Int cell1 = block.groundPosList[i];
+                Vector3Int pos1 = new Vector3Int(cell1.x, cell1.y, 0);
+                SlideController.Instance.groundTilemap.SetTile(pos1, null);
+            }
+        }
 
         //Check player
         Vector2Int cell = SlideController.Instance.GetPlayerPos();
@@ -54,11 +65,39 @@ public class BlockTileController : SingletonMono<BlockTileController>
 
         //Check element
         ElementController.Instance.CheckBlocktile();
+
+        OpenGroundTile();
     }
 
     public void AddPosToUnBlockTileList(Vector3Int pos)
     {
         SlideController.Instance.blockTilemap.SetTile(pos, unBlockTile);
         unBlockTileList.Add(pos);
+    }
+
+    private void OpenGroundTile()
+    {
+        foreach (Block block in blocks)
+        {
+            bool isUnBlock = true;
+            foreach (Vector2Int cell in block.BlockPosList)
+            {
+                Vector3Int pos = new Vector3Int(cell.x, cell.y, 0);
+                if (!this.unBlockTileList.Contains(pos))
+                {
+                    isUnBlock = false;
+                    break;
+                }
+            }
+            if (isUnBlock)
+            {
+                for (int i = 0; i < block.groundPosList.Count; i++)
+                {
+                    Vector2Int cell = block.groundPosList[i];
+                    Vector3Int pos = new Vector3Int(cell.x, cell.y, 0);
+                    SlideController.Instance.groundTilemap.SetTile(pos, block.groundTileList[i]);
+                }
+            }
+        }
     }
 }

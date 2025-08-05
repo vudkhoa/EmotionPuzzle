@@ -209,7 +209,6 @@ public class ElementController : SingletonMono<ElementController>
     {
         foreach (int id in this.elementIdHasJustMove)
         {
-            Debug.Log(id);
             Element e = this.ElementList[id];
 
             if (e.EmotionType != EmotionType.Happy)

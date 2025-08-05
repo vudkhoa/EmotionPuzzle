@@ -287,7 +287,7 @@ public class SlideController : SingletonMono<SlideController>
         MoveItemTile(cellMovePosList, direction);
         MoveElement(cellMovePosList, direction);
         Invoke(nameof(ShowTutorial), 0.25f);
-        Invoke(nameof(UnBlockTile), 0.25f);
+        Invoke(nameof(UnBlockTile), 0.28f);
         ResetCanSlide();
     }
 
@@ -454,6 +454,7 @@ public class SlideController : SingletonMono<SlideController>
         //Set map
         CreateGridPrefab();
         SetItemTile();
+        SetBlockTile();
         SetElement();
         SpawnPlayer();
         this.SetAngryBoss();
