@@ -15,6 +15,9 @@ MonoBehaviour:
   BlockDetails:
   - BlockID: 1
     Blocks:
-    - BlockPosList: []
-      groundPosList: []
-      groundTileList: []
+    - BlockPosList:
+      - {x: 5, y: 0}
+      groundPosList:
+      - {x: 1, y: 1}
+      groundTileList:
+      - {fileID: 11400000, guid: d9aae30b6fb59af489fe2e184aa7b740, type: 2}

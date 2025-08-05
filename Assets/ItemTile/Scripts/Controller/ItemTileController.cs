@@ -157,7 +157,6 @@ public class ItemTileController : SingletonMono<ItemTileController>
             {
                 IceStarController.Instance.SetIceStars();
             }
-
         });
     }
 
