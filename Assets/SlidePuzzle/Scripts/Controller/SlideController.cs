@@ -21,6 +21,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap groundTilemap;
     public Tilemap itemTilemap;
     public Tilemap obstacleTilemap;
+    public Tilemap blockTilemap;
     public Tilemap elementTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
@@ -30,6 +31,7 @@ public class SlideController : SingletonMono<SlideController>
 
     [Header(" Id Tile ")]
     public int itemId;
+    public int blockId;
     public int elementId;
     public int BossId;
     public int IceStarId;
@@ -284,7 +286,8 @@ public class SlideController : SingletonMono<SlideController>
         MoveGroundTile(cellMovePosList, direction);
         MoveItemTile(cellMovePosList, direction);
         MoveElement(cellMovePosList, direction);
-        ShowTutorial();
+        Invoke(nameof(ShowTutorial), 0.25f);
+        Invoke(nameof(UnBlockTile), 0.25f);
         ResetCanSlide();
     }
 
@@ -376,6 +379,11 @@ public class SlideController : SingletonMono<SlideController>
                     return true;
                 }
 
+                if (ElementController.Instance.IsBlockItem(cell))
+                {
+                    return true;
+                }
+
                 if (this.BossId > 0)
                 {
                     if (this.bossTilemap.HasTile(cell))
@@ -418,6 +426,14 @@ public class SlideController : SingletonMono<SlideController>
     public void ShowTutorial()
     {
         TutorialManager.Instance.ShowTutorial(GetPlayerPos());
+    }
+
+    public void UnBlockTile()
+    {
+        if (blockId != 0)
+        {
+            BlockTileController.Instance.UnBlockTile();
+        }
     }
 
     public Sprite GetSpriteFromTile(TileBase tile)
@@ -485,6 +501,9 @@ public class SlideController : SingletonMono<SlideController>
                 case "Obstacle":
                     this.obstacleTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Block":
+                    this.blockTilemap = c.GetComponent<Tilemap>();
+                    break;
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
                     break;
@@ -524,6 +543,15 @@ public class SlideController : SingletonMono<SlideController>
             ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
             ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
         }    
+    }
+
+    private void SetBlockTile()
+    {
+        blockId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].BlockId;
+        if (blockId != 0)
+        {
+            BlockTileController.Instance.Setup(DataManager.Instance.BlockData.BlockDetails[blockId - 1].Blocks);
+        }
     }
 
     private void SetElement()
