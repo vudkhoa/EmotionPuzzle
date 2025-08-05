@@ -24,4 +24,5 @@ public class TutorialDetail
     [TextArea(2, 5)]
     public string text;
     public int guideId;
+    public float Time;
 }

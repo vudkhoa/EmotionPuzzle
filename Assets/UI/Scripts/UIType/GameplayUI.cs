@@ -84,9 +84,9 @@ public class GameplayUI : UICanvas
         UIManager.Instance.OpenUI<IceGuideUI>();
     }
 
-    public void ShowTutorialText(string text)
+    public void ShowTutorialText(string text, float time)
     {
         GuideMessage gmOb = Instantiate(messagePrefab, messageListTf);
-        gmOb.ShowTutorialText(text);
+        gmOb.ShowTutorialText(text, time);
     }
 }

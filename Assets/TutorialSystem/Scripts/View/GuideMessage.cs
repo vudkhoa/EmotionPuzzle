@@ -11,15 +11,16 @@ public class GuideMessage : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     public Image fill;
 
+    private float time;
     private bool isShowing = false;
     private float currentTime = 0f;
 
-    public void ShowTutorialText(string text)
+    public void ShowTutorialText(string text, float time)
     {
         //panelTextTf.gameObject.SetActive(true);
         SetTutorialText(text);
-
-        Invoke(nameof(HideTutorialText), 5f);
+        this.time = time;
+        Invoke(nameof(HideTutorialText), time);
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class GuideMessage : MonoBehaviour
         if (isShowing)
         {
             currentTime += Time.deltaTime;
-            fill.fillAmount = 1 - currentTime/5f;
+            fill.fillAmount = 1 - currentTime / time;
         }
     }
 

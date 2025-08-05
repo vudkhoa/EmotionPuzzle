@@ -44,11 +44,13 @@ public class SlideController : SingletonMono<SlideController>
     public bool isWaitMore;
     private int curLevelId;
     private int tutorialId;
+    public bool isTutorial;
 
     private void Start()
     {
         canSlide = true;
         canF = true;
+        isTutorial = false;
     }
 
     private void Update()
@@ -121,6 +123,11 @@ public class SlideController : SingletonMono<SlideController>
     private void Slide(Direction direction)
     {
         if (!canSlide)
+        {
+            return;
+        }
+
+        if (isTutorial)
         {
             return;
         }

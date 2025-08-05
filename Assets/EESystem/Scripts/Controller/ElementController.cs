@@ -3,7 +3,6 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ElementController : SingletonMono<ElementController>
 {
@@ -44,6 +43,11 @@ public class ElementController : SingletonMono<ElementController>
 
         foreach (Element e in this.ElementList)
         {
+            if (e.EmotionType == EmotionType.Sad || e.EmotionType == EmotionType.Neutral)
+            {
+                continue;
+            }
+
             bool checkElementMove = false;
             Vector2Int newPos = new Vector2Int(0, 0);
             if (((direction == Direction.Up || direction == Direction.Down) &&
