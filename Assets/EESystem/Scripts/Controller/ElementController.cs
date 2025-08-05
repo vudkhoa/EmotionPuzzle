@@ -336,7 +336,7 @@ public class ElementController : SingletonMono<ElementController>
         Vector2Int pos = new Vector2Int(cell.x, cell.y);
         foreach (Element e in this.ElementList)
         {
-            if (e.CurrentPos == pos && e.EmotionType != EmotionType.Sad)
+            if (e.CurrentPos == pos && e.EmotionType == EmotionType.Neutral)
             {
                 return true;
             }
