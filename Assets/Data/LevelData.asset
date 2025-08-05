@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
-    PlayerPosition: {x: 20, y: 15}
+    PlayerPosition: {x: 4, y: 0}
     TutorialId: 0
     ItemId: 1
+    BlockId: 0
     ElementId: 1
     AngryBossId: 0
     SadBossId: 0
@@ -27,6 +28,7 @@ MonoBehaviour:
     PlayerPosition: {x: -1, y: 0}
     TutorialId: 1
     ItemId: 1
+    BlockId: 0
     ElementId: 1
     AngryBossId: 0
     SadBossId: 0
@@ -37,6 +39,7 @@ MonoBehaviour:
     PlayerPosition: {x: -1, y: 26}
     TutorialId: 0
     ItemId: 1
+    BlockId: 0
     ElementId: 1
     AngryBossId: 0
     SadBossId: 0
@@ -47,6 +50,7 @@ MonoBehaviour:
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
+    BlockId: 0
     ElementId: 0
     AngryBossId: 1
     SadBossId: 0
@@ -57,6 +61,7 @@ MonoBehaviour:
     PlayerPosition: {x: -16, y: -26}
     TutorialId: 0
     ItemId: 3
+    BlockId: 0
     ElementId: 0
     AngryBossId: 0
     SadBossId: 0
@@ -67,6 +72,7 @@ MonoBehaviour:
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
+    BlockId: 0
     ElementId: 0
     AngryBossId: 0
     SadBossId: 1
@@ -77,6 +83,7 @@ MonoBehaviour:
     PlayerPosition: {x: -5, y: -28}
     TutorialId: 0
     ItemId: 3
+    BlockId: 0
     ElementId: 0
     AngryBossId: 0
     SadBossId: 0
@@ -87,6 +94,7 @@ MonoBehaviour:
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
+    BlockId: 0
     ElementId: 0
     AngryBossId: 0
     SadBossId: 0
