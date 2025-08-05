@@ -283,10 +283,6 @@ public class ElementController : SingletonMono<ElementController>
             Vector2Int nearPos = new Vector2Int(0, 0);
 
             List<Vector2Int> offset4 = Library.Instance.LibOffsets4;
-            foreach (Vector2Int offset in offset4)
-            {
-                Debug.Log($"Offset: {offset}");
-            }
 
             foreach (Vector2Int offset in offset4)
             {

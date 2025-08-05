@@ -16,7 +16,12 @@ MonoBehaviour:
   - tutorialId: 1
     TutorialDetails:
     - id: 1
-      posInit: {x: 6, y: 7}
-      text: "Khi Item n\u1EB1m c\u1EA1nh Element\nc\u1EA3m x\xFAc s\u1EBD c\u1ED9ng
-        l\u1EA1i."
+      posInit: {x: 9, y: 2}
+      text: "Element \u0111ang \u1EDF tr\u1EA1ng th\xE1i Neutral, \nh\xE3y t\u01B0\u01A1ng
+        t\xE1c \u0111\u1EC3 thay \u0111\u1ED5i tr\u1EA1ng th\xE1i c\u1EE7a n\xF3!\r"
+      guideId: 1
+    - id: 2
+      posInit: {x: 9, y: 3}
+      text: "Element s\u1EBD h\u1EA5p th\u1EE5 item b\xEAn c\u1EA1nh\r\nt\u1EEB \u0111\xF3
+        thay \u0111\u1ED5i tr\u1EA1ng th\xE1i c\u1EA3m x\xFAc!"
       guideId: 1
