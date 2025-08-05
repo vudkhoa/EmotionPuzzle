@@ -261,7 +261,6 @@ public class ElementController : SingletonMono<ElementController>
             }
 
             nearPos = currentPos + new Vector2Int(0, 1);
-            er = this.GetElement(nearPos);
             if (er != null && er.EmotionType == EmotionType.Happy)
             {
                 if (e.CoordinateWithElement(er.ElementType, er))
@@ -285,6 +284,11 @@ public class ElementController : SingletonMono<ElementController>
             Vector2Int nearPos = new Vector2Int(0, 0);
 
             List<Vector2Int> offset4 = Library.Instance.LibOffsets4;
+            foreach (Vector2Int offset in offset4)
+            {
+                Debug.Log($"Offset: {offset}");
+            }
+
             foreach (Vector2Int offset in offset4)
             {
                 nearPos = currentPos + offset;
