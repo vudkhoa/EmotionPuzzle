@@ -462,7 +462,6 @@ public class SlideController : SingletonMono<SlideController>
 
         // Mini-game Mechanics
         this.SetIceStar();
-        this.RaftList = new List<Raft>(); //Remember to adjust this to new controller (VDKHOA thich 2 con meo!!!!!)
         this.SetRotateObject();
     }
 
@@ -574,6 +573,10 @@ public class SlideController : SingletonMono<SlideController>
 
     public void SpawnRaft(Vector2Int pos)
     {
+        if (this.RaftList == null)
+        {
+            this.RaftList = new List<Raft>();
+        }
         Vector3Int initRaftPos = new Vector3Int(pos.x, pos.y, 0);
         Raft RaftGO = Instantiate(RaftPrefab, groundTilemap.CellToWorld(initRaftPos) + groundTilemap.cellSize / 2, Quaternion.identity);
         RaftGO.SetCurrentPos(pos);
