@@ -15,6 +15,7 @@ public class LevelDetail
     public Vector2Int PlayerPosition;
     public int TutorialId;
     public int ItemId;
+    public int BlockId;
     public int ElementId;
     public int AngryBossId;
     public int SadBossId;

@@ -26,6 +26,7 @@ public class GameManager : SingletonMono<GameManager>
         CreateModule("SlideController", "SlideController");
         CreateModule("GroundTileController", "GroundTileController");
         CreateModule("ItemTileController", "ItemTileController");
+        CreateModule("BlockTileController", "BlockTileController");
         CreateModule("ObstacleTileController", "ObstacleTileController");
         CreateModule("ElementController", "ElementController");
         CreateModule("BossController", "BossController");

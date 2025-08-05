@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GuideSO", fileName = "GuideData")]
-public class GuideSO : MonoBehaviour
+public class GuideSO : ScriptableObject
 {
     List<GuideDetail> GuideDetails;
 

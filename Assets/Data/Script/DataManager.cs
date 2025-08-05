@@ -6,6 +6,7 @@ public class DataManager : SingletonMono<DataManager>
     [Header(" Level ")]
     public LevelSO LevelData;
     public ItemSO ItemData;
+    public BlockSO BlockData;
     public TutorialSO TutorialData;
 
     [Header(" EESystem ")]

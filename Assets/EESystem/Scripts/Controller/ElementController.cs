@@ -123,12 +123,11 @@ public class ElementController : SingletonMono<ElementController>
         int id = -1;
         foreach (Element e in this.ElementList)
         {
+            id++;
             if (e.EmotionType != EmotionType.Happy && e.EmotionType != EmotionType.Angry)
             {
                 continue;
             }
-
-            id++;
             for (int i = 0; i < count; i++) 
             {
                 if (e.CurrentPos == cellsToSlide[i])
@@ -210,6 +209,7 @@ public class ElementController : SingletonMono<ElementController>
     {
         foreach (int id in this.elementIdHasJustMove)
         {
+            Debug.Log(id);
             Element e = this.ElementList[id];
 
             if (e.EmotionType != EmotionType.Happy)
@@ -325,6 +325,33 @@ public class ElementController : SingletonMono<ElementController>
         foreach (Element e in this.ElementList)
         {
             e.SetPowerRing(e.CurrentPos);
+        }
+    }
+
+    public bool IsBlockItem(Vector3Int cell)
+    {
+        Vector2Int pos = new Vector2Int(cell.x, cell.y);
+        foreach (Element e in this.ElementList)
+        {
+            if (e.CurrentPos == pos && e.EmotionType != EmotionType.Sad)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void CheckBlocktile()
+    {
+        foreach (Element e in this.ElementList)
+        {
+            Vector2Int cell = e.CurrentPos;
+            Vector3Int pos = new Vector3Int(cell.x, cell.y, 0);
+            if (SlideController.Instance.blockTilemap.HasTile(pos))
+            {
+                BlockTileController.Instance.AddPosToUnBlockTileList(pos);
+            }
         }
     }
 }

@@ -394,4 +394,16 @@ public class ItemTileController : SingletonMono<ItemTileController>
             }
         }
     }
+
+    public void CheckBlockTile()
+    {
+        foreach (Vector2Int cell in this.ItemPosList)
+        {
+            Vector3Int pos = new Vector3Int(cell.x, cell.y, 0);
+            if (SlideController.Instance.blockTilemap.HasTile(pos))
+            {
+                BlockTileController.Instance.AddPosToUnBlockTileList(pos);
+            }
+        }
+    }
 }
