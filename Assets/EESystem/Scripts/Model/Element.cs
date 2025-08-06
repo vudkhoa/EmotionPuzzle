@@ -165,7 +165,7 @@ public abstract class Element : MonoBehaviour
 
         Power();
         SetPowerRing(oldGridPos);
-        ElementController.Instance.SetPowerRingAll();
+        //ElementController.Instance.SetPowerRingAll();
     }
 
     public void SetActivePower()
