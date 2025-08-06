@@ -31,18 +31,18 @@ MonoBehaviour:
       posInit: {x: 9, y: 5}
       text: "C\xF3 th\u1EC3 xem th\xF4ng tin power \n\u1EDF g\xF3c tr\xE1i b\xEAn
         d\u01B0\u1EDBi m\xE0n h\xECnh!"
-      guideId: 1
+      guideId: 2
       Time: 3.5
     - id: 4
       posInit: {x: 12, y: 10}
       text: "Oh~\nB\u1EA1n L\u1EEDa \u0111\xE3 bu\u1ED3n r\u1ED3i!"
-      guideId: 1
+      guideId: 2
       Time: 2
     - id: 5
       posInit: {x: 17, y: 14}
       text: "\u1EDE tr\u1EA1ng th\xE1i bu\u1ED3n,\nc\xE1c nguy\xEAn t\u1ED1 s\u1EBD
         h\u1EA5p th\u1EE5 item!!"
-      guideId: 1
+      guideId: 3
       Time: 2
     - id: 6
       posInit: {x: 20, y: 16}
@@ -53,5 +53,5 @@ MonoBehaviour:
       posInit: {x: 20, y: 17}
       text: "L\u1EEDa v\xE0 B\u0103ng \u0111\xE3 k\u1EBFt h\u1EE3p t\u1EA1o ra Kh\xED,\n\u0111\xE2y
         c\u0169ng ch\xEDnh l\xE0 kh\u1EA3 n\u0103ng l\xFAc vui!"
-      guideId: 1
+      guideId: 4
       Time: 5

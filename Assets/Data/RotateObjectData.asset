@@ -15,9 +15,9 @@ MonoBehaviour:
   RotateObjectLevelDetails:
   - RotateObjectId: 1
     RotateObjectDetails:
-    - rotatePos: {x: 2, y: 1}
+    - rotatePos: {x: 5, y: 1}
       containPosList:
-      - {x: 1, y: 1}
-      - {x: 2, y: 2}
-      RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
-      angle: 0
+      - {x: 5, y: 0}
+      - {x: 5, y: 2}
+      RotateObjectPrefab: {fileID: 2431479982790835138, guid: f99e2d3c7aece8e4ca90b64498ca538d, type: 3}
+      angle: 90

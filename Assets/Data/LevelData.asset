@@ -102,13 +102,13 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 9
-    PlayerPosition: {x: 0, y: 0}
+    PlayerPosition: {x: -2, y: 3}
     TutorialId: 0
     ItemId: 6
-    BlockId: 1
+    BlockId: 0
     ElementId: 0
     AngryBossId: 0
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
-    RotateObId: 0
+    RotateObId: 1
