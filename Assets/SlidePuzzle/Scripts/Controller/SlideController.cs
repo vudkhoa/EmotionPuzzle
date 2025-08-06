@@ -295,6 +295,10 @@ public class SlideController : SingletonMono<SlideController>
         MoveElement(cellMovePosList, direction);
         Invoke(nameof(ShowTutorial), 0.25f);
         Invoke(nameof(UnBlockTile), 0.28f);
+        if (IceStarId > 0)
+        {
+            Invoke(nameof(SetActiveIceStars), 0.28f);
+        }
         ResetCanSlide();
     }
 
@@ -455,7 +459,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 1;
+        curLevelId = 3;
         SetTutorial();
 
         //Set map
@@ -639,6 +643,11 @@ public class SlideController : SingletonMono<SlideController>
             IceStarController.Instance.pos2Player = _player.GetCurrentPos();
             IceStarController.Instance.SetInitIceStar(IceStarId);
         }
+    }
+
+    private void SetActiveIceStars()
+    {
+        IceStarController.Instance.SetIceStars();
     }
 
     // Bonus

@@ -24,7 +24,6 @@ public abstract class Element : MonoBehaviour
 
     public Vector2Int CurrentPos;
 
-
     [Header(" Tile ")]
     public GameObject PowerRingPrefab;
     public List<bool> ActivePowerList;

@@ -195,6 +195,18 @@ public class ElementController : SingletonMono<ElementController>
         return false;
     }
 
+    public bool CheckExistsAllElement(Vector3Int pos)
+    {
+        foreach (Element element in this.ElementList)
+        {
+            if (element.CurrentPos == new Vector2Int(pos.x, pos.y))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void SadFunction()
     {
         foreach (Element e in this.ElementList)

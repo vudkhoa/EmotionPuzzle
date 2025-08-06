@@ -1,5 +1,6 @@
 using CustomUtils;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -61,7 +62,6 @@ public class IceStarController : SingletonMono<IceStarController>
 
     public void SetIceStars()
     {
-        Debug.Log("Set Ice Stars: ");
         // Null Lights
         this.SetNullLights();
 
@@ -148,6 +148,10 @@ public class IceStarController : SingletonMono<IceStarController>
                 {
                     rotationTile = Quaternion.Euler(0, 0, 270);
                 }
+                else if (direction == Direction.Left)
+                {
+                    rotationTile = Quaternion.Euler(0, 0, 90);
+                }
                 Matrix4x4 transformMatrix = Matrix4x4.TRS(offsetTile, rotationTile, scaleTile);
                 SlideController.Instance.iceStarTilemap.SetTransformMatrix(pos3, transformMatrix);
             }
@@ -218,6 +222,11 @@ public class IceStarController : SingletonMono<IceStarController>
             return false;
         }
 
+        if (SlideController.Instance.elementId > 0 && ElementController.Instance.CheckExistsAllElement(pos3))
+        {
+            return false;
+        }
+
         if (SlideController.Instance.iceStarTilemap.HasTile(pos3))
         {
             Vector3Int cell = new Vector3Int(pos2IceStar.x, pos2IceStar.y, 0);
@@ -258,5 +267,18 @@ public class IceStarController : SingletonMono<IceStarController>
         {
             SlideController.Instance.obstacleTilemap.SetTile(pos3, this._lockTile);
         }
+    }
+
+    public bool CheckExistsBlock(Vector3Int pos)
+    {
+        foreach (Vector2Int posLock in this._iceStarLockPosition)
+        {
+            Vector3Int posLock3 = new Vector3Int(posLock.x, posLock.y, 0);
+            if (pos == posLock3)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
