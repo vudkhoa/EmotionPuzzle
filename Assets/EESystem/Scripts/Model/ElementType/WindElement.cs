@@ -62,6 +62,11 @@ public class WindElement : Element
             count++;
             if (SlideController.Instance.obstacleTilemap.HasTile(nearPos3) && this.ActivePowerList[count] == true)
             {
+                if (SlideController.Instance.IceStarId > 0 &&
+                    IceStarController.Instance.CheckExistsBlock(nearPos3))
+                {
+                    continue;
+                }
                 this.ActivePowerList[count] = false;
                 Vector3Int newObstaclePos = nearPos3 + (nearPos3 - new Vector3Int(this.CurrentPos.x, this.CurrentPos.y));
                 if (!SlideController.Instance.bgSmallTilemap.HasTile(newObstaclePos))

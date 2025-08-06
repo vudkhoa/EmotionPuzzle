@@ -24,7 +24,7 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 0
-  - LevelId: 1
+  - LevelId: 2
     PlayerPosition: {x: -1, y: 0}
     TutorialId: 1
     ItemId: 1
@@ -35,17 +35,17 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 0
-  - LevelId: 2
-    PlayerPosition: {x: -1, y: 26}
+  - LevelId: 3
+    PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
-    ItemId: 1
+    ItemId: 2
     BlockId: 0
-    ElementId: 1
+    ElementId: 2
     AngryBossId: 0
     SadBossId: 0
     HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 1
+    IceStarId: 1
+    RotateObId: 0
   - LevelId: 2
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0

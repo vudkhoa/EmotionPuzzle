@@ -18,15 +18,15 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
     public void MoveObsatcleTile(Vector3Int oldPos, Vector3Int newPos)
     {
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.obstacleTilemap.GetTile(oldPos));
-        TileFake obGO = Instantiate(SlideController.Instance.groudTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity);
+        TileFake obGO = Instantiate(SlideController.Instance.obstacleTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity);
         obGO.SetSprite(sp);
 
         TileBase tile = SlideController.Instance.obstacleTilemap.GetTile(oldPos);
         SlideController.Instance.obstacleTilemap.SetTile(oldPos, null);
 
         Sequence knockbackSequence = DOTween.Sequence();
-        knockbackSequence.Append(obGO.transform.DOMove(SlideController.Instance.groundTilemap.GetCellCenterWorld(newPos), 0.1f).SetEase(Ease.OutQuad));
-        knockbackSequence.Append(obGO.transform.DOShakePosition(0.2f, 0.1f, 10, 90));
+        knockbackSequence.Append(obGO.transform.DOMove(SlideController.Instance.obstacleTilemap.GetCellCenterWorld(newPos), 0.1f).SetEase(Ease.OutQuad));
+        knockbackSequence.Append(obGO.transform.DOShakePosition(0.15f, 0.1f, 10, 90));
 
         knockbackSequence.OnComplete(() =>
         {

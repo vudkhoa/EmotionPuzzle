@@ -151,11 +151,6 @@ public class ItemTileController : SingletonMono<ItemTileController>
             {
                 BossController.Instance.TakeDamage();
             }
-
-            if (SlideController.Instance.IceStarId > 0)
-            {
-                IceStarController.Instance.SetIceStars();
-            }
         });
     }
 
