@@ -31,6 +31,12 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         knockbackSequence.OnComplete(() =>
         {
             SlideController.Instance.obstacleTilemap.SetTile(newPos, tile);
+
+            if (SlideController.Instance.IceStarId > 0)
+            {
+                IceStarController.Instance.SetIceStars();
+            }
+
             Destroy(obGO.gameObject);
         });
     }

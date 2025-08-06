@@ -12,7 +12,7 @@ public class IceStarController : SingletonMono<IceStarController>
 
     [Header(" Tile Prefab ")]
     private Tile _lightTile;
-    private Tile _lockTile;
+    private TileBase _groundTile;
 
     [Header(" Get Data ")]
     public List<Vector2Int> IceStarPostList;
@@ -41,8 +41,7 @@ public class IceStarController : SingletonMono<IceStarController>
 
         _lightTile = ScriptableObject.CreateInstance<Tile>();
         _lightTile.sprite = this._iceStarData.LightSprite;
-        _lockTile = ScriptableObject.CreateInstance<Tile>();
-        _lockTile.sprite = this._iceStarData.LockSprite;
+        _groundTile = this._iceStarData.GroundTile;
         
         foreach (var iceStar in this._iceStarData.IceStarLevelList[_index].IceStarList)
         {
@@ -152,7 +151,11 @@ public class IceStarController : SingletonMono<IceStarController>
                 {
                     rotationTile = Quaternion.Euler(0, 0, 90);
                 }
-                Matrix4x4 transformMatrix = Matrix4x4.TRS(offsetTile, rotationTile, scaleTile);
+                else if (direction == Direction.Down)
+                {
+                    rotationTile = Quaternion.Euler(0, 0, 180);
+                }
+                    Matrix4x4 transformMatrix = Matrix4x4.TRS(offsetTile, rotationTile, scaleTile);
                 SlideController.Instance.iceStarTilemap.SetTransformMatrix(pos3, transformMatrix);
             }
 
@@ -260,12 +263,12 @@ public class IceStarController : SingletonMono<IceStarController>
         foreach (Vector2Int pos2 in this._iceStarLockPosition)
         {
             Vector3Int pos3 = new Vector3Int(pos2.x, pos2.y, 0);
-            SlideController.Instance.obstacleTilemap.SetTile(pos3, null);
+            SlideController.Instance.groundTilemap.SetTile(pos3, this._groundTile);
         }
 
         foreach (Vector3Int pos3 in this._iceStarLockPosTmp)
         {
-            SlideController.Instance.obstacleTilemap.SetTile(pos3, this._lockTile);
+            SlideController.Instance.groundTilemap.SetTile(pos3, null);
         }
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [Serializable]
 public class IceStarDetail
@@ -22,6 +23,6 @@ public class IceStarSO : ScriptableObject
 {
     public Sprite LightSprite;
     public GameObject CrossingLightPrefab;
-    public Sprite LockSprite;
+    public TileBase GroundTile;
     public List<IceStarLevel> IceStarLevelList;
 }
