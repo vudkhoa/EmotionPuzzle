@@ -45,3 +45,11 @@ MonoBehaviour:
       - {x: 17, y: 16}
       RotateObjectPrefab: {fileID: 2431479982790835138, guid: f99e2d3c7aece8e4ca90b64498ca538d, type: 3}
       angle: 0
+  - RotateObjectId: 1
+    RotateObjectDetails:
+    - rotatePos: {x: 18, y: 25}
+      containPosList:
+      - {x: 17, y: 25}
+      - {x: 19, y: 25}
+      RotateObjectPrefab: {fileID: 2431479982790835138, guid: f99e2d3c7aece8e4ca90b64498ca538d, type: 3}
+      angle: 0

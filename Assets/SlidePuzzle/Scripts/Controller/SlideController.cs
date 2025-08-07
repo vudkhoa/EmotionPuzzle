@@ -460,14 +460,15 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
-            PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 2);
-
+            Debug.Log("Load Next Level");
+            PlayerPrefs.SetInt(Constant.LEVELID, 3);
         }
     }
 
     public void SpawnLevel()
     {
-        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 9;
         SetTutorial();
 
         //Set map

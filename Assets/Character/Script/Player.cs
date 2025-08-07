@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
     {
         currentPos = newGridPos;
-        transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine);
+        transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine).OnComplete(() =>
+        {
+            SlideController.Instance.LoadNextLevel();
+        });
     }
 
     public void Teleport(Vector2Int newGridPos, Vector3 worldPos)

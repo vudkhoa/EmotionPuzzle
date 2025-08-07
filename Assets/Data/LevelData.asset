@@ -128,7 +128,7 @@ MonoBehaviour:
     SadBossId: 0
     HappyBossId: 0
     IceStarId: 0
-    RotateObId: 0
+    RotateObId: 2
     NextLevelPos: {x: 0, y: 0}
   - LevelId: 10
     IsBoss: 1

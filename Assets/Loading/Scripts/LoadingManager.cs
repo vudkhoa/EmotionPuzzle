@@ -1,7 +1,5 @@
-
-using System;
+using CustomUtils;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +7,6 @@ public class LoadingManager : MonoBehaviour
 {
     [SerializeField] private GameObject effect;
     public static LoadingManager instance;
-
 
     public Animator animator;
     public bool isLoadingScene = false;
@@ -29,6 +26,7 @@ public class LoadingManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt(Constant.LEVELID, 1);
         LoadScene("Puzzle");
     }
 
