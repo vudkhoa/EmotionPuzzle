@@ -33,7 +33,10 @@ public class Player : MonoBehaviour
             this.currentPos = newGridPos;
 
             // 3. Scale lớn lên để hiện  lại
-            this.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack);
+            this.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack).OnComplete(() => 
+            {
+                SlideController.Instance.LoadNextLevel();
+            });
         });
     }
 

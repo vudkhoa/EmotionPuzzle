@@ -25,4 +25,7 @@ public class LevelDetail
     [Header(" Mini-game Mechanics ")]
     public int IceStarId;
     public int RotateObId;
+
+    [Header(" Next Load ")]
+    public Vector2Int NextLevelPos;
 }
