@@ -35,7 +35,7 @@ MonoBehaviour:
       angle: 180
     - rotatePos: {x: 16, y: 14}
       containPosList:
-      - {x: 15, y: 14}
+      - {x: 18, y: 14}
       - {x: 16, y: 13}
       RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
       angle: 90
