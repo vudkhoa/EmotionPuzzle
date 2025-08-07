@@ -42,7 +42,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
         {
             foreach (RotateObject obj in RotateObjects)
             {
-                GroundTileController.Instance.RemoveGroundTileForRotateObj(obj.containPosList);
+                GroundTileController.Instance.SetGroundTileForRotateObj(obj.containPosList);
             }
         }
 
