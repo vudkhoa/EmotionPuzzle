@@ -79,6 +79,15 @@ public class GroundTileController : SingletonMono<GroundTileController>
         });
     }
 
+    public void SetGroundTileForRaft(Vector2Int posRaft)
+    {
+        Vector3Int p = new Vector3Int(posRaft.x, posRaft.y, 0);
+        if (!SlideController.Instance.groundTilemap.HasTile(p))
+        {
+            SlideController.Instance.groundTilemap.SetTile(p, SlideController.Instance.groundNoneSprite);
+        }
+    }
+
     public void SetGroundTileForRotateObj(List<Vector2Int> posList)
     {
         foreach (Vector2Int pos in posList)
