@@ -27,6 +27,11 @@ public class LoadingManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LoadScene("Puzzle");
+    }
+
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneCoroutine(sceneName));
