@@ -28,6 +28,32 @@ MonoBehaviour:
     NextLevelPos: {x: 23, y: 20}
   - LevelId: 2
     IsBoss: 0
+    PlayerPosition: {x: 0, y: 0}
+    TutorialId: 0
+    ItemId: 2
+    BlockId: 0
+    ElementId: 2
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 1
+    RotateObId: 1
+    NextLevelPos: {x: 23, y: 18}
+  - LevelId: 3
+    IsBoss: 0
+    PlayerPosition: {x: 0, y: 0}
+    TutorialId: 0
+    ItemId: 7
+    BlockId: 0
+    ElementId: 5
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
+    RotateObId: 2
+    NextLevelPos: {x: 0, y: 0}
+  - LevelId: 2
+    IsBoss: 0
     PlayerPosition: {x: -1, y: 0}
     TutorialId: 1
     ItemId: 1
@@ -39,19 +65,6 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
-  - LevelId: 3
-    IsBoss: 0
-    PlayerPosition: {x: -1, y: 9}
-    TutorialId: 0
-    ItemId: 2
-    BlockId: 0
-    ElementId: 2
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 1
-    RotateObId: 1
-    NextLevelPos: {x: 23, y: 18}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -116,19 +129,6 @@ MonoBehaviour:
     HappyBossId: 1
     IceStarId: 0
     RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-  - LevelId: 9
-    IsBoss: 0
-    PlayerPosition: {x: 14, y: 20}
-    TutorialId: 0
-    ItemId: 7
-    BlockId: 0
-    ElementId: 5
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 2
     NextLevelPos: {x: 0, y: 0}
   - LevelId: 10
     IsBoss: 1
