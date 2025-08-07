@@ -22,6 +22,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
 
     public bool RotateFunction(Vector2Int playerPos)
     {
+        bool isRotate = false;
         foreach (RotateObject obj in RotateObjects)
         {
             if (obj.rotatePos == playerPos)
@@ -32,7 +33,16 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                 
                 obj.Rotate();
 
-                return true;
+                isRotate = true;
+                break;
+            }
+        }
+
+        if (isRotate)
+        {
+            foreach (RotateObject obj in RotateObjects)
+            {
+                GroundTileController.Instance.RemoveGroundTileForRotateObj(obj.containPosList);
             }
         }
 
