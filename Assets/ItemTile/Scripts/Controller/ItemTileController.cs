@@ -202,8 +202,13 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
         if (isRotate)
         {
-            Invoke(nameof(ElementController.Instance.ReActivePowerOfElement), 0.23f);
+            Invoke(nameof(ReActivePowerOfElement), 0.23f);
         }
+    }
+
+    private void ReActivePowerOfElement()
+    {
+        ElementController.Instance.ReActivePowerOfElement();
     }
 
     public ItemType GetItemType(Vector2Int itemPos)

@@ -79,8 +79,13 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
 
         if (isRotate)
         {
-            Invoke(nameof(ElementController.Instance.ReActivePowerOfElement), 0.23f);
+            Invoke(nameof(ReActivePowerOfElement), 0.23f);
         }
+    }
+
+    private void ReActivePowerOfElement()
+    {
+        ElementController.Instance.ReActivePowerOfElement();
     }
 
     public void ThrowObstacleTile(Vector3Int oldPos, Vector3Int newPos)
