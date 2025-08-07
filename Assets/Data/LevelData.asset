@@ -52,6 +52,19 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 2
     NextLevelPos: {x: 0, y: 0}
+  - LevelId: 4
+    IsBoss: 0
+    PlayerPosition: {x: -2, y: -3}
+    TutorialId: 0
+    ItemId: 8
+    BlockId: 0
+    ElementId: 6
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
+    RotateObId: 0
+    NextLevelPos: {x: 0, y: 0}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: -1, y: 0}
