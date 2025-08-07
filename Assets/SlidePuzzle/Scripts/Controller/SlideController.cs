@@ -488,13 +488,14 @@ public class SlideController : SingletonMono<SlideController>
     private void CreateGridPrefab()
     {
         GameObject gridGO = new GameObject();
-        if (curLevelId % 2 != 0)
+        bool isBoss = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
+        if (!isBoss)
         {
-            gridGO = Instantiate(Resources.Load<GameObject>("Level " + ((int)(curLevelId / 2) + 1).ToString()));
+            gridGO = Instantiate(Resources.Load<GameObject>("Level " + curLevelId.ToString()));
         }
         else
         {
-            gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + ((int)(curLevelId / 2)).ToString()));
+            gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
         }
 
         for (int i = 0; i < gridGO.transform.childCount; i++)

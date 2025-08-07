@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
+    IsBoss: 0
     PlayerPosition: {x: 4, y: 0}
     TutorialId: 1
     ItemId: 1
@@ -25,6 +26,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 2
+    IsBoss: 0
     PlayerPosition: {x: -1, y: 0}
     TutorialId: 1
     ItemId: 1
@@ -36,7 +38,8 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 3
-    PlayerPosition: {x: 0, y: 0}
+    IsBoss: 0
+    PlayerPosition: {x: -1, y: 9}
     TutorialId: 0
     ItemId: 2
     BlockId: 0
@@ -47,6 +50,7 @@ MonoBehaviour:
     IceStarId: 1
     RotateObId: 1
   - LevelId: 2
+    IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
@@ -58,6 +62,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 3
+    IsBoss: 0
     PlayerPosition: {x: -16, y: -26}
     TutorialId: 0
     ItemId: 3
@@ -69,6 +74,7 @@ MonoBehaviour:
     IceStarId: 2
     RotateObId: 0
   - LevelId: 4
+    IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
@@ -80,6 +86,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 5
+    IsBoss: 0
     PlayerPosition: {x: -5, y: -28}
     TutorialId: 0
     ItemId: 3
@@ -91,6 +98,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 6
+    IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
@@ -102,6 +110,19 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 9
+    IsBoss: 0
+    PlayerPosition: {x: 14, y: 20}
+    TutorialId: 0
+    ItemId: 7
+    BlockId: 0
+    ElementId: 5
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
+    RotateObId: 0
+  - LevelId: 10
+    IsBoss: 1
     PlayerPosition: {x: 14, y: 20}
     TutorialId: 0
     ItemId: 7

@@ -12,6 +12,7 @@ public class LevelSO : ScriptableObject
 public class LevelDetail
 {
     public int LevelId;
+    public bool IsBoss;
     public Vector2Int PlayerPosition;
     public int TutorialId;
     public int ItemId;
