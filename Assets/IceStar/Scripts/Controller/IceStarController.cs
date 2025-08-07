@@ -287,6 +287,7 @@ public class IceStarController : SingletonMono<IceStarController>
 
     public bool CheckExistsSource(Vector3Int pos)
     {
+        Debug.Log("Exists");
         foreach (Vector2Int posSource in this.IceStarPostList)
         {
             Vector3Int posSourceWorld = new Vector3Int(posSource.x, posSource.y, 0);
