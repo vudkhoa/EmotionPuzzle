@@ -213,9 +213,6 @@ public class SlideController : SingletonMono<SlideController>
         {
             Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
             Vector3 p = groundTilemap.GetCellCenterWorld(gp);
-            _player.MoveTo(newPlayerPos, p);
-            ResetCanSlide();
-            return;
         }
         else if (raftIndex < 0)
         {
@@ -227,9 +224,6 @@ public class SlideController : SingletonMono<SlideController>
                 {
                     Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
                     Vector3 p = groundTilemap.GetCellCenterWorld(gp);
-                    _player.MoveTo(newPlayerPos, p);
-                    ResetCanSlide();
-                    return;
                 }
 
                 if (this.waterTilemap.HasTile(new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0)))
@@ -237,16 +231,21 @@ public class SlideController : SingletonMono<SlideController>
                     Vector3Int gp = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
                     Vector3 p = groundTilemap.GetCellCenterWorld(gp);
                     _player.MoveTo(newPlayerPos, p);
+
+                    Vector2Int oldRaftPos = RaftList[raftIndex].GetCurrentPos();
+                    Vector3Int oldRaftWorldPos = new Vector3Int(oldRaftPos.x, oldRaftPos.y, 0);
+                    this.groundTilemap.SetTile(oldRaftWorldPos, null);
                     this.RaftList[raftIndex].MoveTo(newPlayerPos, p);
+                    GroundTileController.Instance.SetGroundTileForRaft(this.RaftList[raftIndex].GetCurrentPos());
                     ResetCanSlide();
                     return;
                 }
 
-                _player.Shake();
+                //_player.Shake();
             }
         }
 
-        newPlayerPos = new Vector2Int(0, 0);
+        //newPlayerPos = new Vector2Int(0, 0);
 
         bool isTeleport = false;
         if (cellMovePosList[0] == _player.GetCurrentPos())
@@ -593,6 +592,7 @@ public class SlideController : SingletonMono<SlideController>
         Raft RaftGO = Instantiate(RaftPrefab, groundTilemap.CellToWorld(initRaftPos) + groundTilemap.cellSize / 2, Quaternion.identity);
         RaftGO.SetCurrentPos(pos);
         RaftList.Add(RaftGO);
+        this.groundTilemap.SetTile(initRaftPos, groundNoneSprite);
     }
 
     public void SetAngryBoss()
