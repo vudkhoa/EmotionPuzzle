@@ -69,7 +69,9 @@ MonoBehaviour:
     - {x: -7, y: -1}
     - {x: -7, y: -9}
     - {x: -13, y: -23}
-  - ItemId: 6
-    ItemTypes: 02000000
+  - ItemId: 7
+    ItemTypes: 040000000200000002000000
     ItemPos:
-    - {x: 0, y: 1}
+    - {x: 2, y: -1}
+    - {x: 5, y: -3}
+    - {x: 9, y: 2}
