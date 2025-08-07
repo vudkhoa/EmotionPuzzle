@@ -43,11 +43,14 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
 
     public void RotateObstacleTile(Vector2Int pivot, List<Vector2Int> posList)
     {
+        bool isRotate = false;
         foreach (Vector2Int pos in posList)
         {
             Vector3Int gridPos = new Vector3Int(pos.x, pos.y, 0);
             if (SlideController.Instance.obstacleTilemap.HasTile(gridPos))
             {
+                isRotate = true;
+
                 Vector2Int newP = RotateObjectController.Instance.RotateAroundPivot(pos, pivot, 90f);
                 Vector3Int newGP = new Vector3Int(newP.x, newP.y, 0);
                 Vector3 p = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(newGP);
@@ -72,6 +75,11 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
                     SlideController.Instance.obstacleTilemap.SetTile(newGP, tile);
                 });
             }
+        }
+
+        if (isRotate)
+        {
+            Invoke(nameof(ElementController.Instance.ReActivePowerOfElement), 0.23f);
         }
     }
 

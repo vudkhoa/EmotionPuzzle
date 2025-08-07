@@ -375,4 +375,12 @@ public class ElementController : SingletonMono<ElementController>
             }
         }
     }
+
+    public void ReActivePowerOfElement()
+    {
+        foreach (Element e in this.ElementList)
+        {
+            e.ReActivePower();
+        }
+    }
 }
