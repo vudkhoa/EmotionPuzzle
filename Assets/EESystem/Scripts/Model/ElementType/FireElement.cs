@@ -11,7 +11,7 @@ public class FireElement : Element
         this.ElementType = ElementType.Fire;
         if (this.EmotionType == EmotionType.Angry)
         {
-            this.SetActivePower();
+            this.SetActivatePower();
         }
     }
 

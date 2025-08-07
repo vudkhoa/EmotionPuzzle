@@ -110,6 +110,12 @@ public class ElementController : SingletonMono<ElementController>
                 {
                     return false;
                 }
+
+                if (SlideController.Instance.IceStarId > 0 &&
+                    IceStarController.Instance.CheckExistsSource(new Vector3Int(newPos.x, newPos.y, 0)))
+                {
+                    return false;
+                }
             }
         }
         return true;
@@ -311,10 +317,10 @@ public class ElementController : SingletonMono<ElementController>
                         Vector3Int gridPos = new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0);
                         Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
                         ItemTileController.Instance.InteractWithElement(nearPos, eWorldPos);
-                        if (e.EmotionType == EmotionType.Angry)
-                        {
-                            e.SetActivePower();
-                        }
+                        //if (e.EmotionType == EmotionType.Angry)
+                        //{
+                        //    e.SetActivatePower();
+                        //}
                         continue;
                     }
                 }

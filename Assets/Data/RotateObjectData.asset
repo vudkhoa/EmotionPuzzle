@@ -15,9 +15,27 @@ MonoBehaviour:
   RotateObjectLevelDetails:
   - RotateObjectId: 1
     RotateObjectDetails:
-    - rotatePos: {x: 5, y: 1}
+    - rotatePos: {x: 11, y: 10}
       containPosList:
-      - {x: 5, y: 0}
-      - {x: 5, y: 2}
-      RotateObjectPrefab: {fileID: 2431479982790835138, guid: f99e2d3c7aece8e4ca90b64498ca538d, type: 3}
+      - {x: 10, y: 10}
+      - {x: 11, y: 9}
+      RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
+      angle: 90
+    - rotatePos: {x: 13, y: 9}
+      containPosList:
+      - {x: 13, y: 8}
+      - {x: 12, y: 9}
+      RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
+      angle: 90
+    - rotatePos: {x: 18, y: 13}
+      containPosList:
+      - {x: 19, y: 13}
+      - {x: 18, y: 12}
+      RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
+      angle: 180
+    - rotatePos: {x: 16, y: 14}
+      containPosList:
+      - {x: 15, y: 14}
+      - {x: 16, y: 13}
+      RotateObjectPrefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}
       angle: 90

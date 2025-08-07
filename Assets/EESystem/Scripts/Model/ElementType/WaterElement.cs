@@ -15,7 +15,7 @@ public class WaterElement : Element
         this.ElementType = ElementType.Water;
         if (this.EmotionType == EmotionType.Angry)
         {
-            this.SetActivePower();
+            this.SetActivatePower();
         }
     }
 

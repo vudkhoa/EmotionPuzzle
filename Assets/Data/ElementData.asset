@@ -16,7 +16,7 @@ MonoBehaviour:
   - ElementId: 1
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 4
+      EmotionType: 1
       ElementPos: {x: 9, y: 7}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1

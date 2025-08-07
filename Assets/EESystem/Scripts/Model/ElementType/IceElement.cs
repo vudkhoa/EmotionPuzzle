@@ -12,7 +12,7 @@ public class IceElement : Element
         this.ElementType = ElementType.Ice;
         if (this.EmotionType == EmotionType.Angry)
         {
-            this.SetActivePower();
+            this.SetActivatePower();
         }
     }
 

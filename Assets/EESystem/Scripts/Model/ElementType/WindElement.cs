@@ -12,7 +12,7 @@ public class WindElement : Element
         this.ElementType = ElementType.Wind;
         if (this.EmotionType == EmotionType.Angry)
         {
-            this.SetActivePower();
+            this.SetActivatePower();
         }
     }
 

@@ -284,4 +284,17 @@ public class IceStarController : SingletonMono<IceStarController>
         }
         return false;
     }
+
+    public bool CheckExistsSource(Vector3Int pos)
+    {
+        foreach (Vector2Int posSource in this.IceStarPostList)
+        {
+            Vector3Int posSourceWorld = new Vector3Int(posSource.x, posSource.y, 0);
+            if (pos == posSourceWorld)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

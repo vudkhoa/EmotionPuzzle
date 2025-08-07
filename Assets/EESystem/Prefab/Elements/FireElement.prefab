@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 1675094903, guid: 0786c5b8a62c22044bdde539a7f3a56d, type: 3}
+  m_Sprite: {fileID: 808834815, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244de22cc157af14e99a24f5295fb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralSprite: {fileID: 1675094903, guid: 0786c5b8a62c22044bdde539a7f3a56d, type: 3}
-  angrySprite: {fileID: -244915332, guid: 0786c5b8a62c22044bdde539a7f3a56d, type: 3}
-  happySprtie: {fileID: 572171092, guid: 0786c5b8a62c22044bdde539a7f3a56d, type: 3}
-  sadSprtie: {fileID: 397163256, guid: 0786c5b8a62c22044bdde539a7f3a56d, type: 3}
+  neutralSprite: {fileID: 808834815, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
+  angrySprite: {fileID: 211257405, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
+  happySprtie: {fileID: -1545353924, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
+  sadSprtie: {fileID: 1448741751, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
   spr: {fileID: 4111146480791781958}
   ElementType: 0
   EmotionType: 0

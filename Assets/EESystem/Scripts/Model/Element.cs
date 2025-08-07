@@ -16,9 +16,20 @@ public abstract class Element : MonoBehaviour
     [Header(" Info ")]
     public ElementType ElementType;
     public EmotionType EmotionType;
+
     public void SetEmotionType(EmotionType emotionType)
     {
         this.EmotionType = emotionType;
+
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivatePower();
+        }
+        else
+        {
+            this.SetDeactivePower();
+        }
+
         ChangeEmotionAni(emotionType);
     }
 
@@ -45,7 +56,6 @@ public abstract class Element : MonoBehaviour
             return false;
         }
 
-        //this.EmotionType = newEmotionType;
         this.SetEmotionType(newEmotionType);
 
         return true;
@@ -70,8 +80,6 @@ public abstract class Element : MonoBehaviour
             {
                 eGO.gameObject.SetActive(false);
                 this.transform.localScale = Vector3.zero;
-
-                //mergeParticle.Play();
 
                 // Pop
                 eOb.transform.localScale = Vector3.zero;
@@ -154,7 +162,6 @@ public abstract class Element : MonoBehaviour
         }
         Power();
         SetPowerRing(oldGridPos);
-        //ElementController.Instance.SetPowerRingAll();
     }
 
     public void Rotate(Vector2Int newGridPos, Vector3 worldPos)
@@ -165,19 +172,26 @@ public abstract class Element : MonoBehaviour
 
         Power();
         SetPowerRing(oldGridPos);
-        //ElementController.Instance.SetPowerRingAll();
     }
 
-    public void SetActivePower()
+    public void SetActivatePower()
     {
         for (int i = 0; i < this.ActivePowerList.Count; ++i)
         {
             this.ActivePowerList[i] = true;
         }
 
-        //Fix: Nếu Element đã có Power thì thi triển ngay khả năng.
-        //Invoke(nameof(Power), 0.28f);
+        //Nếu Element đã có Power thì thi triển ngay khả năng.
         this.Power();
+        this.SetPowerRing(this.CurrentPos);
+    }
+
+    public void SetDeactivePower()
+    {
+        for (int i = 0; i < this.ActivePowerList.Count; ++i)
+        {
+            this.ActivePowerList[i] = false;
+        }
         this.SetPowerRing(this.CurrentPos);
     }
 
@@ -185,7 +199,7 @@ public abstract class Element : MonoBehaviour
     {
         for (int i = 0; i < this.ActivePowerList.Count; ++i)
         {
-            if (this.ActivePowerList[i] != false)
+            if (this.ActivePowerList[i])
             {
                 this.PowerRingList[i].SetActive(true);
             }
@@ -193,61 +207,6 @@ public abstract class Element : MonoBehaviour
             {
                 this.PowerRingList[i].SetActive(false);
             }
-            
-
-            //Vector3Int pos = new Vector3Int(elementOldPos.x + this.OffsetList[i].x, elementOldPos.y + this.OffsetList[i].y, 0);
-            //if (limitationTilemap.HasTile(pos))
-            //{
-            //    Sprite sp = SlideController.Instance.GetSpriteFromTile(limitationTilemap.GetTile(pos));
-            //    TileFake tempGO = GameObject.Instantiate(
-            //        SlideController.Instance.groudTileFakePrefab,
-            //        limitationTilemap.GetCellCenterWorld(pos),
-            //        Quaternion.identity
-            //    );
-            //    tempGO.SetSprite(sp);
-            //    limitationTilemap.SetTile(pos, null);
-            //    tileFakes.Add(tempGO);
-            //}
-            //else
-            //{
-            //    TileFake tempGO = GameObject.Instantiate(
-            //        SlideController.Instance.groudTileFakePrefab,
-            //        limitationTilemap.GetCellCenterWorld(pos),
-            //        Quaternion.identity
-            //    );
-            //    tileFakes.Add(tempGO);
-            //}
         }
-
-        //for (int i = 0; i < this.ActivePowerList.Count; ++i)
-        //{
-        //    Vector3Int pos = new Vector3Int(this.CurrentPos.x + this.OffsetList[i].x, this.CurrentPos.y + this.OffsetList[i].y, 0);
-        //    if (elementOldPos != this.CurrentPos)
-        //    {
-        //        if (this.ActivePowerList[i] == true)
-        //        {
-        //            int index = i;
-        //            //TileBase tileBase = limitationTilemap.GetTile(pos);
-        //            tileFakes[i].transform.DOMove(limitationTilemap.GetCellCenterWorld(pos), 0.2f)
-        //                .SetEase(Ease.OutQuad).OnComplete(() =>
-        //            {
-        //                limitationTilemap.SetTile(pos, this.ElementPowerTile);
-        //                Destroy(tileFakes[index].gameObject);
-        //            });
-        //        }
-        //        else
-        //        {
-        //            tileFakes[i].gameObject.SetActive(false);
-        //            Destroy(tileFakes[i].gameObject);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (this.ActivePowerList[i] == true)
-        //        {
-        //            limitationTilemap.SetTile(pos, this.ElementPowerTile);
-        //        } 
-        //    }
-        //}
     }
 }
