@@ -156,6 +156,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
     public void RotateItemTile(Vector2Int pivot, List<Vector2Int> posList)
     {
+        bool isRotate = false;
         for (int i=0; i<this.ItemPosList.Count; i++)
         {
             Vector2Int itemPos = this.ItemPosList[i];
@@ -163,6 +164,8 @@ public class ItemTileController : SingletonMono<ItemTileController>
             {
                 if (itemPos == pos)
                 {
+                    isRotate = true;
+
                     Vector2Int newP = RotateObjectController.Instance.RotateAroundPivot(pos, pivot, 90f);
                     Vector3Int newGP = new Vector3Int(newP.x, newP.y, 0);
                     Vector3 p = SlideController.Instance.itemTilemap.GetCellCenterWorld(newGP);
@@ -195,6 +198,11 @@ public class ItemTileController : SingletonMono<ItemTileController>
                     break;
                 }
             }
+        }
+
+        if (isRotate)
+        {
+            Invoke(nameof(ElementController.Instance.ReActivePowerOfElement), 0.23f);
         }
     }
 

@@ -102,7 +102,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
   - LevelId: 9
-    PlayerPosition: {x: 5, y: 1}
+    PlayerPosition: {x: 14, y: 20}
     TutorialId: 0
     ItemId: 7
     BlockId: 0

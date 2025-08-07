@@ -209,4 +209,10 @@ public abstract class Element : MonoBehaviour
             }
         }
     }
+
+    public void ReActivePower()
+    {
+        Power();
+        SetPowerRing(this.CurrentPos);
+    }
 }
