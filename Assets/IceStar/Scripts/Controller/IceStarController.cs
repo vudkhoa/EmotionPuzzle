@@ -140,22 +140,26 @@ public class IceStarController : SingletonMono<IceStarController>
             {
                 listLight.Add(pos3);
                 SlideController.Instance.iceStarTilemap.SetTile(pos3, this._lightTile);
-                Vector3 scaleTile = new Vector3(2f, 1f, 1f);
+                Vector3 scaleTile = new Vector3(1f, 1f, 1f);
                 Quaternion rotationTile = Quaternion.Euler(0, 0, 0);
-                Vector3 offsetTile = new Vector3(0, 0.05f, 0);
+                Vector3 offsetTile = new Vector3(0, -0.005f, 0);
                 if (direction == Direction.Right)
                 {
-                    rotationTile = Quaternion.Euler(0, 0, 270);
+                    rotationTile = Quaternion.Euler(0, 0, -180);
                 }
                 else if (direction == Direction.Left)
                 {
-                    rotationTile = Quaternion.Euler(0, 0, 90);
+                    rotationTile = Quaternion.Euler(0, 0, 0);
                 }
                 else if (direction == Direction.Down)
                 {
-                    rotationTile = Quaternion.Euler(0, 0, 180);
+                    rotationTile = Quaternion.Euler(0, 0, 90);
                 }
-                    Matrix4x4 transformMatrix = Matrix4x4.TRS(offsetTile, rotationTile, scaleTile);
+                else
+                {
+                    rotationTile = Quaternion.Euler(0, 0, -90);
+                }
+                Matrix4x4 transformMatrix = Matrix4x4.TRS(offsetTile, rotationTile, scaleTile);
                 SlideController.Instance.iceStarTilemap.SetTransformMatrix(pos3, transformMatrix);
             }
 
@@ -235,6 +239,10 @@ public class IceStarController : SingletonMono<IceStarController>
             Vector3Int cell = new Vector3Int(pos2IceStar.x, pos2IceStar.y, 0);
             GameObject crossingIceStar= Instantiate(this._iceStarData.CrossingLightPrefab, transform);
             crossingIceStar.transform.position = SlideController.Instance.iceStarTilemap.GetCellCenterWorld(cell);
+            if (pos3 == new Vector3Int(-6, 8, 0))
+            {
+                crossingIceStar.transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
             this._listCrossingLight.Add(crossingIceStar);
         }
 
