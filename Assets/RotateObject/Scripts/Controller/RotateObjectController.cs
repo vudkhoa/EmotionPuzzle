@@ -49,6 +49,19 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
         return false;
     }
 
+    public bool IsShowTutorial(Vector2Int playerPos)
+    {        
+        foreach (RotateObject obj in RotateObjects)
+        {
+            if (obj.rotatePos == playerPos)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public Vector2Int RotateAroundPivot(Vector2Int point, Vector2Int pivot, float angleDegrees)
     {
         float radians = angleDegrees * Mathf.Deg2Rad;
