@@ -20,7 +20,7 @@ public class GuideUI : UICanvas
     private void Start()
     {
         maxGuideId = PlayerPrefs.GetInt(Constant.GUIDEID, 0);
-        curShowGuideId = maxGuideId;
+        curShowGuideId = 1;
         nextBtn.interactable = false;
         ShowGuide();
     }
