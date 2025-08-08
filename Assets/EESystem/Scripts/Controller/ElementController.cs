@@ -282,6 +282,7 @@ public class ElementController : SingletonMono<ElementController>
             }
 
             nearPos = currentPos + new Vector2Int(0, 1);
+            er = this.GetElement(nearPos);
             if (er != null && er.EmotionType == EmotionType.Happy)
             {
                 if (e.CoordinateWithElement(er.ElementType, er))
