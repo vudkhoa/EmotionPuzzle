@@ -1,0 +1,1247 @@
+fileFormatVersion: 2
+guid: 646c4a8ece94b794789b4c2bf0e4700c
+importerOverride:
+  nativeImporterType: 2089858483
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: b10b55a1aa6a1aa32521bc0cab59632e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Pause
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1722
+      y: 4016
+      width: 141
+      height: 35
+    spriteID: 115bb4342eaba4b48a4586600a8f45f8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1722, y: 4016}
+    spritePosition: {x: 891, y: 771}
+  - name: Layer 10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1230
+      y: 3464
+      width: 338
+      height: 84
+    spriteID: e306219c377e6a743adf3e0bb4c9c384
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1230, y: 3464}
+    spritePosition: {x: 791, y: 748}
+  - name: Color Fill 661 copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1576
+      y: 3464
+      width: 338
+      height: 84
+    spriteID: 8734190b6832f6e4ca74483f3f24e3f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1574, y: 3463}
+    spritePosition: {x: 791, y: 748}
+  - name: Layer 11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1238
+      y: 3268
+      width: 410
+      height: 81
+    spriteID: 1ead77121ea76654f82c3264fa1fbaff
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1238, y: 3268}
+    spritePosition: {x: 755, y: 729}
+  - name: Color Fill 661 copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1238
+      y: 3357
+      width: 410
+      height: 81
+    spriteID: 12c9dbe5bb5767e4d80cb37da5f0befd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1234, y: 3356}
+    spritePosition: {x: 755, y: 729}
+  - name: exit
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1179
+      y: 4044
+      width: 69
+      height: 27
+    spriteID: f7fd53a0ecd09e24395573510056429c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1179, y: 4044}
+    spritePosition: {x: 1219, y: 367}
+  - name: Shape 638
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1871
+      y: 4059
+      width: 21
+      height: 24
+    spriteID: cdf2d0aaf50877849b57290a738a67ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1870, y: 4058}
+    spritePosition: {x: 1242, y: 509}
+  - name: Rounded Rectangle 54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1465
+      y: 3664
+      width: 103
+      height: 121
+    spriteID: b9603406a51a9d64994cf92c87cd6506
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1464, y: 3663}
+    spritePosition: {x: 1196, y: 478}
+  - name: Color Fill 655 copy 9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1327
+      y: 3664
+      width: 130
+      height: 130
+    spriteID: a288439b25a264e4b8263c0ce5f9e27b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1326, y: 3663}
+    spritePosition: {x: 1185, y: 475}
+  - name: Color Fill 655 copy 8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1042
+      y: 3268
+      width: 188
+      height: 188
+    spriteID: 00c1077414435504e9d599e013bf7dc6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1041, y: 3267}
+    spritePosition: {x: 1156, y: 446}
+  - name: Ellipse 1 copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1038
+      y: 3816
+      width: 220
+      height: 220
+    spriteID: cd8aa2e4b017b844a8ceb8ae9effd2b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1037, y: 3814}
+    spritePosition: {x: 1140, y: 430}
+  - name: Resume
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1038
+      y: 4044
+      width: 133
+      height: 29
+    spriteID: 42d84254990d55644ba76f6468d35add
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1038, y: 4044}
+    spritePosition: {x: 896, y: 366}
+  - name: Color Fill 651
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1765
+      y: 3357
+      width: 77
+      height: 85
+    spriteID: cf7f20cc0e2294746bbad0b3ffb22ab2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1763, y: 3356}
+    spritePosition: {x: 931, y: 498}
+  - name: Color Fill 655 copy 7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1190
+      y: 3664
+      width: 129
+      height: 140
+    spriteID: 7925ca85a7f9aa4449c303e72904262c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1188, y: 3663}
+    spritePosition: {x: 905, y: 470}
+  - name: Color Fill 655 copy 6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1042
+      y: 3464
+      width: 180
+      height: 192
+    spriteID: 5c9c7ce98ebb3fc408a6d97cfc2293ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1041, y: 3463}
+    spritePosition: {x: 879, y: 444}
+  - name: Ellipse 1 copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1266
+      y: 3816
+      width: 220
+      height: 220
+    spriteID: 124665297744cdf4abb5348c26421196
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1264, y: 3814}
+    spritePosition: {x: 850, y: 430}
+  - name: restart
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1722
+      y: 4059
+      width: 141
+      height: 29
+    spriteID: 0fc4796d842133f42954f350b06ede71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1722, y: 4059}
+    spritePosition: {x: 603, y: 366}
+  - name: Rounded Rectangle 72
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1871
+      y: 4016
+      width: 33
+      height: 7
+    spriteID: d1bc807b1297eda4689e3bc9102f1c97
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1870, y: 4015}
+    spritePosition: {x: 692, y: 540}
+  - name: Rounded Rectangle 54
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1656
+      y: 3357
+      width: 101
+      height: 88
+    spriteID: c6ba25bbf18ed364bae7c43a8ecee5b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1654, y: 3356}
+    spritePosition: {x: 626, y: 496}
+  - name: Color Fill 655 copy 9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1042
+      y: 3664
+      width: 140
+      height: 140
+    spriteID: ad1f5fafa1a991e488365f68ec1fd8c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1041, y: 3663}
+    spritePosition: {x: 600, y: 470}
+  - name: Color Fill 655 copy 8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1722
+      y: 3816
+      width: 192
+      height: 192
+    spriteID: 6e1691749159fb8469598d9ff41c0c7e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1721, y: 3815}
+    spritePosition: {x: 574, y: 444}
+  - name: Ellipse 1 copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1494
+      y: 3816
+      width: 220
+      height: 220
+    spriteID: d4dce138bc9faf94c8b091944afc2531
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1493, y: 3814}
+    spritePosition: {x: 560, y: 430}
+  - name: Layer 15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3816
+      width: 1026
+      height: 249
+    spriteID: 397ba8f90e8841542866dd4fe668f3e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3816}
+    spritePosition: {x: 449, y: 595}
+  - name: Layer 16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3268
+      width: 1030
+      height: 540
+    spriteID: a9d6d7eb4b5fb294cb9ee072a738af1f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3268}
+    spritePosition: {x: 445, y: 270}
+  - name: Layer 14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1932
+      y: 4
+      width: 1030
+      height: 540
+    spriteID: 1f202dfa6f5e1144f8b06c46b65c3f6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1932, y: 4}
+    spritePosition: {x: 445, y: 270}
+  - name: Rounded Rectangle 62 copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1932
+      y: 552
+      width: 1030
+      height: 540
+    spriteID: 530c9d04050c4b14090a4f191263cfeb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1930, y: 551}
+    spritePosition: {x: 445, y: 270}
+  - name: Layer 5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1920
+      height: 1080
+    spriteID: c60e07766173f694fb7ec0a179078c6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1092
+      width: 1920
+      height: 1080
+    spriteID: 5c089afd003b8f44da850a9179c496a2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 0, y: 0}
+  - name: Layer 8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2180
+      width: 1920
+      height: 1080
+    spriteID: 11fe0fe046ecba84a8f1f8bd26c67575
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2180}
+    spritePosition: {x: 0, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Pause
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: df9c8e9c826501546bd5a31ad6ad830d
+    layerID: 2734
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: title
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: d4f08df8700d8c64fbb88b55a8f12093
+    layerID: 2679
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Pause
+    spriteName: Pause
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 115bb4342eaba4b48a4586600a8f45f8
+    layerID: 2678
+    mosaicPosition: {x: 1722, y: 4016}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Group 1
+    spriteName: 
+    isGroup: 1
+    parentIndex: 1
+    spriteID: 2277dacba68b0a84fb276885b9286800
+    layerID: 2776
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 10
+    spriteName: Layer 10
+    isGroup: 0
+    parentIndex: 3
+    spriteID: e306219c377e6a743adf3e0bb4c9c384
+    layerID: 2791
+    mosaicPosition: {x: 1230, y: 3464}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Color Fill 661 copy
+    spriteName: Color Fill 661 copy
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 8734190b6832f6e4ca74483f3f24e3f2
+    layerID: 2677
+    mosaicPosition: {x: 1576, y: 3464}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 11
+    spriteName: Layer 11
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 1ead77121ea76654f82c3264fa1fbaff
+    layerID: 2792
+    mosaicPosition: {x: 1238, y: 3268}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Color Fill 661 copy 2
+    spriteName: Color Fill 661 copy 2
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 12c9dbe5bb5767e4d80cb37da5f0befd
+    layerID: 2676
+    mosaicPosition: {x: 1238, y: 3357}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn_exit
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 95da35cbacba7f146b4ea506c4245586
+    layerID: 2710
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: text
+    spriteName: 
+    isGroup: 1
+    parentIndex: 8
+    spriteID: 3011ecb32a17f464e9dd8a3406166d90
+    layerID: 2709
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: exit
+    spriteName: exit
+    isGroup: 0
+    parentIndex: 9
+    spriteID: f7fd53a0ecd09e24395573510056429c
+    layerID: 2708
+    mosaicPosition: {x: 1179, y: 4044}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn_exit
+    spriteName: 
+    isGroup: 1
+    parentIndex: 8
+    spriteID: b4d419177165ce34c83feec0bce5f936
+    layerID: 2733
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: icon
+    spriteName: 
+    isGroup: 1
+    parentIndex: 11
+    spriteID: 1cc0b8e448ad92b4ea17ee80dc431af1
+    layerID: 2732
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Shape 638
+    spriteName: Shape 638
+    isGroup: 0
+    parentIndex: 12
+    spriteID: cdf2d0aaf50877849b57290a738a67ca
+    layerID: 2731
+    mosaicPosition: {x: 1871, y: 4059}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rounded Rectangle 54
+    spriteName: Rounded Rectangle 54
+    isGroup: 0
+    parentIndex: 12
+    spriteID: b9603406a51a9d64994cf92c87cd6506
+    layerID: 2730
+    mosaicPosition: {x: 1465, y: 3664}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn
+    spriteName: 
+    isGroup: 1
+    parentIndex: 11
+    spriteID: c01929c9eabbc9444b8bfa0bf0b7a085
+    layerID: 2728
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Fill 655 copy 9
+    spriteName: Color Fill 655 copy 9
+    isGroup: 0
+    parentIndex: 15
+    spriteID: a288439b25a264e4b8263c0ce5f9e27b
+    layerID: 2727
+    mosaicPosition: {x: 1327, y: 3664}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Color Fill 655 copy 8
+    spriteName: Color Fill 655 copy 8
+    isGroup: 0
+    parentIndex: 15
+    spriteID: 00c1077414435504e9d599e013bf7dc6
+    layerID: 2726
+    mosaicPosition: {x: 1042, y: 3268}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ellipse 1 copy 2
+    spriteName: Ellipse 1 copy 2
+    isGroup: 0
+    parentIndex: 15
+    spriteID: cd8aa2e4b017b844a8ceb8ae9effd2b4
+    layerID: 2725
+    mosaicPosition: {x: 1038, y: 3816}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn_resume
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 28e7184c449a8414592b830a9fa97ae6
+    layerID: 2662
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: text
+    spriteName: 
+    isGroup: 1
+    parentIndex: 19
+    spriteID: d74be2a5b86a0ec478fb8d9fc3aed1b5
+    layerID: 2681
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Resume
+    spriteName: Resume
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 42d84254990d55644ba76f6468d35add
+    layerID: 2663
+    mosaicPosition: {x: 1038, y: 4044}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: icon
+    spriteName: 
+    isGroup: 1
+    parentIndex: 19
+    spriteID: 1cf787946bc0b4d4a8f46deb971ef170
+    layerID: 2661
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Fill 651
+    spriteName: Color Fill 651
+    isGroup: 0
+    parentIndex: 22
+    spriteID: cf7f20cc0e2294746bbad0b3ffb22ab2
+    layerID: 2660
+    mosaicPosition: {x: 1765, y: 3357}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn
+    spriteName: 
+    isGroup: 1
+    parentIndex: 19
+    spriteID: 2f7de3ff69b2e8c4988ded1c44ef3f02
+    layerID: 2658
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Fill 655 copy 7
+    spriteName: Color Fill 655 copy 7
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 7925ca85a7f9aa4449c303e72904262c
+    layerID: 2657
+    mosaicPosition: {x: 1190, y: 3664}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Color Fill 655 copy 6
+    spriteName: Color Fill 655 copy 6
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 5c9c7ce98ebb3fc408a6d97cfc2293ac
+    layerID: 2656
+    mosaicPosition: {x: 1042, y: 3464}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ellipse 1 copy
+    spriteName: Ellipse 1 copy
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 124665297744cdf4abb5348c26421196
+    layerID: 2655
+    mosaicPosition: {x: 1266, y: 3816}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn_restart
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 1775e7e54f7337a4da21ffaf1e25b676
+    layerID: 2696
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: text
+    spriteName: 
+    isGroup: 1
+    parentIndex: 28
+    spriteID: 27d5bc866791fc04a956cb83f7242234
+    layerID: 2695
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: restart
+    spriteName: restart
+    isGroup: 0
+    parentIndex: 29
+    spriteID: 0fc4796d842133f42954f350b06ede71
+    layerID: 2694
+    mosaicPosition: {x: 1722, y: 4059}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn_retry
+    spriteName: 
+    isGroup: 1
+    parentIndex: 28
+    spriteID: 32403497dec829e44bfdf1d658fea185
+    layerID: 2722
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: icon
+    spriteName: 
+    isGroup: 1
+    parentIndex: 31
+    spriteID: 6733e562725ec344f9e427ce2425f5b6
+    layerID: 2721
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Rounded Rectangle 72
+    spriteName: Rounded Rectangle 72
+    isGroup: 0
+    parentIndex: 32
+    spriteID: d1bc807b1297eda4689e3bc9102f1c97
+    layerID: 2720
+    mosaicPosition: {x: 1871, y: 4016}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rounded Rectangle 54
+    spriteName: Rounded Rectangle 54
+    isGroup: 0
+    parentIndex: 32
+    spriteID: c6ba25bbf18ed364bae7c43a8ecee5b9
+    layerID: 2719
+    mosaicPosition: {x: 1656, y: 3357}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: btn
+    spriteName: 
+    isGroup: 1
+    parentIndex: 31
+    spriteID: 0c31037ddce643e49951327cb2fc765a
+    layerID: 2717
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Color Fill 655 copy 9
+    spriteName: Color Fill 655 copy 9
+    isGroup: 0
+    parentIndex: 35
+    spriteID: ad1f5fafa1a991e488365f68ec1fd8c2
+    layerID: 2716
+    mosaicPosition: {x: 1042, y: 3664}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Color Fill 655 copy 8
+    spriteName: Color Fill 655 copy 8
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 6e1691749159fb8469598d9ff41c0c7e
+    layerID: 2715
+    mosaicPosition: {x: 1722, y: 3816}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ellipse 1 copy 2
+    spriteName: Ellipse 1 copy 2
+    isGroup: 0
+    parentIndex: 35
+    spriteID: d4dce138bc9faf94c8b091944afc2531
+    layerID: 2714
+    mosaicPosition: {x: 1494, y: 3816}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: khung
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 9a0f4886e882af740a990183fae1da4a
+    layerID: 2802
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 15
+    spriteName: Layer 15
+    isGroup: 0
+    parentIndex: 39
+    spriteID: 397ba8f90e8841542866dd4fe668f3e8
+    layerID: 2800
+    mosaicPosition: {x: 4, y: 3816}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 16
+    spriteName: Layer 16
+    isGroup: 0
+    parentIndex: 39
+    spriteID: a9d6d7eb4b5fb294cb9ee072a738af1f
+    layerID: 2801
+    mosaicPosition: {x: 4, y: 3268}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 14
+    spriteName: Layer 14
+    isGroup: 0
+    parentIndex: 39
+    spriteID: 1f202dfa6f5e1144f8b06c46b65c3f6a
+    layerID: 2799
+    mosaicPosition: {x: 1932, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rounded Rectangle 62 copy 2
+    spriteName: Rounded Rectangle 62 copy 2
+    isGroup: 0
+    parentIndex: 39
+    spriteID: 530c9d04050c4b14090a4f191263cfeb
+    layerID: 2753
+    mosaicPosition: {x: 1932, y: 552}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Background
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 33f0ed2f84dd68c4aa7e798e3f47a95f
+    layerID: 1819
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: mask
+    spriteName: 
+    isGroup: 1
+    parentIndex: 44
+    spriteID: 9a30df4c78cd2574289cb14a9a34ebbc
+    layerID: 1817
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 5
+    spriteName: Layer 5
+    isGroup: 0
+    parentIndex: 45
+    spriteID: c60e07766173f694fb7ec0a179078c6a
+    layerID: 1815
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 4
+    spriteName: Layer 4
+    isGroup: 0
+    parentIndex: 45
+    spriteID: 5c089afd003b8f44da850a9179c496a2
+    layerID: 1812
+    mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 8
+    spriteName: Layer 8
+    isGroup: 0
+    parentIndex: 44
+    spriteID: 11fe0fe046ecba84a8f1f8bd26c67575
+    layerID: 2652
+    mosaicPosition: {x: 4, y: 2180}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
