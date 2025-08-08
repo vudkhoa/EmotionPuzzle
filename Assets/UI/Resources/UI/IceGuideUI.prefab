@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi v\xE0o Power, c\xF3 8 \xF4 s\u1EE9c m\u1EA1nh"
+  m_text: "Khi v\xE0o t\u1EE9c gi\u1EADn, c\xF3 8 \xF4 s\u1EE9c m\u1EA1nh"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
