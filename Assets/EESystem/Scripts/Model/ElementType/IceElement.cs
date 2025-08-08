@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class IceElement : Element
 {
+    public TileBase IceTile;
+
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
