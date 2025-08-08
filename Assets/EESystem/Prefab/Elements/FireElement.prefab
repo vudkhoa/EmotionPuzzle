@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244de22cc157af14e99a24f5295fb6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralSprite: {fileID: 808834815, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
+  neutralSprite: {fileID: 617932567, guid: 9b11b0e4ff892414694e3508b7eda83a, type: 3}
   angrySprite: {fileID: 211257405, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
   happySprtie: {fileID: -1545353924, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
   sadSprtie: {fileID: 1448741751, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
