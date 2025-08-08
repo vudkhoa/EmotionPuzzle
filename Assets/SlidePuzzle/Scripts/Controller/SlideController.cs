@@ -462,14 +462,15 @@ public class SlideController : SingletonMono<SlideController>
         {
             Debug.Log("Load Next Level");
             PlayerPrefs.SetInt(Constant.LEVELID, curLevelId+1);
+            PlayerPrefs.Save();
             LoadingManager.instance.LoadScene("Puzzle");
         }
     }
 
     public void SpawnLevel()
     {
-        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 2;
+        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 2;
         SetTutorial();
 
         //Set map

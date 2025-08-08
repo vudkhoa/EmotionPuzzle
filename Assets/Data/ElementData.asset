@@ -40,7 +40,7 @@ MonoBehaviour:
       ElementPos: {x: 8, y: 6}
     - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
       EmotionType: 1
-      ElementPos: {x: -1, y: 16}
+      ElementPos: {x: -2, y: 16}
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 1
       ElementPos: {x: 0, y: 14}

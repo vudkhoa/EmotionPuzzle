@@ -27,12 +27,15 @@ public class LoadingManager : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt(Constant.LEVELID, 1);
+        PlayerPrefs.Save();
         LoadScene("Puzzle");
+
     }
 
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneCoroutine(sceneName));
+        //SceneManager.LoadScene(sceneName);
     }
 
     IEnumerator LoadSceneCoroutine(string sceneName)
