@@ -203,6 +203,8 @@ public abstract class Element : MonoBehaviour
             if (this.ActivePowerList[i])
             {
                 this.PowerRingList[i].SetActive(true);
+                int curLevelId = SlideController.Instance.curLevelId;
+                this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
             }
             else
             {

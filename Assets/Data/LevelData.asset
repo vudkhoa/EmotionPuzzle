@@ -26,6 +26,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 23, y: 20}
+    PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -39,6 +40,7 @@ MonoBehaviour:
     IceStarId: 1
     RotateObId: 1
     NextLevelPos: {x: 23, y: 18}
+    PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 3
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -52,6 +54,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 2
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 4
     IsBoss: 0
     PlayerPosition: {x: 1, y: 6}
@@ -65,6 +68,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 3
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: -1, y: 0}
@@ -78,6 +82,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -91,6 +96,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 3
     IsBoss: 0
     PlayerPosition: {x: -16, y: -26}
@@ -104,6 +110,7 @@ MonoBehaviour:
     IceStarId: 2
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 4
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -117,6 +124,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 5
     IsBoss: 0
     PlayerPosition: {x: -5, y: -28}
@@ -130,6 +138,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 6
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -143,6 +152,7 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 10
     IsBoss: 1
     PlayerPosition: {x: 14, y: 20}
@@ -156,3 +166,4 @@ MonoBehaviour:
     IceStarId: 0
     RotateObId: 0
     NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}

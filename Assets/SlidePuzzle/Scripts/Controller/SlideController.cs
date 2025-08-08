@@ -43,7 +43,7 @@ public class SlideController : SingletonMono<SlideController>
     public bool canSlide;
     public bool canF;
     public bool isWaitMore;
-    private int curLevelId;
+    public int curLevelId;
     private int tutorialId;
     public bool isTutorial;
 
@@ -470,8 +470,8 @@ public class SlideController : SingletonMono<SlideController>
 
     public void SpawnLevel()
     {
-        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 4;
+        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        //curLevelId = 1  ;
         SetTutorial();
 
         //Set map

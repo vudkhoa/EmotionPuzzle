@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "LevelSO", fileName = "LevelData")]
 public class LevelSO : ScriptableObject
@@ -28,4 +29,7 @@ public class LevelDetail
 
     [Header(" Next Load ")]
     public Vector2Int NextLevelPos;
+
+    [Header(" Power ")]
+    public Sprite PowerSprite;
 }
