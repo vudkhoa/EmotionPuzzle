@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c34823a369d434c42b986bea6fe6ffe7
+guid: a4ac51ffe20f8644d91b080b71536d71
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 1100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_0"
+      name: "\xF4 n\u01B0\u1EDBc_0"
       rect:
         serializedVersion: 2
-        x: 114
-        y: 373
-        width: 377
-        height: 377
+        x: 0
+        y: 0
+        width: 960
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0f807c8dc2c7d4c8422f7998763084
-      internalID: 302052189
+      spriteID: bfea89783c2186a4fb13466bb62dc43a
+      internalID: -367040964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_1"
+      name: "\xF4 n\u01B0\u1EDBc_1"
       rect:
         serializedVersion: 2
-        x: 782
-        y: 373
-        width: 377
-        height: 377
+        x: 960
+        y: 0
+        width: 960
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,29 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52533fdd8cfbe2a4283af8a4b4b1cddb
-      internalID: 541873504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\xF4 puzzle 3level_2"
-      rect:
-        serializedVersion: 2
-        x: 1434
-        y: 373
-        width: 378
-        height: 377
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac273617124c38940b586be7a07bf9ce
-      internalID: -856660671
+      spriteID: d506f58c8453ab4459673e761d8b0c81
+      internalID: -772625831
       vertices: []
       indices: 
       edges: []
@@ -196,9 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\xF4 puzzle 3level_0": 302052189
-      "\xF4 puzzle 3level_1": 541873504
-      "\xF4 puzzle 3level_2": -856660671
+      "\xF4 n\u01B0\u1EDBc_0": -367040964
+      "\xF4 n\u01B0\u1EDBc_1": -772625831
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

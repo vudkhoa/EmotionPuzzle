@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c34823a369d434c42b986bea6fe6ffe7
+guid: c5edc919074f653499acad04b875d1e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,64 +123,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_0"
+      name: block_1
       rect:
         serializedVersion: 2
-        x: 114
-        y: 373
-        width: 377
-        height: 377
+        x: 783
+        y: 650
+        width: 315
+        height: 282
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0f807c8dc2c7d4c8422f7998763084
-      internalID: 302052189
+      spriteID: 95989205317e7eb489bda2edc394368a
+      internalID: -110717454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_1"
+      name: block_2
       rect:
         serializedVersion: 2
-        x: 782
-        y: 373
-        width: 377
-        height: 377
+        x: 96
+        y: 343
+        width: 374
+        height: 381
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52533fdd8cfbe2a4283af8a4b4b1cddb
-      internalID: 541873504
+      spriteID: 1fdec29eb2d22e749ac644da17987251
+      internalID: -691854022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_2"
+      name: block_5
       rect:
         serializedVersion: 2
-        x: 1434
-        y: 373
-        width: 378
-        height: 377
+        x: 1406
+        y: 343
+        width: 402
+        height: 405
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac273617124c38940b586be7a07bf9ce
-      internalID: -856660671
+      spriteID: 2608078c5680f3240b4eabc23061cb03
+      internalID: 1565174084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_11
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 95
+        width: 431
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0a54a3fb4bb154e8f75358f6ea6ff3
+      internalID: -1501220132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_13
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 299
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd8028d63b609740bcdad3d1863e2aa
+      internalID: -572488549
       vertices: []
       indices: 
       edges: []
@@ -196,9 +238,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\xF4 puzzle 3level_0": 302052189
-      "\xF4 puzzle 3level_1": 541873504
-      "\xF4 puzzle 3level_2": -856660671
+      block_0: 1557331438
+      block_1: -110717454
+      block_10: -113135762
+      block_11: -1501220132
+      block_12: 1814546376
+      block_13: -572488549
+      block_2: -691854022
+      block_3: -329191402
+      block_4: -999572989
+      block_5: 1565174084
+      block_6: 2043505906
+      block_7: 410408576
+      block_8: -1196088271
+      block_9: 1837657974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

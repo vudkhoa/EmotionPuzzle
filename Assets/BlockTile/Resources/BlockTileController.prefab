@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869c5d5159aa8d649a36a88d45792536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockTile: {fileID: 11400000, guid: 0c38c5c8c562cd34992cda0bd1d70834, type: 2}
-  unBlockTile: {fileID: 11400000, guid: 5a457037c7f516e48aba76f6809a236b, type: 2}
+  blockTile: {fileID: 11400000, guid: 001c79908ec540c47a1be2063029ef71, type: 2}
+  unBlockTile: {fileID: 11400000, guid: d6e1bcdd6a717364e8f3ca818337db95, type: 2}
+  blocks: []
+  unBlockTileList: []

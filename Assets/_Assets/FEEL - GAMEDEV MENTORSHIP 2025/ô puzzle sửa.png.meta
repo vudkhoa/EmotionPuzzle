@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c34823a369d434c42b986bea6fe6ffe7
+guid: 7fc3e0385faba3948a83e407a571e161
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_0"
+      name: "\xF4 puzzle s\u1EEDa_0"
       rect:
         serializedVersion: 2
-        x: 114
-        y: 373
-        width: 377
-        height: 377
+        x: 128
+        y: 392
+        width: 343
+        height: 346
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0f807c8dc2c7d4c8422f7998763084
-      internalID: 302052189
+      spriteID: ed1b716079776b645b25890b8177c38d
+      internalID: -869451888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_1"
+      name: "\xF4 puzzle s\u1EEDa_1"
       rect:
         serializedVersion: 2
-        x: 782
-        y: 373
-        width: 377
-        height: 377
+        x: 799
+        y: 392
+        width: 339
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52533fdd8cfbe2a4283af8a4b4b1cddb
-      internalID: 541873504
+      spriteID: 0945718c25d7b86458ed5ae09058eb53
+      internalID: 1546724506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\xF4 puzzle 3level_2"
+      name: "\xF4 puzzle s\u1EEDa_2"
       rect:
         serializedVersion: 2
-        x: 1434
-        y: 373
-        width: 378
-        height: 377
+        x: 1449
+        y: 393
+        width: 342
+        height: 344
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac273617124c38940b586be7a07bf9ce
-      internalID: -856660671
+      spriteID: 20483d2853d07c649821d28db236e5ad
+      internalID: 1211387721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\xF4 puzzle s\u1EEDa_3"
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 377
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8c5351b0776f845a7d82f32c8e2f24
+      internalID: -1569078939
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\xF4 puzzle 3level_0": 302052189
-      "\xF4 puzzle 3level_1": 541873504
-      "\xF4 puzzle 3level_2": -856660671
+      "\xF4 puzzle s\u1EEDa_0": -869451888
+      "\xF4 puzzle s\u1EEDa_1": 1546724506
+      "\xF4 puzzle s\u1EEDa_2": 1211387721
+      "\xF4 puzzle s\u1EEDa_3": -1569078939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

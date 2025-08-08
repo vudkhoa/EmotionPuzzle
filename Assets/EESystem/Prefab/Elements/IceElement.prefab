@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0baefa94cfaffce4badac55974f8093d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralSprite: {fileID: -1692927752, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
-  angrySprite: {fileID: 634980143, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
-  happySprtie: {fileID: 1019923581, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
-  sadSprtie: {fileID: 1269272962, guid: ddaf0a6c9fb9df843b0f2d3a2b4dd7f9, type: 3}
+  neutralSprite: {fileID: 909093611, guid: ba74320e5bb621a4089751708c1ea563, type: 3}
+  angrySprite: {fileID: 239443137, guid: ba74320e5bb621a4089751708c1ea563, type: 3}
+  happySprtie: {fileID: 685526575, guid: ba74320e5bb621a4089751708c1ea563, type: 3}
+  sadSprtie: {fileID: 679972153, guid: ba74320e5bb621a4089751708c1ea563, type: 3}
   spr: {fileID: 163385140574954300}
   ElementType: 0
   EmotionType: 0
