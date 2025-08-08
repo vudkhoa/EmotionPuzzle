@@ -67,8 +67,15 @@ public class WindElement : Element
                 {
                     continue;
                 }
-                this.ActivePowerList[count] = false;
+
                 Vector3Int newObstaclePos = nearPos3 + (nearPos3 - new Vector3Int(this.CurrentPos.x, this.CurrentPos.y));
+                if (SlideController.Instance.IceStarId > 0 &&
+                        IceStarController.Instance.CheckExistsSource(newObstaclePos))
+                {
+                    continue;
+                }
+
+                this.ActivePowerList[count] = false;
                 if (!SlideController.Instance.bgSmallTilemap.HasTile(newObstaclePos))
                 {
                     ObstacleTileController.Instance.ThrowObstacleTile(nearPos3, newObstaclePos);
