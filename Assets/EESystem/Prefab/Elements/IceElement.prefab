@@ -141,3 +141,4 @@ MonoBehaviour:
   ActivePowerList: 
   OffsetList: []
   PowerRingList: []
+  IceTile: {fileID: 11400000, guid: 0d541f1f25de0f4498c58f384d09322b, type: 2}

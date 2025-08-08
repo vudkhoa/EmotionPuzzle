@@ -28,6 +28,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap bgSmallTilemap;
     public Tilemap bossTilemap;
     public Tilemap iceStarTilemap;
+    public Tilemap powerTilemap;
 
     [Header(" Id Tile ")]
     public int itemId;
@@ -544,6 +545,9 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "IceStar":
                     this.iceStarTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "Power":
+                    this.powerTilemap = c.GetComponent<Tilemap>();
                     break;
             }
         }

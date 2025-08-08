@@ -73,6 +73,7 @@ public class IceElement : Element
                 TileBase itemTileBase = SlideController.Instance.itemTilemap.GetTile(nearPos3);
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
+                SlideController.Instance.powerTilemap.SetTile(nearPos3, IceTile);
                 this.ActivePowerList[count] = false;
             }
         }
@@ -87,6 +88,7 @@ public class IceElement : Element
                 TileBase obstacleTile = SlideController.Instance.obstacleTilemap.GetTile(nearPos3);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, obstacleTile);
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, null);
+                SlideController.Instance.powerTilemap.SetTile(nearPos3, null);
             }
         }
     }
