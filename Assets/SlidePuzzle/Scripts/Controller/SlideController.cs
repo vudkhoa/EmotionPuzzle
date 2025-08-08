@@ -470,7 +470,8 @@ public class SlideController : SingletonMono<SlideController>
 
     public void SpawnLevel()
     {
-        curLevelId = 2+1;
+        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 1;
         SetTutorial();
 
         //Set map
