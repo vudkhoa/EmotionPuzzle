@@ -384,4 +384,9 @@ public class ElementController : SingletonMono<ElementController>
             e.ReActivePower();
         }
     }
+
+    public void ReInteractWithItem()
+    {
+        CoordinateItem();
+    }
 }
