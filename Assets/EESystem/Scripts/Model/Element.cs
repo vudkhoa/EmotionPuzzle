@@ -45,6 +45,14 @@ public abstract class Element : MonoBehaviour
     {
         this.EmotionType = emotionType;
         ChangeEmotion(emotionType);
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            this.SetActivatePower();
+        }
+        else
+        {
+            this.SetDeactivePower();
+        }
         this.CurrentPos = currentPos;
     }
 

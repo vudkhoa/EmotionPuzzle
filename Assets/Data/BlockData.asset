@@ -16,12 +16,12 @@ MonoBehaviour:
   - BlockID: 1
     Blocks:
     - BlockPosList:
-      - {x: 7, y: 12}
-      - {x: 9, y: 12}
-      - {x: 8, y: 10}
-      - {x: 10, y: 10}
+      - {x: 12, y: 24}
+      - {x: 14, y: 24}
+      - {x: 11, y: 26}
+      - {x: 13, y: 26}
       groundPosList:
-      - {x: 11, y: 13}
+      - {x: 15, y: 27}
       groundTileList:
       - {fileID: 11400000, guid: bf36d111f64ea75469978e94de82fac4, type: 2}
     - BlockPosList:
