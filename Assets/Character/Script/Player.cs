@@ -70,7 +70,11 @@ public class Player : MonoBehaviour
             strength: new Vector3(0, 0, 15f), // Xoay quanh trục Z
             vibrato: 10,          // Số lần lắc
             randomness: 90f       // Ngẫu nhiên góc
-        ).SetEase(Ease.OutQuad);
+        ).SetEase(Ease.OutQuad)
+        .OnKill(() =>
+        {
+            this.transform.localRotation = Quaternion.identity;
+        });
     }
 
     public void TakeDamage()
