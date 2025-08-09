@@ -56,6 +56,9 @@ public abstract class Element : MonoBehaviour
             return false;
         }
 
+        Vector3Int gridPos = new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0);
+        Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+        ItemTileController.Instance.InteractWithElement(itemPos, eWorldPos);
         this.SetEmotionType(newEmotionType);
 
         return true;

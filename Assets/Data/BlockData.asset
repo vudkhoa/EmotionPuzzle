@@ -36,6 +36,12 @@ MonoBehaviour:
       - {x: -5, y: 15}
       groundTileList:
       - {fileID: 11400000, guid: bf36d111f64ea75469978e94de82fac4, type: 2}
+    - BlockPosList:
+      - {x: 4, y: 21}
+      groundPosList:
+      - {x: 9, y: 21}
+      groundTileList:
+      - {fileID: 11400000, guid: bf36d111f64ea75469978e94de82fac4, type: 2}
   - BlockID: 2
     Blocks:
     - BlockPosList:

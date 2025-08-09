@@ -161,8 +161,8 @@ public class ElementController : SingletonMono<ElementController>
             }
         }
 
-        Invoke(nameof(CoordinateElement), 0.28f);
         Invoke(nameof(CoordinateItem), 0.28f);
+        Invoke(nameof(CoordinateElement), 0.28f);
         Invoke(nameof(SadFunction), 0.28f);
     }
 
@@ -315,9 +315,9 @@ public class ElementController : SingletonMono<ElementController>
                     if (e.InteractWithItem(ItemTileController.Instance.GetItemType(nearPos), nearPos))
                     {
                         //ItemTileController.Instance.RemoveItem(nearPos);
-                        Vector3Int gridPos = new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0);
-                        Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
-                        ItemTileController.Instance.InteractWithElement(nearPos, eWorldPos);
+                        //Vector3Int gridPos = new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0);
+                        //Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+                        //ItemTileController.Instance.InteractWithElement(nearPos, eWorldPos);
                         //if (e.EmotionType == EmotionType.Angry)
                         //{
                         //    e.SetActivatePower();
