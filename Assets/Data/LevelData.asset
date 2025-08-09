@@ -69,6 +69,20 @@ MonoBehaviour:
     RotateObId: 3
     NextLevelPos: {x: 0, y: 0}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+  - LevelId: 5
+    IsBoss: 0
+    PlayerPosition: {x: 2, y: 0}
+    TutorialId: 0
+    ItemId: 9
+    BlockId: 2
+    ElementId: 7
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 0
+    IceStarId: 0
+    RotateObId: 0
+    NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: 0}
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: -1, y: 0}

@@ -97,3 +97,7 @@ MonoBehaviour:
     - {x: 6, y: 9}
     - {x: -5, y: 14}
     - {x: -2, y: 12}
+  - ItemId: 9
+    ItemTypes: 00000000
+    ItemPos:
+    - {x: 6, y: 1}

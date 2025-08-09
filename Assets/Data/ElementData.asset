@@ -139,3 +139,8 @@ MonoBehaviour:
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 2
       ElementPos: {x: 0, y: 7}
+  - ElementId: 7
+    ElementDetails:
+    - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
+      EmotionType: 2
+      ElementPos: {x: 4, y: 2}
