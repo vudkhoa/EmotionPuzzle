@@ -60,7 +60,7 @@ MonoBehaviour:
     PlayerPosition: {x: 1, y: 6}
     TutorialId: 0
     ItemId: 8
-    BlockId: 0
+    BlockId: 1
     ElementId: 6
     AngryBossId: 0
     SadBossId: 0
