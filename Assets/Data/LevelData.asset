@@ -57,7 +57,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 4
     IsBoss: 0
-    PlayerPosition: {x: 1, y: 6}
+    PlayerPosition: {x: 6, y: 12}
     TutorialId: 0
     ItemId: 8
     BlockId: 1

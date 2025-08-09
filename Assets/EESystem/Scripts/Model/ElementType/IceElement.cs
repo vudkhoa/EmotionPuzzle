@@ -74,7 +74,7 @@ public class IceElement : Element
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
                 SlideController.Instance.powerTilemap.SetTile(nearPos3, IceTile);
-                this.ActivePowerList[count] = false;
+                //this.ActivePowerList[count] = false;
             }
         }
 
