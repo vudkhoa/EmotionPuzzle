@@ -27,10 +27,11 @@ MonoBehaviour:
     RotateObId: 0
     NextLevelPos: {x: 23, y: 20}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+    ElementGuideId: 1
   - LevelId: 2
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
+    TutorialId: 2
     ItemId: 2
     BlockId: 0
     ElementId: 2
@@ -41,6 +42,7 @@ MonoBehaviour:
     RotateObId: 1
     NextLevelPos: {x: 23, y: 18}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+    ElementGuideId: 2
   - LevelId: 3
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
@@ -55,10 +57,11 @@ MonoBehaviour:
     RotateObId: 2
     NextLevelPos: {x: 19, y: 45}
     PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+    ElementGuideId: 3
   - LevelId: 4
     IsBoss: 0
-    PlayerPosition: {x: -2, y: -3}
-    TutorialId: 0
+    PlayerPosition: {x: -3, y: -3}
+    TutorialId: 3
     ItemId: 4
     BlockId: 1
     ElementId: 4
@@ -69,3 +72,4 @@ MonoBehaviour:
     RotateObId: 3
     NextLevelPos: {x: 18, y: 29}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+    ElementGuideId: 4

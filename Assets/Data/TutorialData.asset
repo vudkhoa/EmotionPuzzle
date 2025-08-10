@@ -61,3 +61,15 @@ MonoBehaviour:
     - posInit: {x: 20, y: 17}
       guideId: 4
       timeWait: 0.7
+  - tutorialId: 2
+    TutorialDetails: []
+    PopupDetails:
+    - posInit: {x: -3, y: 2}
+      guideId: 5
+      timeWait: 0
+  - tutorialId: 3
+    TutorialDetails: []
+    PopupDetails:
+    - posInit: {x: -3, y: 10}
+      guideId: 6
+      timeWait: 0

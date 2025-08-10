@@ -47,12 +47,14 @@ public class SlideController : SingletonMono<SlideController>
     public int curLevelId;
     private int tutorialId;
     public bool isTutorial;
+    public bool isElementGuideUI;
 
     private void Start()
     {
         canSlide = true;
         canF = true;
         isTutorial = false;
+        isElementGuideUI = false;
     }
 
     private void Update()
@@ -130,6 +132,11 @@ public class SlideController : SingletonMono<SlideController>
         }
 
         if (isTutorial)
+        {
+            return;
+        }
+
+        if (isElementGuideUI)
         {
             return;
         }
@@ -479,7 +486,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 4;
+        //curLevelId = 2;
         SetTutorial();
         this.SetElementGuide();
 
@@ -500,8 +507,7 @@ public class SlideController : SingletonMono<SlideController>
 
     private void SetElementGuide()
     {
-        this.elementGuideId = 0;
-        this.elementGuideId = DataManager.Instance.ElementGuideData.ElementGuideDetails[curLevelId - 1].Id;
+        this.elementGuideId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].ElementGuideId;
         if (elementGuideId > 0)
         {
             ElementGuideManager.Instance.SetUp(elementGuideId);

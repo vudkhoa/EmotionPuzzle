@@ -123,8 +123,11 @@ public class GameplayUI : UICanvas
         }
     }
 
-    public void ShowElementGuideUI(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
+    public IEnumerator ShowElementGuideUI(bool haveFire, bool haveWater, bool haveWind, bool haveIce, float time)
     {
+
+        yield return new WaitForSeconds(time);
+
         if (haveFire)
         {
             UIManager.Instance.OpenUI<FireGuideUI>();

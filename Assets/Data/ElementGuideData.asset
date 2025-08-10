@@ -15,11 +15,73 @@ MonoBehaviour:
   ElementGuideDetails:
   - Id: 1
     Detail:
-      PosForFire: {x: 9, y: 0}
+      PosForFire: {x: 9, y: 6}
       haveFire: 1
+      haveFirePopup: 1
+      fireTime: 0.7
       PosForWater: {x: 0, y: 0}
       haveWater: 0
+      haveWaterPopup: 0
+      waterTime: 0
       PosForIce: {x: 0, y: 0}
       haveIce: 0
+      haveIcePopup: 0
+      iceTime: 0
       PosForWind: {x: 0, y: 0}
       haveWind: 0
+      haveWindPopup: 0
+      windTime: 0
+  - Id: 2
+    Detail:
+      PosForFire: {x: -2, y: 7}
+      haveFire: 1
+      haveFirePopup: 0
+      fireTime: 0
+      PosForWater: {x: -6, y: 10}
+      haveWater: 1
+      haveWaterPopup: 0
+      waterTime: 0
+      PosForIce: {x: 0, y: 0}
+      haveIce: 0
+      haveIcePopup: 0
+      iceTime: 0
+      PosForWind: {x: 9, y: 5}
+      haveWind: 1
+      haveWindPopup: 1
+      windTime: 0.5
+  - Id: 3
+    Detail:
+      PosForFire: {x: 2, y: 0}
+      haveFire: 1
+      haveFirePopup: 0
+      fireTime: 0
+      PosForWater: {x: 9, y: 3}
+      haveWater: 1
+      haveWaterPopup: 1
+      waterTime: 0.5
+      PosForIce: {x: 8, y: 13}
+      haveIce: 1
+      haveIcePopup: 0
+      iceTime: 0
+      PosForWind: {x: 0, y: 0}
+      haveWind: 0
+      haveWindPopup: 0
+      windTime: 0
+  - Id: 4
+    Detail:
+      PosForFire: {x: -2, y: -3}
+      haveFire: 1
+      haveFirePopup: 0
+      fireTime: 0
+      PosForWater: {x: -2, y: -3}
+      haveWater: 1
+      haveWaterPopup: 0
+      waterTime: 0
+      PosForIce: {x: 0, y: 18}
+      haveIce: 1
+      haveIcePopup: 1
+      iceTime: 0
+      PosForWind: {x: -2, y: -3}
+      haveWind: 1
+      haveWindPopup: 0
+      windTime: 0

@@ -32,4 +32,7 @@ public class LevelDetail
 
     [Header(" Power ")]
     public Sprite PowerSprite;
+
+    [Header(" Tutorial ")]
+    public int ElementGuideId;
 }

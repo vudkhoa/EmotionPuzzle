@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +20,21 @@ public class ElementGuideDetail
 {
     public Vector2Int PosForFire;
     public bool haveFire;
+    public bool haveFirePopup;
+    public float fireTime;
+
     public Vector2Int PosForWater;
     public bool haveWater;
+    public bool haveWaterPopup;
+    public float waterTime;
+
     public Vector2Int PosForIce;
     public bool haveIce;
+    public bool haveIcePopup;
+    public float iceTime;
+
     public Vector2Int PosForWind;
     public bool haveWind;
+    public bool haveWindPopup;
+    public float windTime;
 }

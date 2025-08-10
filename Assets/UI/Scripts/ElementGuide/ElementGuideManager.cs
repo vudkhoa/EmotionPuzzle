@@ -1,19 +1,33 @@
 using CustomUtils;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ElementGuideManager : SingletonMono<ElementGuideManager>
 {
-    [Header(" Infor ")]
+    [Header(" Btn ")]
     public bool haveFire;
     public bool haveWater;
     public bool haveIce;
     public bool haveWind;
 
+    [Header(" Popup ")]
+    public bool haveFirePopup;
+    public bool haveWaterPopup;
+    public bool haveIcePopup;
+    public bool haveWindPopup;
+
+    [Header(" Position ")]
     public Vector2Int PosForFire;
     public Vector2Int PosForWater;
     public Vector2Int PosForIce;
     public Vector2Int PosForWind;
+
+    [Header(" Time ")]
+    public float timeFire;
+    public float timeWater;
+    public float timeIce;
+    public float timeWind;
 
     public List<bool> isShowBtn;
 
@@ -26,10 +40,20 @@ public class ElementGuideManager : SingletonMono<ElementGuideManager>
         this.haveIce = data.Detail.haveIce;
         this.haveWind = data.Detail.haveWind;
 
+        this.haveFirePopup = data.Detail.haveFirePopup;
+        this.haveWaterPopup = data.Detail.haveWaterPopup;
+        this.haveIcePopup = data.Detail.haveIcePopup;
+        this.haveWindPopup = data.Detail.haveWindPopup;
+
         this.PosForFire = data.Detail.PosForFire;
         this.PosForWater = data.Detail.PosForWater;
         this.PosForIce = data.Detail.PosForIce;
         this.PosForWind = data.Detail.PosForWind;
+
+        this.timeFire = data.Detail.fireTime;
+        this.timeWater = data.Detail.waterTime;
+        this.timeIce = data.Detail.iceTime;
+        this.timeWind = data.Detail.windTime;
 
         this.isShowBtn = new List<bool>();
         for (int i = 0; i < 4; ++i)
@@ -40,36 +64,50 @@ public class ElementGuideManager : SingletonMono<ElementGuideManager>
 
     public void ShowElementGuide(Vector2Int playerPos)
     {
-        if (haveFire && playerPos == PosForFire)
+        if (haveFire && playerPos == PosForFire && !this.isShowBtn[0])
         {
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(true, false, false, false);
-            if (!this.isShowBtn[1])
+            this.isShowBtn[0] = true;
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(true, false, false, false);
+
+            if (haveFirePopup)
             {
-                UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(true, false, false, false);
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(true, false, false, false, timeFire));
             }
         }
 
-        if (haveWater && playerPos == PosForWater)
+        if (haveWater && playerPos == PosForWater && !this.isShowBtn[1])
         {
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, true, false, false);
-            if (!this.isShowBtn[2])
-                UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, true, false, false);
+            this.isShowBtn[1] = true;
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, true, false, false);
+            if (haveWaterPopup)
+            {
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, true, false, false, timeWater));
+            }
         }
 
-        if (haveWind && playerPos == PosForWind)
+        if (haveWind && playerPos == PosForWind && !this.isShowBtn[2])
         {
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false);
-            if (!this.isShowBtn[3])
-                UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, true, false);
+            this.isShowBtn[2] = true;
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, true, false);
+            if (haveWindPopup)
+            {
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false, timeWind));
+            }
         }
 
-        if (haveIce && playerPos == PosForIce)
+        if (haveIce && playerPos == PosForIce && !this.isShowBtn[3])
         {
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true);
-            if (!this.isShowBtn[4])
-                UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, false, true);
+            this.isShowBtn[3] = true;
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, false, true);
+            if (haveIcePopup)
+            {
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeIce));
+            }
         }
     }
 
-
+    public void ResetIsElementGuide()
+    {
+        SlideController.Instance.isElementGuideUI = false;
+    }
 }
