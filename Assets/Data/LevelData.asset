@@ -43,7 +43,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 3
     IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
+    PlayerPosition: {x: 16, y: 24}
     TutorialId: 0
     ItemId: 7
     BlockId: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 2
-    NextLevelPos: {x: 0, y: 0}
+    NextLevelPos: {x: 19, y: 45}
     PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 4
     IsBoss: 0
