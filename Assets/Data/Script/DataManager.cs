@@ -8,6 +8,7 @@ public class DataManager : SingletonMono<DataManager>
     public ItemSO ItemData;
     public BlockSO BlockData;
     public TutorialSO TutorialData;
+    public ElementGuideSO ElementGuideData;
 
     [Header(" EESystem ")]
     public ElementSO ElementData;

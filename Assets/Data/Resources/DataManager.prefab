@@ -48,6 +48,7 @@ MonoBehaviour:
   ItemData: {fileID: 11400000, guid: ee86da8c514fe0f4f9a4d3a686b0dcd4, type: 2}
   BlockData: {fileID: 11400000, guid: 3715bec9065bdb64d950b0c29bb681b3, type: 2}
   TutorialData: {fileID: 11400000, guid: 25733256117690f47871cd8d214305a8, type: 2}
+  ElementGuideData: {fileID: 11400000, guid: 1d6700312ea61884ca9e7f14bd25e744, type: 2}
   ElementData: {fileID: 11400000, guid: 3b0318dd20cce1a4d972898dce76b5d0, type: 2}
   EmotionCoordinationData: {fileID: 11400000, guid: a06a38ff7ae8322458683624a19537fd, type: 2}
   ElementCoordinateData: {fileID: 11400000, guid: aa073e6123a224e4991b5a2a6f7bc06e, type: 2}

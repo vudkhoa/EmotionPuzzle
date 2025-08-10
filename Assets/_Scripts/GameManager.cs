@@ -18,6 +18,8 @@ public class GameManager : SingletonMono<GameManager>
         State = GameState.Playing;
         UIManager.Instance.OpenUI<GameplayUI>();
 
+
+
     }
 
     private void InitController()
@@ -33,6 +35,7 @@ public class GameManager : SingletonMono<GameManager>
         CreateModule("IceStarController", "IceStarController");
         CreateModule("RotateObjectController", "RotateObjectController");
         CreateModule("TutorialManager", "TutorialManager");
+        CreateModule("ElementGuideManager", "ElementGuideManager");
     }
 
     private GameObject CreateObject(string module, string nameModule)

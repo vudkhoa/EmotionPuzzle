@@ -37,6 +37,7 @@ public class SlideController : SingletonMono<SlideController>
     public int BossId;
     public int IceStarId;
     public int rotateObId;
+    public int elementGuideId;
 
     private Player _player;
     public List<Raft> RaftList;
@@ -294,6 +295,8 @@ public class SlideController : SingletonMono<SlideController>
         MoveItemTile(cellMovePosList, direction);
         MoveElement(cellMovePosList, direction);
         Invoke(nameof(ShowTutorial), 0.25f);
+        Invoke(nameof(ShowElementGuide), 0.25f);
+
         Invoke(nameof(UnBlockTile), 0.28f);
         if (IceStarId > 0)
         {
@@ -439,6 +442,11 @@ public class SlideController : SingletonMono<SlideController>
         TutorialManager.Instance.ShowTutorial(GetPlayerPos());
     }
 
+    public void ShowElementGuide()
+    {
+        ElementGuideManager.Instance.ShowElementGuide(GetPlayerPos());
+    }
+
     public void UnBlockTile()
     {
         if (blockId != 0)
@@ -473,6 +481,7 @@ public class SlideController : SingletonMono<SlideController>
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
         //curLevelId = 4;
         SetTutorial();
+        this.SetElementGuide();
 
         //Set map
         CreateGridPrefab();
@@ -489,11 +498,22 @@ public class SlideController : SingletonMono<SlideController>
         this.SetRotateObject();
     }
 
+    private void SetElementGuide()
+    {
+        this.elementGuideId = 0;
+        this.elementGuideId = DataManager.Instance.ElementGuideData.ElementGuideDetails[curLevelId - 1].Id;
+        if (elementGuideId > 0)
+        {
+            ElementGuideManager.Instance.SetUp(elementGuideId);
+        }
+    }
+
     private void SetTutorial()
     {
         tutorialId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].TutorialId;
         if (tutorialId != 0)
         {
+
             TutorialManager.Instance.SetTutorialDetail(DataManager.Instance.TutorialData.TutorialLevelDetails[tutorialId - 1].TutorialDetails);
             TutorialManager.Instance.SetPopupDetail(DataManager.Instance.TutorialData.TutorialLevelDetails[tutorialId - 1].PopupDetails);
         }

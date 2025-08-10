@@ -29,6 +29,8 @@ public class GameplayUI : UICanvas
         water.onClick.AddListener(OnClickWaterButton);
         wind.onClick.AddListener(OnClickWindButton);
         ice.onClick.AddListener(OnClickIceButton);
+
+        HideElementGuideBtn();
     }
 
     private void OnDisable()
@@ -88,5 +90,59 @@ public class GameplayUI : UICanvas
     {
         GuideMessage gmOb = Instantiate(messagePrefab, messageListTf);
         gmOb.ShowTutorialText(text, time);
+    }
+
+    public void HideElementGuideBtn()
+    {
+        fire.gameObject.SetActive(false);
+        water.gameObject.SetActive(false);
+        wind.gameObject.SetActive(false);
+        ice.gameObject.SetActive(false);
+    }
+
+    public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
+    {
+        if (haveFire)
+        {
+            fire.gameObject.SetActive(true);
+        }
+
+        if (haveWater)
+        {
+            water.gameObject.SetActive(true);
+        }
+
+        if (haveWind)
+        {
+            wind.gameObject.SetActive(true);
+        }
+
+        if (haveIce)
+        {
+            ice.gameObject.SetActive(true);
+        }
+    }
+
+    public void ShowElementGuideUI(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
+    {
+        if (haveFire)
+        {
+            UIManager.Instance.OpenUI<FireGuideUI>();
+        }
+
+        if (haveWater)
+        {
+            UIManager.Instance.OpenUI<WaterGuideUI>();
+        }
+
+        if (haveWind)
+        {
+            UIManager.Instance.OpenUI<WindGuideUI>();
+        }
+
+        if (haveIce)
+        {
+            UIManager.Instance.OpenUI<IceGuideUI>();
+        }
     }
 }
