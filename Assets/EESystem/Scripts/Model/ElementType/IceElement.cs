@@ -48,6 +48,7 @@ public class IceElement : Element
 
     public override void Power()
     {
+        Debug.Log("Ice");
         if (this.EmotionType != EmotionType.Angry)
         {
             return;
@@ -67,14 +68,12 @@ public class IceElement : Element
             scopePosList[i] += this.CurrentPos;
             nearPos3 = new Vector3Int(scopePosList[i].x, scopePosList[i].y, 0);
             if (ItemTileController.Instance.ItemPosList.Contains(scopePosList[i]) &&
-                SlideController.Instance.itemTilemap.HasTile(nearPos3) &&
-                this.ActivePowerList[count] == true)
+                SlideController.Instance.itemTilemap.HasTile(nearPos3))
             {
                 TileBase itemTileBase = SlideController.Instance.itemTilemap.GetTile(nearPos3);
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
                 SlideController.Instance.powerTilemap.SetTile(nearPos3, IceTile);
-                //this.ActivePowerList[count] = false;
             }
         }
 
