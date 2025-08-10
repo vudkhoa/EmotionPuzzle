@@ -44,6 +44,8 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
             {
                 GroundTileController.Instance.SetGroundTileForRotateObj(obj.containPosList);
             }
+
+            return true;
         }
 
         return false;
