@@ -253,8 +253,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Item n\u1EB1m c\u1EA1nh Element c\u1EA3m x\xFAc s\u1EBD c\u1ED9ng
-    l\u1EA1i."
+  m_text: "Khi Item <color=#8B4513>n\u1EB1m c\u1EA1nh</color> Element c\u1EA3m x\xFAc
+    s\u1EBD c\u1ED9ng l\u1EA1i."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

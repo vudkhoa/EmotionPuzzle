@@ -62,7 +62,7 @@ public class GameplayUI : UICanvas
 
     private void OnClickTutorialBtn()
     {
-        UIManager.Instance.OpenUI<GuideUI>();
+        UIManager.Instance.OpenUI<GuideUI>().Init();
     }
 
     private void OnClickFireButton()

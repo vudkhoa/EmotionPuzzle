@@ -495,6 +495,7 @@ public class SlideController : SingletonMono<SlideController>
         if (tutorialId != 0)
         {
             TutorialManager.Instance.SetTutorialDetail(DataManager.Instance.TutorialData.TutorialLevelDetails[tutorialId - 1].TutorialDetails);
+            TutorialManager.Instance.SetPopupDetail(DataManager.Instance.TutorialData.TutorialLevelDetails[tutorialId - 1].PopupDetails);
         }
     }
 

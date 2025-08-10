@@ -14,6 +14,7 @@ public class TutorialLevelDetail
 {
     public int tutorialId;
     public List<TutorialDetail> TutorialDetails;
+    public List<PopupDetail> PopupDetails;
 }
 
 [Serializable]
@@ -23,6 +24,13 @@ public class TutorialDetail
     public Vector2Int posInit;
     [TextArea(2, 5)]
     public string text;
-    public int guideId;
     public float Time;
+}
+
+[Serializable]
+public class PopupDetail
+{
+    public Vector2Int posInit;
+    public int guideId;
+    public float timeWait;
 }
