@@ -389,4 +389,21 @@ public class ElementController : SingletonMono<ElementController>
     {
         CoordinateItem();
     }
+
+    public void ReItem()
+    {
+        foreach (Vector2Int itemPos in ItemTileController.Instance.ItemPosList)
+        {
+            Vector3Int nearPos3 = new Vector3Int(itemPos.x, itemPos.y, 0);
+
+            if (!SlideController.Instance.itemTilemap.HasTile(nearPos3) && 
+                SlideController.Instance.obstacleTilemap.HasTile(nearPos3))
+            {
+                TileBase obstacleTile = SlideController.Instance.obstacleTilemap.GetTile(nearPos3);
+                SlideController.Instance.itemTilemap.SetTile(nearPos3, obstacleTile);
+                SlideController.Instance.obstacleTilemap.SetTile(nearPos3, null);
+                SlideController.Instance.powerTilemap.SetTile(nearPos3, null);
+            }
+        }
+    }
 }

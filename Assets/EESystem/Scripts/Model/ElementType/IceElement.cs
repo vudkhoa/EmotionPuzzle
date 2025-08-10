@@ -48,7 +48,6 @@ public class IceElement : Element
 
     public override void Power()
     {
-        Debug.Log("Ice");
         if (this.EmotionType != EmotionType.Angry)
         {
             return;
@@ -62,6 +61,7 @@ public class IceElement : Element
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         List<Vector2Int> scopePosList = new List<Vector2Int>(this.OffsetList);
         int count = -1;
+
         for (int i = 0; i < scopePosList.Count; ++i)
         {
             count++;
@@ -74,20 +74,6 @@ public class IceElement : Element
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
                 SlideController.Instance.powerTilemap.SetTile(nearPos3, IceTile);
-            }
-        }
-
-        // Xóa các item tile không nằm trong phạm vi
-        foreach (Vector2Int itemPos in ItemTileController.Instance.ItemPosList)
-        {
-            nearPos3 = new Vector3Int(itemPos.x, itemPos.y, 0);
-            if (!scopePosList.Contains(itemPos) &&
-                !SlideController.Instance.itemTilemap.HasTile(nearPos3))
-            {
-                TileBase obstacleTile = SlideController.Instance.obstacleTilemap.GetTile(nearPos3);
-                SlideController.Instance.itemTilemap.SetTile(nearPos3, obstacleTile);
-                SlideController.Instance.obstacleTilemap.SetTile(nearPos3, null);
-                SlideController.Instance.powerTilemap.SetTile(nearPos3, null);
             }
         }
     }

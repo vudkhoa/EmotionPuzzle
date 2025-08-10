@@ -29,7 +29,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 2
     IsBoss: 0
-    PlayerPosition: {x: 8, y: 10}
+    PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
     ItemId: 2
     BlockId: 0
@@ -43,11 +43,11 @@ MonoBehaviour:
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 3
     IsBoss: 0
-    PlayerPosition: {x: 16, y: 24}
+    PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
-    ItemId: 7
+    ItemId: 3
     BlockId: 0
-    ElementId: 5
+    ElementId: 3
     AngryBossId: 0
     SadBossId: 0
     HappyBossId: 0
@@ -59,9 +59,9 @@ MonoBehaviour:
     IsBoss: 0
     PlayerPosition: {x: -2, y: -3}
     TutorialId: 0
-    ItemId: 8
+    ItemId: 4
     BlockId: 1
-    ElementId: 6
+    ElementId: 4
     AngryBossId: 0
     SadBossId: 0
     HappyBossId: 0
@@ -69,115 +69,3 @@ MonoBehaviour:
     RotateObId: 3
     NextLevelPos: {x: 18, y: 29}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
-  - LevelId: 5
-    IsBoss: 0
-    PlayerPosition: {x: -2, y: -3}
-    TutorialId: 0
-    ItemId: 9
-    BlockId: 2
-    ElementId: 7
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 2
-    IsBoss: 0
-    PlayerPosition: {x: -1, y: 0}
-    TutorialId: 1
-    ItemId: 1
-    BlockId: 0
-    ElementId: 1
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 2
-    IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
-    ItemId: 2
-    BlockId: 0
-    ElementId: 0
-    AngryBossId: 1
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 3
-    IsBoss: 0
-    PlayerPosition: {x: -16, y: -26}
-    TutorialId: 0
-    ItemId: 3
-    BlockId: 0
-    ElementId: 0
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 2
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 4
-    IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
-    ItemId: 2
-    BlockId: 0
-    ElementId: 0
-    AngryBossId: 0
-    SadBossId: 1
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 5
-    IsBoss: 0
-    PlayerPosition: {x: -5, y: -28}
-    TutorialId: 0
-    ItemId: 3
-    BlockId: 0
-    ElementId: 0
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 6
-    IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
-    ItemId: 2
-    BlockId: 0
-    ElementId: 0
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 1
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}
-  - LevelId: 10
-    IsBoss: 1
-    PlayerPosition: {x: 14, y: 20}
-    TutorialId: 0
-    ItemId: 7
-    BlockId: 0
-    ElementId: 5
-    AngryBossId: 0
-    SadBossId: 0
-    HappyBossId: 0
-    IceStarId: 0
-    RotateObId: 0
-    NextLevelPos: {x: 0, y: 0}
-    PowerSprite: {fileID: 0}

@@ -75,7 +75,7 @@ public abstract class Element : MonoBehaviour
     public virtual bool CoordinateWithElement(ElementType elementType, Element eGO)
     {
         Element resultPrefab = DataManager.Instance.ElementCoordinateData.GetResult(this.ElementType, elementType);
-        Debug.Log(resultPrefab);
+        //Debug.Log(resultPrefab);
         if (resultPrefab == null)
         {
             return false;

@@ -138,6 +138,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
             if (SlideController.Instance.elementId > 0)
             {
+                ElementController.Instance.ReItem();
                 foreach (Element e in ElementController.Instance.ElementList)
                 {
                     if (e.ElementType == ElementType.Ice)
