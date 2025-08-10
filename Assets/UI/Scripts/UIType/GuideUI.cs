@@ -17,12 +17,20 @@ public class GuideUI : UICanvas
     private int curShowGuideId;
     private GameObject guideOb;
 
-    private void Start()
+
+    public void Init()
     {
         maxGuideId = PlayerPrefs.GetInt(Constant.GUIDEID, 0);
         curShowGuideId = 1;
         nextBtn.interactable = false;
         ShowGuide();
+    }
+
+    public void Init(int id)
+    {
+        maxGuideId = PlayerPrefs.GetInt(Constant.GUIDEID, 0);
+        curShowGuideId = id;
+        ShowGuide(id);
     }
 
     private void OnEnable()
@@ -55,10 +63,42 @@ public class GuideUI : UICanvas
 
     private void ShowGuide()
     {
-        if (curShowGuideId == 0)
+        if (maxGuideId == 0)
         {
+            if (guideOb != null)
+            {
+                Destroy(guideOb);
+            }
+            guideIdText.text = "0/0";
             return;
         }
+
+        guideIdText.text = curShowGuideId.ToString() + "/" + maxGuideId.ToString();
+
+        prevBtn.interactable = true;
+        nextBtn.interactable = true;
+
+        if (curShowGuideId == 1)
+        {
+            prevBtn.interactable = false;
+        }
+
+        if (curShowGuideId == maxGuideId)
+        {
+            nextBtn.interactable = false;
+        }
+
+        if (guideOb != null)
+        {
+            Destroy(guideOb);
+        }
+
+        guideOb = Instantiate(Resources.Load<GameObject>("Guide/Guide " + curShowGuideId.ToString()), guideContainer);
+    }
+
+    public void ShowGuide(int id)
+    {
+        curShowGuideId = id;
 
         guideIdText.text = curShowGuideId.ToString() + "/" + maxGuideId.ToString();
 

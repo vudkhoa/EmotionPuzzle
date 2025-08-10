@@ -199,8 +199,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i Happy\nN\xF3 c\xF3 kh\u1EA3 n\u0103ng
-    k\u1EBFt \u0111\xF4i v\u1EDBi Element kh\xE1c"
+  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i <color=#FF69B4>Happy</color>\nN\xF3
+    c\xF3 kh\u1EA3 n\u0103ng k\u1EBFt \u0111\xF4i v\u1EDBi Element kh\xE1c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

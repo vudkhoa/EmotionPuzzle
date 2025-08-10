@@ -27,9 +27,9 @@ public class LoadingManager : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt(Constant.LEVELID, 1);
+        PlayerPrefs.SetInt(Constant.GUIDEID, 0);
         PlayerPrefs.Save();
         LoadScene("Puzzle");
-
     }
 
     public void LoadScene(string sceneName)
