@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelDetails:
   - LevelId: 1
     IsBoss: 0
-    PlayerPosition: {x: 4, y: 0}
+    PlayerPosition: {x: 9, y: -20}
     TutorialId: 1
     ItemId: 1
     BlockId: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 2
     IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
+    PlayerPosition: {x: 8, y: 10}
     TutorialId: 0
     ItemId: 2
     BlockId: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
   - LevelId: 4
     IsBoss: 0
-    PlayerPosition: {x: 10, y: 21}
+    PlayerPosition: {x: 9, y: -20}
     TutorialId: 0
     ItemId: 8
     BlockId: 1

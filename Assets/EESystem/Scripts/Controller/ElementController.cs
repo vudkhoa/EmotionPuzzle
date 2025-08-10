@@ -90,7 +90,7 @@ public class ElementController : SingletonMono<ElementController>
                     }
                 }
 
-                if (checkElementMove ||  e.EmotionType == EmotionType.Neutral || e.EmotionType == EmotionType.Neutral)
+                if (checkElementMove ||  e.EmotionType == EmotionType.Neutral || e.EmotionType == EmotionType.Sad)
                 {
                     continue;
                 }
