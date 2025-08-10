@@ -96,6 +96,7 @@ public class GroundTileController : SingletonMono<GroundTileController>
             if (!SlideController.Instance.groundTilemap.HasTile(p))
             {
                 SlideController.Instance.groundTilemap.SetTile(p, SlideController.Instance.groundNoneSprite);
+                SlideController.Instance.bgSmallTilemap.SetTile(p, SlideController.Instance.groundNoneSprite);
             }
         }
     }
@@ -108,6 +109,7 @@ public class GroundTileController : SingletonMono<GroundTileController>
             {
                 Vector3Int p = new Vector3Int(pos.x, pos.y, 0);
                 SlideController.Instance.groundTilemap.SetTile(p, null);
+                SlideController.Instance.bgSmallTilemap.SetTile(p, null);
             }
         }
     }
