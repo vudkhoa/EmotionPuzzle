@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossList:
   - AngryBossId: 1
-    Health: 10
+    Healths:
+    - 3
+    - 10
     CooldownTimeSkill: 10
-    TotalItems: 10
-    StartPos: {x: 6, y: 6}
-    EndPos: {x: 8, y: 8}
+    TotalItems: 13
+    StartPos: {x: 4, y: 4}
+    EndPos: {x: 6, y: 6}
     BossPrefab: {fileID: 4708117176801200808, guid: 0768f4a80ead86843a2e96866dbad097, type: 3}
-    TotalPhases: 1

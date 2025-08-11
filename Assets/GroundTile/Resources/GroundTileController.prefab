@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5fe1d77b5df31479f7e1274ae41987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burnDownEffect: {fileID: 1675108850642248862, guid: 0570e3315dd21b34094ca0475d3310a7, type: 3}

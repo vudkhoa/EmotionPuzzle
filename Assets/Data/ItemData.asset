@@ -73,3 +73,6 @@ MonoBehaviour:
     - {x: 11, y: 25}
     - {x: 13, y: 25}
     - {x: 10, y: 23}
+  - ItemId: 5
+    ItemTypes: 
+    ItemPos: []

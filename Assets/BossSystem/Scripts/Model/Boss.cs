@@ -11,25 +11,26 @@ public enum BossState
 public abstract class Boss : MonoBehaviour
 {
     [Header(" Info ")]
-    public float Health;
+    public List<float> Healths;
+    public float CurHealth;
+
     public float CooldownTimeSkill;
     public int TotalItems;
     public BossType BossType;
     public BossState BossState;
     public Vector2Int StartPos;
     public Vector2Int EndPos;
-    public int TotalPhases;
 
-    public int Phase;
+    public int CurPhase;
     public bool IsActingSkill;
     private float curTimeSkill;
 
     public List<Vector2Int> ItemList;
 
-    public virtual void Setup(  float health, float cooldownTimeSkill, int totalItems, 
-                                Vector2Int startPos, Vector2Int endPos, int totalPhases)
+    public virtual void Setup(  List<float> healths, float cooldownTimeSkill, int totalItems, 
+                                Vector2Int startPos, Vector2Int endPos)
     {
-        this.Health = health;
+        this.Healths = healths;
         this.CooldownTimeSkill = cooldownTimeSkill;
         this.TotalItems = totalItems;
         this.StartPos = startPos;
@@ -39,7 +40,6 @@ public abstract class Boss : MonoBehaviour
         this.BossState = BossState.Active;
 
         this.ItemList = new List<Vector2Int>();
-        this.TotalPhases = totalPhases;
     }
 
     private void Update()
@@ -55,7 +55,7 @@ public abstract class Boss : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        this.Health -= damage;
+        this.CurHealth -= damage;
         BossController.Instance.SpawnItems();
         this.transform.DOShakePosition(
             duration: 0.2f,
@@ -66,7 +66,7 @@ public abstract class Boss : MonoBehaviour
             fadeOut: true
         );
 
-        if (this.Health <= 0)
+        if (this.CurHealth <= 0)
         {
             this.CheckDie();
         }
@@ -93,7 +93,7 @@ public abstract class Boss : MonoBehaviour
 
     public virtual void NextPhase()
     {
-        this.Health = DataManager.Instance.SadBossData.BossList[SlideController.Instance.BossId - 1].Health;
+        this.CurHealth = this.Healths[CurPhase - 1];
         this.CooldownTimeSkill /= 2f;
     }
 

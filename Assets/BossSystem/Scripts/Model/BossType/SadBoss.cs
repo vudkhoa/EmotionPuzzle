@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SadBoss : Boss
@@ -6,12 +7,13 @@ public class SadBoss : Boss
     [Header(" SkilSprite ")]
     [SerializeField] private GameObject SkillPrefab;
 
-    public override void Setup( float health, float cooldownTimeSkill, int totalItems, 
-                                Vector2Int startPos, Vector2Int endPos, int totalPhases)
+    public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
+                                Vector2Int startPos, Vector2Int endPos)
     {
-        base.Setup(health, cooldownTimeSkill, totalItems, startPos, endPos, totalPhases);
+        base.Setup(healths, cooldownTimeSkill, totalItems, startPos, endPos);
         this.BossType = BossType.SadBoss;
-        this.Phase = 1;
+        this.CurPhase = 1;
+        this.CurHealth = this.Healths[CurPhase - 1];
     }
 
     public override void ActiveSkill()
@@ -22,7 +24,7 @@ public class SadBoss : Boss
         }
 
         this.IsActingSkill = true;
-        if (Phase == 1)
+        if (CurPhase == 1)
         {
             Invoke(nameof(ActiveSkillPhase1), 0.25f);
         }
@@ -70,7 +72,7 @@ public class SadBoss : Boss
 
     public override void CheckDie()
     {
-        if (Phase == 1)
+        if (CurPhase < this.Healths.Count)
         {
             this.NextPhase();
         }
@@ -84,7 +86,7 @@ public class SadBoss : Boss
 
     public override void NextPhase()
     {
-        this.Phase++;
+        this.CurPhase++;
         base.NextPhase();
     }
 }

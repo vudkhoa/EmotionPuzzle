@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 782696938145445428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.44, z: 0}
+  m_LocalPosition: {x: 0.67, y: 0.72, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,13 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc74ab3c7b9be49a64aab75e7a4194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Healths: []
+  CurHealth: 0
   CooldownTimeSkill: 0
   TotalItems: 0
   BossType: 0
+  BossState: 0
   StartPos: {x: 0, y: 0}
   EndPos: {x: 0, y: 0}
+  CurPhase: 0
   IsActingSkill: 0
-  BossState: 0
-  Phase: 0
+  ItemList: []
   SkillPrefab: {fileID: 4268153062832139047, guid: c01942df0302c434c893fafd8e92ffaa, type: 3}

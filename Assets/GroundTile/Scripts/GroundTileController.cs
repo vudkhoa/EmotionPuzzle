@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class GroundTileController : SingletonMono<GroundTileController>
 {
+    [SerializeField] private ParticleSystem burnDownEffect;
+
     public void MoveGroundTile(List<Vector2Int> cellsToSlides, Direction direction)
     {
         List<Vector2Int> cellsToSlide = new List<Vector2Int>(cellsToSlides);
@@ -124,5 +126,12 @@ public class GroundTileController : SingletonMono<GroundTileController>
         }
 
         return true;
+    }
+
+    public void RemoveGroundTile(Vector2Int pos)
+    {
+        Instantiate(burnDownEffect, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0)), Quaternion.identity);
+        SlideController.Instance.groundTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
+        SlideController.Instance.bgSmallTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
     }
 }

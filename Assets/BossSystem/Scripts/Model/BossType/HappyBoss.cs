@@ -13,12 +13,13 @@ public class HappyBoss : Boss
     [SerializeField] private TileBase DarkItem;
     [SerializeField] private TileBase CrimsonItem;
 
-    public override void Setup(float health, float cooldownTimeSkill, int totalItems, 
-                                Vector2Int startPos, Vector2Int endPos, int totalPhases)
+    public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
+                                Vector2Int startPos, Vector2Int endPos)
     {
-        base.Setup(health, cooldownTimeSkill, totalItems, startPos, endPos, totalPhases);
+        base.Setup(healths, cooldownTimeSkill, totalItems, startPos, endPos);
         this.BossType = BossType.HappyBoss;
-        this.Phase = 1;
+        this.CurPhase = 1;
+        this.CurHealth = this.Healths[CurPhase - 1];
 
         this.DarkItems = new List<Vector2Int>();
         this.CrimsonItems = new List<Vector2Int>();
@@ -32,7 +33,7 @@ public class HappyBoss : Boss
         }
 
         this.IsActingSkill = true;
-        if (Phase == 1)
+        if (CurPhase == 1)
         {
             Invoke(nameof(ActiveSkillPhase1), 0.25f);
         }
@@ -64,7 +65,7 @@ public class HappyBoss : Boss
         foreach (Vector2Int posItem in this.ItemList)
         {
             ItemTileController.Instance.RemoveItem(posItem);
-            if (this.Phase == 1)
+            if (this.CurPhase == 1)
             {
                 this.DarkItems.Add(posItem);
             }
@@ -122,7 +123,7 @@ public class HappyBoss : Boss
 
     public void InteractWithItemOther()
     {
-        if (this.Phase == 1)
+        if (this.CurPhase == 1)
         {
             return;
         }
@@ -148,7 +149,7 @@ public class HappyBoss : Boss
 
     public override void CheckDie()
     {
-        if (Phase == 1)
+        if (CurPhase == 1)
         {
             this.NextPhase();
         }
@@ -162,7 +163,7 @@ public class HappyBoss : Boss
 
     public override void NextPhase()
     {
-        this.Phase++;
+        this.CurPhase++;
         base.NextPhase();
     }
 }

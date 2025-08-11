@@ -486,7 +486,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 2;
+        curLevelId = 5;
         SetTutorial();
         this.SetElementGuide();
 
@@ -496,9 +496,11 @@ public class SlideController : SingletonMono<SlideController>
         SetBlockTile();
         SetElement();
         SpawnPlayer();
+
+        // Boss
         this.SetAngryBoss();
         this.SetSadBoss();
-        this.SetHappyBoss();
+        //this.SetHappyBoss();
 
         // Mini-game Mechanics
         this.SetIceStar();
@@ -535,6 +537,7 @@ public class SlideController : SingletonMono<SlideController>
         }
         else
         {
+            Debug.Log("Boss Level: " + curLevelId);
             gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
         }
 
@@ -646,9 +649,8 @@ public class SlideController : SingletonMono<SlideController>
         if (BossId > 0)
         {
             AngryBossDetail AngryBossDetail = DataManager.Instance.AngryBossData.BossList[BossId - 1];
-            BossController.Instance.SpawnBoss(AngryBossDetail.Health, AngryBossDetail.CooldownTimeSkill,
-                AngryBossDetail.TotalItems, AngryBossDetail.StartPos, AngryBossDetail.EndPos, AngryBossDetail.BossPrefab,
-                AngryBossDetail.TotalPhases);
+            BossController.Instance.SpawnBoss(AngryBossDetail.Healths, AngryBossDetail.CooldownTimeSkill,
+                AngryBossDetail.TotalItems, AngryBossDetail.StartPos, AngryBossDetail.EndPos, AngryBossDetail.BossPrefab);
         }
     }
 
@@ -659,24 +661,23 @@ public class SlideController : SingletonMono<SlideController>
         if (BossId > 0)
         {
             SadBossDetail sadBossDetail = DataManager.Instance.SadBossData.BossList[BossId - 1];
-            BossController.Instance.SpawnBoss(sadBossDetail.Health, sadBossDetail.CooldownTimeSkill, 
-                sadBossDetail.TotalItems, sadBossDetail.StartPos, sadBossDetail.EndPos, sadBossDetail.BossPrefab, 
-                sadBossDetail.TotalPhases);
+            BossController.Instance.SpawnBoss(sadBossDetail.Healths, sadBossDetail.CooldownTimeSkill,
+                sadBossDetail.TotalItems, sadBossDetail.StartPos, sadBossDetail.EndPos, sadBossDetail.BossPrefab);
         }
     }
 
-    public void SetHappyBoss()
-    {
-        if (this.BossId > 0) { return; }
-        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
-        if (BossId > 0)
-        {
-            HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
-            BossController.Instance.SpawnBoss(happyBossDetail.Health, happyBossDetail.CooldownTimeSkill, 
-                happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos, 
-                happyBossDetail.BossPrefab, happyBossDetail.TotalPhases);
-        }
-    }
+    //public void SetHappyBoss()
+    //{
+    //    if (this.BossId > 0) { return; }
+    //    this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
+    //    if (BossId > 0)
+    //    {
+    //        HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
+    //        BossController.Instance.SpawnBoss(happyBossDetail.Health, happyBossDetail.CooldownTimeSkill, 
+    //            happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos, 
+    //            happyBossDetail.BossPrefab, happyBossDetail.TotalPhases);
+    //    }
+    //}
 
     // Mini-game Mechanics
     public void SetIceStar()

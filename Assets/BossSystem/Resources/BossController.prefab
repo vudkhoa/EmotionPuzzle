@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3325ade4ecbbbcf43aafd1f870b286fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTile: {fileID: 11400000, guid: 6c43ed0d20c8cdf46a684563fb49ffe7, type: 2}
+  itemTile: {fileID: 11400000, guid: 431e9308f71de214b83ca559de9329e2, type: 2}
   Boss: {fileID: 0}
+  PosGround: []

@@ -12,11 +12,10 @@ public class AngryBossSO : ScriptableObject
 public class AngryBossDetail
 {
     public int AngryBossId;
-    public float Health;
+    public List<float> Healths;
     public float CooldownTimeSkill;
     public int TotalItems;
     public Vector2Int StartPos;
     public Vector2Int EndPos;
     public AngryBoss BossPrefab;
-    public int TotalPhases;
 }

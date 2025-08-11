@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1759327997540183782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36, y: 0.28, z: 0}
+  m_LocalPosition: {x: 0.72, y: 0.49, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,14 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b42861b264802f47a97ff1eb7fa56f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Healths: []
+  CurHealth: 0
   CooldownTimeSkill: 0
   TotalItems: 0
   BossType: 0
   BossState: 0
   StartPos: {x: 0, y: 0}
   EndPos: {x: 0, y: 0}
-  TotalPhases: 0
+  CurPhase: 0
   IsActingSkill: 0
   ItemList: []
-  FlagAttack: {fileID: 11400000, guid: eccba6401b783134aae94982b0c4ec2c, type: 2}
+  FlagAttack: {fileID: 11400000, guid: d9b88adefadc1b248962457f25a09376, type: 2}

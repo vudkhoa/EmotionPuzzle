@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,14 +9,15 @@ public class AngryBoss : Boss
 
     private Vector2Int dangerZonePos;
 
-    public override void Setup(float health, float cooldownTimeSkill, int totalItems, 
-                                Vector2Int startPos, Vector2Int endPos, int totalPhases)
+    public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
+                                Vector2Int startPos, Vector2Int endPos)
     {
-        base.Setup(health, cooldownTimeSkill, totalItems, startPos, endPos, totalPhases);
+        base.Setup(healths, cooldownTimeSkill, totalItems, startPos, endPos);
         this.BossType = BossType.AngryBoss;
 
         this.dangerZonePos = new Vector2Int(-1, -1);
-        this.Phase = 1;
+        this.CurPhase = 1;
+        this.CurHealth = this.Healths[CurPhase - 1];
     }
 
     public override void ActiveSkill()
@@ -38,8 +40,9 @@ public class AngryBoss : Boss
             Vector3Int worldPos = new Vector3Int(this.dangerZonePos.x, this.dangerZonePos.y, 0);
             this.dangerZonePos = new Vector2Int(-1, -1);
             SlideController.Instance.bossTilemap.SetTile(worldPos, null);
-            SlideController.Instance.groundTilemap.SetTile(worldPos, null);
-            SlideController.Instance.bgSmallTilemap.SetTile(worldPos, null);
+            GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
+            //SlideController.Instance.groundTilemap.SetTile(worldPos, null);
+            //SlideController.Instance.bgSmallTilemap.SetTile(worldPos, null);
         }
     }
 
@@ -50,8 +53,21 @@ public class AngryBoss : Boss
 
     public override void CheckDie()
     {
-        this.BossState = BossState.Dead;
-        SlideController.Instance.BossId = 0;
-        Destroy(this.gameObject);
+        if (CurPhase < this.Healths.Count)
+        {
+            this.NextPhase();
+        }
+        else
+        {
+            this.BossState = BossState.Dead;
+            SlideController.Instance.BossId = 0;
+            Destroy(this.gameObject);
+        }
+    }
+
+    public override void NextPhase()
+    {
+        this.CurPhase++;
+        base.NextPhase();
     }
 }

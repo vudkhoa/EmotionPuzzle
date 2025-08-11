@@ -18,22 +18,21 @@ public class BossController : SingletonMono<BossController>
     [SerializeField] private TileBase itemTile;
 
     public Boss Boss;
-
     public List<Vector2Int> PosGround;
+    
 
-    public void SpawnBoss(  float health, float cooldownTimeSkill, int totalItems,
-                            Vector2Int startPos, Vector2Int endPos, Boss bossPrefab, int totalPhases)
+    public void SpawnBoss(  List<float> healths, float cooldownTimeSkill, int totalItems,
+                            Vector2Int startPos, Vector2Int endPos, Boss bossPrefab)
     {
         int bossId = SlideController.Instance.BossId;
         Vector3Int pos = new Vector3Int(startPos.x, startPos.y, 0);
         this.Boss = Instantiate(bossPrefab, pos, Quaternion.identity);
         this.Boss.Setup(
-            health,
+            healths,
             cooldownTimeSkill,
             totalItems,
             startPos,
-            endPos, 
-            totalPhases
+            endPos
             );
         this.GetGroundPosList();
         this.SpawnItems();
@@ -82,7 +81,8 @@ public class BossController : SingletonMono<BossController>
             if (!SlideController.Instance.itemTilemap.HasTile(new Vector3Int(pos.x, pos.y, 0)) &&
                 !SlideController.Instance.bossTilemap.HasTile(new Vector3Int(pos.x, pos.y, 0)) &&
                 SlideController.Instance.bgSmallTilemap.HasTile(new Vector3Int(pos.x, pos.y, 0)) &&
-                SlideController.Instance.GetPlayerPos() != pos
+                SlideController.Instance.GetPlayerPos() != pos &&
+                !SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(pos.x, pos.y, 0))
                 )
             {
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), itemTile);
