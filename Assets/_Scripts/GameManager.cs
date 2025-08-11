@@ -16,10 +16,8 @@ public class GameManager : SingletonMono<GameManager>
         SlideController.Instance.SpawnLevel();
         
         State = GameState.Playing;
+
         UIManager.Instance.OpenUI<GameplayUI>();
-
-
-
     }
 
     private void InitController()
