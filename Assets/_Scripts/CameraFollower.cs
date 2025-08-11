@@ -1,29 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using CustomUtils;
 
 public class CameraFollower : SingletonMono<CameraFollower>
 {
     public Transform target;
+    public Camera mainCamera;
+
     [SerializeField] private float smooth;
 
     private Vector3 distance;
-    private bool canFollow = false;
+    public bool canFollow = true;
+
+    
 
     private void Start()
     {
-        
     }
 
     void Update()
     {
+        if (!canFollow)
+        {
+            return;
+        }
+        
         if (target != null)
         {
             Follow();
         }
-
     }
 
     void Follow()

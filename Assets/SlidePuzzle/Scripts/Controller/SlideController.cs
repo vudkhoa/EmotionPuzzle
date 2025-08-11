@@ -490,6 +490,7 @@ public class SlideController : SingletonMono<SlideController>
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();
+        this.SetCameraFollow();
 
         //Set map
         CreateGridPrefab();
@@ -506,6 +507,15 @@ public class SlideController : SingletonMono<SlideController>
         // Mini-game Mechanics
         this.SetIceStar();
         this.SetRotateObject();
+    }
+
+    private void SetCameraFollow()
+    {
+        if (!DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss)
+        {
+            return;
+        }
+        CameraFollower.Instance.canFollow = false;
     }
 
     private void SetGameplayUI()
