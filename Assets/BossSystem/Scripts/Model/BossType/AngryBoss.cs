@@ -41,8 +41,6 @@ public class AngryBoss : Boss
             this.dangerZonePos = new Vector2Int(-1, -1);
             SlideController.Instance.bossTilemap.SetTile(worldPos, null);
             GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
-            //SlideController.Instance.groundTilemap.SetTile(worldPos, null);
-            //SlideController.Instance.bgSmallTilemap.SetTile(worldPos, null);
         }
     }
 
