@@ -157,7 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  mainCamera: {fileID: 251151167}
   smooth: 10
+  canFollow: 1
 --- !u!114 &251151165
 MonoBehaviour:
   m_ObjectHideFlags: 0

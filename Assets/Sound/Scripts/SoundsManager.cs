@@ -20,7 +20,7 @@ namespace SoundManager
             base.Awake();
             DontDestroyOnLoad(this);
 
-            SetMusicVolume(PlayerPrefs.GetFloat("Music Volume", 1));
+            SetMusicVolume(PlayerPrefs.GetFloat("Music Volume", 0.5f));
             SetSFXVolume(PlayerPrefs.GetFloat("VFX Volume", 1));
         }
 

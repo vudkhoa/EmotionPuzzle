@@ -62,6 +62,7 @@ public class TutorialManager : SingletonMono<TutorialManager>
     IEnumerator ShowGuide(float time, int id)
     {
         yield return new WaitForSeconds(time);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<GuideUI>().Init(id);
     }    
 
