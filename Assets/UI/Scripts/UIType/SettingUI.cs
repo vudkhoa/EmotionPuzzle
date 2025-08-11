@@ -10,7 +10,7 @@ public class SettingUI : UICanvas
 
     private void Awake()
     {
-        SetSlider(0.5f, 1f);
+        SetSlider(PlayerPrefs.GetFloat("Music Volume", 0.5f), PlayerPrefs.GetFloat("VFX Volume", 1));
     }
 
     private void OnEnable()

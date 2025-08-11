@@ -486,7 +486,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 5;
+        curLevelId = 1;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();
@@ -516,7 +516,8 @@ public class SlideController : SingletonMono<SlideController>
             return;
         }
         CameraFollower.Instance.canFollow = false;
-
+        CameraFollower.Instance.mainCamera.transform.position = new Vector3(4.5f, 4.6f, -10f);
+        CameraFollower.Instance.mainCamera.orthographicSize = 6.5f;
     }
 
     private void SetGameplayUI()
