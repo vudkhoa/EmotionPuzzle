@@ -32,17 +32,24 @@ public class AngryBoss : Boss
 
     private void ActingDangerZone()
     {
+        this.IsActingSkill = true;
         if (CheckPlayerInDangerZone())
         {
             Debug.Log("Lose Game");
         }
         else
         {
-            Vector3Int worldPos = new Vector3Int(this.dangerZonePos.x, this.dangerZonePos.y, 0);
-            this.dangerZonePos = new Vector2Int(-1, -1);
-            SlideController.Instance.bossTilemap.SetTile(worldPos, null);
-            GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
+            Invoke(nameof(ActingDanger), 0.25f);
+            Invoke(nameof(ResetIsActingSkill), 0.35f);
         }
+    }
+
+    private void ActingDanger()
+    {
+        Vector3Int worldPos = new Vector3Int(this.dangerZonePos.x, this.dangerZonePos.y, 0);
+        this.dangerZonePos = new Vector2Int(-1, -1);
+        SlideController.Instance.bossTilemap.SetTile(worldPos, null);
+        GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
     }
 
     private bool CheckPlayerInDangerZone()
