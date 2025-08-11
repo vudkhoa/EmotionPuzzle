@@ -148,4 +148,8 @@ public class GameplayUI : UICanvas
             UIManager.Instance.OpenUI<IceGuideUI>();
         }
     }
+
+    public void SetInforElementUI(bool haveInforElement)
+    {
+    }
 }

@@ -486,9 +486,10 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 5;
+        //curLevelId = 1;
         SetTutorial();
         this.SetElementGuide();
+        this.SetGameplayUI();
 
         //Set map
         CreateGridPrefab();
@@ -505,6 +506,13 @@ public class SlideController : SingletonMono<SlideController>
         // Mini-game Mechanics
         this.SetIceStar();
         this.SetRotateObject();
+    }
+
+    private void SetGameplayUI()
+    {
+        bool haveInforElement = !DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
+
+
     }
 
     private void SetElementGuide()
