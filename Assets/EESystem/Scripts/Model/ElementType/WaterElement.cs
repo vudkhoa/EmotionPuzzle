@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SoundManager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -57,6 +58,9 @@ public class WaterElement : Element
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         Vector2Int nearPos2 = new Vector2Int(0, 0);
         int count = -1;
+
+        bool isPower = false;
+
         foreach (Vector2Int offset in this.OffsetList)
         {
             count++;
@@ -67,10 +71,17 @@ public class WaterElement : Element
             !SlideController.Instance.waterTilemap.HasTile(nearPos3) &&
             this.ActivePowerList[count] == true)
             {
+                isPower = true;
+
                 FillWater(nearPos3);
                 SlideController.Instance.SpawnRaft(nearPos2);
                 this.ActivePowerList[count] = false;
             }
+        }
+
+        if (isPower)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.WaterPower);
         }
     }
 

@@ -1,3 +1,4 @@
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,6 +55,9 @@ public class WindElement : Element
         Vector3Int nearPos3 = new Vector3Int(0, 0, 0);
         Vector2Int nearPos2 = new Vector2Int(0, 0);
         int count = -1;
+
+        bool isPower = false;
+
         foreach (Vector2Int offset in this.OffsetList)
         {
             nearPos2 = offset + this.CurrentPos;
@@ -75,6 +79,8 @@ public class WindElement : Element
                     continue;
                 }
 
+                isPower = true;
+
                 this.ActivePowerList[count] = false;
                 if (!SlideController.Instance.bgSmallTilemap.HasTile(newObstaclePos))
                 {
@@ -86,6 +92,11 @@ public class WindElement : Element
                     ObstacleTileController.Instance.MoveObsatcleTile(nearPos3, newObstaclePos);
                 }
             }
+        }
+
+        if (isPower)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.WindPower);
         }
     }
 }

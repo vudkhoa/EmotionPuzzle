@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour
 
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
     {
+        //Sound
+        SoundsManager.Instance.PlaySFX(SoundType.Slide);
+
         currentPos = newGridPos;
         transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
@@ -38,6 +42,9 @@ public class Player : MonoBehaviour
 
     public void Teleport(Vector2Int newGridPos, Vector3 worldPos)
     {
+        //Sound
+        SoundsManager.Instance.PlaySFX(SoundType.Teleport);
+
         // 1. Scale nhỏ dần để ẩn 
         this.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack).OnComplete(() =>
         {
@@ -63,6 +70,9 @@ public class Player : MonoBehaviour
 
     public void Shake()
     {
+        //Sound
+        SoundsManager.Instance.PlaySFX(SoundType.Error);
+
         this.transform.localRotation = Quaternion.identity;
 
         this.transform.DOShakeRotation(

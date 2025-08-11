@@ -1,3 +1,4 @@
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,9 @@ public class FireElement : Element
 
         nearPos = currentPos + new Vector2Int(1, 0);
         int count = -1;
+
+        bool isPower = false;
+
         foreach (Vector2Int offset in this.OffsetList)
         {
             count++;
@@ -63,9 +67,16 @@ public class FireElement : Element
             if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(nearPos.x, nearPos.y, 0)) &&
                 this.ActivePowerList[count] == true)
             {
+                isPower = true;
+
                 this.ActivePowerList[count] = false;
                 ObstacleTileController.Instance.RemoveObstacleTile(nearPos);
             }
+        }
+
+        if (isPower)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.FirePower);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CustomUtils;
+using SoundManager;
 
 public class RotateObjectController : SingletonMono<RotateObjectController>
 {
@@ -27,6 +28,9 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
         {
             if (obj.rotatePos == playerPos)
             {
+                //Sounds
+                SoundsManager.Instance.PlaySFX(SoundType.Rotate);
+
                 ItemTileController.Instance.RotateItemTile(obj.rotatePos, obj.containPosList);
                 ObstacleTileController.Instance.RotateObstacleTile(obj.rotatePos, obj.containPosList);
                 ElementController.Instance.RotateElement(obj.rotatePos, obj.containPosList);
