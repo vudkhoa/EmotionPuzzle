@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SoundManager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -62,6 +63,8 @@ public class IceElement : Element
         List<Vector2Int> scopePosList = new List<Vector2Int>(this.OffsetList);
         int count = -1;
 
+        bool isPower = false;
+
         for (int i = 0; i < scopePosList.Count; ++i)
         {
             count++;
@@ -70,11 +73,18 @@ public class IceElement : Element
             if (ItemTileController.Instance.ItemPosList.Contains(scopePosList[i]) &&
                 SlideController.Instance.itemTilemap.HasTile(nearPos3))
             {
+                isPower = true;
+
                 TileBase itemTileBase = SlideController.Instance.itemTilemap.GetTile(nearPos3);
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
                 SlideController.Instance.powerTilemap.SetTile(nearPos3, IceTile);
             }
+        }
+
+        if (isPower)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.IcePower);
         }
     }
 }

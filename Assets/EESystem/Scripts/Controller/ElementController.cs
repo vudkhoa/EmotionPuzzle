@@ -1,5 +1,6 @@
 ﻿using CustomUtils;
 using DG.Tweening;
+using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -215,15 +216,24 @@ public class ElementController : SingletonMono<ElementController>
 
     public void SadFunction()
     {
+        bool isAbsorb = false;
+
         foreach (Element e in this.ElementList)
         {
             int index = ItemTileController.Instance.ItemPosList.IndexOf(e.CurrentPos);
             if (index != -1)
             {
+                isAbsorb = true;
+
                 Vector2Int posItem = ItemTileController.Instance.ItemPosList[index];
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
                 ItemTileController.Instance.RemoveItem(posItem);
             }
+        }
+
+        if (isAbsorb)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.Sad);
         }
     }
 

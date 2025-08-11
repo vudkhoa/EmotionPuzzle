@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using SoundManager;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +68,10 @@ public abstract class Element : MonoBehaviour
         Vector3Int gridPos = new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0);
         Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
         ItemTileController.Instance.InteractWithElement(itemPos, eWorldPos);
+
+        //Sound
+        SoundsManager.Instance.PlaySFX(SoundType.EmotionChange);
+
         this.SetEmotionType(newEmotionType);
 
         return true;
@@ -80,6 +85,8 @@ public abstract class Element : MonoBehaviour
         {
             return false;
         }
+
+        SoundsManager.Instance.PlaySFX(SoundType.Coordinate);
 
         Vector3Int gridPos = new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0);
         Element eOb = Instantiate(resultPrefab, SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
