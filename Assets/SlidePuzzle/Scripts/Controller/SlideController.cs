@@ -485,8 +485,8 @@ public class SlideController : SingletonMono<SlideController>
 
     public void SpawnLevel()
     {
-        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 1;
+        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 5;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();
@@ -510,9 +510,8 @@ public class SlideController : SingletonMono<SlideController>
 
     private void SetGameplayUI()
     {
-        bool haveInforElement = !DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
-
-
+        bool haveElementPower = !DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
+        UIManager.Instance.GetUI<GameplayUI>().SetPowerAndBossUI(haveElementPower);
     }
 
     private void SetElementGuide()

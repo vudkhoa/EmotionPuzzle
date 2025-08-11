@@ -26,9 +26,9 @@ Transform:
   m_GameObject: {fileID: 1759327997540183782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 0.49, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.72, y: 0.95, z: 0}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.099999994}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5584202977605390255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,7 +144,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &382244770729404739
 MonoBehaviour:
@@ -236,6 +236,7 @@ MonoBehaviour:
   CurHealth: 0
   CooldownTimeSkill: 0
   TotalItems: 0
+  MaxItem: 0
   BossType: 0
   BossState: 0
   StartPos: {x: 0, y: 0}
@@ -243,6 +244,7 @@ MonoBehaviour:
   CurPhase: 0
   IsActingSkill: 0
   ItemList: []
+  EnergyBar: {fileID: 8134247955972838615}
   FlagAttack: {fileID: 11400000, guid: d9b88adefadc1b248962457f25a09376, type: 2}
 --- !u!1 &8134247955238112558
 GameObject:
@@ -362,7 +364,7 @@ RectTransform:
   m_GameObject: {fileID: 8134247955972838609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8134247957113927849}
@@ -371,7 +373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.68, y: -0.79}
+  m_AnchoredPosition: {x: 0.713, y: -0.303}
   m_SizeDelta: {x: 566.7617, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8134247955972838613

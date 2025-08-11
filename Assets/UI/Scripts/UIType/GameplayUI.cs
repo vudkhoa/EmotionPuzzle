@@ -20,6 +20,18 @@ public class GameplayUI : UICanvas
     [SerializeField] private Button ice;
     [SerializeField] private Button wind;
 
+    [Header(" ElementPower ")]
+    [SerializeField] private GameObject ElementPower;
+
+    [Header(" Boss ")]
+    [SerializeField] private BossUI BossUI; 
+    [SerializeField] private TextMeshProUGUI BossName;
+    [SerializeField] private Slider BossHealthBar;
+    [SerializeField] private TextMeshProUGUI BossHealthText;
+    [SerializeField] private Slider PlayerHealthBar;
+    [SerializeField] private TextMeshProUGUI PlayerHealthText;
+
+
     private void OnEnable()
     {
         pauseBtn.onClick.AddListener(OnClickPauseBtn);
@@ -149,7 +161,31 @@ public class GameplayUI : UICanvas
         }
     }
 
-    public void SetInforElementUI(bool haveInforElement)
+    public void SetPowerAndBossUI(bool haveElementPower)
     {
+        this.ElementPower.SetActive(haveElementPower);
+        this.BossUI.gameObject.SetActive(!haveElementPower);
+    }
+
+    public void SetupBoss(string bossName, float bossHealth, int playerHealth)
+    {
+        this.BossName.text = bossName;
+        this.BossHealthBar.value = 1f;
+        this.PlayerHealthBar.value = 1f;
+        this.BossHealthText.text = bossHealth.ToString() + "/" + bossHealth.ToString();
+        this.PlayerHealthText.text = playerHealth.ToString() + "/" + playerHealth.ToString();
+    }
+
+    public void UpdateBossHealth(float curHealth, float maxHealth)
+    {
+        this.BossHealthBar.value = curHealth / maxHealth;
+        this.BossHealthText.text = curHealth.ToString() + "/" + maxHealth.ToString();
+    }
+
+    public void UpdatePlayerHealth(float curHealth, float maxHealth)
+    {
+
+        this.PlayerHealthBar.value = curHealth / maxHealth;
+        this.PlayerHealthText.text = curHealth.ToString() + "/" + maxHealth.ToString();
     }
 }

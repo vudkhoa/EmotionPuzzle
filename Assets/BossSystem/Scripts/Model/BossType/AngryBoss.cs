@@ -18,6 +18,7 @@ public class AngryBoss : Boss
         this.dangerZonePos = new Vector2Int(-1, -1);
         this.CurPhase = 1;
         this.CurHealth = this.Healths[CurPhase - 1];
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Angry Boss", this.CurHealth, this.TotalItems);
     }
 
     public override void ActiveSkill()

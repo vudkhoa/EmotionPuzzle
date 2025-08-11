@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BossState
 {
@@ -16,6 +17,8 @@ public abstract class Boss : MonoBehaviour
 
     public float CooldownTimeSkill;
     public int TotalItems;
+    public int MaxItem;
+
     public BossType BossType;
     public BossState BossState;
     public Vector2Int StartPos;
@@ -27,12 +30,18 @@ public abstract class Boss : MonoBehaviour
 
     public List<Vector2Int> ItemList;
 
+    [Header(" UI ")]
+    [SerializeField] private Slider EnergyBar;
+
     public virtual void Setup(  List<float> healths, float cooldownTimeSkill, int totalItems, 
                                 Vector2Int startPos, Vector2Int endPos)
     {
         this.Healths = healths;
         this.CooldownTimeSkill = cooldownTimeSkill;
+
         this.TotalItems = totalItems;
+        this.MaxItem = totalItems;
+
         this.StartPos = startPos;
         this.EndPos = endPos;
 
@@ -40,6 +49,7 @@ public abstract class Boss : MonoBehaviour
         this.BossState = BossState.Active;
 
         this.ItemList = new List<Vector2Int>();
+        this.EnergyBar.value = 0f;
     }
 
     private void Update()
@@ -56,6 +66,7 @@ public abstract class Boss : MonoBehaviour
     public void TakeDamage(int damage)
     {
         this.CurHealth -= damage;
+        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
         BossController.Instance.SpawnItems();
         this.transform.DOShakePosition(
             duration: 0.2f,
@@ -77,6 +88,7 @@ public abstract class Boss : MonoBehaviour
     public void CaculateCooldownTimeSkill()
     {
         this.curTimeSkill += Time.deltaTime;
+        this.EnergyBar.value = this.curTimeSkill / this.CooldownTimeSkill;
         if (this.curTimeSkill >= this.CooldownTimeSkill)
         {
             this.curTimeSkill = 0f;
@@ -94,11 +106,13 @@ public abstract class Boss : MonoBehaviour
     public virtual void NextPhase()
     {
         this.CurHealth = this.Healths[CurPhase - 1];
+        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
         this.CooldownTimeSkill /= 2f;
     }
 
     public void DecreaseItems(int count)
     {
         this.TotalItems -= count;
+        UIManager.Instance.GetUI<GameplayUI>().UpdatePlayerHealth(this.TotalItems, this.MaxItem);
     }
 }

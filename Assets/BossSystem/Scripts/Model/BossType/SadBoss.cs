@@ -14,6 +14,7 @@ public class SadBoss : Boss
         this.BossType = BossType.SadBoss;
         this.CurPhase = 1;
         this.CurHealth = this.Healths[CurPhase - 1];
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Sad Boss", this.CurHealth, this.TotalItems);
     }
 
     public override void ActiveSkill()
