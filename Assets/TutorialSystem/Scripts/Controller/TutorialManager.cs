@@ -45,11 +45,16 @@ public class TutorialManager : SingletonMono<TutorialManager>
         {
             if (popup.posInit == pos)
             {
-                PlayerPrefs.SetInt(Constant.GUIDEID, popup.guideId);
-                //UIManager.Instance.OpenUI<GuideUI>().Init(popup.guideId);
-                StartCoroutine(ShowGuide(popup.timeWait, popup.guideId));
+                int id = popup.guideId;
+                int curGuideId = PlayerPrefs.GetInt(Constant.GUIDEID, 0);
+                if (curGuideId < id)
+                {
+                    PlayerPrefs.SetInt(Constant.GUIDEID, popup.guideId);
+                    //UIManager.Instance.OpenUI<GuideUI>().Init(popup.guideId);
+                    StartCoroutine(ShowGuide(popup.timeWait, popup.guideId));
 
-                return;
+                    return;
+                }
             }
         }
     }
