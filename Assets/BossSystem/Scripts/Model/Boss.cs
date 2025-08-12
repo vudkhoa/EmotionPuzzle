@@ -58,6 +58,12 @@ public abstract class Boss : MonoBehaviour
         {
             return;
         }
+
+        if (GameManager.Instance.State != GameState.Playing)
+        {
+            return;
+        }
+
         this.CaculateCooldownTimeSkill();
     }
 

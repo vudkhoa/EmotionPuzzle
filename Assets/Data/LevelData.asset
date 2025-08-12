@@ -46,7 +46,7 @@ MonoBehaviour:
   - LevelId: 3
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
+    TutorialId: 4
     ItemId: 5
     BlockId: 0
     ElementId: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   - LevelId: 5
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
+    TutorialId: 5
     ItemId: 5
     BlockId: 0
     ElementId: 0
