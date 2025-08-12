@@ -132,11 +132,10 @@ public class DialogueManager : SingletonMono<DialogueManager>
 
     public void NextLevel()
     {
-        int currentLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        int nextLevel = currentLevel + 1;
-        if (nextLevel > 10)
+        int nextLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        if (nextLevel > 6)
         {
-            LoadingManager.instance.LoadScene("StartScene");
+            LoadingManager.instance.LoadScene("Start");
             return;
         }
         PlayerPrefs.SetInt(Constant.LEVELID, nextLevel);

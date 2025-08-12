@@ -16,14 +16,14 @@ public class SettingUI : UICanvas
     private void OnEnable()
     {
         musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
-        musicSlider.onValueChanged.AddListener(ChangeSFXVolume);
+        sfxSlider.onValueChanged.AddListener(ChangeSFXVolume);
         closeBtn.onClick.AddListener(OnCloseBtnClick);
     }
 
     private void OnDisable()
     {
         musicSlider.onValueChanged.RemoveListener(ChangeMusicVolume);
-        musicSlider.onValueChanged.RemoveListener(ChangeSFXVolume);
+        sfxSlider.onValueChanged.RemoveListener(ChangeSFXVolume);
         closeBtn.onClick.RemoveListener(OnCloseBtnClick);
     }
 

@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class BGStart : MonoBehaviour
 {
-    private void Start()
-    {
-        PlayerPrefs.SetInt(Constant.LEVELID, 1);
-        PlayerPrefs.SetInt(Constant.GUIDEID, 0);
-        PlayerPrefs.Save();
-    }
-
     public void OnFinishIntro()
     {
+        PlayerPrefs.SetInt(Constant.LEVELID, 1);
         LoadingManager.instance.LoadScene("Platform 1");
     }
 }
