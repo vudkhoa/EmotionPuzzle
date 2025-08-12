@@ -14,5 +14,10 @@ namespace SoundManager
         Rotate = 9,
         Sad = 10,
         Coordinate = 11,
+        AttackBoss = 12,
+        BossDestroyGround = 13,
+        BossDestroyItem = 14,
+        WinBoss = 15,
+        LoseBoss = 16,
     }
 }
