@@ -84,6 +84,7 @@ public class SadBoss : Boss
             this.BossState = BossState.Dead;
             SlideController.Instance.BossId = 0;
             Destroy(this.gameObject);
+            SlideController.Instance.LoadNextLevelAfterBoss();
         }
     }
 

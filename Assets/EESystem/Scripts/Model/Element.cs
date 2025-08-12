@@ -13,6 +13,7 @@ public abstract class Element : MonoBehaviour
     public Sprite happySprtie;
     public Sprite sadSprtie;
     public SpriteRenderer spr;
+    public bool isIceMove = false;
 
     [Header(" Info ")]
     public ElementType ElementType;
@@ -155,7 +156,7 @@ public abstract class Element : MonoBehaviour
         }
     }
 
-    public abstract void Power();
+    public abstract void Power(); 
 
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
     {
@@ -179,6 +180,15 @@ public abstract class Element : MonoBehaviour
             CurrentPos = newGridPos;
             transform.DOMove(worldPos, 0.25f);
         }
+        if (this.ElementType == ElementType.Ice && this.EmotionType == EmotionType.Angry)
+        {
+            isIceMove = true;
+        }
+        else
+        {
+            isIceMove = false;
+        }
+
         Power();
         SetPowerRing(oldGridPos);
     }

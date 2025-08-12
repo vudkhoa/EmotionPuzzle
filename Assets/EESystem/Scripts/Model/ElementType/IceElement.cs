@@ -1,5 +1,4 @@
 ﻿using SoundManager;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -82,9 +81,10 @@ public class IceElement : Element
             }
         }
 
-        if (isPower)
+        if (isPower && isIceMove)
         {
             SoundsManager.Instance.PlaySFX(SoundType.IcePower);
+            isIceMove = false;
         }
     }
 }

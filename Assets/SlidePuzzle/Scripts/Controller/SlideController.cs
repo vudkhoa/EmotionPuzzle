@@ -477,16 +477,16 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
-            //Debug.Log("Load Next Level");
+            Debug.Log("Load Next Level");
 
             bool returnPl = false;
 
-            if (curLevelId == 1 || curLevelId == 6 || isBoss)
+            if (curLevelId == 1 || curLevelId == 6)
             {
                 returnPl = true;
             }
 
-            PlayerPrefs.SetInt(Constant.LEVELID, curLevelId+1);
+            PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 1);
             PlayerPrefs.Save();
             if (returnPl)
             {
@@ -496,13 +496,22 @@ public class SlideController : SingletonMono<SlideController>
             {
                 LoadingManager.instance.LoadScene("Puzzle");
             }
+
         }
+    }
+
+    public void LoadNextLevelAfterBoss()
+    {
+        PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 1);
+        PlayerPrefs.Save();
+
+        LoadingManager.instance.LoadScene("Platform " + curLevelId + " After");
     }
 
     public void SpawnLevel()
     {
-        curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 3;
+        //curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        curLevelId = 6;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();

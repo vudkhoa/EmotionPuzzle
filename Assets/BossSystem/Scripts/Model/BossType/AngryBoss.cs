@@ -1,4 +1,4 @@
-using SoundManager;
+﻿using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -76,7 +76,8 @@ public class AngryBoss : Boss
         {
             this.BossState = BossState.Dead;
             SlideController.Instance.BossId = 0;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); // Chưa viết hiệu ứng boss chết
+            SlideController.Instance.LoadNextLevelAfterBoss();
         }
     }
 
