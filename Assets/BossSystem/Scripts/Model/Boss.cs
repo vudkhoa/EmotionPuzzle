@@ -1,4 +1,5 @@
 using DG.Tweening;
+using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,6 +75,7 @@ public abstract class Boss : MonoBehaviour
         this.CurHealth -= damage;
         UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
         BossController.Instance.SpawnItems();
+        SoundsManager.Instance.PlaySFX(SoundType.AttackBoss);
         this.transform.DOShakePosition(
             duration: 0.2f,
             strength: new Vector3(0.2f, 0.2f, 0),
@@ -120,5 +122,10 @@ public abstract class Boss : MonoBehaviour
     {
         this.TotalItems -= count;
         UIManager.Instance.GetUI<GameplayUI>().UpdatePlayerHealth(this.TotalItems, this.MaxItem);
+
+        if (this.TotalItems < this.CurHealth)
+        {
+            SoundsManager.Instance.PlaySFX(SoundType.LoseBoss);
+        }
     }
 }

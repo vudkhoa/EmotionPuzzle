@@ -1,3 +1,4 @@
+using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -35,7 +36,8 @@ public class AngryBoss : Boss
         this.IsActingSkill = true;
         if (CheckPlayerInDangerZone())
         {
-            Debug.Log("Lose Game");
+            //Debug.Log("Lose Game");
+            SoundsManager.Instance.PlaySFX(SoundType.LoseBoss);
         }
         else
         {
@@ -49,6 +51,7 @@ public class AngryBoss : Boss
         Vector3Int worldPos = new Vector3Int(this.dangerZonePos.x, this.dangerZonePos.y, 0);
         this.dangerZonePos = new Vector2Int(-1, -1);
         SlideController.Instance.bossTilemap.SetTile(worldPos, null);
+        SoundsManager.Instance.PlaySFX(SoundType.BossDestroyGround);
         GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
     }
 

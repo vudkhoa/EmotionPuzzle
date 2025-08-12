@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,6 +69,7 @@ public class SadBoss : Boss
             
             this.TotalItems--;
         }
+        SoundsManager.Instance.PlaySFX(SoundType.BossDestroyItem);
         BossController.Instance.SpawnItems();
     }
 
