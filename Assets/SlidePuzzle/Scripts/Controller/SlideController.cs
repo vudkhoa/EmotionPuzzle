@@ -481,7 +481,7 @@ public class SlideController : SingletonMono<SlideController>
 
             bool returnPl = false;
 
-            if (curLevelId == 1 || isBoss)
+            if (curLevelId == 1 || curLevelId == 6 || isBoss)
             {
                 returnPl = true;
             }
