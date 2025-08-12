@@ -76,11 +76,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Door"))
-        {
-            LoadingManager.instance.LoadScene("Level2");
-        }
-        else if (collision.CompareTag("RescueTalk"))
+        if (collision.CompareTag("RescueTalk"))
         {
             canControll = false;
             this.rb.velocity = Vector2.zero;

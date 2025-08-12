@@ -11,7 +11,6 @@ public class DialogueManager : SingletonMono<DialogueManager>
     [SerializeField] private DialogueSO DialogueData;
     [SerializeField] private int levelId;
     [SerializeField] private bool isAfter;
-    [SerializeField] private RescueCreature rescueCreature;
 
     [Header(" Dialogue Panel ")]
     public TextMeshProUGUI speakerNameText;
@@ -34,7 +33,6 @@ public class DialogueManager : SingletonMono<DialogueManager>
         isEnded = false;
         if (isAfter)
         {
-            rescueCreature.PlayRescueEffect();
             Invoke(nameof(StartDialogueThisState), 2f);
         }
     }
@@ -134,17 +132,15 @@ public class DialogueManager : SingletonMono<DialogueManager>
 
     public void NextLevel()
     {
-        int currentLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        int nextLevel = currentLevel + 1;
-        if (nextLevel > 3)
+        int nextLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        if (nextLevel > 6)
         {
-            LoadingManager.instance.LoadScene("StartScene");
+            LoadingManager.instance.LoadScene("Start");
             return;
         }
         PlayerPrefs.SetInt(Constant.LEVELID, nextLevel);
         PlayerPrefs.Save();
-        LoadingManager.instance.LoadScene("Level " + nextLevel);
-        //LoadingManager.instance.LoadScene("Level 1 After");
+        LoadingManager.instance.LoadScene("Platform " + nextLevel);
     }
 
     // Gọi hàm này khi người chơi bấm nút Next

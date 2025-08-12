@@ -1,4 +1,5 @@
 using CustomUtils;
+using SoundManager;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,10 +27,10 @@ public class LoadingManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt(Constant.LEVELID, 1);
-        PlayerPrefs.SetInt(Constant.GUIDEID, 0);
-        PlayerPrefs.Save();
-        LoadScene("Puzzle");
+        //PlayerPrefs.SetInt(Constant.LEVELID, 1);
+        //PlayerPrefs.SetInt(Constant.GUIDEID, 0);
+        //PlayerPrefs.Save();
+        //LoadScene("Puzzle");
     }
 
     public void LoadScene(string sceneName)
@@ -40,6 +41,7 @@ public class LoadingManager : MonoBehaviour
 
     IEnumerator LoadSceneCoroutine(string sceneName)
     {
+        SoundsManager.Instance.StopMusic();
         effect.SetActive(true);
         isLoadingScene = true;
         animator.SetTrigger("End");

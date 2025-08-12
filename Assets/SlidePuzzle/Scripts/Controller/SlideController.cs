@@ -31,6 +31,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap powerTilemap;
 
     [Header(" Id Tile ")]
+    public bool isBoss;
     public int itemId;
     public int blockId;
     public int elementId;
@@ -476,17 +477,32 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
-            Debug.Log("Load Next Level");
+            //Debug.Log("Load Next Level");
+
+            bool returnPl = false;
+
+            if (curLevelId == 1 || curLevelId == 6 || isBoss)
+            {
+                returnPl = true;
+            }
+
             PlayerPrefs.SetInt(Constant.LEVELID, curLevelId+1);
             PlayerPrefs.Save();
-            LoadingManager.instance.LoadScene("Puzzle");
+            if (returnPl)
+            {
+                LoadingManager.instance.LoadScene("Platform " + curLevelId + " After");
+            }
+            else
+            {
+                LoadingManager.instance.LoadScene("Puzzle");
+            }
         }
     }
 
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 5;
+        //curLevelId = 3;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();
@@ -549,7 +565,7 @@ public class SlideController : SingletonMono<SlideController>
     private void CreateGridPrefab()
     {
         GameObject gridGO = new GameObject();
-        bool isBoss = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
+        isBoss = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
         if (!isBoss)
         {
             gridGO = Instantiate(Resources.Load<GameObject>("Level " + curLevelId.ToString()));

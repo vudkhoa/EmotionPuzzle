@@ -61,10 +61,10 @@ public class PlayerNormalState : PlayerBaseState
 
         if (player.isGround()) player.animator.SetBool("Fall", false);
 
-        if (player.input.isJump && player.isGround())
-        {
-            player.animator.SetTrigger("StartJump");
-            player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
-        }
+        //if (player.input.isJump && player.isGround())
+        //{
+        //    player.animator.SetTrigger("StartJump");
+        //    player.rb.velocity = new Vector2(player.rb.velocity.x, player.jumpForce);
+        //}
     }
 }
