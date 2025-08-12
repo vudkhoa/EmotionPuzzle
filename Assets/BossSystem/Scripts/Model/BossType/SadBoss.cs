@@ -67,7 +67,7 @@ public class SadBoss : Boss
 
             ItemTileController.Instance.RemoveItem(posItem);
             
-            this.TotalItems--;
+            this.DecreaseItems(1);
         }
         SoundsManager.Instance.PlaySFX(SoundType.BossDestroyItem);
         BossController.Instance.SpawnItems();

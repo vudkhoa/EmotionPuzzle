@@ -486,7 +486,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 3;
+        curLevelId = 5;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();
@@ -718,6 +718,11 @@ public class SlideController : SingletonMono<SlideController>
     public Vector2Int GetPlayerPos()
     {
         return _player.GetCurrentPos();
+    }
+
+    public void PlayerDie()
+    {
+        _player.gameObject.SetActive(false);
     }
 
     public void PlayerTakeDamage()

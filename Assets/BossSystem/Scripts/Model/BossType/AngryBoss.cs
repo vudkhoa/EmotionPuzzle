@@ -34,10 +34,16 @@ public class AngryBoss : Boss
     private void ActingDangerZone()
     {
         this.IsActingSkill = true;
+
         if (CheckPlayerInDangerZone())
         {
-            //Debug.Log("Lose Game");
+            ActingDanger();
+            SlideController.Instance.PlayerDie();
             SoundsManager.Instance.PlaySFX(SoundType.LoseBoss);
+            GameManager.Instance.State = GameState.GameOver;
+            this.BossState = BossState.Dead;
+            Invoke(nameof(LoseGameBoss), 0.3f);
+
         }
         else
         {

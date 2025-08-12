@@ -120,12 +120,26 @@ public abstract class Boss : MonoBehaviour
 
     public void DecreaseItems(int count)
     {
+        if (this.BossState == BossState.Dead)
+        {
+            return;
+        }
+
         this.TotalItems -= count;
         UIManager.Instance.GetUI<GameplayUI>().UpdatePlayerHealth(this.TotalItems, this.MaxItem);
 
         if (this.TotalItems < this.CurHealth)
         {
+            SlideController.Instance.PlayerDie();
             SoundsManager.Instance.PlaySFX(SoundType.LoseBoss);
+            GameManager.Instance.State = GameState.GameOver;
+            this.BossState = BossState.Dead;
+            Invoke(nameof(LoseGameBoss), 0.3f);
         }
+    }
+
+    public void LoseGameBoss()
+    {
+        UIManager.Instance.OpenUI<LoseUI>();
     }
 }

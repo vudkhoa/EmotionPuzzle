@@ -107,8 +107,8 @@ public class BossController : SingletonMono<BossController>
             if (CheckExistsBoss(itemPos))
             {
                 ItemTileController.Instance.RemoveItem(itemPos);
-                this.Boss.DecreaseItems(1);
                 this.Boss.TakeDamage(1);
+                this.Boss.DecreaseItems(1);
             }
         }
     }
