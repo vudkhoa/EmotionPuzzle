@@ -73,3 +73,28 @@ MonoBehaviour:
     mixer: {fileID: 24300002, guid: 9513d092ac7240349916e7b6a746320e, type: 2}
     sounds:
     - {fileID: 8300000, guid: f1a3ab51d88d6154dad73b2cd1ace202, type: 3}
+  - name: AttackBoss
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 46826fa8e00e9f745aca556cff5f7e13, type: 3}
+  - name: BossDestroyGround
+    volume: 1
+    mixer: {fileID: 24300002, guid: 9513d092ac7240349916e7b6a746320e, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
+  - name: BossDestroyItem
+    volume: 1
+    mixer: {fileID: 24300002, guid: 9513d092ac7240349916e7b6a746320e, type: 2}
+    sounds:
+    - {fileID: 8300000, guid: f1a3ab51d88d6154dad73b2cd1ace202, type: 3}
+  - name: WinBoss
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 594f4be631ae2fe47a847a43154e7b0a, type: 3}
+  - name: LoseBoss
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 791a5feedc226694bbbf57d5e44fcc4d, type: 3}
