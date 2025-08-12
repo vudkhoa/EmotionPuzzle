@@ -19,5 +19,7 @@ namespace SoundManager
         BossDestroyItem = 14,
         WinBoss = 15,
         LoseBoss = 16,
+        PlatformMusic = 17,
+        BossMusic = 18,
     }
 }

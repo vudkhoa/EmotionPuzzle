@@ -98,3 +98,13 @@ MonoBehaviour:
     mixer: {fileID: 0}
     sounds:
     - {fileID: 8300000, guid: 791a5feedc226694bbbf57d5e44fcc4d, type: 3}
+  - name: PlatformMusic
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: c6c5cd0ee2d7db447be3ac0e13978c23, type: 3}
+  - name: BossMusic
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 826bb8ea4939f9340ba3d55e1120eb1f, type: 3}
