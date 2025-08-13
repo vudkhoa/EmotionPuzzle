@@ -20,5 +20,6 @@ public class WindGuideUI : UICanvas
     public void OnClickCloseBtn()
     {
         UIManager.Instance.CloseUI<WindGuideUI>();
+        GameManager.Instance.State = GameState.Playing;
     }
 }

@@ -20,5 +20,6 @@ public class FireGuideUI : UICanvas
     public void OnClickCloseBtn()
     {
         UIManager.Instance.CloseUI<FireGuideUI>();
+        GameManager.Instance.State = GameState.Playing;
     }
 }

@@ -20,5 +20,6 @@ public class IceGuideUI : UICanvas
     public void OnClickCloseBtn()
     {
         UIManager.Instance.CloseUI<IceGuideUI>();
+        GameManager.Instance.State = GameState.Playing;
     }
 }

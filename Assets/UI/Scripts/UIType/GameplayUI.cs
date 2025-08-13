@@ -146,6 +146,11 @@ public class GameplayUI : UICanvas
     {
 
         yield return new WaitForSeconds(time);
+        if (haveFire || haveWater || haveWind || haveIce)
+        {
+            GameManager.Instance.State = GameState.Pause;
+        }
+
 
         if (haveFire)
         {

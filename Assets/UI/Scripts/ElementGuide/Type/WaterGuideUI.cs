@@ -20,5 +20,6 @@ public class WaterGuideUI : UICanvas
     public void OnClickCloseBtn()
     {
         UIManager.Instance.CloseUI<WaterGuideUI>();
+        GameManager.Instance.State = GameState.Playing;
     }
 }
