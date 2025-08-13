@@ -1,3 +1,4 @@
+using SoundManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class LoseUI : UICanvas
 
     private void OnClickReplayBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("Puzzle");
     }
 }

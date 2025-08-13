@@ -4,6 +4,7 @@ using UnityEngine;
 using CustomUtils;
 using TMPro;
 using UnityEngine.UI;
+using SoundManager;
 
 public class DialogueManager : SingletonMono<DialogueManager>
 {
@@ -30,6 +31,8 @@ public class DialogueManager : SingletonMono<DialogueManager>
 
     private void Start()
     {
+        SoundsManager.Instance.PlayMusic(SoundType.PlatformMusic);
+
         isEnded = false;
         if (isAfter)
         {
@@ -89,6 +92,8 @@ public class DialogueManager : SingletonMono<DialogueManager>
             EndDialogue();
             return;
         }
+
+        SoundsManager.Instance.PlaySFX(SoundType.NextDialogue);
 
         DialogueLine line = dialogueLines.Dequeue();
         speakerNameText.text = line.speakerName;

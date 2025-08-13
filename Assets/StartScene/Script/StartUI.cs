@@ -1,3 +1,4 @@
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,13 @@ public class StartUI : MonoBehaviour
 
     public void StartGame()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("BG Start");
     }
 
     public void QuitGame()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         Application.Quit();
     }
 }

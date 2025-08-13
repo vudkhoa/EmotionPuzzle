@@ -1,5 +1,6 @@
 ﻿using CustomUtils;
 using DG.Tweening;
+using SoundManager;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -577,10 +578,12 @@ public class SlideController : SingletonMono<SlideController>
         isBoss = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].IsBoss;
         if (!isBoss)
         {
+            SoundsManager.Instance.PlayMusic(SoundType.GameMusic);
             gridGO = Instantiate(Resources.Load<GameObject>("Level " + curLevelId.ToString()));
         }
         else
         {
+            SoundsManager.Instance.PlayMusic(SoundType.BossMusic);
             Debug.Log("Boss Level: " + curLevelId);
             gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
         }

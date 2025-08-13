@@ -20,8 +20,12 @@ namespace SoundManager
             base.Awake();
             DontDestroyOnLoad(this);
 
-            SetMusicVolume(PlayerPrefs.GetFloat("Music Volume", 0.5f));
-            SetSFXVolume(PlayerPrefs.GetFloat("VFX Volume", 1));
+            //SetMusicVolume(PlayerPrefs.GetFloat("Music Volume", 0.5f));
+            //SetSFXVolume(PlayerPrefs.GetFloat("VFX Volume", 1));
+            PlayerPrefs.SetFloat("Music Volume", 1f);
+            PlayerPrefs.SetFloat("VFX Volume", 1);
+            SetMusicVolume(1f);
+            SetSFXVolume(1f);
         }
 
         private void Start()
@@ -97,6 +101,11 @@ namespace SoundManager
         public void StopMusic()
         {
             musicSource.Stop();
+        }
+
+        public void StopSFX()
+        {
+            sfxSource.Stop();
         }
     }
 

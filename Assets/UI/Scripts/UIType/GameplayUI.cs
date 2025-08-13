@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -70,31 +71,37 @@ public class GameplayUI : UICanvas
 
     private void OnClickPauseBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<PauseUI>();
     }
 
     private void OnClickTutorialBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Book);
         UIManager.Instance.OpenUI<GuideUI>().Init();
     }
 
     private void OnClickFireButton()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         UIManager.Instance.OpenUI<FireGuideUI>();
     }
     private void OnClickWaterButton()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         UIManager.Instance.OpenUI<WaterGuideUI>();
     }
 
     private void OnClickWindButton()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         UIManager.Instance.OpenUI<WindGuideUI>();
     }
 
     private void OnClickIceButton()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         UIManager.Instance.OpenUI<IceGuideUI>();
     }
 

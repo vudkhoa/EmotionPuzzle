@@ -21,5 +21,8 @@ namespace SoundManager
         LoseBoss = 16,
         PlatformMusic = 17,
         BossMusic = 18,
+        Click = 19,
+        Book = 20,
+        NextDialogue = 21,
     }
 }
