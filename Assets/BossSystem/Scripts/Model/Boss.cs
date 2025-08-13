@@ -87,6 +87,7 @@ public abstract class Boss : MonoBehaviour
 
         if (this.CurHealth <= 0)
         {
+            if (this.CurPhase == this.Healths.Count) { this.DecreaseItems(1); }
             this.CheckDie();
         }
     }

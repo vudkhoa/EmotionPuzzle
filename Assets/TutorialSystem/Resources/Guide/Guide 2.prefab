@@ -572,8 +572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 208}
-  m_SizeDelta: {x: 1000, y: 94.3718}
+  m_AnchoredPosition: {x: 3.7322, y: 208}
+  m_SizeDelta: {x: 1007.4644, y: 94.3718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &857018610128538311
 CanvasRenderer:
@@ -604,7 +604,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Khi Element v\xE0o tr\u1EA1ng <color=red>Angry</color>\nElement c\xF3
-    th\u1EC3 k\xEDch ho\u1EA1t Power"
+    th\u1EC3 k\xEDch ho\u1EA1t Power\n\u0110\u1ED3ng th\u1EDDi, b\u1ECB k\xE9o v\xE0
+    \u0111\u1EA9y theo ph\u01B0\u01A1ng c\xF9ng v\u1EDBi player."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

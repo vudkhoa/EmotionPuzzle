@@ -73,6 +73,16 @@ public class BossController : SingletonMono<BossController>
             return;
         }
 
+        if (this.Boss.BossState == BossState.Dead)
+        {
+            return;
+        }
+
+        if (GameManager.Instance.State == GameState.GameOver)
+        {
+            return;
+        }
+
         int count = 0;
         for (int i = 0; i < this.Boss.TotalItems; ++i)
         {
@@ -91,9 +101,9 @@ public class BossController : SingletonMono<BossController>
                 count++;
             }
 
-            if (count == 6)
+            if (count == 6 || count == this.Boss.TotalItems - 1)
             {
-                break;
+                return;
             }
         }
 

@@ -250,12 +250,8 @@ public class SlideController : SingletonMono<SlideController>
                     ResetCanSlide();
                     return;
                 }
-
-                //_player.Shake();
             }
         }
-
-        //newPlayerPos = new Vector2Int(0, 0);
 
         bool isTeleport = false;
         if (cellMovePosList[0] == _player.GetCurrentPos())
@@ -477,8 +473,6 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
-            Debug.Log("Load Next Level");
-
             bool returnPl = false;
 
             if (curLevelId == 1 || curLevelId == 6)
@@ -496,7 +490,6 @@ public class SlideController : SingletonMono<SlideController>
             {
                 LoadingManager.instance.LoadScene("Puzzle");
             }
-
         }
     }
 
@@ -511,7 +504,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 6;
+        //curLevelId = 3;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();

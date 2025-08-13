@@ -17,8 +17,8 @@ MonoBehaviour:
     Healths:
     - 3
     - 10
-    CooldownTimeSkill: 10
+    CooldownTimeSkill: 15
     TotalItems: 13
-    StartPos: {x: 4, y: 4}
-    EndPos: {x: 6, y: 6}
+    StartPos: {x: 3, y: 3}
+    EndPos: {x: 5, y: 5}
     BossPrefab: {fileID: 4708117176801200808, guid: 0768f4a80ead86843a2e96866dbad097, type: 3}
