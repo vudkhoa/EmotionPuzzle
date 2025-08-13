@@ -29,6 +29,7 @@ public class SettingUI : UICanvas
 
     public void OnCloseBtnClick()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         UIManager.Instance.CloseUI<SettingUI>();
     }
 

@@ -1,3 +1,4 @@
+using SoundManager;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,18 +46,21 @@ public class GuideUI : UICanvas
 
     private void OnClickCloseBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         GameManager.Instance.State = GameState.Playing;
         UIManager.Instance.CloseUI<GuideUI>();
     }
 
     public void OnNextGuide()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         curShowGuideId++;
         ShowGuide();
     }
 
     public void OnPrevGuide()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         curShowGuideId--;
         ShowGuide();
     }

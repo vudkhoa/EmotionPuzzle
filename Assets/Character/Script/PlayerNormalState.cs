@@ -1,9 +1,12 @@
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerNormalState : PlayerBaseState
 {
+    private bool isRunning = false;
+
     public override void OnEnter(PlayerController player)
     {
         
@@ -25,6 +28,17 @@ public class PlayerNormalState : PlayerBaseState
 
     private void Move(PlayerController player)
     {
+        if (Mathf.Abs(player.input.horizontal) > 0f && !isRunning)
+        {
+            isRunning = true;
+            player.runAduioSrc.Play();
+        }
+        else if (Mathf.Abs(player.input.horizontal) == 0f)
+        {
+            isRunning = false;
+            player.runAduioSrc.Stop();
+        }
+
         player.rb.velocity = new Vector2(player.input.horizontal * player.moveSpeed, player.rb.velocity.y);
 
         if (player.isGround())

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [Header(" Move ")]
     public float moveSpeed = 5f;
     public bool canMove = true;
+    public AudioSource runAduioSrc;
 
     [Header(" Jump ")]
     public LayerMask groundLayer;

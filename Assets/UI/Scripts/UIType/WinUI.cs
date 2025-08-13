@@ -1,3 +1,4 @@
+using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +26,13 @@ public class WinUI : UICanvas
 
     private void OnClickHomeBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("Menu");
     }
 
     private void OnClickReplayBtn()
     {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("Board");
     }
 
