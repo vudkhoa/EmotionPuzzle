@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
         {
             currentState.OnUpdate(this);
         }
+        else
+        {
+            runAduioSrc.Stop();
+        }
     }
 
     public void SwitchToState(PlayerBaseState newState)
