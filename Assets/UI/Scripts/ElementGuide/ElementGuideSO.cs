@@ -18,21 +18,25 @@ public class ElementGuideLevelDetail
 [Serializable]
 public class ElementGuideDetail
 {
+    [Header(" Fire ")]
     public Vector2Int PosForFire;
     public bool haveFire;
     public bool haveFirePopup;
     public float fireTime;
 
+    [Header(" Water ")]
     public Vector2Int PosForWater;
     public bool haveWater;
     public bool haveWaterPopup;
     public float waterTime;
 
+    [Header(" Ice ")]
     public Vector2Int PosForIce;
     public bool haveIce;
     public bool haveIcePopup;
     public float iceTime;
 
+    [Header(" Wind ")]
     public Vector2Int PosForWind;
     public bool haveWind;
     public bool haveWindPopup;
