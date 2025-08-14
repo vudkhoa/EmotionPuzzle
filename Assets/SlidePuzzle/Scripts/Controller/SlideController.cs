@@ -498,14 +498,13 @@ public class SlideController : SingletonMono<SlideController>
     {
         PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 1);
         PlayerPrefs.Save();
-
         LoadingManager.instance.LoadScene("Platform " + curLevelId + " After");
     }
 
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 3;
+        //curLevelId = 5;
         SetTutorial();
         this.SetElementGuide();
         this.SetGameplayUI();

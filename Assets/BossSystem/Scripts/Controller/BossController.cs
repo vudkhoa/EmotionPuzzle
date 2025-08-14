@@ -26,6 +26,8 @@ public class BossController : SingletonMono<BossController>
     {
         int bossId = SlideController.Instance.BossId;
         Vector3Int pos = new Vector3Int(startPos.x, startPos.y, 0);
+        pos.x += 1;
+        pos.y += 1;
         this.Boss = Instantiate(bossPrefab, pos, Quaternion.identity);
         this.Boss.Setup(
             healths,
