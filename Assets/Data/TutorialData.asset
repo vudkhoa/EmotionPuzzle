@@ -71,19 +71,19 @@ MonoBehaviour:
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: -3, y: 10}
-      guideId: 6
+      guideId: 8
       timeWait: 0
   - tutorialId: 4
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: 1, y: 0}
-      guideId: 7
+      guideId: 6
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: 1, y: 0}
-      guideId: 8
+      guideId: 7
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
