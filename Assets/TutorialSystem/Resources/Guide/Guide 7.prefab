@@ -323,8 +323,8 @@ MonoBehaviour:
   m_text: "<color=#4682B4>Phase 2</color> \n\u01AFu ti\xEAn h\u1EA5p th\u1EE5 <color=#4682B4>Item</color>
     c\xF3 kh\u1EA3 n\u0103ng t\xE1c \u0111\u1ED9ng nhanh nh\u1EA5t"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -457,8 +457,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <color=#4682B4>SAD BOSS</color>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -591,8 +591,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0110\u1EA9y <color=#4682B4>Item ki\u1EBFm</color> v\xE0o n\xF3"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1217,8 +1217,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "H\u1EA5p th\u1EE5 <color=#4682B4>Item</color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1415,8 +1415,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0110\u1EC3 di\u1EC7t <color=#4682B4>Boss</color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1625,8 +1625,8 @@ MonoBehaviour:
   m_text: "<color=#4682B4>Phase 1</color> \n\u01AFu ti\xEAn h\u1EA5p th\u1EE5 <color=#4682B4>Item</color>
     theo c\u1EE5m"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

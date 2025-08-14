@@ -202,8 +202,8 @@ MonoBehaviour:
   m_text: "Khi <color=#9ecafc>Player</color> di chuy\u1EC3n c\u1EAFt ngang <color=#8054dc>Ice
     Star</color>\n\xD4 ch\u1EC9 \u0111\u1ECBnh s\u1EBD b\u1ECB kh\xF3a"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
