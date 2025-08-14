@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Khi v\xE0o t\u1EE9c gi\u1EADn, c\xF3 8 \xF4 s\u1EE9c m\u1EA1nh"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -734,8 +734,8 @@ MonoBehaviour:
   m_text: "M\u1ED7i \xF4 c\xF3 kh\u1EA3 n\u0103ng \u0111\xF3ng b\u0103ng t\u1EA1m
     th\u1EDDi Item"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
