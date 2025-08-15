@@ -16,23 +16,23 @@ MonoBehaviour:
   - levelId: 1
     dialogueLineBefore:
     - speakerName: "C\xE2y C\u1ECD"
-      speakerIcon: {fileID: 231845538, guid: be87ac80e08ed2b4d9407f88df2a610e, type: 3}
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
       sentence: "Lino\u2026 Ta c\u1EA3m nh\u1EADn tr\xE1i tim con tr\u1ED1ng r\u1ED7ng."
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
       sentence: "M\xECnh\u2026 c\u1EA3m th\u1EA5y nh\u01B0 kh\xF4ng c\xF2n l\xE0
         ch\xEDnh m\xECnh n\u1EEFa."
     - speakerName: "C\xE2y c\u1ECD"
-      speakerIcon: {fileID: 231845538, guid: be87ac80e08ed2b4d9407f88df2a610e, type: 3}
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
       sentence: "C\u1EA3m x\xFAc c\u1EE7a con \u0111\xE3 r\u1EDDi b\u1ECF v\xE0 tr\xF4i
         d\u1EA1t v\xE0o nh\u1EEFng h\xE0nh tinh xa x\xF4i."
     - speakerName: "C\xE2y c\u1ECD"
-      speakerIcon: {fileID: 231845538, guid: be87ac80e08ed2b4d9407f88df2a610e, type: 3}
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
       sentence: "Ta s\u1EBD cho con m\u01B0\u1EE3n s\u1EE9c m\u1EA1nh c\u1EE7a c\xE1c
         nguy\xEAn t\u1ED1"
     dialogueLineAfter:
     - speakerName: "C\xE2y c\u1ECD"
-      speakerIcon: {fileID: -903711623, guid: 0b527f48e43204345ae8736f591d00e7, type: 3}
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
       sentence: "H\xE3y \u0111i, t\xECm l\u1EA1i t\u1EEBng m\u1EA3nh c\u1EA3m x\xFAc
         \u0111\xE3 m\u1EA5t. Khi h\u1EE3p nh\u1EA5t ch\xFAng, con s\u1EBD bi\u1EBFt
         m\xECnh l\xE0 ai."
