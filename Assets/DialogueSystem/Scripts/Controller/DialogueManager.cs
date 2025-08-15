@@ -36,7 +36,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
         isEnded = false;
         if (isAfter)
         {
-            Invoke(nameof(StartDialogueThisState), 2f);
+            Invoke(nameof(StartDialogueThisState), 1f);
         }
     }
 
