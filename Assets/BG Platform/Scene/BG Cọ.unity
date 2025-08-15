@@ -308,9 +308,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5037026182270186148, guid: b7c598f446885594ab1c0e60c8acd24b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037026182270186148, guid: b7c598f446885594ab1c0e60c8acd24b, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 2126169895}
     - target: {fileID: 7629629474766053828, guid: b7c598f446885594ab1c0e60c8acd24b, type: 3}
       propertyPath: m_Name
       value: "Map C\u1ECD"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629629474766053828, guid: b7c598f446885594ab1c0e60c8acd24b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
