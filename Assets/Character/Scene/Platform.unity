@@ -442,6 +442,7 @@ MonoBehaviour:
   redBox: 0
   moveSpeed: 5
   canMove: 1
+  runAduioSrc: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

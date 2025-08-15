@@ -242,7 +242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=red>ANGRY BOSS</color>
+  m_text: <color=#f11d18>ANGRY BOSS</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sau <color=#4682B4>2s</color> \u0111\u1EBFm ng\u01B0\u1EE3c, ph\xE1 h\u1EE7y
+  m_text: "Sau <color=#f11d18>2s</color> \u0111\u1EBFm ng\u01B0\u1EE3c, ph\xE1 h\u1EE7y
     m\u1ECDi th\u1EE9 trong ph\u1EA1m vi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110\u1EC3 di\u1EC7t <color=#4682B4>Boss</color> \n\u0110\u1EA9y <color=#4682B4>Item
+  m_text: "\u0110\u1EC3 di\u1EC7t <color=#f11d18>Boss</color> \n\u0110\u1EA9y <color=#e8b858>Item
     ki\u1EBFm</color> v\xE0o n\xF3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\u1ED3i chi\xEAu sau m\u1ED7i <color=#4682B4>20s</color>"
+  m_text: "H\u1ED3i chi\xEAu sau m\u1ED7i <color=#f11d18>20s</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
