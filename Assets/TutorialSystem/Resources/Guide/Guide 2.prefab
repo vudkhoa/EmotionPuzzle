@@ -603,9 +603,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Element v\xE0o tr\u1EA1ng <color=red>Angry</color>\nElement c\xF3
-    th\u1EC3 k\xEDch ho\u1EA1t Power\n\u0110\u1ED3ng th\u1EDDi, b\u1ECB k\xE9o v\xE0
-    \u0111\u1EA9y theo ph\u01B0\u01A1ng c\xF9ng v\u1EDBi player."
+  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i <color=red>Angry</color>\nElement
+    c\xF3 th\u1EC3 k\xEDch ho\u1EA1t Power\n\u0110\u1ED3ng th\u1EDDi, b\u1ECB k\xE9o
+    v\xE0 \u0111\u1EA9y theo ph\u01B0\u01A1ng c\xF9ng v\u1EDBi player."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}

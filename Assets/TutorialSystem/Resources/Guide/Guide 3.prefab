@@ -103,8 +103,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Element v\xE0o tr\u1EA1ng <color=#4682B4>Sad</color>\nN\xF3 c\xF3
-    kh\u1EA3 n\u0103ng h\u1EA5p th\u1EE5 Item.\n\u0110\u1ED3ng th\u1EDDi, m\u1EA5t
+  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i <color=#4682B4>Sad</color>\nN\xF3
+    c\xF3 kh\u1EA3 n\u0103ng h\u1EA5p th\u1EE5 Item.\n\u0110\u1ED3ng th\u1EDDi, m\u1EA5t
     \u0111i kh\u1EA3 n\u0103ng di chuy\u1EC3n c\xF9ng Player"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
