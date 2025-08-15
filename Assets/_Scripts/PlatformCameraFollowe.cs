@@ -16,7 +16,7 @@ public class PlatformCameraFollowe : MonoBehaviour
 
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (target != null)
         {

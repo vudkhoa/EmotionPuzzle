@@ -19,7 +19,7 @@ MonoBehaviour:
       speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
       sentence: "Lino\u2026 Ta c\u1EA3m nh\u1EADn tr\xE1i tim con tr\u1ED1ng r\u1ED7ng."
     - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
+      speakerIcon: {fileID: -1888453969, guid: 6f9c99fc730331f42ac1d22c2622ee52, type: 3}
       sentence: "M\xECnh\u2026 c\u1EA3m th\u1EA5y nh\u01B0 kh\xF4ng c\xF2n l\xE0
         ch\xEDnh m\xECnh n\u1EEFa."
     - speakerName: "C\xE2y c\u1ECD"
