@@ -36,7 +36,10 @@ public class GameplayUI : UICanvas
     private void OnEnable()
     {
         pauseBtn.onClick.AddListener(OnClickPauseBtn);
+        GameInput.Instance.OnPause += GameInput_OnPause;
+
         tutorialBtn.onClick.AddListener(OnClickTutorialBtn);
+        GameInput.Instance.OnTutorial += GameInput_OnTutorial;
 
         fire.onClick.AddListener(OnClickFireButton);
         water.onClick.AddListener(OnClickWaterButton);
@@ -49,7 +52,10 @@ public class GameplayUI : UICanvas
     private void OnDisable()
     {
         pauseBtn.onClick.RemoveListener(OnClickPauseBtn);
+        GameInput.Instance.OnPause -= GameInput_OnPause;
+
         tutorialBtn.onClick.RemoveListener(OnClickTutorialBtn);
+        GameInput.Instance.OnTutorial -= GameInput_OnTutorial;
 
         fire.onClick.RemoveListener(OnClickFireButton);
         water.onClick.RemoveListener(OnClickWaterButton);
@@ -57,17 +63,33 @@ public class GameplayUI : UICanvas
         ice.onClick.RemoveListener(OnClickIceButton);
     }
 
-    private void Update()
+    private void GameInput_OnTutorial(object sender, System.EventArgs e)
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            OnClickPauseBtn();
-        }
-        else if (Input.GetKeyUp(KeyCode.T))
+        if (GameManager.Instance.State == GameState.Playing)
         {
             OnClickTutorialBtn();
         }
     }
+
+    private void GameInput_OnPause(object sender, System.EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            OnClickPauseBtn();
+        }
+    }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.Escape))
+    //    {
+    //        OnClickPauseBtn();
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.T))
+    //    {
+    //        OnClickTutorialBtn();
+    //    }
+    //}
 
     private void OnClickPauseBtn()
     {
@@ -79,29 +101,34 @@ public class GameplayUI : UICanvas
     private void OnClickTutorialBtn()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Book);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<GuideUI>().Init();
     }
 
     private void OnClickFireButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<FireGuideUI>();
     }
     private void OnClickWaterButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<WaterGuideUI>();
     }
 
     private void OnClickWindButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<WindGuideUI>();
     }
 
     private void OnClickIceButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<IceGuideUI>();
     }
 

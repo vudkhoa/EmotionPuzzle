@@ -6,8 +6,54 @@ using UnityEngine.Tilemaps;
 
 public class ItemTileController : SingletonMono<ItemTileController>
 {
+    [Header(" Name Default Item ")]
+    public const string ITEM_ANGRY = "Item_Angry";
+    public const string ITEM_SAD = "Item_Sad";
+    public const string ITEM_HAPPY = "Item_Happy";
+
+    [Header(" Data ")]
     public List<Vector2Int> ItemPosList;
     public List<ItemType> ItemTypeList;
+
+    public void Init()
+    {
+        ItemPosList = new List<Vector2Int>();
+        ItemTypeList = new List<ItemType>();
+
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    string nameTile = SlideController.Instance.itemTilemap.GetTile(new Vector3Int(i, j, 0)).name;
+                    switch (nameTile)
+                    {
+                        case ITEM_ANGRY:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeAngry);
+
+                            break;
+                        case ITEM_SAD:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeSad);
+
+                            break;
+                        case ITEM_HAPPY:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeHappy);
+
+                            break;
+                        default:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.None);
+
+                            break;
+                    }
+                }
+            }
+        }
+    }
 
     public void SetItemPosList(List<Vector2Int> itemPosList)
     {

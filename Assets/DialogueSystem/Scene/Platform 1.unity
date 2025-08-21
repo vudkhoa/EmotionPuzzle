@@ -356,7 +356,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -445,6 +445,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7481102018131770316, guid: 6a3c72bf895333443825e2278c80aa34, type: 3}
   m_PrefabInstance: {fileID: 1127066960}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1127066962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 796851020441979500, guid: 6a3c72bf895333443825e2278c80aa34, type: 3}
+  m_PrefabInstance: {fileID: 1127066960}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a32b9545669874fb2ccc19c7468c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1138495417
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db58c11bd1f694409a110e020d1b098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1127066962}
   DialogueData: {fileID: 11400000, guid: d97f784acaaea994bb5f483cacbabd8a, type: 2}
   levelId: 1
   isAfter: 0

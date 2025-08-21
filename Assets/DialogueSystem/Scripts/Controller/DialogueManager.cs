@@ -8,6 +8,9 @@ using SoundManager;
 
 public class DialogueManager : SingletonMono<DialogueManager>
 {
+    [Header(" Player ")]
+    public PlayerController player;
+
     [Header(" Config ")]
     [SerializeField] private DialogueSO DialogueData;
     [SerializeField] private int levelId;
@@ -36,6 +39,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
         isEnded = false;
         if (isAfter)
         {
+            player.canControll = false;
             Invoke(nameof(StartDialogueThisState), 1f);
         }
     }
@@ -43,6 +47,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
     public void StartDialogueThisState()
     {
         isShowing = true;
+        player.canControll = false;
         DialogueLevelDetail levelDetail = DialogueData.DialogueLevelDetails[levelId - 1];
         if (isAfter)
         {
@@ -127,6 +132,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
         if (isAfter)
         {
             isShowing = false;
+            player.canControll = true;
         }
         else
         {
