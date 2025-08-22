@@ -24,6 +24,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap obstacleTilemap;
     public Tilemap blockTilemap;
     public Tilemap elementTilemap;
+    public Tilemap rotateTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
     public Tilemap bgSmallTilemap;
@@ -59,34 +60,92 @@ public class SlideController : SingletonMono<SlideController>
         isElementGuideUI = false;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (GameManager.Instance.State != GameState.Playing)
-        {
-            return;
-        }
+        GameInput.Instance.OnMoveUp += GameInput_OnMoveUp;
+        GameInput.Instance.OnMoveDown += GameInput_OnMoveDown;
+        GameInput.Instance.OnMoveLeft += GameInput_OnMoveLeft;
+        GameInput.Instance.OnMoveRight += GameInput_OnMoveRight;
+        GameInput.Instance.OnFunction += GameInput_OnFunction;
+    }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) 
-        {
-            Slide(Direction.Left);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Slide(Direction.Right);
-        }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Slide(Direction.Up);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Slide(Direction.Down);
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
+    private void OnDisable()
+    {
+        GameInput.Instance.OnMoveUp -= GameInput_OnMoveUp;
+        GameInput.Instance.OnMoveDown -= GameInput_OnMoveDown;
+        GameInput.Instance.OnMoveLeft -= GameInput_OnMoveLeft;
+        GameInput.Instance.OnMoveRight -= GameInput_OnMoveRight;
+        GameInput.Instance.OnFunction -= GameInput_OnFunction;
+    }
+
+    private void GameInput_OnFunction(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
         {
             FunctionedObject();
         }
     }
+
+    private void GameInput_OnMoveUp(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Up);
+        }
+    }
+
+    private void GameInput_OnMoveDown(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Down);
+        }
+    }
+
+    private void GameInput_OnMoveLeft(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Left);
+        }
+    }
+
+    private void GameInput_OnMoveRight(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Right);
+        }
+    }
+
+    //private void Update()
+    //{
+    //    if (GameManager.Instance.State != GameState.Playing)
+    //    {
+    //        return;
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) 
+    //    {
+    //        Slide(Direction.Left);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+    //    {
+    //        Slide(Direction.Right);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+    //    {
+    //        Slide(Direction.Up);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+    //    {
+    //        Slide(Direction.Down);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.F))
+    //    {
+    //        FunctionedObject();
+    //    }
+    //}
 
     private void FunctionedObject()
     {
@@ -597,6 +656,9 @@ public class SlideController : SingletonMono<SlideController>
                 case "Block":
                     this.blockTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Rotate":
+                    this.rotateTilemap = c.GetComponent<Tilemap>();
+                    break;
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
                     break;
@@ -627,7 +689,8 @@ public class SlideController : SingletonMono<SlideController>
         rotateObId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].RotateObId;
         if (rotateObId != 0)
         {
-            RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
+            RotateObjectController.Instance.Init();
+            //RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
         }
     }
 
@@ -636,8 +699,9 @@ public class SlideController : SingletonMono<SlideController>
         itemId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].ItemId;
         if (itemId != 0)
         {
-            ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
-            ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
+            ItemTileController.Instance.Init();
+            //ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
+            //ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
         }    
     }
 

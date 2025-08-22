@@ -37,11 +37,21 @@ public class GuideUI : UICanvas
     private void OnEnable()
     {
         closeBtn.onClick.AddListener(OnClickCloseBtn);
+        GameInput.Instance.OnCloseUI += GameInput_OnCloseUI;
     }
+
 
     private void OnDisable()
     {
         closeBtn.onClick.RemoveListener(OnClickCloseBtn);
+        GameInput.Instance.OnCloseUI -= GameInput_OnCloseUI;
+    }
+    private void GameInput_OnCloseUI(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Pause)
+        {
+            OnClickCloseBtn();
+        }
     }
 
     private void OnClickCloseBtn()
