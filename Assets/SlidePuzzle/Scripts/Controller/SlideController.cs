@@ -125,7 +125,7 @@ public class SlideController : SingletonMono<SlideController>
     //        return;
     //    }
 
-    //    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) 
+    //    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
     //    {
     //        Slide(Direction.Left);
     //    }
@@ -579,7 +579,7 @@ public class SlideController : SingletonMono<SlideController>
         // Boss
         this.SetAngryBoss();
         this.SetSadBoss();
-        //this.SetHappyBoss();
+        this.SetHappyBoss();
 
         // Mini-game Mechanics
         this.SetIceStar();
@@ -769,18 +769,18 @@ public class SlideController : SingletonMono<SlideController>
         }
     }
 
-    //public void SetHappyBoss()
-    //{
-    //    if (this.BossId > 0) { return; }
-    //    this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
-    //    if (BossId > 0)
-    //    {
-    //        HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
-    //        BossController.Instance.SpawnBoss(happyBossDetail.Health, happyBossDetail.CooldownTimeSkill, 
-    //            happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos, 
-    //            happyBossDetail.BossPrefab, happyBossDetail.TotalPhases);
-    //    }
-    //}
+    public void SetHappyBoss()
+    {
+        if (this.BossId > 0) { return; }
+        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
+        if (BossId > 0)
+        {
+            HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
+            BossController.Instance.SpawnBoss(happyBossDetail.Healths, happyBossDetail.CooldownTimeSkill,
+                happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos,
+                happyBossDetail.BossPrefab);
+        }
+    }
 
     // Mini-game Mechanics
     public void SetIceStar()

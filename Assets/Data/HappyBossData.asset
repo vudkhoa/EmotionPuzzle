@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossList:
   - HappyBossId: 1
-    Health: 20
+    Healths:
+    - 3
+    - 10
     CooldownTimeSkill: 10
     TotalItems: 50
     StartPos: {x: 6, y: 6}
