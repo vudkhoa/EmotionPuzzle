@@ -24,6 +24,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap obstacleTilemap;
     public Tilemap blockTilemap;
     public Tilemap elementTilemap;
+    public Tilemap rotateTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
     public Tilemap bgSmallTilemap;
@@ -655,6 +656,9 @@ public class SlideController : SingletonMono<SlideController>
                 case "Block":
                     this.blockTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "Rotate":
+                    this.rotateTilemap = c.GetComponent<Tilemap>();
+                    break;
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
                     break;
@@ -685,7 +689,8 @@ public class SlideController : SingletonMono<SlideController>
         rotateObId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].RotateObId;
         if (rotateObId != 0)
         {
-            RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
+            RotateObjectController.Instance.Init();
+            //RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
         }
     }
 

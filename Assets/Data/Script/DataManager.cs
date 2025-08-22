@@ -22,5 +22,5 @@ public class DataManager : SingletonMono<DataManager>
 
     [Header(" Mini-game Mechanics")]
     public IceStarSO IceStarData;
-    public RotateObjectSO RotateObjectData;
+    //public RotateObjectSO RotateObjectData;
 }
