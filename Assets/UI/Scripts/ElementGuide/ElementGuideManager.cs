@@ -104,6 +104,9 @@ public class ElementGuideManager : SingletonMono<ElementGuideManager>
                 StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeIce));
             }
         }
+
+        //Button Number 
+        UIManager.Instance.GetUI<GameplayUI>().UpdateElementButtonNumberGuide();
     }
 
     public void ResetIsElementGuide()
