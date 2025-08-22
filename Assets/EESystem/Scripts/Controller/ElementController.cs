@@ -1,5 +1,4 @@
 ﻿using CustomUtils;
-using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
@@ -342,14 +341,6 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         return null;
-    }
-
-    public void SetPowerRingAll()
-    {
-        foreach (Element e in this.ElementList)
-        {
-            e.SetPowerRing(e.CurrentPos);
-        }
     }
 
     public bool IsBlockItem(Vector3Int cell)
