@@ -1,4 +1,4 @@
-using SoundManager;
+﻿using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +33,16 @@ public class PauseUI : UICanvas
     private void OnClickReplayBtn()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
-        LoadingManager.instance.LoadScene("Puzzle");
+        if (SavePointController.Instance.IsSave())
+        {
+            SlideController.Instance.Reload();
+        }
+        else
+        {
+            LoadingManager.instance.LoadScene("Puzzle");
+        }
+        GameManager.Instance.State = GameState.Playing;
+        UIManager.Instance.CloseUI<PauseUI>();
     }
 
     private void OnClickContinueBtn()

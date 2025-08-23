@@ -10,10 +10,8 @@ public class SavePointController : SingletonMono<SavePointController>
     public SavePointSO SavePointData;
     public int id;
     public Vector2Int curSavePoint = new Vector2Int(0, 0);
-
-    private List<Tilemap> mapLayers = new List<Tilemap>();
-    private Dictionary<Tilemap, Dictionary<Vector3Int, TileBase>> savedTiles
-        = new Dictionary<Tilemap, Dictionary<Vector3Int, TileBase>>();
+    public Vector2Int endSavePoint;
+    public Vector2Int startSavePoint;
 
     protected override void Awake()
     {
@@ -21,49 +19,34 @@ public class SavePointController : SingletonMono<SavePointController>
         DontDestroyOnLoad(this);
     }
 
-    public void Setup(int savePointId)
+    public void Setup(int id)
     {
-        id = savePointId;
+        this.id = id;
         curSavePoint = new Vector2Int(0, 0);
-
-        mapLayers = new List<Tilemap>()
-        {
-            SlideController.Instance.groundTilemap,
-            SlideController.Instance.itemTilemap,
-            SlideController.Instance.obstacleTilemap,
-            SlideController.Instance.blockTilemap,
-            SlideController.Instance.elementTilemap,
-            SlideController.Instance.rotateTilemap,
-            SlideController.Instance.bgWaterTilemap,
-            SlideController.Instance.waterTilemap,
-            SlideController.Instance.bgSmallTilemap,
-            SlideController.Instance.bossTilemap,
-            SlideController.Instance.iceStarTilemap,
-            SlideController.Instance.powerTilemap
-        };
     }
 
-    public void SaveProgress(Vector2Int savePoint)
+    public void SetCheckPoint(Vector2Int savePoint)
     {
-        savedTiles.Clear();
-
-        curSavePoint = savePoint;
-
-        foreach (var layer in mapLayers)
+        if (id == 0)
         {
-            var layerTiles = new Dictionary<Vector3Int, TileBase>();
-
-            foreach (Vector3Int pos in layer.cellBounds.allPositionsWithin)
-            {
-                if (pos.x < savePoint.x && pos.y < savePoint.y) // before checkpoint X
-                {
-                    TileBase tile = layer.GetTile(pos);
-                    if (tile != null)
-                        layerTiles[pos] = tile;
-                }
-            }
-
-            savedTiles[layer] = layerTiles;
+            return;
         }
+
+        foreach (PointDetail pointDetail in SavePointData.SavePointDetails[id - 1].Points)
+        {
+            if (pointDetail.SavePoint == savePoint)
+            {
+                curSavePoint = pointDetail.SavePoint;
+                startSavePoint = pointDetail.StartPoint;
+                endSavePoint = pointDetail.EndPoint;
+
+                return;
+            }
+        }
+    }
+
+    public bool IsSave()
+    {
+        return curSavePoint != Vector2Int.zero;
     }
 }

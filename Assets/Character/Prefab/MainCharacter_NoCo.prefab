@@ -136,6 +136,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpForce: 5
+  canControll: 1
 --- !u!114 &8567090013265936616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ Animator:
   m_GameObject: {fileID: 8876404771755016063}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 45358182fecf98e41965e8e2347c737f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 64e194fe9cf096e448da3ca293c5afcf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
