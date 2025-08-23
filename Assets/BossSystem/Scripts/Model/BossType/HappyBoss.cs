@@ -23,6 +23,7 @@ public class HappyBoss : Boss
 
         this.DarkItems = new List<Vector2Int>();
         this.CrimsonItems = new List<Vector2Int>();
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Happy Boss", this.CurHealth, this.TotalItems);
     }
 
     public override void ActiveSkill()
@@ -33,7 +34,7 @@ public class HappyBoss : Boss
         }
 
         this.IsActingSkill = true;
-        if (CurPhase == 1)
+        if (CurPhase < this.Healths.Count)
         {
             Invoke(nameof(ActiveSkillPhase1), 0.25f);
         }
@@ -46,12 +47,14 @@ public class HappyBoss : Boss
 
     public void ActiveSkillPhase1()
     {
+        Debug.Log("Happy Phase 1");
         this.ItemList = ItemTileController.Instance.FindItemCluster();
         this.CombineAndTransformItems(DarkItem);
     }
 
     public void ActiveSkillPhase2()
     {
+        Debug.Log("Happy Phase 2");
         List<Vector2Int> tmpList = new List<Vector2Int>();
         tmpList = ItemTileController.Instance.FindItemAbsMin();
         this.ItemList = new List<Vector2Int>();
@@ -65,7 +68,7 @@ public class HappyBoss : Boss
         foreach (Vector2Int posItem in this.ItemList)
         {
             ItemTileController.Instance.RemoveItem(posItem);
-            if (this.CurPhase == 1)
+            if (this.CurPhase < this.Healths.Count)
             {
                 this.DarkItems.Add(posItem);
             }
@@ -107,6 +110,7 @@ public class HappyBoss : Boss
                 this.DecreaseItems(1);
                 this.DarkItems.Remove(targetPos);
                 SlideController.Instance.bossTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), null);
+                Debug.Log("Dark");
             }
             else if (this.CrimsonItems.Contains(targetPos))
             {
@@ -149,7 +153,7 @@ public class HappyBoss : Boss
 
     public override void CheckDie()
     {
-        if (CurPhase == 1)
+        if (CurPhase < this.Healths.Count)
         {
             this.NextPhase();
         }

@@ -265,8 +265,8 @@ MonoBehaviour:
   EnergyBar: {fileID: 5482469829787543230}
   DarkItems: []
   CrimsonItems: []
-  DarkItem: {fileID: 11400000, guid: f14125ba66de20d4b92bb40eb43e9a2f, type: 2}
-  CrimsonItem: {fileID: 11400000, guid: 87aa9bd93f2315146a41f75900d91271, type: 2}
+  DarkItem: {fileID: 11400000, guid: 24defe7ae4bb08f42bfe7481ed6e700d, type: 2}
+  CrimsonItem: {fileID: 11400000, guid: eb58f92c9ef1ead488121d04a22093f8, type: 2}
 --- !u!1 &7381329907147518090
 GameObject:
   m_ObjectHideFlags: 0
