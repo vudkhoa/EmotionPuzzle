@@ -190,17 +190,16 @@ public abstract class Element : MonoBehaviour
         }
 
         Power();
-        SetPowerRing(oldGridPos);
+        SetPowerRing(this.CurrentPos);
     }
 
     public void Rotate(Vector2Int newGridPos, Vector3 worldPos)
     {
-        Vector2Int oldGridPos = this.CurrentPos;
         this.CurrentPos = newGridPos;
         this.transform.DOMove(worldPos, 0.2f).SetEase(Ease.OutQuad);
 
         Power();
-        SetPowerRing(oldGridPos);
+        SetPowerRing(this.CurrentPos);
     }
 
     public void SetActivatePower()
@@ -224,15 +223,23 @@ public abstract class Element : MonoBehaviour
         this.SetPowerRing(this.CurrentPos);
     }
 
-    public void SetPowerRing(Vector2Int elementOldPos)
+    public void SetPowerRing(Vector2Int elementPos)
     {
         for (int i = 0; i < this.ActivePowerList.Count; ++i)
         {
+            Vector3Int worldPos = new Vector3Int(this.OffsetList[i].x + elementPos.x, this.OffsetList[i].y + elementPos.y, 0);
             if (this.ActivePowerList[i])
             {
                 this.PowerRingList[i].SetActive(true);
                 int curLevelId = SlideController.Instance.curLevelId;
-                this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
+                if (SlideController.Instance.bgSmallTilemap.HasTile(worldPos))
+                {
+                    this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
+                }
+                else
+                {
+                    this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
+                }
             }
             else
             {

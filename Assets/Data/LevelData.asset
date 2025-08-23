@@ -25,7 +25,7 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 0
-    NextLevelPos: {x: 23, y: 20}
+    NextLevelPos: {x: 26, y: 41}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 1
   - LevelId: 2

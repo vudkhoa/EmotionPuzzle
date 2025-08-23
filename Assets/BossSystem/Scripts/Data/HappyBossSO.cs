@@ -12,7 +12,7 @@ public class HappyBossSO : ScriptableObject
 public class HappyBossDetail
 {
     public int HappyBossId;
-    public float Health;
+    public List<float> Healths;
     public float CooldownTimeSkill;
     public int TotalItems;
     public Vector2Int StartPos;
