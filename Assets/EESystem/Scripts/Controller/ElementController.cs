@@ -12,7 +12,13 @@ public class ElementController : SingletonMono<ElementController>
 
     public void Reload()
     {
-
+        foreach (Element e in this.ElementList)
+        {
+            if (e.ElementType == ElementType.Water)
+            {
+                e.ReloadElement();
+            }
+        }
     }
 
     public void SpawnElement(List<ElementDetail> elementDetails)

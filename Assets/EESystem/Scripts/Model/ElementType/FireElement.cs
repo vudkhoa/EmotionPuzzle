@@ -79,4 +79,8 @@ public class FireElement : Element
             SoundsManager.Instance.PlaySFX(SoundType.FirePower);
         }
     }
+
+    public override void ReloadElement()
+    {
+    }
 }

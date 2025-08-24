@@ -18,3 +18,8 @@ MonoBehaviour:
     - SavePoint: {x: 16, y: -19}
       StartPoint: {x: 9, y: -20}
       EndPoint: {x: 16, y: -19}
+  - SavePointId: 2
+    Points:
+    - SavePoint: {x: 9, y: 1}
+      StartPoint: {x: 4, y: 2}
+      EndPoint: {x: 15, y: 12}

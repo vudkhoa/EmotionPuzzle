@@ -87,4 +87,7 @@ public class IceElement : Element
             isIceMove = false;
         }
     }
+    public override void ReloadElement()
+    {
+    }
 }

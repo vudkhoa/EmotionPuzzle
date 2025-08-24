@@ -99,4 +99,8 @@ public class WindElement : Element
             SoundsManager.Instance.PlaySFX(SoundType.WindPower);
         }
     }
+
+    public override void ReloadElement()
+    {
+    }
 }

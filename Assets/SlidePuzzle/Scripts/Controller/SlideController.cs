@@ -564,7 +564,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 7;
+        curLevelId = 4;
         SetTutorial();
         SetupSavePoint();
         this.SetElementGuide();
@@ -753,6 +753,20 @@ public class SlideController : SingletonMono<SlideController>
         this.groundTilemap.SetTile(initRaftPos, groundNoneSprite);
     }
 
+    public void RemoveRaft(Vector2Int raftPos)
+    {
+        for (int i = 0; i < this.RaftList.Count; ++i)
+        {
+            if (this.RaftList[i].GetCurrentPos() == raftPos)
+            {
+                Destroy(this.RaftList[i].gameObject);
+                this.RaftList.RemoveAt(i);
+                return;
+            }
+        }
+        
+    }
+
     public void SetAngryBoss()
     {
         if (this.BossId > 0) { return; }
@@ -811,6 +825,7 @@ public class SlideController : SingletonMono<SlideController>
         LoadingManager.instance.FadeScene();
         _player.SetPos(SavePointController.Instance.curSavePoint);
         ItemTileController.Instance.Reload();
+        ElementController.Instance.Reload();
     }
 
     // Bonus

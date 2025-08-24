@@ -253,4 +253,6 @@ public abstract class Element : MonoBehaviour
         Power();
         SetPowerRing(this.CurrentPos);
     }
+
+    public abstract void ReloadElement();
 }
