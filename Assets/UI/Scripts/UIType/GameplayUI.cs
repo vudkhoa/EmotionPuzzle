@@ -32,6 +32,10 @@ public class GameplayUI : UICanvas
     [SerializeField] private Slider PlayerHealthBar;
     [SerializeField] private TextMeshProUGUI PlayerHealthText;
 
+    [Header(" Button Number Count ")]
+    public List<GameObject> buttonList;
+    private int btnCount = 0;
+
 
     private void OnEnable()
     {
@@ -45,6 +49,11 @@ public class GameplayUI : UICanvas
         water.onClick.AddListener(OnClickWaterButton);
         wind.onClick.AddListener(OnClickWindButton);
         ice.onClick.AddListener(OnClickIceButton);
+
+        GameInput.Instance.OnOneButton += GameInput_OnOneButton;
+        GameInput.Instance.OnTWoButton += GameInput_OnTWoButton;
+        GameInput.Instance.OnThreeButton += GameInput_OnThreeButton;
+        GameInput.Instance.OnFourButton += GameInput_OnFourButton;
 
         HideElementGuideBtn();
     }
@@ -61,6 +70,31 @@ public class GameplayUI : UICanvas
         water.onClick.RemoveListener(OnClickWaterButton);
         wind.onClick.RemoveListener(OnClickWindButton);
         ice.onClick.RemoveListener(OnClickIceButton);
+
+        GameInput.Instance.OnOneButton -= GameInput_OnOneButton;
+        GameInput.Instance.OnTWoButton -= GameInput_OnTWoButton;
+        GameInput.Instance.OnThreeButton -= GameInput_OnThreeButton;
+        GameInput.Instance.OnFourButton -= GameInput_OnFourButton;
+    }
+
+    private void GameInput_OnFourButton(object sender, System.EventArgs e)
+    {
+        OnClickFourButton();
+    }
+
+    private void GameInput_OnThreeButton(object sender, System.EventArgs e)
+    {
+        OnClickThreeButton();
+    }
+
+    private void GameInput_OnTWoButton(object sender, System.EventArgs e)
+    {
+        OnClickTwoButton();
+    }
+
+    private void GameInput_OnOneButton(object sender, System.EventArgs e)
+    {
+        OnClickOneButton();
     }
 
     private void GameInput_OnTutorial(object sender, System.EventArgs e)
@@ -197,6 +231,160 @@ public class GameplayUI : UICanvas
         if (haveIce)
         {
             UIManager.Instance.OpenUI<IceGuideUI>();
+        }
+    }
+
+    public void UpdateElementButtonNumberGuide()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            this.buttonList[i].gameObject.SetActive(false);
+        }
+
+        btnCount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (ElementGuideManager.Instance.isShowBtn[i])
+            {
+                btnCount++;
+                this.buttonList[btnCount - 1].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void OnClickOneButton()
+    {
+        if (btnCount >= 1)
+        {
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                UIManager.Instance.OpenUI<FireGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                UIManager.Instance.OpenUI<WaterGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                UIManager.Instance.OpenUI<IceGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                UIManager.Instance.OpenUI<WindGuideUI>();
+
+                return;
+            }
+        }
+    }
+
+    public void OnClickTwoButton()
+    {
+        if (btnCount >= 2)
+        {
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                UIManager.Instance.OpenUI<FireGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                UIManager.Instance.OpenUI<WaterGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                UIManager.Instance.OpenUI<IceGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                UIManager.Instance.OpenUI<WindGuideUI>();
+
+                return;
+            }
+        }
+    }
+
+    public void OnClickThreeButton()
+    {
+        if (btnCount >= 3)
+        {
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                UIManager.Instance.OpenUI<FireGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                UIManager.Instance.OpenUI<WaterGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                UIManager.Instance.OpenUI<IceGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                UIManager.Instance.OpenUI<WindGuideUI>();
+
+                return;
+            }
+        }
+    }
+
+    public void OnClickFourButton()
+    {
+        if (btnCount >= 4)
+        {
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                UIManager.Instance.OpenUI<FireGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                UIManager.Instance.OpenUI<WaterGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                UIManager.Instance.OpenUI<IceGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                UIManager.Instance.OpenUI<WindGuideUI>();
+
+                return;
+            }
         }
     }
 

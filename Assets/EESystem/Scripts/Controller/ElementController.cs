@@ -10,6 +10,11 @@ public class ElementController : SingletonMono<ElementController>
 
     private List<int> elementIdHasJustMove;
 
+    public void Reload()
+    {
+
+    }
+
     public void SpawnElement(List<ElementDetail> elementDetails)
     {
         foreach (ElementDetail elementDetail in elementDetails)

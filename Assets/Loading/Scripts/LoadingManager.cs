@@ -39,6 +39,11 @@ public class LoadingManager : MonoBehaviour
         //SceneManager.LoadScene(sceneName);
     }
 
+    public void FadeScene()
+    {
+        StartCoroutine(FadeSceneCoroutine());
+    }
+
     IEnumerator LoadSceneCoroutine(string sceneName)
     {
         SoundsManager.Instance.StopMusic();
@@ -47,6 +52,19 @@ public class LoadingManager : MonoBehaviour
         animator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadSceneAsync(sceneName);
+        animator.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        isLoadingScene = false;
+        effect.SetActive(false);
+    }
+
+    IEnumerator FadeSceneCoroutine()
+    {
+        SoundsManager.Instance.StopMusic();
+        effect.SetActive(true);
+        isLoadingScene = true;
+        animator.SetTrigger("End");
+        yield return new WaitForSeconds(1f);
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
         isLoadingScene = false;

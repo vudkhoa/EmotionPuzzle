@@ -33,6 +33,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap powerTilemap;
 
     [Header(" Id Tile ")]
+    public int saveId;
     public bool isBoss;
     public int itemId;
     public int blockId;
@@ -565,6 +566,7 @@ public class SlideController : SingletonMono<SlideController>
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
         curLevelId = 7;
         SetTutorial();
+        SetupSavePoint();
         this.SetElementGuide();
         this.SetGameplayUI();
         this.SetCameraFollow();
@@ -684,6 +686,12 @@ public class SlideController : SingletonMono<SlideController>
         }
     }
 
+    private void SetupSavePoint()
+    {
+        saveId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].SaveId;
+        SavePointController.Instance.Setup(saveId);
+    }
+
     private void SetRotateObject()
     {
         rotateObId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].RotateObId;
@@ -796,6 +804,13 @@ public class SlideController : SingletonMono<SlideController>
     private void SetActiveIceStars()
     {
         IceStarController.Instance.SetIceStars();
+    }
+
+    public void Reload()
+    {
+        LoadingManager.instance.FadeScene();
+        _player.SetPos(SavePointController.Instance.curSavePoint);
+        ItemTileController.Instance.Reload();
     }
 
     // Bonus

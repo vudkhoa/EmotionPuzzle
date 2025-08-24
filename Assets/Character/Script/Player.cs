@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
         currentPos = newGridPos;
         transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
+            SavePointController.Instance.SetCheckPoint(currentPos);
+
             if (RotateObjectController.Instance.IsShowTutorial(this.currentPos))
             {
                 ShowFTutorial();
@@ -55,6 +57,8 @@ public class Player : MonoBehaviour
             // 3. Scale lớn lên để hiện  lại
             this.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack).OnComplete(() => 
             {
+                SavePointController.Instance.SetCheckPoint(currentPos);
+
                 if (RotateObjectController.Instance.IsShowTutorial(this.currentPos))
                 {
                     ShowFTutorial();
@@ -66,6 +70,12 @@ public class Player : MonoBehaviour
                 SlideController.Instance.LoadNextLevel();
             });
         });
+    }
+
+    public void SetPos(Vector2Int pos)
+    {
+        currentPos = pos;
+        this.transform.position = SlideController.Instance.groundTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
     }
 
     public void Shake()
