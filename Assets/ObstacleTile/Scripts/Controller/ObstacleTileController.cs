@@ -6,7 +6,62 @@ using UnityEngine.Tilemaps;
 
 public class ObstacleTileController : SingletonMono<ObstacleTileController>
 {
+    public TileBase ObstacleTile;
     [SerializeField] private ParticleSystem burnDownEffect;
+
+    public List<Vector2Int> initObstaclePos = new List<Vector2Int>();
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Reload()
+    {
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if ( SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0))
+                    && IsInSave(new Vector2Int(i, j)) )
+                {
+                    SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(i, j, 0), null);
+                }
+            }
+        }
+
+        foreach (Vector2Int pos in initObstaclePos)
+        {
+            if (IsInSave(pos))
+            {
+                SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), ObstacleTile);
+            }
+        }
+    }
+
+    public void Init()
+    {
+        initObstaclePos = new List<Vector2Int>();
+
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    initObstaclePos.Add(new Vector2Int(i, j));
+                }
+            }
+        }
+    }
 
     public void RemoveObstacleTile(Vector2Int pos)
     {

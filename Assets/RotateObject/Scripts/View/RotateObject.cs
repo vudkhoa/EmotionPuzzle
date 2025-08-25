@@ -2,11 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class RotateObject : MonoBehaviour
 {
     public Vector2Int rotatePos;
     public List<Vector2Int> containPosList;
+
+    private float initAngle;
+
+    public void Reload()
+    {
+        this.transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
+    }
+
+    public void SetInitAngle(float angle)
+    {
+        this.initAngle = angle;
+    }
 
     public void Setup(Vector2Int rotatePos, List<Vector2Int> containPosList)
     {

@@ -18,6 +18,8 @@ public abstract class Element : MonoBehaviour
     [Header(" Info ")]
     public ElementType ElementType;
     public EmotionType EmotionType;
+    private EmotionType initEmotionType;
+    private Vector2Int initPosition;
 
     public void SetEmotionType(EmotionType emotionType)
     {
@@ -42,6 +44,19 @@ public abstract class Element : MonoBehaviour
     public List<bool> ActivePowerList;
     public List<Vector2Int> OffsetList;
     public List<GameObject> PowerRingList;
+
+    public void SetInitInfo(EmotionType emotionType, Vector2Int currentPos)
+    {
+        initEmotionType = emotionType;
+        initPosition = currentPos;
+    }
+
+    public void Reload()
+    {
+        Vector3Int gridPos = new Vector3Int(initPosition.x, initPosition.y, 0);
+        this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+        this.Setup(initEmotionType, initPosition);
+    }
 
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
     {

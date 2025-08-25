@@ -13,6 +13,30 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
     [SerializeField] private RotateObject I_Prefab;
     [SerializeField] private RotateObject L_Prefab;
 
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Reload()
+    {
+        foreach (RotateObject o in RotateObjects)
+        {
+            if (IsInSave(o.rotatePos))
+            {
+                o.Reload();
+            }
+        }
+    }
+
     public void Init()
     {
         RotateObjects = new List<RotateObject>();
@@ -47,6 +71,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                             temp = rotatePos + new Vector2Int(0, -1);
                             containPosList.Add(temp);
                         }
+                        obj.SetInitAngle(rotation.z);
                         obj.Setup(rotatePos, containPosList);
                         this.RotateObjects.Add(obj);
                     }
@@ -82,6 +107,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                             temp = rotatePos + new Vector2Int(0, 1);
                             containPosList.Add(temp);
                         }
+                        obj.SetInitAngle(rotation.z);
                         obj.Setup(rotatePos, containPosList);
                         this.RotateObjects.Add(obj);
                     }

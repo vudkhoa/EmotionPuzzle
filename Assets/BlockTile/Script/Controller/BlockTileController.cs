@@ -12,6 +12,33 @@ public class BlockTileController : SingletonMono<BlockTileController>
     public List<Block> blocks;
     public List<Vector3Int> unBlockTileList = new List<Vector3Int>();
 
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Reload()
+    {
+        foreach (Block block in blocks)
+        {
+            if (IsInSave(block.BlockPosList[0]))
+            {
+                foreach (Vector2Int groundPos in block.groundPosList)
+                {
+                    SlideController.Instance.groundTilemap.SetTile(new Vector3Int(groundPos.x, groundPos.y, 0), null);
+                }
+            }
+        }
+    }
+
     public void Setup(List<Block> blocks)
     {
         this.blocks = new List<Block>(blocks);

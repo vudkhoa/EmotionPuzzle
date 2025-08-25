@@ -10,15 +10,36 @@ public class ElementController : SingletonMono<ElementController>
 
     private List<int> elementIdHasJustMove;
 
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void Reload()
     {
-        foreach (Element e in this.ElementList)
+        foreach (Element e in ElementList)
         {
-            if (e.ElementType == ElementType.Water)
+            if (IsInSave(e.CurrentPos))
             {
-                e.ReloadElement();
+                e.Reload();
             }
         }
+
+        //foreach (Element e in this.ElementList)
+        //{
+        //    if (e.ElementType == ElementType.Water)
+        //    {
+        //        e.ReloadElement();
+        //    }
+        //}
     }
 
     public void SpawnElement(List<ElementDetail> elementDetails)
@@ -28,6 +49,7 @@ public class ElementController : SingletonMono<ElementController>
             Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
             Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
             Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
+            eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
             eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
             this.ElementList.Add(eGO);
         }

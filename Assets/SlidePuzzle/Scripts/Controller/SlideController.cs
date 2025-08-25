@@ -574,6 +574,7 @@ public class SlideController : SingletonMono<SlideController>
         //Set map
         CreateGridPrefab();
         SetItemTile();
+        SetObstacleTile();
         SetBlockTile();
         SetElement();
         SpawnPlayer();
@@ -586,6 +587,11 @@ public class SlideController : SingletonMono<SlideController>
         // Mini-game Mechanics
         this.SetIceStar();
         this.SetRotateObject();
+    }
+
+    private void SetObstacleTile()
+    {
+        ObstacleTileController.Instance.Init();
     }
 
     private void SetCameraFollow()
@@ -823,9 +829,12 @@ public class SlideController : SingletonMono<SlideController>
     public void Reload()
     {
         LoadingManager.instance.FadeScene();
-        _player.SetPos(SavePointController.Instance.curSavePoint);
         ItemTileController.Instance.Reload();
         ElementController.Instance.Reload();
+        ObstacleTileController.Instance.Reload();
+        RotateObjectController.Instance.Reload();
+        BlockTileController.Instance.Reload();
+        _player.SetPos(SavePointController.Instance.curSavePoint);
     }
 
     // Bonus
