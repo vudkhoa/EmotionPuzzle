@@ -71,7 +71,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                             temp = rotatePos + new Vector2Int(0, -1);
                             containPosList.Add(temp);
                         }
-                        obj.SetInitAngle(rotation.z);
+                        obj.SetInitAngle(rotation.z, containPosList);
                         obj.Setup(rotatePos, containPosList);
                         this.RotateObjects.Add(obj);
                     }
@@ -107,7 +107,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                             temp = rotatePos + new Vector2Int(0, 1);
                             containPosList.Add(temp);
                         }
-                        obj.SetInitAngle(rotation.z);
+                        obj.SetInitAngle(rotation.z, containPosList);
                         obj.Setup(rotatePos, containPosList);
                         this.RotateObjects.Add(obj);
                     }

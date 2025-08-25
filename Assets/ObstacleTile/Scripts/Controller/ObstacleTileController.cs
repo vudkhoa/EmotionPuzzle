@@ -9,7 +9,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
     public TileBase ObstacleTile;
     [SerializeField] private ParticleSystem burnDownEffect;
 
-    public List<Vector2Int> initObstaclePos = new List<Vector2Int>();
+    private List<Vector2Int> initObstaclePos = new List<Vector2Int>();
 
     public bool IsInSave(Vector2Int pos)
     {
