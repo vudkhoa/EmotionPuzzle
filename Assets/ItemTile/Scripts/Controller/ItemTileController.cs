@@ -83,7 +83,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
         for (int i=0; i < ItemPosList.Count; i++)
         {
             Vector2Int item = ItemPosList[i];
-            if (!IsInSave(item))
+            if (IsInSave(item))
             {
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(ItemPosList[i].x, ItemPosList[i].y, 0), null);
                 ItemPosList.RemoveAt(i);
@@ -96,7 +96,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
         for (int i = 0; i < initItemPosList.Count; i++)
         {
             Vector2Int item = initItemPosList[i];
-            if (!IsInSave(item))
+            if (IsInSave(item))
             {
                 if (initItemTypeList[i] == ItemType.None)
                 {
