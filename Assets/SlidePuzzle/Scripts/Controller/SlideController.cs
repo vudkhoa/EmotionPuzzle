@@ -564,7 +564,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 4;
+        curLevelId = 2;
         SetTutorial();
         SetupSavePoint();
         this.SetElementGuide();
@@ -835,6 +835,8 @@ public class SlideController : SingletonMono<SlideController>
         RotateObjectController.Instance.Reload();
         BlockTileController.Instance.Reload();
         _player.SetPos(SavePointController.Instance.curSavePoint);
+        IceStarController.Instance.Reload();
+        //Invoke(nameof(IceStarController.Instance.Reload), 0.05f);
     }
 
     // Bonus

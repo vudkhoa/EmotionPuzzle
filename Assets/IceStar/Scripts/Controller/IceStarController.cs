@@ -305,4 +305,10 @@ public class IceStarController : SingletonMono<IceStarController>
         }
         return false;
     }
+
+    public void Reload()
+    {
+        this.pos2Player = SlideController.Instance.GetPlayerPos();
+        this.SetIceStars();
+    }
 }

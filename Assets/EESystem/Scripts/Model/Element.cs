@@ -51,7 +51,7 @@ public abstract class Element : MonoBehaviour
         initPosition = currentPos;
     }
 
-    public void Reload()
+    public virtual void Reload()
     {
         Vector3Int gridPos = new Vector3Int(initPosition.x, initPosition.y, 0);
         this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);

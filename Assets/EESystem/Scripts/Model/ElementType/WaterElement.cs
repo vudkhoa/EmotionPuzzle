@@ -1,7 +1,5 @@
 ﻿using SoundManager;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -125,6 +123,12 @@ public class WaterElement : Element
     public override void ReloadElement()
     {
         ReFillWater();
+    }
+
+    public override void Reload()
+    {
+        ReFillWater();
+        base.Reload();
     }
 
     public void ReFillWater()

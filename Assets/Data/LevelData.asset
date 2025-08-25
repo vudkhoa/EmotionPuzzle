@@ -30,7 +30,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 1
   - LevelId: 2
-    SaveId: 0
+    SaveId: 2
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 2
@@ -62,7 +62,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 0
   - LevelId: 4
-    SaveId: 2
+    SaveId: 3
     IsBoss: 0
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0
