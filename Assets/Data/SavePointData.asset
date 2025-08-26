@@ -26,6 +26,9 @@ MonoBehaviour:
     - SavePoint: {x: 9, y: 5}
       StartPoint: {x: 3, y: 4}
       EndPoint: {x: 9, y: 8}
+    - SavePoint: {x: -1, y: 9}
+      StartPoint: {x: -9, y: 5}
+      EndPoint: {x: -2, y: 9}
   - SavePointId: 3
     Points:
     - SavePoint: {x: 9, y: 1}
