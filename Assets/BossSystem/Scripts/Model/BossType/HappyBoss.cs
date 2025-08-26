@@ -23,7 +23,8 @@ public class HappyBoss : Boss
 
         this.DarkItems = new List<Vector2Int>();
         this.CrimsonItems = new List<Vector2Int>();
-        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Happy Boss", this.CurHealth, this.TotalItems);
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Happy Boss", this.TotalItems);
+        this.UpdateHealthUI(this.CurHealth, this.CurHealth);
     }
 
     public override void ActiveSkill()
@@ -160,8 +161,8 @@ public class HappyBoss : Boss
         else
         {
             this.BossState = BossState.Dead;
-            SlideController.Instance.BossId = 0;
-            Destroy(this.gameObject);
+            SlideController.Instance.BossId = 0; 
+            this.Die();
         }
     }
 
