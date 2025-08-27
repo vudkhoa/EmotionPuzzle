@@ -3,6 +3,7 @@ using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class ElementController : SingletonMono<ElementController>
 {
@@ -25,11 +26,28 @@ public class ElementController : SingletonMono<ElementController>
 
     public void Reload()
     {
-        foreach (Element e in ElementList)
+        for (int i = 0; i < ElementList.Count; i++) 
         {
+            Element e = ElementList[i];
             if (IsInSave(e.CurrentPos))
             {
-                e.Reload();
+                Element eTemp = e;
+                this.ElementList.Remove(e);
+                Destroy(eTemp.gameObject);
+                i--;
+            }
+        }
+
+        foreach (ElementDetail elementDetail in DataManager.Instance.ElementData.ElementLevelDetails[SlideController.Instance.elementId - 1].ElementDetails)
+        {
+            if (IsInSave(elementDetail.ElementPos))
+            {
+                Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
+                Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+                Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
+                eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
+                eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
+                this.ElementList.Add(eGO);
             }
         }
     }
