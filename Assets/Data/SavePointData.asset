@@ -49,3 +49,20 @@ MonoBehaviour:
     - SavePoint: {x: 12, y: 30}
       StartPoint: {x: 12, y: 32}
       EndPoint: {x: 19, y: 45}
+  - SavePointId: 4
+    Points:
+    - SavePoint: {x: 5, y: -1}
+      StartPoint: {x: -3, y: -3}
+      EndPoint: {x: 6, y: -1}
+    - SavePoint: {x: 5, y: -1}
+      StartPoint: {x: -3, y: 0}
+      EndPoint: {x: 8, y: 9}
+    - SavePoint: {x: -3, y: 10}
+      StartPoint: {x: -6, y: 10}
+      EndPoint: {x: 0, y: 18}
+    - SavePoint: {x: 0, y: 18}
+      StartPoint: {x: 0, y: 18}
+      EndPoint: {x: 9, y: 21}
+    - SavePoint: {x: 10, y: 21}
+      StartPoint: {x: 9, y: 22}
+      EndPoint: {x: 18, y: 29}
