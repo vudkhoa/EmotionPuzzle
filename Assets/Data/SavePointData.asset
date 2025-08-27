@@ -23,14 +23,29 @@ MonoBehaviour:
     - SavePoint: {x: -3, y: 0}
       StartPoint: {x: -4, y: -1}
       EndPoint: {x: 2, y: 5}
-    - SavePoint: {x: 9, y: 5}
+    - SavePoint: {x: -1, y: 5}
       StartPoint: {x: 3, y: 4}
       EndPoint: {x: 9, y: 8}
     - SavePoint: {x: -1, y: 9}
       StartPoint: {x: -9, y: 5}
       EndPoint: {x: -2, y: 9}
+    - SavePoint: {x: -6, y: 10}
+      StartPoint: {x: -6, y: 13}
+      EndPoint: {x: 3, y: 18}
+    - SavePoint: {x: 7, y: 10}
+      StartPoint: {x: 10, y: 8}
+      EndPoint: {x: 20, y: 18}
   - SavePointId: 3
     Points:
+    - SavePoint: {x: 2, y: 0}
+      StartPoint: {x: -2, y: -3}
+      EndPoint: {x: 6, y: 0}
     - SavePoint: {x: 9, y: 1}
-      StartPoint: {x: 4, y: 2}
-      EndPoint: {x: 15, y: 12}
+      StartPoint: {x: 5, y: 2}
+      EndPoint: {x: 13, y: 17}
+    - SavePoint: {x: 8, y: 20}
+      StartPoint: {x: 7, y: 19}
+      EndPoint: {x: 17, y: 30}
+    - SavePoint: {x: 12, y: 30}
+      StartPoint: {x: 12, y: 32}
+      EndPoint: {x: 19, y: 45}
