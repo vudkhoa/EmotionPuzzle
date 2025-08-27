@@ -35,6 +35,16 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
                 o.Reload();
             }
         }
+
+        foreach (RotateObject o in RotateObjects)
+        {
+            GroundTileController.Instance.RemoveGroundTileForRotateObj(o.containPosList);
+        }
+
+        foreach (RotateObject o in RotateObjects)
+        {
+            GroundTileController.Instance.SetGroundTileForRotateObj(o.containPosList);
+        }
     }
 
     public void Init()
