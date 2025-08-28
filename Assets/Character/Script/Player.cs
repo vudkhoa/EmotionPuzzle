@@ -76,6 +76,16 @@ public class Player : MonoBehaviour
     {
         currentPos = pos;
         this.transform.position = SlideController.Instance.groundTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+        // Reset F Tutorial
+        if (RotateObjectController.Instance.IsShowTutorial(currentPos))
+        {
+            ShowFTutorial();
+        }
+        else
+        {
+            HideFTutorial();
+        }
+
     }
 
     public void Shake()

@@ -31,6 +31,7 @@ public class ElementController : SingletonMono<ElementController>
             Element e = ElementList[i];
             if (IsInSave(e.CurrentPos))
             {
+                e.Reload();
                 Element eTemp = e;
                 this.ElementList.Remove(e);
                 Destroy(eTemp.gameObject);

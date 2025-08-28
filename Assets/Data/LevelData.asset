@@ -96,7 +96,7 @@ MonoBehaviour:
   - LevelId: 6
     SaveId: 4
     IsBoss: 0
-    PlayerPosition: {x: -3, y: -3}
+    PlayerPosition: {x: -5, y: 18}
     TutorialId: 3
     ItemId: 4
     BlockId: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 4
   - LevelId: 7
-    SaveId: 4
+    SaveId: 0
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 0

@@ -130,8 +130,15 @@ public class GroundTileController : SingletonMono<GroundTileController>
 
     public void RemoveGroundTile(Vector2Int pos)
     {
-        Instantiate(burnDownEffect, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0)), Quaternion.identity);
+        Vector3 spawnPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+        this.ActiveBurnDownEffect(spawnPos);
         SlideController.Instance.groundTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
         SlideController.Instance.bgSmallTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
+    }
+
+    public void ActiveBurnDownEffect(Vector3 spawnPos)
+    {
+        
+        Instantiate(burnDownEffect, spawnPos, Quaternion.identity);
     }
 }

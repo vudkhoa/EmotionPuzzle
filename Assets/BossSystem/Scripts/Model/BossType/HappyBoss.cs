@@ -2,6 +2,7 @@ using CustomUtils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.PlayerSettings;
 
 public class HappyBoss : Boss
 {
@@ -48,14 +49,14 @@ public class HappyBoss : Boss
 
     public void ActiveSkillPhase1()
     {
-        Debug.Log("Happy Phase 1");
+        //Debug.Log("Happy Phase 1");
         this.ItemList = ItemTileController.Instance.FindItemCluster();
         this.CombineAndTransformItems(DarkItem);
     }
 
     public void ActiveSkillPhase2()
     {
-        Debug.Log("Happy Phase 2");
+        //Debug.Log("Happy Phase 2");
         List<Vector2Int> tmpList = new List<Vector2Int>();
         tmpList = ItemTileController.Instance.FindItemAbsMin();
         this.ItemList = new List<Vector2Int>();
@@ -111,10 +112,27 @@ public class HappyBoss : Boss
                 this.DecreaseItems(1);
                 this.DarkItems.Remove(targetPos);
                 SlideController.Instance.bossTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), null);
-                Debug.Log("Dark");
+
+                Vector3 worldPlayerPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(playerPos.x, playerPos.y, 0));
+                Vector3 worldTargetPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(targetPos.x, targetPos.y, 0));
+
+                Vector3 spawnPos = new Vector3();
+                spawnPos.x = Mathf.Abs(worldPlayerPos.x + worldTargetPos.x) / 2;
+                spawnPos.y = Mathf.Abs(worldPlayerPos.y + worldTargetPos.y) / 2;
+
+                GroundTileController.Instance.ActiveBurnDownEffect(spawnPos);
             }
             else if (this.CrimsonItems.Contains(targetPos))
             {
+                Vector3 worldPlayerPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(playerPos.x, playerPos.y, 0));
+                Vector3 worldTargetPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(targetPos.x, targetPos.y, 0));
+
+                Vector3 spawnPos = new Vector3();
+                spawnPos.x = Mathf.Abs(worldPlayerPos.x + worldTargetPos.x) / 2;
+                spawnPos.y = Mathf.Abs(worldPlayerPos.y + worldTargetPos.y) / 2;
+
+                GroundTileController.Instance.ActiveBurnDownEffect(spawnPos);
+
                 isAttacking = true;
                 this.DecreaseItems(1);
             }

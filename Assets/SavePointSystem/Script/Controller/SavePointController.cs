@@ -21,8 +21,17 @@ public class SavePointController : SingletonMono<SavePointController>
 
     public void Setup(int id)
     {
+        if (id <= 0)
+        {
+            return;
+        }
         this.id = id;
         curSavePoint = new Vector2Int(0, 0);
+        foreach (PointDetail pointDetail in SavePointData.SavePointDetails[id - 1].Points)
+        {
+            Vector3Int spPos = new Vector3Int(pointDetail.SavePoint.x, pointDetail.SavePoint.y, 0);
+            SlideController.Instance.savePointTilemap.SetTile(spPos, SavePointData.SavePointDetails[id - 1].TileSavePoint);
+        }
     }
 
     public void SetCheckPoint(Vector2Int savePoint)

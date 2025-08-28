@@ -99,6 +99,9 @@ public abstract class Boss : MonoBehaviour
             fadeOut: true
         );
 
+
+
+
         if (this.CurHealth <= 0)
         {
             if (this.CurPhase == this.Healths.Count) { this.DecreaseItems(1); }
