@@ -833,7 +833,7 @@ public class SlideController : SingletonMono<SlideController>
 
     public void Reload()
     {
-        LoadingManager.instance.FadeScene();
+        //LoadingManager.instance.FadeScene();
         ItemTileController.Instance.Reload();
         ElementController.Instance.Reload();
         ObstacleTileController.Instance.Reload();
