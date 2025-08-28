@@ -404,8 +404,8 @@ MonoBehaviour:
   Body: {fileID: 9217177332303724506}
   DarkItems: []
   CrimsonItems: []
-  DarkItem: {fileID: 11400000, guid: 24defe7ae4bb08f42bfe7481ed6e700d, type: 2}
-  CrimsonItem: {fileID: 11400000, guid: eb58f92c9ef1ead488121d04a22093f8, type: 2}
+  DarkItem: {fileID: 11400000, guid: 2f7e52278e887bf4a8b4027a122eb3b1, type: 2}
+  CrimsonItem: {fileID: 11400000, guid: 36b0315e02ee61e4487ae4ea790bca25, type: 2}
 --- !u!1 &7760652181323073651
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.86, y: 0.92}
+  m_AnchoredPosition: {x: 0.28, y: -0.22}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4738867931887135038
@@ -904,8 +904,8 @@ Transform:
   m_GameObject: {fileID: 9217177332303724506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.44, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalPosition: {x: -0.13, y: -0.51, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3097506265198222995}
@@ -951,7 +951,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 1547790361, guid: 925cf2a815c9dc041a6c4a932176d5c1, type: 3}
+  m_Sprite: {fileID: 1144786187, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -30,6 +30,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap bossTilemap;
     public Tilemap iceStarTilemap;
     public Tilemap powerTilemap;
+    public Tilemap savePointTilemap;
 
     [Header(" Id Tile ")]
     public int saveId;
@@ -512,8 +513,6 @@ public class SlideController : SingletonMono<SlideController>
         {
             return;
         }
-
-        Debug.Log(BossId);
         ElementGuideManager.Instance.ShowElementGuide(GetPlayerPos());
     }
 
@@ -541,7 +540,7 @@ public class SlideController : SingletonMono<SlideController>
         {
             bool returnPl = false;
 
-            if (curLevelId == 1 || curLevelId == 6)
+            if (curLevelId == 1 || curLevelId == 7)
             {
                 returnPl = true;
             }
@@ -569,15 +568,15 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 6;
+        curLevelId = 1;
         SetTutorial();
+        CreateGridPrefab();
         SetupSavePoint();
         this.SetElementGuide();
         this.SetGameplayUI();
         this.SetCameraFollow();
 
         //Set map
-        CreateGridPrefab();
         SetItemTile();
         SetObstacleTile();
         SetBlockTile();
@@ -693,6 +692,9 @@ public class SlideController : SingletonMono<SlideController>
                 case "Power":
                     this.powerTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "SavePoint":
+                    this.savePointTilemap = c.GetComponent<Tilemap>();
+                    break;  
             }
         }
     }
@@ -835,11 +837,11 @@ public class SlideController : SingletonMono<SlideController>
     {
         //LoadingManager.instance.FadeScene();
         ItemTileController.Instance.Reload();
-        ElementController.Instance.Reload();
         ObstacleTileController.Instance.Reload();
         RotateObjectController.Instance.Reload();
         BlockTileController.Instance.Reload();
         _player.SetPos(SavePointController.Instance.curSavePoint);
+        ElementController.Instance.Reload();
         IceStarController.Instance.Reload();
     }
 
@@ -857,6 +859,19 @@ public class SlideController : SingletonMono<SlideController>
     public void PlayerTakeDamage()
     {
         _player.TakeDamage();
+    }
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
 

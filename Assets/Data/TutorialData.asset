@@ -49,41 +49,44 @@ MonoBehaviour:
         c\u0169ng ch\xEDnh l\xE0 kh\u1EA3 n\u0103ng l\xFAc vui!"
       Time: 5
     PopupDetails:
-    - posInit: {x: 9, y: 4}
+    - posInit: {x: 10, y: -7}
       guideId: 1
       timeWait: 0
-    - posInit: {x: 9, y: 5}
+    - posInit: {x: 9, y: 4}
       guideId: 2
+      timeWait: 0
+    - posInit: {x: 9, y: 5}
+      guideId: 3
       timeWait: 0.7
     - posInit: {x: 17, y: 14}
-      guideId: 3
+      guideId: 4
       timeWait: 0.2
     - posInit: {x: 20, y: 17}
-      guideId: 4
+      guideId: 5
       timeWait: 0.7
   - tutorialId: 2
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: -3, y: 2}
-      guideId: 5
+      guideId: 6
       timeWait: 0
   - tutorialId: 3
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: -3, y: 10}
-      guideId: 8
+      guideId: 9
       timeWait: 0
   - tutorialId: 4
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: 1, y: 0}
-      guideId: 6
+      guideId: 7
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: 1, y: 0}
-      guideId: 7
+      guideId: 8
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
