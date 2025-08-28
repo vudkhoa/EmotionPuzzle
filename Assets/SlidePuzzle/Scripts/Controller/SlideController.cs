@@ -569,7 +569,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 4;
+        curLevelId = 6;
         SetTutorial();
         SetupSavePoint();
         this.SetElementGuide();

@@ -34,6 +34,12 @@ public class BlockTileController : SingletonMono<BlockTileController>
                 foreach (Vector2Int groundPos in block.groundPosList)
                 {
                     SlideController.Instance.groundTilemap.SetTile(new Vector3Int(groundPos.x, groundPos.y, 0), null);
+
+                }
+
+                foreach (Vector2Int bPos in block.BlockPosList)
+                {
+                    SlideController.Instance.blockTilemap.SetTile(new Vector3Int(bPos.x, bPos.y, 0), blockTile);
                 }
             }
         }
