@@ -308,6 +308,11 @@ public class IceStarController : SingletonMono<IceStarController>
 
     public void Reload()
     {
+        if (SlideController.Instance.IceStarId <= 0)
+        {
+            return;
+        }
+
         this.pos2Player = SlideController.Instance.GetPlayerPos();
         this.SetIceStars();
     }

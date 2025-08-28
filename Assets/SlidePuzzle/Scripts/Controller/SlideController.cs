@@ -1,5 +1,4 @@
 ﻿using CustomUtils;
-using DG.Tweening;
 using SoundManager;
 using System;
 using System.Collections.Generic;
@@ -509,6 +508,12 @@ public class SlideController : SingletonMono<SlideController>
 
     public void ShowElementGuide()
     {
+        if (BossId > 0)
+        {
+            return;
+        }
+
+        Debug.Log(BossId);
         ElementGuideManager.Instance.ShowElementGuide(GetPlayerPos());
     }
 
@@ -564,7 +569,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 2;
+        curLevelId = 4;
         SetTutorial();
         SetupSavePoint();
         this.SetElementGuide();
@@ -836,7 +841,6 @@ public class SlideController : SingletonMono<SlideController>
         BlockTileController.Instance.Reload();
         _player.SetPos(SavePointController.Instance.curSavePoint);
         IceStarController.Instance.Reload();
-        //Invoke(nameof(IceStarController.Instance.Reload), 0.05f);
     }
 
     // Bonus

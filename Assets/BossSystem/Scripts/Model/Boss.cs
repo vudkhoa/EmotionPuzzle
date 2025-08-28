@@ -1,6 +1,7 @@
 using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,9 @@ public abstract class Boss : MonoBehaviour
 
     [Header(" UI ")]
     [SerializeField] private Slider EnergyBar;
+    [SerializeField] private Slider HealthBar;
+    [SerializeField] private TextMeshProUGUI HealthText;
+    [SerializeField] private GameObject Body;
 
     public virtual void Setup(  List<float> healths, float cooldownTimeSkill, int totalItems, 
                                 Vector2Int startPos, Vector2Int endPos)
@@ -51,6 +55,7 @@ public abstract class Boss : MonoBehaviour
 
         this.ItemList = new List<Vector2Int>();
         this.EnergyBar.value = 0f;
+        this.HealthBar.value = 1f;
     }
 
     private void Update()
@@ -66,6 +71,15 @@ public abstract class Boss : MonoBehaviour
         }
 
         this.CaculateCooldownTimeSkill();
+        this.CooldownTimeSkillUI();
+    }
+
+    public virtual void CooldownTimeSkillUI() { }
+
+    public void UpdateHealthUI(float curHealth, float maxHealth)
+    {
+        this.HealthBar.value = curHealth / maxHealth;
+        this.HealthText.text = curHealth.ToString() + "/" + maxHealth.ToString();
     }
 
     public abstract void ActiveSkill();
@@ -73,7 +87,7 @@ public abstract class Boss : MonoBehaviour
     public void TakeDamage(int damage)
     {
         this.CurHealth -= damage;
-        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
+        this.UpdateHealthUI(this.CurHealth, this.Healths[this.CurPhase - 1]);
         BossController.Instance.SpawnItems();
         SoundsManager.Instance.PlaySFX(SoundType.AttackBoss);
         this.transform.DOShakePosition(
@@ -115,7 +129,7 @@ public abstract class Boss : MonoBehaviour
     public virtual void NextPhase()
     {
         this.CurHealth = this.Healths[CurPhase - 1];
-        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
+        this.UpdateHealthUI(this.CurHealth, this.Healths[this.CurPhase - 1]);
         this.CooldownTimeSkill /= 2f;
     }
 
@@ -142,5 +156,17 @@ public abstract class Boss : MonoBehaviour
     public void LoseGameBoss()
     {
         UIManager.Instance.OpenUI<LoseUI>();
+    }
+
+    public void Die()
+    {
+        Sequence deathSq = DOTween.Sequence();
+
+        deathSq.Append(this.Body.transform.DOShakePosition(0.2f, 0.5f, 100, 90, false, true));
+        deathSq.Join(this.Body.transform.DORotate(new Vector3(0, 0, 720f), 0.2f, RotateMode.FastBeyond360));
+        deathSq.OnComplete(() => 
+        { 
+            Destroy(this.Body.gameObject);
+        });
     }
 }

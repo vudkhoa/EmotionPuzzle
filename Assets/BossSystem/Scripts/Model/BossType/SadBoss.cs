@@ -15,7 +15,8 @@ public class SadBoss : Boss
         this.BossType = BossType.SadBoss;
         this.CurPhase = 1;
         this.CurHealth = this.Healths[CurPhase - 1];
-        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Sad Boss", this.CurHealth, this.TotalItems);
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Sad Boss", this.TotalItems);
+        this.UpdateHealthUI(this.CurHealth, this.CurHealth);
     }
 
     public override void ActiveSkill()
@@ -83,7 +84,7 @@ public class SadBoss : Boss
         {
             this.BossState = BossState.Dead;
             SlideController.Instance.BossId = 0;
-            Destroy(this.gameObject);
+            this.Die();
             SlideController.Instance.LoadNextLevelAfterBoss();
         }
     }
