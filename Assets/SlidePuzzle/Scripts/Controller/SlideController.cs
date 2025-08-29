@@ -568,7 +568,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        curLevelId = 1;
+        curLevelId = 7;
         SetTutorial();
         CreateGridPrefab();
         SetupSavePoint();
@@ -647,7 +647,7 @@ public class SlideController : SingletonMono<SlideController>
         else
         {
             SoundsManager.Instance.PlayMusic(SoundType.BossMusic);
-            Debug.Log("Boss Level: " + curLevelId);
+            //Debug.Log("Boss Level: " + curLevelId);
             gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
         }
 

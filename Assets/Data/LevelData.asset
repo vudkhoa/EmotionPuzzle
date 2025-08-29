@@ -113,7 +113,7 @@ MonoBehaviour:
     SaveId: 0
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
+    TutorialId: 5
     ItemId: 6
     BlockId: 0
     ElementId: 0

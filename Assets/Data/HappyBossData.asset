@@ -16,8 +16,7 @@ MonoBehaviour:
   - HappyBossId: 1
     Healths:
     - 3
-    - 10
-    - 10
+    - 20
     CooldownTimeSkill: 10
     TotalItems: 50
     StartPos: {x: 3, y: 3}

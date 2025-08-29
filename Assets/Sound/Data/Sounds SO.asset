@@ -123,3 +123,8 @@ MonoBehaviour:
     mixer: {fileID: 0}
     sounds:
     - {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
+  - name: ExBomb
+    volume: 1
+    mixer: {fileID: 0}
+    sounds:
+    - {fileID: 8300000, guid: 7e502feeb7be9804f893cf84e34b687c, type: 3}

@@ -89,7 +89,7 @@ public abstract class Boss : MonoBehaviour
         this.CurHealth -= damage;
         this.UpdateHealthUI(this.CurHealth, this.Healths[this.CurPhase - 1]);
         BossController.Instance.SpawnItems();
-        SoundsManager.Instance.PlaySFX(SoundType.AttackBoss);
+        SoundsManager.Instance.PlaySFX(SoundType.ExBomb);
         this.transform.DOShakePosition(
             duration: 0.2f,
             strength: new Vector3(0.2f, 0.2f, 0),

@@ -90,4 +90,7 @@ MonoBehaviour:
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
-    PopupDetails: []
+    PopupDetails:
+    - posInit: {x: 1, y: 0}
+      guideId: 10
+      timeWait: 0
