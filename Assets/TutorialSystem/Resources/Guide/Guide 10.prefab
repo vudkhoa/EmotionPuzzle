@@ -107,7 +107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#0483fd>HAPPY BOSS</color>
+  m_text: <color=#e8b858>HAPPY BOSS</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -669,8 +669,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "K\u1EBFt h\u1EE3p n\u0103ng l\u01B0\u1EE3ng \u0111en v\u1EDBi <color=#e8b858>Item</color>
-    \u0111\u1EC3 t\u1EA1o h\u1EAFc bom"
+  m_text: Can transform a <color=#F06100>Missile</color> into a <color=#fd5951>Dark
+    Bomb</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -868,8 +868,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110\u1EC3 di\u1EC7t <color=#0483fd>Boss</color> \n\u0110\u1EA9y <color=#e8b858>Item
-    bom</color> v\xE0o n\xF3"
+  m_text: To defeat the <color=#0483fd>Boss</color>, push <color=#F06100>Missile</color>
+    into it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1003,8 +1003,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#fd5951>H\u1EAFc Bom</color> \nNg\u01B0\u1EDDi ch\u01A1i v\xE0o
-    ph\u1EA1m vi 8 \xF4 xung quanh <color=#fd5951>h\u1EAFc bom</color> s\u1EBD n\u1ED5."
+  m_text: If the player enters the 8-tile range around the <color=#fd5951>Dark Bomb</color>,
+    it will explode.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}

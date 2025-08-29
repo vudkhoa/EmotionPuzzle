@@ -9,12 +9,14 @@ public class PauseUI : UICanvas
     [SerializeField] private Button continueBtn;
     [SerializeField] private Button replayBtn;
     [SerializeField] private Button settingBtn;
+    [SerializeField] private Button homeBtn;
 
     private void OnEnable()
     {
         continueBtn.onClick.AddListener(OnClickContinueBtn);
         replayBtn.onClick.AddListener(OnClickReplayBtn);
         settingBtn.onClick.AddListener(OnClickSettingBtn);
+        homeBtn.onClick.AddListener(OnClickHomeBtn);
     }
 
     private void OnDisable()
@@ -22,6 +24,13 @@ public class PauseUI : UICanvas
         continueBtn.onClick.RemoveListener(OnClickContinueBtn);
         replayBtn.onClick.RemoveListener(OnClickReplayBtn);
         settingBtn.onClick.RemoveListener(OnClickSettingBtn);
+        homeBtn.onClick.RemoveListener(OnClickHomeBtn);
+    }
+
+    private void OnClickHomeBtn()
+    {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        LoadingManager.instance.LoadScene("Start");
     }
 
     private void OnClickSettingBtn()
