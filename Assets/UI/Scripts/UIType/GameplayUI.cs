@@ -3,6 +3,7 @@ using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -382,6 +383,9 @@ public class GameplayUI : UICanvas
 
     public void SetupBoss(string bossName, int playerHealth)
     {
+        this.PlayerHealthBar.AddComponent<CanvasGroup>();
+        this.PlayerHealthBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
         this.BossName.text = bossName;
         this.PlayerHealthBar.value = 1f;
         this.PlayerHealthText.text = playerHealth.ToString() + "/" + playerHealth.ToString();

@@ -2,7 +2,9 @@ using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BossState
@@ -56,6 +58,21 @@ public abstract class Boss : MonoBehaviour
         this.ItemList = new List<Vector2Int>();
         this.EnergyBar.value = 0f;
         this.HealthBar.value = 1f;
+
+        this.AddCanvasGroup();
+        this.BlockBars();
+    }
+
+    private void AddCanvasGroup()
+    {
+        this.HealthBar.AddComponent<CanvasGroup>();
+        this.EnergyBar.AddComponent<CanvasGroup>();
+    }
+
+    private void BlockBars()
+    {
+        this.HealthBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        this.EnergyBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     private void Update()
@@ -163,7 +180,7 @@ public abstract class Boss : MonoBehaviour
 
     public void Die()
     {
-        Sequence deathSq = DOTween.Sequence();
+        DG.Tweening.Sequence deathSq = DOTween.Sequence();
 
         deathSq.Append(this.Body.transform.DOShakePosition(0.2f, 0.5f, 100, 90, false, true));
         deathSq.Join(this.Body.transform.DORotate(new Vector3(0, 0, 720f), 0.2f, RotateMode.FastBeyond360));
