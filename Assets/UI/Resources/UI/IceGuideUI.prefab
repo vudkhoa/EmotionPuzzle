@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi v\xE0o t\u1EE9c gi\u1EADn, c\xF3 8 \xF4 s\u1EE9c m\u1EA1nh"
+  m_text: "With Power, element get \n<color=#83E6EC>8 power tiles</color>. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.646057, y: -35}
+  m_AnchoredPosition: {x: -7.0039673, y: -35}
   m_SizeDelta: {x: 281.1861, y: 283.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2157492495206347622
@@ -452,8 +452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 387, y: 192}
-  m_SizeDelta: {x: 313.3501, y: 110.513}
+  m_AnchoredPosition: {x: 381, y: 192}
+  m_SizeDelta: {x: 334.3704, y: 110.513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5902926446134016192
 CanvasRenderer:
@@ -483,8 +483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ch\xFA \xFD: v\u1EDBi nguy\xEAn t\u1ED1 b\u0103ng, n\u0103ng l\u01B0\u1EE3ng
-    s\u1EBD kh\xF4ng m\u1EA5t d\xF9 \u0111\xE3 d\xF9ng"
+  m_text: "Note: Power tiles won\u2019t disappear after use."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -912,7 +911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.650024, y: 192}
+  m_AnchoredPosition: {x: -7, y: 192}
   m_SizeDelta: {x: 313.3501, y: 110.513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8433351650383931991
@@ -943,8 +942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\u1ED7i \xF4 c\xF3 kh\u1EA3 n\u0103ng \u0111\xF3ng b\u0103ng t\u1EA1m
-    th\u1EDDi Item"
+  m_text: Each tile can temporarily <color=#83E6EC>freeze</color> objects.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}

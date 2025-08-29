@@ -72,8 +72,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.0102, y: 208}
-  m_SizeDelta: {x: 1264.4989, y: 94.3718}
+  m_AnchoredPosition: {x: -12.0102, y: 203.09247}
+  m_SizeDelta: {x: 1264.4989, y: 140.6426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7197451918909625053
 CanvasRenderer:
@@ -103,9 +103,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i <color=#4682B4>Sad</color>\nN\xF3
-    c\xF3 kh\u1EA3 n\u0103ng h\u1EA5p th\u1EE5 Item.\n\u0110\u1ED3ng th\u1EDDi, m\u1EA5t
-    \u0111i kh\u1EA3 n\u0103ng di chuy\u1EC3n c\xF9ng Player"
+  m_text: 'When an element is <color=#4682B4>Sad</color>,
+
+    it can <color=#4682B4>absorb
+    emotions</color>
+
+    but <color=#4682B4>can''t move</color> with the player
+    anymore.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -454,7 +458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\xE3y c\u1EA9n th\u1EADn nh\xE9!!!!!"
+  m_text: Be careful!!!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}

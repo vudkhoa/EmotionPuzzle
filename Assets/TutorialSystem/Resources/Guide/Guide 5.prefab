@@ -168,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.5416, y: 221}
-  m_SizeDelta: {x: 1015.0833, y: 95.376}
+  m_AnchoredPosition: {x: -7.5416, y: 230.97595}
+  m_SizeDelta: {x: 1015.0833, y: 169.4826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9115420477415510482
 CanvasRenderer:
@@ -199,10 +199,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi Element v\xE0o tr\u1EA1ng th\xE1i <color=#FF69B4>Happy</color>\nN\xF3
-    c\xF3 kh\u1EA3 n\u0103ng k\u1EBFt \u0111\xF4i v\u1EDBi Element kh\xE1c.\n\u0110\u1ED3ng
-    th\u1EDDi, b\u1ECB k\xE9o v\xE0 \u0111\u1EA9y theo ph\u01B0\u01A1ng c\xF9ng v\u1EDBi
-    player."
+  m_text: 'When an element is <color=#FF69B4>Happy</color>,
+
+    it can pair with
+    another element.
+
+    It <color=#FF69B4>can move</color> with the player.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1440,7 +1442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Element m\u1EDBi s\u1EBD \u1EDF tr\u1EA1ng th\xE1i Neutral"
+  m_text: The new element is <color=#f9a35d>Neutral</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}

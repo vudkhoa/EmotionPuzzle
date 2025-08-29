@@ -107,8 +107,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110\xE1nh d\u1EA5u \xF4 <color=#4682B4>Player</color> \u0111ang \n\u0111\u1EE9ng
-    \u0111\u1EC3 chu\u1EA9n b\u1ECB ph\xE1 h\u1EE7y "
+  m_text: Mark the tile where the <color=#4682B4>Player</color> is standing to prepare
+    for destruction.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -211,7 +211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.966, y: 256}
+  m_AnchoredPosition: {x: 17.966, y: 291}
   m_SizeDelta: {x: 1100, y: 105.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2570270849876504893
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -580,8 +580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sau <color=#f11d18>2s</color> \u0111\u1EBFm ng\u01B0\u1EE3c, ph\xE1 h\u1EE7y
-    m\u1ECDi th\u1EE9 trong ph\u1EA1m vi"
+  m_text: After a <color=#f11d18>2s</color> countdown, the marked tile will be destroyed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -865,11 +864,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110\u1EC3 di\u1EC7t <color=#f11d18>Boss</color> \n\u0110\u1EA9y <color=#e8b858>Item
-    ki\u1EBFm</color> v\xE0o n\xF3"
+  m_text: "To defeat the <color=#f11d18>Boss</color>, \npush the <color=#e8b858>Sword</color>
+    into it."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1044,7 +1043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 324, y: 172}
+  m_AnchoredPosition: {x: 324, y: 180}
   m_SizeDelta: {x: 215.028, y: 105.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5253354177071989150
@@ -1075,7 +1074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\u1ED3i chi\xEAu sau m\u1ED7i <color=#f11d18>20s</color>"
+  m_text: The Boss recharges every <color=#f11d18>20s</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
