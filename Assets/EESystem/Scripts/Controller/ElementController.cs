@@ -3,7 +3,6 @@ using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class ElementController : SingletonMono<ElementController>
 {
