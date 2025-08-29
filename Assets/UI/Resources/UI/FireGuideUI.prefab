@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197, y: 192}
-  m_SizeDelta: {x: 313.3501, y: 110.513}
+  m_AnchoredPosition: {x: -253, y: 192}
+  m_SizeDelta: {x: 364.6407, y: 110.513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4751359183510965659
 CanvasRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Khi v\xE0o t\u1EE9c gi\u1EADn, c\xF3 8 \xF4 s\u1EE9c m\u1EA1nh"
+  m_text: With Power, element get <color=red>8 power tiles</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -244,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209.65002, y: 192}
-  m_SizeDelta: {x: 313.3501, y: 110.513}
+  m_AnchoredPosition: {x: 241, y: 192}
+  m_SizeDelta: {x: 369.7242, y: 110.513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6770212125652231041
 CanvasRenderer:
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\u1ED7i \xF4 c\xF3 kh\u1EA3 n\u0103ng ti\xEAu h\u1EE7y obstacle 1 l\u1EA7n"
+  m_text: Each tile can destroy obstacle <color=red>one only</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -512,7 +512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209.64606, y: -35}
+  m_AnchoredPosition: {x: 252.64606, y: -35}
   m_SizeDelta: {x: 281.1861, y: 283.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8572076628566686396
@@ -759,7 +759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197.00397, y: -35}
+  m_AnchoredPosition: {x: -259.00397, y: -35}
   m_SizeDelta: {x: 281.1861, y: 283.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4816342320387056949

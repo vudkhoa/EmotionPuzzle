@@ -184,8 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#fd5951>Phase 2</color> \n\u01AFu ti\xEAn h\u1EA5p th\u1EE5 <color=#e8b858>Item</color>
-    c\xF3 kh\u1EA3 n\u0103ng t\xE1c \u0111\u1ED9ng nhanh nh\u1EA5t"
+  m_text: "<color=#fd5951>Phase 2</color> \nPrioritizes absorbing the nearest <color=#e8b858>Sword</color>."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -288,7 +287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 263}
+  m_AnchoredPosition: {x: 3, y: 285}
   m_SizeDelta: {x: 1100, y: 105.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2570270849876504893
@@ -346,8 +345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -945,7 +944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H\u1EA5p th\u1EE5 <color=#e8b858>Item</color>"
+  m_text: The Boss can absorb <color=#e8b858>Sword</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1143,8 +1142,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0110\u1EC3 di\u1EC7t <color=#0483fd>Boss</color> \n\u0110\u1EA9y <color=#e8b858>Item
-    ki\u1EBFm</color> v\xE0o n\xF3"
+  m_text: "To defeat the <color=#0483fd>Boss</color>, \npush the <color=#e8b858>Sword</color>
+    into it."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1353,8 +1352,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#fd5951>Phase 1</color> \n\u01AFu ti\xEAn h\u1EA5p th\u1EE5 <color=#e8b858>Item</color>
-    theo c\u1EE5m"
+  m_text: "<color=#fd5951>Phase 1</color> \nPrioritizes absorbing <color=#e8b858>Swords</color>
+    in the area with the most of them."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
