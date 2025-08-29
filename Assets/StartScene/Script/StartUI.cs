@@ -13,6 +13,7 @@ public class StartUI : MonoBehaviour
     {
         PlayerPrefs.SetInt(Constant.LEVELID, 1);
         PlayerPrefs.SetInt(Constant.GUIDEID, 0);
+        PlayerPrefs.SetInt(Constant.ISRETURNMENU, 0);
         PlayerPrefs.Save();
     }
 
@@ -26,5 +27,13 @@ public class StartUI : MonoBehaviour
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
         Application.Quit();
+    }
+
+    public void PlayLevel(int level)
+    {
+        PlayerPrefs.SetInt(Constant.LEVELID, level);
+        PlayerPrefs.SetInt(Constant.ISRETURNMENU, 1);
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        LoadingManager.instance.LoadScene("Puzzle");
     }
 }

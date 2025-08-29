@@ -538,6 +538,13 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
+            if (PlayerPrefs.GetInt(Constant.ISRETURNMENU) == 1)
+            {
+                LoadingManager.instance.LoadScene("Start");
+
+                return;
+            }
+
             bool returnPl = false;
 
             if (curLevelId == 1 || curLevelId == 7)
