@@ -403,9 +403,7 @@ MonoBehaviour:
   HealthText: {fileID: 1011304211530005706}
   Body: {fileID: 9217177332303724506}
   DarkItems: []
-  CrimsonItems: []
   DarkItem: {fileID: 11400000, guid: 2f7e52278e887bf4a8b4027a122eb3b1, type: 2}
-  CrimsonItem: {fileID: 11400000, guid: 36b0315e02ee61e4487ae4ea790bca25, type: 2}
 --- !u!1 &7760652181323073651
 GameObject:
   m_ObjectHideFlags: 0

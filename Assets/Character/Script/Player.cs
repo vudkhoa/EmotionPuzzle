@@ -109,14 +109,18 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
+        Vector3 pos = this.transform.position;
+
         this.transform.DOShakePosition(
             duration: 0.1f,
-            strength: new Vector3(0.2f, 0.2f, 0),
+            strength: new Vector3(0.5f, 0.5f, 0),
             vibrato: 1000,
             randomness: 90,
             snapping: false,
             fadeOut: true
         );
+
+        this.transform.DOMove(pos, 0.1f).SetEase(Ease.InOutBack);
     }
 
     public void ShowFTutorial()

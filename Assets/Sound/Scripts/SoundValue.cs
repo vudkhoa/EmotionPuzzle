@@ -24,5 +24,6 @@ namespace SoundManager
         Click = 19,
         Book = 20,
         NextDialogue = 21,
+        ExBomb = 22,
     }
 }
