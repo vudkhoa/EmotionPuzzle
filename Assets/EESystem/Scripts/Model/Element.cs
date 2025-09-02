@@ -35,6 +35,7 @@ public abstract class Element : MonoBehaviour
         }
 
         ChangeEmotionAni(emotionType);
+        this.SetupLock();
     }
 
     public Vector2Int CurrentPos;
@@ -71,6 +72,7 @@ public abstract class Element : MonoBehaviour
             this.SetDeactivePower();
         }
         this.CurrentPos = currentPos;
+        this.SetupLock();
     }
 
     public virtual bool InteractWithItem(ItemType itemType, Vector2Int itemPos)
@@ -270,4 +272,16 @@ public abstract class Element : MonoBehaviour
     }
 
     public abstract void ReloadElement();
+
+    private void SetupLock()
+    {
+        if (this.EmotionType == EmotionType.Sad || this.EmotionType == EmotionType.Neutral)
+        {   
+            LockController.Instance.SetLock(new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0));
+        }
+        else
+        {
+            LockController.Instance.RemoveLock(new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0));
+        }
+    }
 }
