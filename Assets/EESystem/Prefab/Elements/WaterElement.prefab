@@ -357,8 +357,8 @@ MonoBehaviour:
   isIceMove: 0
   ElementType: 0
   EmotionType: 0
-  absorbParticle: {fileID: 0}
-  emotionChangeVFX: {fileID: 0}
+  absorbParticle: {fileID: 7449735255703154239}
+  emotionChangeVFX: {fileID: 1156303856886757435}
   CurrentPos: {x: 0, y: 0}
   PowerRingPrefab: {fileID: 5577221727646326776, guid: e5bf2adc6c29015468d59074a50f4605, type: 3}
   ActivePowerList: 
@@ -486,5 +486,10 @@ PrefabInstance:
 --- !u!4 &7449735255703154233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2620696320687690023, guid: 7cfced41b772d4a45aca452ccaca00d9, type: 3}
+  m_PrefabInstance: {fileID: 4844839475720797982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7449735255703154239 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2620696320687690017, guid: 7cfced41b772d4a45aca452ccaca00d9, type: 3}
   m_PrefabInstance: {fileID: 4844839475720797982}
   m_PrefabAsset: {fileID: 0}

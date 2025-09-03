@@ -116,7 +116,10 @@ public class DialogueManager : SingletonMono<DialogueManager>
             sentenceText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
+        yield return new WaitForSeconds(.5f);
         isTyping = false;
+
+        DisplayNextLine();
     }
 
     void EndDialogue()
@@ -150,8 +153,14 @@ public class DialogueManager : SingletonMono<DialogueManager>
             return;
         }
         PlayerPrefs.SetInt(Constant.LEVELID, nextLevel);
+        if (nextLevel > PlayerPrefs.GetInt(Constant.MAXLEVELID, 0))
+        {
+            PlayerPrefs.SetInt(Constant.ISUNLOCKLEVEL, 1);
+            PlayerPrefs.SetInt(Constant.MAXLEVELID,  nextLevel);
+        }
         PlayerPrefs.Save();
-        LoadingManager.instance.LoadScene("Platform " + nextLevel);
+        LoadingManager.instance.LoadScene("SelectLevelScene");
+        //LoadingManager.instance.LoadScene("Platform " + nextLevel);
     }
 
     // Gọi hàm này khi người chơi bấm nút Next

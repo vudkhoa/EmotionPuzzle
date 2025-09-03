@@ -9,10 +9,7 @@ public class SelectLevelUI : MonoBehaviour
     public List<LevelStage> LevelStageList;
 
     private void Start()
-    {
-        PlayerPrefs.SetInt(Constant.MAXLEVELID, 4);
-        PlayerPrefs.SetInt(Constant.ISUNLOCKLEVEL, 1);
-
+    {        
         int maxLevelId = PlayerPrefs.GetInt(Constant.MAXLEVELID, 0);
         int isUnlockLevel = PlayerPrefs.GetInt(Constant.ISUNLOCKLEVEL, 0);
 
@@ -28,8 +25,12 @@ public class SelectLevelUI : MonoBehaviour
                 if (levelStage.LevelId == maxLevelId)
                 {
                     levelStage.PlayUnlockAnimation();
+
+                    break;
                 }
             }
+
+            PlayerPrefs.SetInt(Constant.ISUNLOCKLEVEL, 0);
         }
     }
 

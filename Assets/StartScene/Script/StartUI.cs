@@ -10,6 +10,7 @@ public class StartUI : MonoBehaviour
     [SerializeField] private RectTransform title;
     [SerializeField] private RectTransform bg;
     [SerializeField] private Button startBtn;
+    [SerializeField] private Button continueBtn;
     [SerializeField] private Button quitBtn;
     [SerializeField] private GameObject cheatGO;
 
@@ -19,6 +20,11 @@ public class StartUI : MonoBehaviour
         PlayerPrefs.SetInt(Constant.GUIDEID, 0);
         PlayerPrefs.SetInt(Constant.ISRETURNMENU, 0);
         PlayerPrefs.Save();
+
+        if (PlayerPrefs.GetInt(Constant.MAXLEVELID, 0) == 0)
+        {
+            continueBtn.gameObject.SetActive(false);
+        }
 
         AnimateTitle();
         AnimateBackground();
@@ -36,6 +42,12 @@ public class StartUI : MonoBehaviour
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("BG Start");
+    }
+
+    public void ContinueGame()
+    {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        LoadingManager.instance.LoadScene("SelectLevelScene");
     }
 
     public void QuitGame()
