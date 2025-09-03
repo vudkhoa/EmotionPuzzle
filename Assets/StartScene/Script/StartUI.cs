@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +7,11 @@ using UnityEngine.UI;
 
 public class StartUI : MonoBehaviour
 {
+    [SerializeField] private RectTransform title;
+    [SerializeField] private RectTransform bg;
     [SerializeField] private Button startBtn;
     [SerializeField] private Button quitBtn;
+    [SerializeField] private GameObject cheatGO;
 
     private void Start()
     {
@@ -15,6 +19,17 @@ public class StartUI : MonoBehaviour
         PlayerPrefs.SetInt(Constant.GUIDEID, 0);
         PlayerPrefs.SetInt(Constant.ISRETURNMENU, 0);
         PlayerPrefs.Save();
+
+        AnimateTitle();
+        AnimateBackground();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            cheatGO.SetActive(true);
+        }
     }
 
     public void StartGame()
@@ -35,5 +50,21 @@ public class StartUI : MonoBehaviour
         PlayerPrefs.SetInt(Constant.ISRETURNMENU, 1);
         SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("Puzzle");
+    }
+
+    private void AnimateTitle()
+    {
+        title.DOScale(1.1f, 1f)
+                     .SetEase(Ease.InOutSine)
+                     .SetLoops(-1, LoopType.Yoyo);
+
+        title.DOAnchorPosY(title.anchoredPosition.y + 10f, 2f)
+                     .SetEase(Ease.InOutSine)
+                     .SetLoops(-1, LoopType.Yoyo);
+    }
+
+    void AnimateBackground()
+    {
+        
     }
 }

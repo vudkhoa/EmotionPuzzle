@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.VFX;
 
 public abstract class Element : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public abstract class Element : MonoBehaviour
     private EmotionType initEmotionType;
     private Vector2Int initPosition;
 
+    [Header(" VFX ")]
+    public ParticleSystem absorbParticle;
+    public VisualEffect emotionChangeVFX;
+
     public void SetEmotionType(EmotionType emotionType)
     {
         this.EmotionType = emotionType;
@@ -36,6 +41,8 @@ public abstract class Element : MonoBehaviour
 
         ChangeEmotionAni(emotionType);
     }
+
+    [Header(" Other ")]
 
     public Vector2Int CurrentPos;
 
@@ -85,6 +92,9 @@ public abstract class Element : MonoBehaviour
         Vector3 eWorldPos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
         ItemTileController.Instance.InteractWithElement(itemPos, eWorldPos);
 
+        //VFX
+        //emotionChangeVFX.Play();
+
         //Sound
         SoundsManager.Instance.PlaySFX(SoundType.EmotionChange);
 
@@ -108,6 +118,9 @@ public abstract class Element : MonoBehaviour
         Element eOb = Instantiate(resultPrefab, SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos), Quaternion.identity);
         eOb.Setup(EmotionType.Neutral, this.CurrentPos);
         ElementController.Instance.ElementList.Add(eOb);
+
+        //VFX
+        eOb.emotionChangeVFX.Play();
 
         eGO.transform.DOMove(this.transform.position, 0.1f)
             .SetEase(Ease.InQuad)

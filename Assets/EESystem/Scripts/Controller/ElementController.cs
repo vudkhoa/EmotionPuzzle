@@ -270,6 +270,9 @@ public class ElementController : SingletonMono<ElementController>
                 Vector2Int posItem = ItemTileController.Instance.ItemPosList[index];
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
                 ItemTileController.Instance.RemoveItem(posItem);
+
+                //VFX
+                e.absorbParticle.Play();
             }
         }
 

@@ -12,6 +12,7 @@ public class GameplayUI : UICanvas
     [SerializeField] private float hideTime = 5f;
 
     [SerializeField] private Button pauseBtn;
+    [SerializeField] private Button replayBtn;
     [SerializeField] private Button tutorialBtn;
     [SerializeField] private Transform messageListTf;
     [SerializeField] private GuideMessage messagePrefab;
@@ -41,6 +42,8 @@ public class GameplayUI : UICanvas
         pauseBtn.onClick.AddListener(OnClickPauseBtn);
         GameInput.Instance.OnPause += GameInput_OnPause;
 
+        replayBtn.onClick.AddListener(OnClickReplayBtn);
+
         tutorialBtn.onClick.AddListener(OnClickTutorialBtn);
         GameInput.Instance.OnTutorial += GameInput_OnTutorial;
 
@@ -61,6 +64,8 @@ public class GameplayUI : UICanvas
     {
         pauseBtn.onClick.RemoveListener(OnClickPauseBtn);
         GameInput.Instance.OnPause -= GameInput_OnPause;
+
+        replayBtn.onClick.RemoveListener(OnClickReplayBtn);
 
         tutorialBtn.onClick.RemoveListener(OnClickTutorialBtn);
         GameInput.Instance.OnTutorial -= GameInput_OnTutorial;
@@ -117,6 +122,15 @@ public class GameplayUI : UICanvas
         SoundsManager.Instance.PlaySFX(SoundType.Click);
         GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<PauseUI>();
+    }
+
+    private void OnClickReplayBtn()
+    {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        if (SavePointController.Instance.IsSave())
+        {
+            SlideController.Instance.Reload();
+        }
     }
 
     private void OnClickTutorialBtn()

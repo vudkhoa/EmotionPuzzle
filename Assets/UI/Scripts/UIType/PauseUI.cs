@@ -41,16 +41,7 @@ public class PauseUI : UICanvas
 
     private void OnClickReplayBtn()
     {
-        SoundsManager.Instance.PlaySFX(SoundType.Click);
-        if (SavePointController.Instance.IsSave())
-        {
-            SlideController.Instance.Reload();
-        }
-        else
-        {
-            LoadingManager.instance.LoadScene("Puzzle");
-        }
-        GameManager.Instance.State = GameState.Playing;
+        LoadingManager.instance.LoadScene("Puzzle");
         UIManager.Instance.CloseUI<PauseUI>();
     }
 
