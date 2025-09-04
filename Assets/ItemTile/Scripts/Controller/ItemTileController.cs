@@ -143,6 +143,11 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
             this.ItemPosList.Remove(oldPos);
             this.ItemPosList.Add(newPos);
+
+            //if (SlideController.Instance.BossId > 0 && BossController.Instance.Boss.BossType == BossType.HappyBoss)
+            //{
+            //    BossController.Instance.Boss.MoveCooldownSkill(new Vector3Int(oldPos.x, oldPos.y, 0), new Vector3Int(newPos.x, newPos.y, 0));
+            //}
         }
     }
 

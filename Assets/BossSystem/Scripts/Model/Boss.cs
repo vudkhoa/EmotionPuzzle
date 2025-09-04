@@ -189,4 +189,6 @@ public abstract class Boss : MonoBehaviour
             Destroy(this.Body.gameObject);
         });
     }
+
+    public virtual void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos) { }
 }

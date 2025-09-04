@@ -1,8 +1,11 @@
 using CustomUtils;
+using DG.Tweening;
 using SoundManager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class HappyBoss : Boss
 {
@@ -14,6 +17,12 @@ public class HappyBoss : Boss
     [SerializeField] private TileBase DarkItem;
     //[SerializeField] private TileBase CrimsonItem;
 
+    [Header(" UI ")]
+    [SerializeField] private GameObject CooldownTimePrefab;
+    [SerializeField] private Transform BarParent;
+    public Slider SliderGr;
+    private List<GameObject> cooldownList;
+
     public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
                                 Vector2Int startPos, Vector2Int endPos)
     {
@@ -21,7 +30,7 @@ public class HappyBoss : Boss
         this.BossType = BossType.HappyBoss;
         this.CurPhase = 1;
         this.CurHealth = this.Healths[CurPhase - 1];
-
+        this.cooldownList = new List<GameObject>();
         this.DarkItems = new List<Vector2Int>();
         //this.CrimsonItems = new List<Vector2Int>();
         UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Happy Boss", this.TotalItems);
@@ -34,25 +43,27 @@ public class HappyBoss : Boss
         {
             return;
         }
-
+        
         this.IsActingSkill = true;
-        Invoke(nameof(ActiveSkillPhase1), 0.25f);
-        //if (CurPhase < this.Healths.Count)
-        //{
-        //    Invoke(nameof(ActiveSkillPhase1), 0.25f);
-        //}
-        //else
-        //{
-        //    Invoke(nameof(ActiveSkillPhase2), 0.25f);
-        //}
+        Invoke(nameof(this.SetupSkillPhase1), 0.25f);
         Invoke(nameof(ResetIsActingSkill), 0.35f);
+        //this.SetupSkillPhase1();
     }
 
-    public void ActiveSkillPhase1()
+    public void SetupSkillPhase1()
     {
         //Debug.Log("Happy Phase 1");
         this.ItemList = ItemTileController.Instance.FindItemCluster();
-        this.CombineAndTransformItems(DarkItem);
+        this.cooldownList = new List<GameObject>();
+        SetupAllCooldownSkill();
+        //this.ActiveSkillPhase1();
+        StartCoroutine(ActiveSkillPhase1(this.ItemList, this.cooldownList));
+    }
+
+    public IEnumerator ActiveSkillPhase1(List<Vector2Int> itemList, List<GameObject> goList)
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.CombineAndTransformItems(itemList, goList);
     }
 
     //public void ActiveSkillPhase2()
@@ -65,11 +76,13 @@ public class HappyBoss : Boss
     //    this.CombineAndTransformItems(CrimsonItem);
     //}
 
-    public void CombineAndTransformItems(TileBase newItem)
+    public void CombineAndTransformItems(List<Vector2Int> itemList, List<GameObject> goList)
     {
-        foreach (Vector2Int posItem in this.ItemList)
+        //yield return new WaitForSeconds(2f);
+        int index = -1;
+        foreach (Vector2Int posItem in itemList)
         {
-            ItemTileController.Instance.RemoveItem(posItem);
+            index++;
             this.DarkItems.Add(posItem);
             //if (this.CurPhase < this.Healths.Count)
             //{
@@ -80,11 +93,56 @@ public class HappyBoss : Boss
             //    this.CrimsonItems.Add(posItem);
             //    this.InteractWithItemOther();
             //}
-            SlideController.Instance.bossTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), newItem);
+            SlideController.Instance.bossTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), DarkItem);
+            SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
             this.DecreaseItems(1);
             this.AttackingPlayer(0f);
+            Destroy(goList[index].gameObject);
+            //this.cooldownList.RemoveAt(index);
         }
         BossController.Instance.SpawnItems();
+    }
+
+    private void SetupAllCooldownSkill()
+    {
+        foreach (Vector2Int posItem in this.ItemList)
+        {
+            TileBase tile = SlideController.Instance.itemTilemap.GetTile(new Vector3Int(posItem.x, posItem.y, 0));
+            ItemTileController.Instance.RemoveItem(posItem);
+            SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), tile);
+            Vector3Int worldPos = new Vector3Int(posItem.x, posItem.y, 0);
+            this.SetupCooldownPrefab(worldPos);
+        }
+    }
+
+    private void SetupCooldownPrefab(Vector3Int worldPos)
+    {
+        Vector3 posForCooldownTime = SlideController.Instance.groundTilemap.CellToWorld(worldPos) + SlideController.Instance.groundTilemap.cellSize / 2;
+        posForCooldownTime.y -= 0.35f;
+        GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
+        sl.GetComponent<SliderCooldown>().Setup(0.5f, 1f, true);
+        this.cooldownList.Add(sl);
+    }
+
+    public override void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos)
+    {
+        this.MoveCooldown(oldPos, newPos);
+    }
+
+    public void MoveCooldown(Vector3Int oldPos, Vector3Int newPos)
+    {
+        int index = -1; 
+        index = this.ItemList.IndexOf(new Vector2Int(oldPos.x, oldPos.y));
+        if (index == -1)
+        {
+            return;
+        }
+
+        Vector3 posForCooldownTime = SlideController.Instance.groundTilemap.CellToWorld(newPos) + SlideController.Instance.groundTilemap.cellSize / 2;
+        posForCooldownTime.y -= 0.35f;
+
+        this.cooldownList[index].transform.position = posForCooldownTime;
+        this.ItemList[index] = new Vector2Int(newPos.x, newPos.y);
     }
 
     public override void AttackingPlayer(float time = 0.28f)
