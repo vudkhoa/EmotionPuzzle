@@ -455,7 +455,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
     public List<Vector2Int> FindItemAbsMin()
     {
         List<Vector2Int> resultList = new List<Vector2Int>();
-        
+
         Vector2Int minPos = new Vector2Int(-1000, -1000);
         float minDistance = float.MaxValue; 
         foreach (Vector2Int pos in this.ItemPosList) 

@@ -116,9 +116,6 @@ public abstract class Boss : MonoBehaviour
             fadeOut: true
         );
 
-
-
-
         if (this.CurHealth <= 0)
         {
             if (this.CurPhase == this.Healths.Count) { this.DecreaseItems(1); }
@@ -131,7 +128,9 @@ public abstract class Boss : MonoBehaviour
     public void CaculateCooldownTimeSkill()
     {
         this.curTimeSkill += Time.deltaTime;
+        Debug.Log(this.curTimeSkill + " " + this.CooldownTimeSkill);
         this.EnergyBar.value = this.curTimeSkill / this.CooldownTimeSkill;
+        Debug.Log(this.EnergyBar.value);
         if (this.curTimeSkill >= this.CooldownTimeSkill)
         {
             this.curTimeSkill = 0f;

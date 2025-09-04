@@ -84,15 +84,6 @@ public class HappyBoss : Boss
         {
             index++;
             this.DarkItems.Add(posItem);
-            //if (this.CurPhase < this.Healths.Count)
-            //{
-            //    this.DarkItems.Add(posItem);
-            //}
-            //else
-            //{
-            //    this.CrimsonItems.Add(posItem);
-            //    this.InteractWithItemOther();
-            //}
             SlideController.Instance.bossTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), DarkItem);
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
             this.DecreaseItems(1);

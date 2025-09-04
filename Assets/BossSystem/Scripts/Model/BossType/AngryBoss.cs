@@ -37,8 +37,9 @@ public class AngryBoss : Boss
         Vector3 posForCooldownTime = SlideController.Instance.groundTilemap.CellToWorld(worldPos) + SlideController.Instance.groundTilemap.cellSize / 2;
         posForCooldownTime.y -= 0.35f;
         GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
+        sl.GetComponent<SliderCooldown>().Setup(2f, 1f, true);
         this.SliderGr = sl.GetComponent<Slider>();
-        this.SliderGr.value = 1f;
+
         Invoke(nameof(ActingDangerZone), 2f);
     }
 
@@ -49,7 +50,7 @@ public class AngryBoss : Boss
         {
             return;
         }
-        this.SliderGr.value = (this.SliderGr.value * 2 - Time.deltaTime) / 2;
+        //this.SliderGr.value = (this.SliderGr.value * 2 - Time.deltaTime) / 2;
     }
 
     private void ActingDangerZone()
