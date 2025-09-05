@@ -30,15 +30,15 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
     {
         foreach (RotateObject o in RotateObjects)
         {
-            if (IsInSave(o.rotatePos))
-            {
-                o.Reload();
-            }
+            GroundTileController.Instance.RemoveGroundTileForRotateObj(o.containPosList);
         }
 
         foreach (RotateObject o in RotateObjects)
         {
-            GroundTileController.Instance.RemoveGroundTileForRotateObj(o.containPosList);
+            if (IsInSave(o.rotatePos))
+            {
+                o.Reload();
+            }
         }
 
         foreach (RotateObject o in RotateObjects)
