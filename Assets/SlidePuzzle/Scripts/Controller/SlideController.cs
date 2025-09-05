@@ -435,12 +435,20 @@ public class SlideController : SingletonMono<SlideController>
             return false;
         }
 
-        if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
+        if (obstacleTilemap.HasTile(cellPlayer))
         {
             UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Obstacle", 1f);
 
             return false;
         }
+
+        if (cellMoveList.Count <= 1)
+        {
+            UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("No ground available", 1f);
+
+            return false;
+        }
+
         return true;
     }
 
