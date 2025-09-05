@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomUtils;
 using UnityEngine.Tilemaps;
+using DG.Tweening;
 
 public class SavePointController : SingletonMono<SavePointController>
 {
     //[Header(" Data ")]
     public SavePointSO SavePointData;
+    public GameObject CheckPointPrefab;
     public int id;
     public Vector2Int curSavePoint = new Vector2Int(0, 0);
     public Vector2Int endSavePoint;
     public Vector2Int startSavePoint;
+
+    private List<bool> isMoved; 
 
     protected override void Awake()
     {
@@ -27,10 +31,12 @@ public class SavePointController : SingletonMono<SavePointController>
         }
         this.id = id;
         curSavePoint = new Vector2Int(0, 0);
+        isMoved = new List<bool>();
         foreach (PointDetail pointDetail in SavePointData.SavePointDetails[id - 1].Points)
         {
             Vector3Int spPos = new Vector3Int(pointDetail.SavePoint.x, pointDetail.SavePoint.y, 0);
-            SlideController.Instance.savePointTilemap.SetTile(spPos, SavePointData.SavePointDetails[id - 1].TileSavePoint);
+            //SlideController.Instance.savePointTilemap.SetTile(spPos, SavePointData.SavePointDetails[id - 1].TileSavePoint);
+            isMoved.Add(false);
         }
     }
 
@@ -48,6 +54,17 @@ public class SavePointController : SingletonMono<SavePointController>
                 curSavePoint = pointDetail.SavePoint;
                 startSavePoint = pointDetail.StartPoint;
                 endSavePoint = pointDetail.EndPoint;
+
+                int index = SavePointData.SavePointDetails[id - 1].Points.IndexOf(pointDetail);
+                if (!isMoved[index])
+                {
+                    Vector3Int spPos = new Vector3Int(pointDetail.SavePoint.x, pointDetail.SavePoint.y, 0);
+                    //SlideController.Instance.savePointTilemap.SetTile(spPos, SavePointData.SavePointDetails[id - 1].TileSavePoint);
+                    GameObject go = Instantiate(CheckPointPrefab, SlideController.Instance.savePointTilemap.GetCellCenterWorld(spPos), Quaternion.identity);
+                    go.transform.localScale = Vector3.zero;
+                    go.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                    isMoved[index] = true;
+                }
 
                 return;
             }
