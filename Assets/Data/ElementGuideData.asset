@@ -27,9 +27,9 @@ MonoBehaviour:
       haveIce: 0
       haveIcePopup: 0
       iceTime: 0
-      PosForWind: {x: 0, y: 0}
-      haveWind: 0
-      haveWindPopup: 0
+      PosForWind: {x: 22, y: 36}
+      haveWind: 1
+      haveWindPopup: 1
       windTime: 0
   - Id: 2
     Detail:
@@ -47,7 +47,7 @@ MonoBehaviour:
       iceTime: 0
       PosForWind: {x: 9, y: 5}
       haveWind: 1
-      haveWindPopup: 1
+      haveWindPopup: 0
       windTime: 0.5
   - Id: 3
     Detail:

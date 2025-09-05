@@ -34,7 +34,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
                     && IsInSave(new Vector2Int(i, j)) )
                 {
                     SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(i, j, 0), null);
-                    //LockController.Instance.RemoveLock(new Vector3Int(i, j, 0));
+                    LockController.Instance.RemoveLock(new Vector3Int(i, j, 0));
                 }
             }
         }
@@ -44,7 +44,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
             if (IsInSave(pos))
             {
                 SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), ObstacleTile);
-                //LockController.Instance.SetLock(new Vector3Int(pos.x, pos.y, 0));
+                LockController.Instance.SetLock(new Vector3Int(pos.x, pos.y, 0));
             }
         }
     }
@@ -94,7 +94,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         {
             SlideController.Instance.obstacleTilemap.SetTile(newPos, tile);
             LockController.Instance.SetLock(newPos);
-            Debug.Log("Move Obstacle Tile Complete");
+            //Debug.Log("Move Obstacle Tile Complete");
             if (SlideController.Instance.IceStarId > 0)
             {
                 IceStarController.Instance.SetIceStars();
@@ -159,7 +159,6 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
 
     public void ThrowObstacleTile(Vector3Int oldPos, Vector3Int newPos)
     {
-        Debug.Log("Throw Obstacle Tile");
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.obstacleTilemap.GetTile(oldPos));
         TileFake obGO = Instantiate(SlideController.Instance.groudTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity);
         obGO.SetSprite(sp);
