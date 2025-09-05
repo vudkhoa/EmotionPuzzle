@@ -103,7 +103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "When a <color=#f9a35d>Block</color> is pressed, \na nearby hidden tile
+  m_text: "When a <color=#f9a35d>Lock</color> is pressed, \na nearby hidden tile
     will be revealed."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#f9a35d>BLOCK</color>
+  m_text: <color=#f9a35d>LOCK</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
