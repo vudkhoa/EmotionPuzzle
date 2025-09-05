@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SavePointDetails:
   - SavePointId: 1
-    Points:
-    - SavePoint: {x: 16, y: -19}
-      StartPoint: {x: 9, y: -20}
-      EndPoint: {x: 16, y: -19}
+    Points: []
     TileSavePoint: {fileID: 11400000, guid: f56733ada40e9d34eb4a5958cec30800, type: 2}
   - SavePointId: 2
     Points:

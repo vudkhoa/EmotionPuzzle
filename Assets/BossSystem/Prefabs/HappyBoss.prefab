@@ -404,6 +404,9 @@ MonoBehaviour:
   Body: {fileID: 9217177332303724506}
   DarkItems: []
   DarkItem: {fileID: 11400000, guid: 2f7e52278e887bf4a8b4027a122eb3b1, type: 2}
+  CooldownTimePrefab: {fileID: 6729352294595938859, guid: d2fe3af77c7431f48bfc5f391d29b1fe, type: 3}
+  BarParent: {fileID: 8129424483401071688}
+  SliderGr: {fileID: 0}
 --- !u!1 &7760652181323073651
 GameObject:
   m_ObjectHideFlags: 0

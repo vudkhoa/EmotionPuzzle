@@ -245,6 +245,10 @@ public class GameplayUI : UICanvas
         btnCount = 0;
         for (int i = 0; i < 4; i++)
         {
+            if (SlideController.Instance.isBoss && BossController.Instance.Boss.BossState == BossState.Dead)
+            {
+                return;
+            }
             if (ElementGuideManager.Instance.isShowBtn[i])
             {
                 btnCount++;

@@ -58,6 +58,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
                 if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0)))
                 {
                     initObstaclePos.Add(new Vector2Int(i, j));
+                    LockController.Instance.SetLock(new Vector3Int(i, j, 0));
                 }
             }
         }
@@ -67,17 +68,21 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
     {
         ParticleSystem burnDownOb = Instantiate(burnDownEffect, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0)), Quaternion.identity);
         SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
+        LockController.Instance.RemoveLock(new Vector3Int(pos.x, pos.y, 0));
         Destroy(burnDownOb.gameObject, burnDownOb.main.duration + burnDownOb.main.startLifetime.constantMax);
     }
 
     public void MoveObsatcleTile(Vector3Int oldPos, Vector3Int newPos)
     {
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.obstacleTilemap.GetTile(oldPos));
+        TileFake lockGO = Instantiate(LockController.Instance.lockTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity); 
         TileFake obGO = Instantiate(SlideController.Instance.obstacleTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity);
         obGO.SetSprite(sp);
 
         TileBase tile = SlideController.Instance.obstacleTilemap.GetTile(oldPos);
         SlideController.Instance.obstacleTilemap.SetTile(oldPos, null);
+        
+        LockController.Instance.RemoveLock(oldPos);
 
         Sequence knockbackSequence = DOTween.Sequence();
         knockbackSequence.Append(obGO.transform.DOMove(SlideController.Instance.obstacleTilemap.GetCellCenterWorld(newPos), 0.1f).SetEase(Ease.OutQuad));
@@ -86,7 +91,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         knockbackSequence.OnComplete(() =>
         {
             SlideController.Instance.obstacleTilemap.SetTile(newPos, tile);
-
+            LockController.Instance.SetLock(newPos);
             if (SlideController.Instance.IceStarId > 0)
             {
                 IceStarController.Instance.SetIceStars();
@@ -150,6 +155,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         obGO.SetSprite(sp);
 
         SlideController.Instance.obstacleTilemap.SetTile(oldPos, null);
+        LockController.Instance.RemoveLock(oldPos);
 
         Vector3 startPos = SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos);
         Vector3 endPos = SlideController.Instance.groundTilemap.GetCellCenterWorld(newPos);

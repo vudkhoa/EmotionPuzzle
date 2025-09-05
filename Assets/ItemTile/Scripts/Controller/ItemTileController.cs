@@ -143,6 +143,11 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
             this.ItemPosList.Remove(oldPos);
             this.ItemPosList.Add(newPos);
+
+            //if (SlideController.Instance.BossId > 0 && BossController.Instance.Boss.BossType == BossType.HappyBoss)
+            //{
+            //    BossController.Instance.Boss.MoveCooldownSkill(new Vector3Int(oldPos.x, oldPos.y, 0), new Vector3Int(newPos.x, newPos.y, 0));
+            //}
         }
     }
 
@@ -450,7 +455,7 @@ public class ItemTileController : SingletonMono<ItemTileController>
     public List<Vector2Int> FindItemAbsMin()
     {
         List<Vector2Int> resultList = new List<Vector2Int>();
-        
+
         Vector2Int minPos = new Vector2Int(-1000, -1000);
         float minDistance = float.MaxValue; 
         foreach (Vector2Int pos in this.ItemPosList) 

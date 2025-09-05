@@ -36,4 +36,8 @@ public class LevelDetail
 
     [Header(" Tutorial ")]
     public int ElementGuideId;
+
+    [Header(" Visual ")]
+    public Sprite LockSprite;
+    public TileBase LockTile;
 }

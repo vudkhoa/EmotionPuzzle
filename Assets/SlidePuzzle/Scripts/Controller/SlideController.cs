@@ -31,6 +31,7 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap iceStarTilemap;
     public Tilemap powerTilemap;
     public Tilemap savePointTilemap;
+    public Tilemap lockTilemap;
 
     [Header(" Id Tile ")]
     public int saveId;
@@ -585,7 +586,7 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        //curLevelId = 7;
+        //curLevelId = 2;
         SetTutorial();
         CreateGridPrefab();
         SetupSavePoint();
@@ -711,7 +712,11 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "SavePoint":
                     this.savePointTilemap = c.GetComponent<Tilemap>();
-                    break;  
+                    break;
+                case "Lock":
+                    this.lockTilemap = c.GetComponent<Tilemap>();
+                    break;
+
             }
         }
     }
