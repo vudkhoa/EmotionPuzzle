@@ -406,6 +406,8 @@ public class SlideController : SingletonMono<SlideController>
 
             if (ElementController.Instance.CheckExistsElement(cellPlayer))
             {
+                UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Element", 1f);
+
                 return false;
             }
         }
@@ -435,6 +437,8 @@ public class SlideController : SingletonMono<SlideController>
 
         if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
         {
+            UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Obstacle", 1f);
+
             return false;
         }
         return true;
@@ -456,11 +460,15 @@ public class SlideController : SingletonMono<SlideController>
 
                 if (obstacleTilemap.HasTile(cell))
                 {
+                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Obstacle", 1f);
+
                     return true;
                 }
 
                 if (ElementController.Instance.IsBlockItem(cell))
                 {
+                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Element", 1f);
+
                     return true;
                 }
 
@@ -478,6 +486,8 @@ public class SlideController : SingletonMono<SlideController>
                     {
                         if (pos2Laze == new Vector2Int(cell.x, cell.y))
                         {
+                            UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Ice Star", 1f);
+
                             return true;
                         }
                     }
