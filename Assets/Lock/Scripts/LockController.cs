@@ -36,30 +36,42 @@ public class LockController : SingletonMono<LockController>
         this.oldType = CurType;
     }
 
-    public void ResetTonewType(LockType type)
-    {
-        //Debug.Log("Lock Type changed to: " + type.ToString());
-        int id = -1;
-        if (this.LockObjectList == null || this.LockPosList == null) return;
+    //public void ResetToNewType(LockType type)
+    //{
+    //    int id = -1;
+    //    if (this.LockObjectList == null || this.LockPosList == null) return;
 
-        foreach (Vector3Int pos in LockPosList)
-        {
-            id++;
-            if (type == LockType.Tile)
-            {
-                SlideController.Instance.lockTilemap.SetTile(pos, lockTile);
-                this.LockObjectList[id].SetActive(false);
-            }
-            else
-            {
-                SlideController.Instance.lockTilemap.SetTile(pos, null);
-                this.LockObjectList[id].SetActive(true);
-            }
-        }
-    }
+    //    foreach (Vector3Int pos in LockPosList)
+    //    {
+    //        id++;
+    //        if (type == LockType.Tile)
+    //        {
+    //            SlideController.Instance.lockTilemap.SetTile(pos, lockTile);
+    //            this.LockObjectList[id].SetActive(false);
+    //        }
+    //        else
+    //        {
+    //            SlideController.Instance.lockTilemap.SetTile(pos, null);
+    //            this.LockObjectList[id].SetActive(true);
+    //        }
+    //    }
+    //}
+
+    //private void CheckInRotateObject()
+    //{
+
+    //}
+
 
     public void SetLock(Vector3Int gridPos)
     {
+        //if (!SlideController.Instance.bgSmallTilemap.HasTile(gridPos))
+        //{
+        //    return;
+        //}
+
+        //if (SlideController.Instance.rotateObId > 0 && RotateObjectController.Instance.RotateObjects.Contains(gridPos))
+
         if (this.lockTile == null || this.lockSprite == null)
         {
             this.Setup();
@@ -107,15 +119,15 @@ public class LockController : SingletonMono<LockController>
         this.LockObjectList.RemoveAt(id);
     }
 
-    private void Update()
-    {
-        if (Application.isPlaying)
-        {
-            if (this.oldType != this.CurType)
-            {
-                this.ResetTonewType(this.CurType);
-                this.oldType = this.CurType;
-            }
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Application.isPlaying)
+    //    {
+    //        if (this.oldType != this.CurType)
+    //        {
+    //            this.ResetToNewType(this.CurType);
+    //            this.oldType = this.CurType;
+    //        }
+    //    }
+    //}
 }

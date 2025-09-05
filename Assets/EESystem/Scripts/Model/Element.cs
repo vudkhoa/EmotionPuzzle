@@ -225,11 +225,23 @@ public abstract class Element : MonoBehaviour
 
     public void Rotate(Vector2Int newGridPos, Vector3 worldPos)
     {
+        Vector3Int gridOldPos = new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0);
         this.CurrentPos = newGridPos;
         this.transform.DOMove(worldPos, 0.2f).SetEase(Ease.OutQuad);
-
         Power();
         SetPowerRing(this.CurrentPos);
+        //Debug.Log(gridOldPos);
+        //if (SlideController.Instance.blockTilemap.HasTile(gridOldPos))
+        //{
+        //    Debug.Log("Delete");
+        //    LockController.Instance.RemoveLock(gridOldPos);
+        //}
+
+        //}
+        //Vector3Int gridNewPos = new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0);
+        //LockController.Instance.SetLock(gridNewPos);
+
+
     }
 
     public void SetActivatePower()

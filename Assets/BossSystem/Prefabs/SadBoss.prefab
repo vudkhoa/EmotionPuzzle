@@ -366,6 +366,8 @@ MonoBehaviour:
   HealthText: {fileID: 4161892562833232209}
   Body: {fileID: 782696938145445428}
   SkillPrefab: {fileID: 4268153062832139047, guid: c01942df0302c434c893fafd8e92ffaa, type: 3}
+  CooldownTimePrefab: {fileID: 6729352294595938859, guid: d2fe3af77c7431f48bfc5f391d29b1fe, type: 3}
+  BarParent: {fileID: 2031550336253866983}
 --- !u!1 &1413688188527221123
 GameObject:
   m_ObjectHideFlags: 0

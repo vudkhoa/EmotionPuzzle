@@ -92,6 +92,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         {
             SlideController.Instance.obstacleTilemap.SetTile(newPos, tile);
             LockController.Instance.SetLock(newPos);
+            Debug.Log("Move Obstacle Tile Complete");
             if (SlideController.Instance.IceStarId > 0)
             {
                 IceStarController.Instance.SetIceStars();
@@ -127,12 +128,18 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
 
                 SlideController.Instance.obstacleTilemap.SetTile(gridPos, null);
 
+                if (SlideController.Instance.lockTilemap.HasTile(gridPos))
+                {
+                    LockController.Instance.RemoveLock(gridPos);
+                }
+
                 obj.transform.DOMove(p, 0.2f).SetEase(Ease.OutQuad);
 
                 DOVirtual.DelayedCall(0.2f, () =>
                 {
                     Destroy(obj.gameObject);
                     SlideController.Instance.obstacleTilemap.SetTile(newGP, tile);
+                    LockController.Instance.SetLock(newGP);
                 });
             }
         }
@@ -150,6 +157,7 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
 
     public void ThrowObstacleTile(Vector3Int oldPos, Vector3Int newPos)
     {
+        Debug.Log("Throw Obstacle Tile");
         Sprite sp = SlideController.Instance.GetSpriteFromTile(SlideController.Instance.obstacleTilemap.GetTile(oldPos));
         TileFake obGO = Instantiate(SlideController.Instance.groudTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(oldPos), Quaternion.identity);
         obGO.SetSprite(sp);
