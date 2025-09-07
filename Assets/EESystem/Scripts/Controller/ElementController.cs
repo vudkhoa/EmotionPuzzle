@@ -235,6 +235,23 @@ public class ElementController : SingletonMono<ElementController>
                 {
                     if (e.CurrentPos == cellsToSlide[i])
                     {
+                        Vector2Int prevPos = Vector2Int.zero;
+                        if (i == cellsToSlide.Count - 1)
+                        {
+                            prevPos = cellsToSlide[0];
+                        }
+                        else
+                        {
+                            prevPos = cellsToSlide[i + 1];
+                        }
+
+                        if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
+                            && !this.CheckErrorMoveElement(prevPos)
+                            && SlideController.Instance.GetPlayerPos() != prevPos)
+                        {
+                            continue;
+                        }
+
                         e.transform.DOShakePosition(
                             duration: 0.2f,
                             strength: new Vector3(0.1f, 0.1f, 0),

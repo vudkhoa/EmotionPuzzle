@@ -94,8 +94,6 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
                 prevPos = cellsToSlide[i + 1];
             }
 
-            Debug.Log(prevPos);
-
             if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
                 && !ElementController.Instance.CheckErrorMoveElement(prevPos)
                 && SlideController.Instance.GetPlayerPos() != prevPos) 
