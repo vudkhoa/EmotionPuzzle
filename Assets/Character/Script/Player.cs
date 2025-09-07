@@ -42,6 +42,31 @@ public class Player : MonoBehaviour
         });
     }
 
+    public void ErrorMove(Direction direction)
+    {
+        Vector3 curPos = this.transform.position;
+        Vector3 offset = Vector3.zero;
+        switch (direction)
+        {
+            case Direction.Up:
+                offset = new Vector3(0, 1f, 0);
+                break;
+            case Direction.Down:
+                offset = new Vector3(0, -1f, 0);
+                break;
+            case Direction.Left:
+                offset = new Vector3(-1f, 0, 0);
+                break;
+            case Direction.Right:
+                offset = new Vector3(1f, 0, 0);
+                break;
+        }
+        this.transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            this.transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+        });
+    }
+
     public void Teleport(Vector2Int newGridPos, Vector3 worldPos)
     {
         //Sound

@@ -329,7 +329,19 @@ public class SlideController : SingletonMono<SlideController>
         Vector3Int newPlayerGridPos = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
         if (!CheckPlayerCanMove(newPlayerGridPos, cellMovePosList, direction))
         {
-            _player.Shake();
+            if (cellMovePosList.Count <= 1)
+            {
+                _player.Shake();
+            }
+            else
+            {
+                _player.ErrorMove(direction);
+                GroundTileController.Instance.ErrorMoveGroundTile(cellMovePosList, direction);
+                ItemTileController.Instance.ErrorMoveItemTile(cellMovePosList, direction);
+                ElementController.Instance.ErrorMoveElement(cellMovePosList, direction);
+                ObstacleTileController.Instance.ErrorMoveObstacleTile(cellMovePosList, direction);
+            }
+
             canSlide = true;
             return;
         }

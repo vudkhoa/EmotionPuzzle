@@ -272,6 +272,103 @@ public class ItemTileController : SingletonMono<ItemTileController>
         });
     }
 
+    public void ErrorMoveItemTile(List<Vector2Int> cellsToSlide, Direction direction)
+    {
+        if (SlideController.Instance.itemId == 0)
+        {
+            return;
+        }
+
+        //Spawn các tile động theo thứ tự cells
+        List<TileFake> clones = new List<TileFake>();
+        List<TileBase> tileOrder = new List<TileBase>();
+
+        foreach (Vector2Int cellPos in cellsToSlide)
+        {
+            Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
+
+            TileBase tile = SlideController.Instance.itemTilemap.GetTile(cell);
+            if (tile == null)
+            {
+                clones.Add(null);
+                tileOrder.Add(null);
+
+                continue;
+            }
+
+            if (tile != null && !this.ItemPosList.Contains(new Vector2Int(cell.x, cell.y)))
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cell.x, cell.y, 0), null);
+                clones.Add(null);
+                tileOrder.Add(null);
+                continue;
+            }
+
+            // Lưu thứ tự tile để xử lý logic 
+            tileOrder.Add(tile);
+
+            // Tạo GameObject clone để tween
+            TileFake obj = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(cell), Quaternion.identity);
+            Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+            if (sprite != null)
+                obj.SetSprite(sprite);
+
+            obj.gridPos = cellPos;
+            clones.Add(obj);
+
+            SlideController.Instance.itemTilemap.SetTile(cell, null);
+        }
+
+        //Di chuyển các tile
+        int count = cellsToSlide.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (clones[i] == null)
+            {
+                continue;
+            }
+
+            Vector3 curPos = clones[i].transform.position;
+            Vector3 offset = Vector3.zero;
+            switch (direction)
+            {
+                case Direction.Up:
+                    offset = new Vector3(0, 1f, 0);
+                    break;
+                case Direction.Down:
+                    offset = new Vector3(0, -1f, 0);
+                    break;
+                case Direction.Left:
+                    offset = new Vector3(-1f, 0, 0);
+                    break;
+                case Direction.Right:
+                    offset = new Vector3(1f, 0, 0);
+                    break;
+            }
+            clones[i].transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                clones[i].transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+            });
+        }
+
+        //Bước 3: Sau khi tween xong → cập nhật lại Tilemap và xóa clone
+        DOVirtual.DelayedCall(0.25f, () =>
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (tileOrder[i] == null) continue;
+
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cellsToSlide[i].x, cellsToSlide[i].y, 0), tileOrder[i]);
+            }
+
+            foreach (var obj in clones)
+            {
+                if (obj != null)
+                    Destroy(obj.gameObject);
+            }
+        });
+    }    
+
     public void RotateItemTile(Vector2Int pivot, List<Vector2Int> posList)
     {
         bool isRotate = false;
