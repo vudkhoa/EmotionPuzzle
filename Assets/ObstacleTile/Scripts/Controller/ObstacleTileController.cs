@@ -70,12 +70,35 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         List<TileFake> clones = new List<TileFake>();
         List<TileBase> tileOrder = new List<TileBase>();
 
-        foreach (Vector2Int cellPos in cellsToSlide)
+        for (int i = 0; i < cellsToSlide.Count; i++)
         {
+            Vector2Int cellPos = cellsToSlide[i];
             Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
 
             TileBase tile = SlideController.Instance.obstacleTilemap.GetTile(cell);
             if (tile == null)
+            {
+                clones.Add(null);
+                tileOrder.Add(null);
+
+                continue;
+            }
+
+            Vector2Int prevPos = Vector2Int.zero;
+            if (i == cellsToSlide.Count - 1)
+            {
+                prevPos = cellsToSlide[0];
+            }
+            else
+            {
+                prevPos = cellsToSlide[i + 1];
+            }
+
+            Debug.Log(prevPos);
+
+            if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
+                && !ElementController.Instance.CheckErrorMoveElement(prevPos)
+                && SlideController.Instance.GetPlayerPos() != prevPos) 
             {
                 clones.Add(null);
                 tileOrder.Add(null);

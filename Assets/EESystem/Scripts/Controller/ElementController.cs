@@ -305,6 +305,19 @@ public class ElementController : SingletonMono<ElementController>
         }
     }
 
+    public bool CheckErrorMoveElement(Vector2Int pos)
+    {
+        foreach (Element element in this.ElementList)
+        {
+            if (element.CurrentPos == pos &&
+                (element.EmotionType == EmotionType.Happy || element.EmotionType == EmotionType.Angry))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool CheckExistsElement(Vector3Int pos)
     {
         foreach (Element element in this.ElementList)
