@@ -22,6 +22,8 @@ public class GameplayUI : UICanvas
     [SerializeField] private Button water;
     [SerializeField] private Button ice;
     [SerializeField] private Button wind;
+    [SerializeField] private GameObject InforTitle;
+    private bool isShowInforTitle = false;
 
     [Header(" ElementPower ")]
     [SerializeField] private GameObject ElementPower;
@@ -179,10 +181,17 @@ public class GameplayUI : UICanvas
         water.gameObject.SetActive(false);
         wind.gameObject.SetActive(false);
         ice.gameObject.SetActive(false);
+        this.isShowInforTitle = false;
     }
 
     public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
     {
+        if (!this.isShowInforTitle)
+        {
+            this.isShowInforTitle = true;
+            this.InforTitle.gameObject.SetActive(true);
+        }
+
         if (haveFire)
         {
             fire.gameObject.SetActive(true);

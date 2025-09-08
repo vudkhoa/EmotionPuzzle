@@ -23,6 +23,10 @@ public class HappyBoss : Boss
     public Slider SliderGr;
     private List<GameObject> cooldownList;
 
+    public GameObject PowerRingPrefab;
+    private List<GameObject> PowerRingList;
+    private List<List<GameObject>> IndexPowerRingList;
+
     public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
                                 Vector2Int startPos, Vector2Int endPos)
     {
@@ -35,6 +39,9 @@ public class HappyBoss : Boss
         //this.CrimsonItems = new List<Vector2Int>();
         UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Happy Boss", this.TotalItems);
         this.UpdateHealthUI(this.CurHealth, this.CurHealth);
+
+        this.PowerRingList = new List<GameObject>();    
+        this.IndexPowerRingList = new List<List<GameObject>>();
     }
 
     public override void ActiveSkill()
@@ -53,7 +60,13 @@ public class HappyBoss : Boss
     public void SetupSkillPhase1()
     {
         //Debug.Log("Happy Phase 1");
-        this.ItemList = ItemTileController.Instance.FindItemCluster();
+        //this.ItemList = ItemTileController.Instance.FindItemCluster();
+
+        List<Vector2Int> tmpList = new List<Vector2Int>();
+        tmpList = ItemTileController.Instance.FindItemAbsMin();
+        this.ItemList = new List<Vector2Int>();
+        this.ItemList.Add(tmpList[0]);
+        tmpList.RemoveAt(0);
         this.cooldownList = new List<GameObject>();
         SetupAllCooldownSkill();
         //this.ActiveSkillPhase1();
@@ -84,6 +97,7 @@ public class HappyBoss : Boss
         {
             index++;
             this.DarkItems.Add(posItem);
+            this.InitPowerRingForBomb(posItem);
             SlideController.Instance.bossTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), DarkItem);
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
             this.DecreaseItems(1);
@@ -160,7 +174,11 @@ public class HappyBoss : Boss
             {
                 isAttacking = true;
                 this.DecreaseItems(1);
+
+                int id = this.DarkItems.IndexOf(targetPos);
+
                 this.DarkItems.Remove(targetPos);
+                this.RemovePowerRingForBomb(id);
                 SlideController.Instance.bossTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), null);
 
                 Vector3 worldPlayerPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(playerPos.x, playerPos.y, 0));
@@ -240,4 +258,49 @@ public class HappyBoss : Boss
         this.CurPhase++;
         base.NextPhase();
     }
+
+    private void InitPowerRingForBomb(Vector2Int pos)
+    {
+        List<GameObject> goList = new List<GameObject>();
+        List<Vector2Int> offsets = new List<Vector2Int>();
+        offsets = Library.Instance.LibOffsets8;
+
+        for (int i = 0; i < offsets.Count; ++i)
+        {
+            Vector2Int targetPos = pos + offsets[i];
+            Vector3Int gridPos = new Vector3Int(targetPos.x, targetPos.y, 0);
+            if (BossController.Instance.CheckExistsBoss(targetPos) ||
+                SlideController.Instance.bgSmallTilemap.HasTile(gridPos) == false
+                )
+            {
+                continue;
+            }
+
+            GameObject go = Instantiate(
+                     this.PowerRingPrefab,
+                     SlideController.Instance.bgSmallTilemap.GetCellCenterWorld(new Vector3Int(targetPos.x, targetPos.y, 0)),
+                     Quaternion.identity,
+                     this.transform
+                     );
+            this.PowerRingList.Add(go);
+            goList.Add(go);
+        }
+
+        this.IndexPowerRingList.Add(goList);
+    }
+
+    private void RemovePowerRingForBomb(int index)
+    {
+        List<GameObject> idList = this.IndexPowerRingList[index];
+        List<GameObject> go = new List<GameObject>();
+
+
+        foreach (GameObject i in idList)
+        {
+            Destroy(i.gameObject);
+        }
+
+        this.IndexPowerRingList.RemoveAt(index);
+    }
+
 }

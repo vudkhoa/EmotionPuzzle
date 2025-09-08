@@ -427,6 +427,7 @@ MonoBehaviour:
   water: {fileID: 3716329373542613249}
   ice: {fileID: 3077826144979119768}
   wind: {fileID: 5488180247322772259}
+  InforTitle: {fileID: 8709556973512269008}
   ElementPower: {fileID: 4808268211671735985}
   BossUI: {fileID: 7241645143137329430}
   BossName: {fileID: 2500930358649750667}
@@ -2764,7 +2765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2637392706756391611
 RectTransform:
   m_ObjectHideFlags: 0

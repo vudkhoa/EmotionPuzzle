@@ -36,9 +36,8 @@ public class LockController : SingletonMono<LockController>
         this.oldType = CurType;
     }
 
-    public void ResetTonewType(LockType type)
+    public void ResetToNewType(LockType type)
     {
-        //Debug.Log("Lock Type changed to: " + type.ToString());
         int id = -1;
         if (this.LockObjectList == null || this.LockPosList == null) return;
 
@@ -58,8 +57,21 @@ public class LockController : SingletonMono<LockController>
         }
     }
 
+    //private void CheckInRotateObject()
+    //{
+
+    //}
+
+
     public void SetLock(Vector3Int gridPos)
     {
+        //if (!SlideController.Instance.bgSmallTilemap.HasTile(gridPos))
+        //{
+        //    return;
+        //}
+
+        //if (SlideController.Instance.rotateObId > 0 && RotateObjectController.Instance.RotateObjects.Contains(gridPos))
+
         if (this.lockTile == null || this.lockSprite == null)
         {
             this.Setup();
@@ -113,7 +125,7 @@ public class LockController : SingletonMono<LockController>
         {
             if (this.oldType != this.CurType)
             {
-                this.ResetTonewType(this.CurType);
+                this.ResetToNewType(this.CurType);
                 this.oldType = this.CurType;
             }
         }

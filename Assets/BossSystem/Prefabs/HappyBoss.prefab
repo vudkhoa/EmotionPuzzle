@@ -407,6 +407,7 @@ MonoBehaviour:
   CooldownTimePrefab: {fileID: 6729352294595938859, guid: d2fe3af77c7431f48bfc5f391d29b1fe, type: 3}
   BarParent: {fileID: 8129424483401071688}
   SliderGr: {fileID: 0}
+  PowerRingPrefab: {fileID: 5577221727646326776, guid: cdda41be363e3404fab3a2e3c6236009, type: 3}
 --- !u!1 &7760652181323073651
 GameObject:
   m_ObjectHideFlags: 0
