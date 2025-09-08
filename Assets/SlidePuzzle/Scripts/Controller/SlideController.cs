@@ -643,8 +643,8 @@ public class SlideController : SingletonMono<SlideController>
             return;
         }
         CameraFollower.Instance.canFollow = false;
-        CameraFollower.Instance.mainCamera.transform.position = new Vector3(4.5f, 4.6f, -10f);
-        CameraFollower.Instance.mainCamera.orthographicSize = 6.5f;
+        CameraFollower.Instance.mainCamera.transform.position = new Vector3(4f, 3.5f, -10f);
+        CameraFollower.Instance.mainCamera.orthographicSize = 5.5f;
     }
 
     private void SetGameplayUI()
