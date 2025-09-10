@@ -1,0 +1,1092 @@
+fileFormatVersion: 2
+guid: 8819846b841a12f4390d3b45440e9576
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IcePower_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9816b0955f9b0478b06675ba877dfc
+      internalID: -1104748800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_1
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27bfac4e587dace4c84fe306002f09ce
+      internalID: 1731688259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_2
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b198f58e54ebc904bb3fd024c21de0bf
+      internalID: 1119922937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_3
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09a76d25299f114281794f9e2c8c279
+      internalID: -2112616024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_4
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7022fcb5d5167ec498de09007a38c6cf
+      internalID: 268182716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_5
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453fce162a80ba64e96cf0d46162d032
+      internalID: -696532122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_6
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 5184
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa44625b6483b6a479539f52aea53076
+      internalID: -271123308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd466c6eaaf0e314da1a83c50a36ed71
+      internalID: -1467280564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_8
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca50250ebcb5fd4396a4ccff2a87e86
+      internalID: 347794640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_9
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb488382d8ca9148bcd674ef2bc254d
+      internalID: 1199133705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_10
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f93cfca9d3f8e49a752f3993922bd9
+      internalID: 823015110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_11
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e028c2b94610ac74babc380f2c8a14ca
+      internalID: 1801337167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_12
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f908316efa915f74b8c50e96a841a83c
+      internalID: 2067720657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_13
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 4320
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0cc060fe132cc4ab7e0b44f15e40b3
+      internalID: 523943548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a8b1dca348ba7488a5c924e06ac063
+      internalID: -2027532561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_15
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276734c1bebfa9542888f4804d11042c
+      internalID: 749025975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_16
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937ef4c3882844144888a859fb0a1278
+      internalID: -1285674858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_17
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50d29d6ed62f3346a1c1ddac69df110
+      internalID: -530709232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_18
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e41654bdbf3671429ccedcb07534485
+      internalID: -540670192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_19
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05dcf29a36c6b3543b48f033b0ed2599
+      internalID: 2013820575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_20
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 3456
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4695920e63054944bb36b8c67a3850e4
+      internalID: 301424426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f7aa6778b09294895fc46e63a20dda
+      internalID: 1796369180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_22
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8c56aaea3ce4f438b139389e79f62f
+      internalID: -2058037694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_23
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b03208d32f7b8489ac495e21391b11
+      internalID: -1712687183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_24
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a66148db5abb2441ada051feb408105
+      internalID: 1474032009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_25
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c84943a042897245ab0225bf86580ea
+      internalID: -965582354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_26
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da185d474098be7428de126073e1f556
+      internalID: 402952280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_27
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 2592
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6165c0339359a8c4481694f31baa3637
+      internalID: 20573634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37e4fde5e18211e43aa90f9504945bbc
+      internalID: -1050894626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_29
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da62f4b77a95c34c99917f3c972c79d
+      internalID: -1320559038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_30
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba69eb5299a481648aa7d7f252eaa3a2
+      internalID: 1908786107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_31
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715aee7badb9d81458ff51e06be911d8
+      internalID: 219982062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_32
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f85ebb7782df04da48270591f9933d
+      internalID: -1218940865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_33
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348a88b3badb7014baf9c4be06fb777e
+      internalID: -2075326485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_34
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 1728
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59aa962b7e3c668478c39dae9e89c7b9
+      internalID: -2016103988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc14f7fb8026084cb5ec95db4ecb72e
+      internalID: -1565211188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_36
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ee302f89fb66e41be3e038256a3836
+      internalID: 1491855882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_37
+      rect:
+        serializedVersion: 2
+        x: 2858
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd6853ab819fc443b395b9d669a0881
+      internalID: 1787591764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_38
+      rect:
+        serializedVersion: 2
+        x: 4287
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd687167b02141478e77a3b43c051ba
+      internalID: 39644285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_39
+      rect:
+        serializedVersion: 2
+        x: 5716
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4157d0f1dc259147bc2fc2934953f8e
+      internalID: -1218885051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_40
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bf0b09ca1dd3448aea8c11fe503a4f
+      internalID: 1447797452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_41
+      rect:
+        serializedVersion: 2
+        x: 8574
+        y: 864
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a257d1f42fb7d4b941e52de4f47f96
+      internalID: -1952575415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IcePower_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1429
+        height: 864
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf52b37711f8f842a4b7a605c3744c7
+      internalID: 111047296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      IcePower_0: -1104748800
+      IcePower_1: 1731688259
+      IcePower_10: 823015110
+      IcePower_11: 1801337167
+      IcePower_12: 2067720657
+      IcePower_13: 523943548
+      IcePower_14: -2027532561
+      IcePower_15: 749025975
+      IcePower_16: -1285674858
+      IcePower_17: -530709232
+      IcePower_18: -540670192
+      IcePower_19: 2013820575
+      IcePower_2: 1119922937
+      IcePower_20: 301424426
+      IcePower_21: 1796369180
+      IcePower_22: -2058037694
+      IcePower_23: -1712687183
+      IcePower_24: 1474032009
+      IcePower_25: -965582354
+      IcePower_26: 402952280
+      IcePower_27: 20573634
+      IcePower_28: -1050894626
+      IcePower_29: -1320559038
+      IcePower_3: -2112616024
+      IcePower_30: 1908786107
+      IcePower_31: 219982062
+      IcePower_32: -1218940865
+      IcePower_33: -2075326485
+      IcePower_34: -2016103988
+      IcePower_35: -1565211188
+      IcePower_36: 1491855882
+      IcePower_37: 1787591764
+      IcePower_38: 39644285
+      IcePower_39: -1218885051
+      IcePower_4: 268182716
+      IcePower_40: 1447797452
+      IcePower_41: -1952575415
+      IcePower_42: 111047296
+      IcePower_43: -874627374
+      IcePower_44: -2115052076
+      IcePower_45: -1917167077
+      IcePower_46: -1155825859
+      IcePower_47: -830862736
+      IcePower_48: 2065565926
+      IcePower_5: -696532122
+      IcePower_6: -271123308
+      IcePower_7: -1467280564
+      IcePower_8: 347794640
+      IcePower_9: 1199133705
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
