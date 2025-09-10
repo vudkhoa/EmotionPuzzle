@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4aec588191b83ca4383a24973ee94a9a
+guid: 79ec010e6e6e2234a8903996f9a781a6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,22 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4 1_0
+      name: hanh tiinh mau 1_0
       rect:
         serializedVersion: 2
-        x: 5592
-        y: 0
-        width: 920
-        height: 169
+        x: 9714
+        y: 466
+        width: 592
+        height: 468
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d506ef292c29e03459ed9ec3a252c54d
-      internalID: -1513811576
+      spriteID: c857e79b149b37d4384f08507fd02350
+      internalID: -1520231803
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      4 1_0: -1513811576
+      hanh tiinh mau 1_0: -1520231803
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

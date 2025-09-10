@@ -2,6 +2,7 @@
 using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class StartUI : MonoBehaviour
         if (PlayerPrefs.GetInt(Constant.MAXLEVELID, 0) == 0)
         {
             continueBtn.gameObject.SetActive(false);
+            startBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Play";
         }
 
         AnimateTitle();
@@ -41,6 +43,7 @@ public class StartUI : MonoBehaviour
     public void StartGame()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        PlayerPrefs.SetInt(Constant.MAXLEVELID, 0);
         LoadingManager.instance.LoadScene("BG Start");
     }
 

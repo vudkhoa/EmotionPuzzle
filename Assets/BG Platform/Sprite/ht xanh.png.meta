@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4aec588191b83ca4383a24973ee94a9a
+guid: 416e53cb3fde7eb40a76054aabd78803
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -123,22 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4 1_0
+      name: ht xanh_0
       rect:
         serializedVersion: 2
-        x: 5592
-        y: 0
-        width: 920
-        height: 169
+        x: 100
+        y: 143
+        width: 305
+        height: 229
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d506ef292c29e03459ed9ec3a252c54d
-      internalID: -1513811576
+      spriteID: ed95d0d778d73db48ab5a2b65a60aaab
+      internalID: -640567932
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      4 1_0: -1513811576
+      ht xanh_0: -640567932
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
