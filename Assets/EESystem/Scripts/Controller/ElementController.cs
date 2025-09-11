@@ -1,4 +1,5 @@
 ﻿using CustomUtils;
+using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
 using UnityEngine;
@@ -218,6 +219,87 @@ public class ElementController : SingletonMono<ElementController>
         Invoke(nameof(SadFunction), 0.28f);
     }
 
+    public void ErrorMoveElement(List<Vector2Int> cellsToSlide, Direction direction)
+    {
+        if (SlideController.Instance.elementId <= 0)
+        {
+            return;
+        }
+
+        int count = cellsToSlide.Count;
+        foreach (Element e in this.ElementList)
+        {
+            if (e.EmotionType != EmotionType.Happy && e.EmotionType != EmotionType.Angry)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (e.CurrentPos == cellsToSlide[i])
+                    {
+                        Vector2Int prevPos = Vector2Int.zero;
+                        if (i == cellsToSlide.Count - 1)
+                        {
+                            prevPos = cellsToSlide[0];
+                        }
+                        else
+                        {
+                            prevPos = cellsToSlide[i + 1];
+                        }
+
+                        if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
+                            && !this.CheckErrorMoveElement(prevPos)
+                            && SlideController.Instance.GetPlayerPos() != prevPos)
+                        {
+                            continue;
+                        }
+
+                        e.transform.DOShakePosition(
+                            duration: 0.2f,
+                            strength: new Vector3(0.1f, 0.1f, 0),
+                            vibrato: 10,
+                            randomness: 90,
+                            snapping: false,
+                            fadeOut: true
+                        );
+
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (e.CurrentPos == cellsToSlide[i])
+                    {
+                        Vector3 curPos = e.transform.position;
+                        Vector3 offset = Vector3.zero;
+                        switch (direction)
+                        {
+                            case Direction.Up:
+                                offset = new Vector3(0, 1f, 0);
+                                break;
+                            case Direction.Down:
+                                offset = new Vector3(0, -1f, 0);
+                                break;
+                            case Direction.Left:
+                                offset = new Vector3(-1f, 0, 0);
+                                break;
+                            case Direction.Right:
+                                offset = new Vector3(1f, 0, 0);
+                                break;
+                        }
+                        e.transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+                        {
+                            e.transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+                        });
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public void RotateElement(Vector2Int pivot, List<Vector2Int> posList)
     {
         for (int i = 0; i < this.ElementList.Count; i++)
@@ -238,6 +320,19 @@ public class ElementController : SingletonMono<ElementController>
                 }
             }
         }
+    }
+
+    public bool CheckErrorMoveElement(Vector2Int pos)
+    {
+        foreach (Element element in this.ElementList)
+        {
+            if (element.CurrentPos == pos &&
+                (element.EmotionType == EmotionType.Happy || element.EmotionType == EmotionType.Angry))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool CheckExistsElement(Vector3Int pos)

@@ -1,4 +1,4 @@
-using CustomUtils;
+﻿using CustomUtils;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,6 +64,98 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
                 }
             }
         }
+    }
+
+    public void ErrorMoveObstacleTile(List<Vector2Int> cellsToSlide, Direction direction)
+    {
+        //Spawn các tile động theo thứ tự cells
+        List<TileFake> clones = new List<TileFake>();
+        List<TileBase> tileOrder = new List<TileBase>();
+
+        for (int i = 0; i < cellsToSlide.Count; i++)
+        {
+            Vector2Int cellPos = cellsToSlide[i];
+            Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
+
+            TileBase tile = SlideController.Instance.obstacleTilemap.GetTile(cell);
+            if (tile == null)
+            {
+                clones.Add(null);
+                tileOrder.Add(null);
+
+                continue;
+            }
+
+            Vector2Int prevPos = Vector2Int.zero;
+            if (i == cellsToSlide.Count - 1)
+            {
+                prevPos = cellsToSlide[0];
+            }
+            else
+            {
+                prevPos = cellsToSlide[i + 1];
+            }
+
+            if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
+                && !ElementController.Instance.CheckErrorMoveElement(prevPos)
+                && SlideController.Instance.GetPlayerPos() != prevPos) 
+            {
+                clones.Add(null);
+                tileOrder.Add(null);
+
+                continue;
+            }
+
+            // Lưu thứ tự tile để xử lý logic 
+            tileOrder.Add(tile);
+
+            // Tạo GameObject clone để tween
+            TileFake obj = Instantiate(SlideController.Instance.obstacleTileFakePrefab, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(cell), Quaternion.identity);
+            Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+            if (sprite != null)
+                obj.SetSprite(sprite);
+
+            obj.gridPos = cellPos;
+            clones.Add(obj);
+
+            SlideController.Instance.obstacleTilemap.SetTile(cell, null);
+        }
+
+        //Ani các tile
+        int count = cellsToSlide.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (clones[i] == null)
+            {
+                continue;
+            }
+
+            clones[i].transform.DOShakePosition(
+                duration: 0.2f,       
+                strength: new Vector3(0.1f, 0.1f, 0), 
+                vibrato: 10,          
+                randomness: 90,      
+                snapping: false,
+                fadeOut: true
+            );
+        }
+
+        //Bước 3: Sau khi tween xong → cập nhật lại Tilemap và xóa clone
+        DOVirtual.DelayedCall(0.2f, () =>
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (tileOrder[i] == null) continue;
+
+                SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(cellsToSlide[i].x, cellsToSlide[i].y, 0), tileOrder[i]);
+            }
+
+            foreach (var obj in clones)
+            {
+                if (obj != null)
+                    Destroy(obj.gameObject);
+            }
+        });
     }
 
     public void RemoveObstacleTile(Vector2Int pos)

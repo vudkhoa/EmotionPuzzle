@@ -15,7 +15,8 @@ public class SavePointController : SingletonMono<SavePointController>
     public Vector2Int endSavePoint;
     public Vector2Int startSavePoint;
 
-    private List<bool> isMoved; 
+    private List<bool> isMoved;
+    private GameObject checkPointOb;
 
     protected override void Awake()
     {
@@ -60,9 +61,13 @@ public class SavePointController : SingletonMono<SavePointController>
                 {
                     Vector3Int spPos = new Vector3Int(pointDetail.SavePoint.x, pointDetail.SavePoint.y, 0);
                     //SlideController.Instance.savePointTilemap.SetTile(spPos, SavePointData.SavePointDetails[id - 1].TileSavePoint);
-                    GameObject go = Instantiate(CheckPointPrefab, SlideController.Instance.savePointTilemap.GetCellCenterWorld(spPos), Quaternion.identity);
-                    go.transform.localScale = Vector3.zero;
-                    go.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                    if (checkPointOb != null)
+                    {
+                        Destroy(checkPointOb);
+                    }
+                    checkPointOb = Instantiate(CheckPointPrefab, SlideController.Instance.savePointTilemap.GetCellCenterWorld(spPos), Quaternion.identity);
+                    checkPointOb.transform.localScale = Vector3.zero;
+                    checkPointOb.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
                     isMoved[index] = true;
                 }
 
