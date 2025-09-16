@@ -21,24 +21,27 @@ MonoBehaviour:
     - Position: {x: 1, y: 4}
       Direction: 1
       LockPosition: {x: -1, y: 5}
-    - Position: {x: -6, y: 5}
+    - Position: {x: -5, y: 11}
       Direction: 3
-      LockPosition: {x: -6, y: 9}
-    - Position: {x: -9, y: 8}
+      LockPosition: {x: -5, y: 15}
+    - Position: {x: -8, y: 14}
       Direction: 2
-      LockPosition: {x: -6, y: 9}
-    - Position: {x: 5, y: 4}
+      LockPosition: {x: -5, y: 15}
+    - Position: {x: 12, y: -1}
       Direction: 3
-      LockPosition: {x: 5, y: 8}
-    - Position: {x: 6, y: 4}
+      LockPosition: {x: 12, y: 3}
+    - Position: {x: 13, y: -1}
       Direction: 3
-      LockPosition: {x: 5, y: 7}
-    - Position: {x: 1, y: 18}
+      LockPosition: {x: 12, y: 2}
+    - Position: {x: 1, y: 33}
       Direction: 4
-      LockPosition: {x: 1, y: 13}
-    - Position: {x: -5, y: 14}
+      LockPosition: {x: 1, y: 28}
+    - Position: {x: -5, y: 29}
       Direction: 2
-      LockPosition: {x: 1, y: 13}
-    - Position: {x: -5, y: 15}
+      LockPosition: {x: 1, y: 28}
+    - Position: {x: -5, y: 30}
       Direction: 2
-      LockPosition: {x: 1, y: 14}
+      LockPosition: {x: 1, y: 29}
+    - Position: {x: -3, y: -8}
+      Direction: 3
+      LockPosition: {x: -3, y: -5}

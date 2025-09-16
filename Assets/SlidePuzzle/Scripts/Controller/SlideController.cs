@@ -440,6 +440,11 @@ public class SlideController : SingletonMono<SlideController>
             {
                 return false;
             }
+
+            if (obstacleTilemap.HasTile(cellPlayer))
+            {
+                return false;
+            }
         }
 
         if (IceStarId > 0 && !IceStarController.Instance.CheckPlayerCanMove(cellPlayer))

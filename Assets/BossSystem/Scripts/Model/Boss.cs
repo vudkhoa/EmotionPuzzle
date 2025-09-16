@@ -87,6 +87,11 @@ public abstract class Boss : MonoBehaviour
             return;
         }
 
+        if (SlideController.Instance.canSlide == false)
+        {
+            return;
+        }
+
         this.CaculateCooldownTimeSkill();
         this.CooldownTimeSkillUI();
     }
@@ -128,9 +133,7 @@ public abstract class Boss : MonoBehaviour
     public void CaculateCooldownTimeSkill()
     {
         this.curTimeSkill += Time.deltaTime;
-        //Debug.Log(this.curTimeSkill + " " + this.CooldownTimeSkill);
         this.EnergyBar.value = this.curTimeSkill / this.CooldownTimeSkill;
-        //Debug.Log(this.EnergyBar.value);
         if (this.curTimeSkill >= this.CooldownTimeSkill)
         {
             this.curTimeSkill = 0f;
@@ -190,4 +193,6 @@ public abstract class Boss : MonoBehaviour
     }
 
     public virtual void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos) { }
+    public virtual void ActiveSkillAfterCooldown(List<Vector2Int> itemList, List<GameObject> goList) { }
+
 }

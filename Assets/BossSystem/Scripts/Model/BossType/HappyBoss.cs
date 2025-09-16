@@ -46,52 +46,32 @@ public class HappyBoss : Boss
 
     public override void ActiveSkill()
     {
+
         if (this.BossState == BossState.Dead)
         {
             return;
         }
-        
-        this.IsActingSkill = true;
-        Invoke(nameof(this.SetupSkillPhase1), 0.25f);
-        Invoke(nameof(ResetIsActingSkill), 0.35f);
-        //this.SetupSkillPhase1();
+
+        this.SetupSkillPhase1();
+        //this.IsActingSkill = true;
+        //Invoke(nameof(this.SetupSkillPhase1), 0.3f);
+        //Invoke(nameof(ResetIsActingSkill), 0.35f);
     }
 
     public void SetupSkillPhase1()
     {
-        //Debug.Log("Happy Phase 1");
-        //this.ItemList = ItemTileController.Instance.FindItemCluster();
-
         List<Vector2Int> tmpList = new List<Vector2Int>();
         tmpList = ItemTileController.Instance.FindItemAbsMin();
         this.ItemList = new List<Vector2Int>();
         this.ItemList.Add(tmpList[0]);
         tmpList.RemoveAt(0);
+
         this.cooldownList = new List<GameObject>();
-        SetupAllCooldownSkill();
-        //this.ActiveSkillPhase1();
-        StartCoroutine(ActiveSkillPhase1(this.ItemList, this.cooldownList));
+        SetupAllCooldownSkill(this.ItemList, this.cooldownList);
     }
-
-    public IEnumerator ActiveSkillPhase1(List<Vector2Int> itemList, List<GameObject> goList)
-    {
-        yield return new WaitForSeconds(0.5f);
-        this.CombineAndTransformItems(itemList, goList);
-    }
-
-    //public void ActiveSkillPhase2()
-    //{
-    //    List<Vector2Int> tmpList = new List<Vector2Int>();
-    //    tmpList = ItemTileController.Instance.FindItemAbsMin();
-    //    this.ItemList = new List<Vector2Int>();
-    //    this.ItemList.Add(tmpList[0]);
-    //    tmpList.RemoveAt(0);
-    //    this.CombineAndTransformItems(CrimsonItem);
-    //}
 
     public void CombineAndTransformItems(List<Vector2Int> itemList, List<GameObject> goList)
     {
-        //yield return new WaitForSeconds(2f);
         int index = -1;
         foreach (Vector2Int posItem in itemList)
         {
@@ -102,60 +82,47 @@ public class HappyBoss : Boss
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
             this.DecreaseItems(1);
             this.AttackingPlayer(0f);
-            Destroy(goList[index].gameObject);
-            //this.cooldownList.RemoveAt(index);
         }
         BossController.Instance.SpawnItems();
     }
 
-    private void SetupAllCooldownSkill()
+    private void SetupAllCooldownSkill(List<Vector2Int> itemList, List<GameObject> goList)
     {
+        int i = 0;
         foreach (Vector2Int posItem in this.ItemList)
         {
+
+            i++;
+            Debug.Log("Setup Cooldown Skill");
             TileBase tile = SlideController.Instance.itemTilemap.GetTile(new Vector3Int(posItem.x, posItem.y, 0));
-            ItemTileController.Instance.RemoveItem(posItem);
+            
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), tile);
+            ItemTileController.Instance.RemoveItem(posItem);
             Vector3Int worldPos = new Vector3Int(posItem.x, posItem.y, 0);
-            this.SetupCooldownPrefab(worldPos);
+            this.SetupCooldownPrefab(worldPos, this.ItemList, this.cooldownList);
         }
     }
 
-    private void SetupCooldownPrefab(Vector3Int worldPos)
+    private void SetupCooldownPrefab(Vector3Int worldPos, List<Vector2Int> itemList, List<GameObject> goList)
     {
         Vector3 posForCooldownTime = SlideController.Instance.groundTilemap.CellToWorld(worldPos) + SlideController.Instance.groundTilemap.cellSize / 2;
         posForCooldownTime.y -= 0.35f;
         GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
         sl.GetComponent<SliderCooldown>().Setup(0.5f, 1f, true);
+        sl.GetComponent<SliderCooldown>().SetupActiveSkill(itemList, goList, BossType.HappyBoss);
         this.cooldownList.Add(sl);
     }
 
-    public override void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos)
+    public override void ActiveSkillAfterCooldown(List<Vector2Int> itemList, List<GameObject> goList)
     {
-        this.MoveCooldown(oldPos, newPos);
+        this.CombineAndTransformItems(itemList, goList);
     }
 
-    public void MoveCooldown(Vector3Int oldPos, Vector3Int newPos)
-    {
-        int index = -1; 
-        index = this.ItemList.IndexOf(new Vector2Int(oldPos.x, oldPos.y));
-        if (index == -1)
-        {
-            return;
-        }
-
-        Vector3 posForCooldownTime = SlideController.Instance.groundTilemap.CellToWorld(newPos) + SlideController.Instance.groundTilemap.cellSize / 2;
-        posForCooldownTime.y -= 0.35f;
-
-        this.cooldownList[index].transform.position = posForCooldownTime;
-        this.ItemList[index] = new Vector2Int(newPos.x, newPos.y);
-    }
-
-    public override void AttackingPlayer(float time = 0.28f)
+    public override void AttackingPlayer(float time = 0.3f)
     {
         if (this.BossState == BossState.Active)
         {
             Invoke(nameof(RemoveBossTilemap), time);
-            //Invoke(nameof(InteractWithItemOther), (time + 0.01f));
         }
     }
 
@@ -170,6 +137,12 @@ public class HappyBoss : Boss
         foreach (Vector2Int offset in offsets)
         {
             Vector2Int targetPos = playerPos + offset;
+
+            //if (!SlideController.Instance.bossTilemap.HasTile(new Vector3Int(playerPos.x, playerPos.y, 0)))
+            //{
+            //    continue;
+            //}
+
             if (this.DarkItems.Contains(targetPos))
             {
                 isAttacking = true;
@@ -179,6 +152,8 @@ public class HappyBoss : Boss
 
                 this.DarkItems.Remove(targetPos);
                 this.RemovePowerRingForBomb(id);
+
+                SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), null);
                 SlideController.Instance.bossTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), null);
 
                 Vector3 worldPlayerPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(playerPos.x, playerPos.y, 0));
@@ -190,20 +165,6 @@ public class HappyBoss : Boss
 
                 GroundTileController.Instance.ActiveBurnDownEffect(spawnPos);
             }
-            //else if (this.CrimsonItems.Contains(targetPos))
-            //{
-            //    Vector3 worldPlayerPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(playerPos.x, playerPos.y, 0));
-            //    Vector3 worldTargetPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(targetPos.x, targetPos.y, 0));
-
-            //    Vector3 spawnPos = new Vector3();
-            //    spawnPos.x = Mathf.Abs(worldPlayerPos.x + worldTargetPos.x) / 2;
-            //    spawnPos.y = Mathf.Abs(worldPlayerPos.y + worldTargetPos.y) / 2;
-
-            //    GroundTileController.Instance.ActiveBurnDownEffect(spawnPos);
-
-            //    isAttacking = true;
-            //    this.DecreaseItems(1);
-            //}
         }
 
         if (isAttacking)
@@ -212,32 +173,6 @@ public class HappyBoss : Boss
             SoundsManager.Instance.PlaySFX(SoundType.ExBomb);
         }
     }
-
-    //public void InteractWithItemOther()
-    //{
-    //    if (this.CurPhase == 1)
-    //    {
-    //        return;
-    //    }
-    //    List<Vector2Int> offsets = new List<Vector2Int>();
-    //    offsets = Library.Instance.LibOffsets8;
-
-    //    foreach (Vector2Int pos in this.CrimsonItems)
-    //    {
-    //        foreach (Vector2Int offset in offsets)
-    //        {
-    //            Vector2Int targetPos = pos + offset;
-    //            if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(targetPos.x, targetPos.y, 0)))
-    //            {
-    //                this.DarkItems.Add(targetPos);
-    //                ItemTileController.Instance.RemoveItem(targetPos);
-    //                SlideController.Instance.bossTilemap.SetTile(new Vector3Int(targetPos.x, targetPos.y, 0), this.DarkItem);
-    //                this.RemoveBossTilemap();
-    //                this.DecreaseItems(1);
-    //            }
-    //        }
-    //    }
-    //}
 
     public override void CheckDie()
     {
@@ -261,6 +196,7 @@ public class HappyBoss : Boss
 
     private void InitPowerRingForBomb(Vector2Int pos)
     {
+        Debug.Log("Init Power Ring");
         List<GameObject> goList = new List<GameObject>();
         List<Vector2Int> offsets = new List<Vector2Int>();
         offsets = Library.Instance.LibOffsets8;
@@ -269,6 +205,12 @@ public class HappyBoss : Boss
         {
             Vector2Int targetPos = pos + offsets[i];
             Vector3Int gridPos = new Vector3Int(targetPos.x, targetPos.y, 0);
+
+            if (targetPos == SlideController.Instance.GetPlayerPos())
+            {
+                SlideController.Instance.obstacleTilemap.SetTile(gridPos, null);
+            }
+
             if (BossController.Instance.CheckExistsBoss(targetPos) ||
                 SlideController.Instance.bgSmallTilemap.HasTile(gridPos) == false
                 )
