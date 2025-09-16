@@ -16,51 +16,16 @@ MonoBehaviour:
   - tutorialId: 1
     TutorialDetails:
     - id: 1
-      posInit: {x: 9, y: 2}
-      text: "Element is Neutral.\nInteract to change its state!\r"
-      Time: 5
-    - id: 2
-      posInit: {x: 1000, y: 3}
-      text: "The element absorbs nearby \nemontion to change its emotion!"
-      Time: 5
-    - id: 3
-      posInit: {x: 1000, y: 5}
-      text: "You can check power info at the \nbottom-left corner of the screen!"
-      Time: 3.5
-    - id: 4
-      posInit: {x: 12, y: 10}
-      text: "Oh~ \nFire buddy is sad now!"
-      Time: 2
-    - id: 5
-      posInit: {x: 1700, y: 14}
-      text: "When sad, \nelements will absorb items!!"
-      Time: 2
-    - id: 6
-      posInit: {x: 20, y: 16}
-      text: 'Wow!!!!
-
-        Fire buddy looks happy, huh!!?'
-      Time: 2
-    - id: 7
-      posInit: {x: 2000, y: 17}
-      text: "Fire and Ice combined to create Wind \nthat\u2019s azaming!!!"
+      posInit: {x: 25, y: 13}
+      text: "These are the elements  \nThey\u2019ll follow you on the journey.\r"
       Time: 5
     PopupDetails:
-    - posInit: {x: 10, y: -7}
+    - posInit: {x: 12, y: -2}
+      guideId: 0
+      timeWait: 0
+    - posInit: {x: 18, y: 1}
       guideId: 1
       timeWait: 0
-    - posInit: {x: 9, y: 4}
-      guideId: 2
-      timeWait: 0
-    - posInit: {x: 9, y: 5}
-      guideId: 3
-      timeWait: 0.7
-    - posInit: {x: 17, y: 14}
-      guideId: 4
-      timeWait: 0.2
-    - posInit: {x: 20, y: 17}
-      guideId: 5
-      timeWait: 0.7
   - tutorialId: 2
     TutorialDetails: []
     PopupDetails:

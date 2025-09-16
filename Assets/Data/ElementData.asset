@@ -17,31 +17,16 @@ MonoBehaviour:
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1
-      ElementPos: {x: 9, y: 7}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 1
-      ElementPos: {x: 12, y: 14}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 1
-      ElementPos: {x: 20, y: 20}
+      ElementPos: {x: 24, y: 16}
     - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
-      EmotionType: 3
-      ElementPos: {x: 21, y: 21}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 4
-      ElementPos: {x: 23, y: 30}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 3
-      ElementPos: {x: 22, y: 35}
+      EmotionType: 1
+      ElementPos: {x: 25, y: 16}
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 1
-      ElementPos: {x: 21, y: 37}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
+      ElementPos: {x: 26, y: 16}
+    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
       EmotionType: 1
-      ElementPos: {x: 20, y: 7}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 4
-      ElementPos: {x: 19, y: 15}
+      ElementPos: {x: 27, y: 16}
   - ElementId: 2
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}

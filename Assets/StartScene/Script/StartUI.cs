@@ -18,7 +18,7 @@ public class StartUI : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt(Constant.LEVELID, 1);
-        PlayerPrefs.SetInt(Constant.GUIDEID, 0);
+        PlayerPrefs.SetInt(Constant.GUIDEID, -100);
         PlayerPrefs.SetInt(Constant.ISRETURNMENU, 0);
         PlayerPrefs.Save();
 

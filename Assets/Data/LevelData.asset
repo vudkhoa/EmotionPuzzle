@@ -16,7 +16,7 @@ MonoBehaviour:
   - LevelId: 1
     SaveId: 1
     IsBoss: 0
-    PlayerPosition: {x: 9, y: -20}
+    PlayerPosition: {x: 12, y: -20}
     TutorialId: 1
     ItemId: 1
     BlockId: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 0
-    NextLevelPos: {x: 26, y: 41}
+    NextLevelPos: {x: 28, y: 22}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 1
     LockSprite: {fileID: -1104999520, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
