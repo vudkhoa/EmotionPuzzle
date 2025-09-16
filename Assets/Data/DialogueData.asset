@@ -15,77 +15,102 @@ MonoBehaviour:
   DialogueLevelDetails:
   - levelId: 1
     dialogueLineBefore:
-    - speakerName: "C\xE2y C\u1ECD"
-      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
-      sentence: "Lino\u2026 Ta c\u1EA3m nh\u1EADn tr\xE1i tim con tr\u1ED1ng r\u1ED7ng."
     - speakerName: Lino
       speakerIcon: {fileID: -1888453969, guid: 6f9c99fc730331f42ac1d22c2622ee52, type: 3}
-      sentence: "M\xECnh\u2026 c\u1EA3m th\u1EA5y nh\u01B0 kh\xF4ng c\xF2n l\xE0
-        ch\xEDnh m\xECnh n\u1EEFa."
-    - speakerName: "C\xE2y c\u1ECD"
+      sentence: ...A paintbrush? Why did it fall down here?
+    - speakerName: Paintbrush
       speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
-      sentence: "C\u1EA3m x\xFAc c\u1EE7a con \u0111\xE3 r\u1EDDi b\u1ECF v\xE0 tr\xF4i
-        d\u1EA1t v\xE0o nh\u1EEFng h\xE0nh tinh xa x\xF4i."
-    - speakerName: "C\xE2y c\u1ECD"
+      sentence: "Hello, Lino. I\u2019ve come to help you find what you\u2019ve lost."
+    - speakerName: Lino
+      speakerIcon: {fileID: -1888453969, guid: 6f9c99fc730331f42ac1d22c2622ee52, type: 3}
+      sentence: "What I\u2019ve lost... you mean my emotions?"
+    - speakerName: Paintbrush
       speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
-      sentence: "Ta s\u1EBD cho con m\u01B0\u1EE3n s\u1EE9c m\u1EA1nh c\u1EE7a c\xE1c
-        nguy\xEAn t\u1ED1"
+      sentence: "That\u2019s right. But first, I need to see if you\u2019re strong
+        enough to face the trials ahead."
     dialogueLineAfter:
-    - speakerName: "C\xE2y c\u1ECD"
+    - speakerName: Paintbrush
       speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
-      sentence: "H\xE3y \u0111i, t\xECm l\u1EA1i t\u1EEBng m\u1EA3nh c\u1EA3m x\xFAc
-        \u0111\xE3 m\u1EA5t. Khi h\u1EE3p nh\u1EA5t ch\xFAng, con s\u1EBD bi\u1EBFt
-        m\xECnh l\xE0 ai."
+      sentence: "Go now, and reclaim each fragment of your lost emotions. When they
+        come together, you\u2019ll finally understand who you are."
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "M\xECnh s\u1EBD l\xE0m \u0111\u01B0\u1EE3c."
+      sentence: I can do this.
   - levelId: 2
     dialogueLineBefore:
+    - speakerName: Angry Boss
+      speakerIcon: {fileID: -128234622, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: A fragile wretch like you dares to face me? Do you think you can
+        withstand this heat?
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "\u0110\xE2y\u2026 l\xE0 c\u01A1n gi\u1EADn c\u1EE7a m\xECnh."
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "N\xF3ng b\u1ECFng \u0111\u1EBFn m\u1EE9c m\xECnh t\u1EEBng s\u1EE3
-        h\xE3i n\xF3."
+      sentence: "You\u2026 you\u2019re the rage within me. I\u2019ve come to reclaim
+        you."
+    - speakerName: Angry Boss
+      speakerIcon: {fileID: -128234622, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "Reclaim me? Hah! You cast me aside long ago. Prove yourself! Otherwise,
+        I\u2019ll burn you to ashes."
+    - speakerName: Paintbrush
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
+      sentence: "Lino, show me you\u2019re strong enough."
     dialogueLineAfter:
+    - speakerName: Angry Boss
+      speakerIcon: {fileID: -128234622, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "Good\u2026 at last, you dared to face me. Take this strength, but
+        remember\u2026 rage always demands control."
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "Gi\u1EADn d\u1EEF\u2026 kh\xF4ng bi\u1EBFn m\u1EA5t, nh\u01B0ng
-        gi\u1EDD n\xF3 \u1EDF b\xEAn m\xECnh."
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "M\xECnh s\u1EBD d\xF9ng n\xF3 \u0111\u1EC3 b\u1EA3o v\u1EC7, kh\xF4ng
-        \u0111\u1EC3 ph\xE1 h\u1EE7y."
+      sentence: "I can feel it\u2026 a fire blazing in my chest\u2014wild, powerful,
+        alive."
   - levelId: 3
     dialogueLineBefore:
+    - speakerName: Sad Boss
+      speakerIcon: {fileID: 635937797, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "You\u2026 you\u2019ve come for me again? Why? You don\u2019t need
+        sorrow anymore\u2026"
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "M\xECnh t\u1EEBng \u0111\u1EC3 n\u1ED7i bu\u1ED3n n\xE0y nu\u1ED1t
-        ch\u1EEDng\u2026 "
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "gi\u1EDD th\xEC m\xECnh s\u1EBD b\u01B0\u1EDBc xuy\xEAn qua n\xF3."
+      sentence: "Without you, I\u2019m just an empty shell. I want to feel sorrow
+        once more."
+    - speakerName: Sad Boss
+      speakerIcon: {fileID: 635937797, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "But it will hurt\u2026 so much it could drown you. Can you bear
+        it?"
+    - speakerName: Paintbrush
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
+      sentence: "Lino, prove it. Show us you\u2019re strong enough."
     dialogueLineAfter:
+    - speakerName: Sad Boss
+      speakerIcon: {fileID: 635937797, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "You\u2026 you\u2019ve accepted me. Then take this tear. Let it remind
+        you that your heart can still feel."
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "Bu\u1ED3n\u2026 l\xE0 m\u1ED9t ph\u1EA7n m\xECnh."
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "N\xF3 nh\u1EAFc m\xECnh bi\u1EBFt tr\xE2n tr\u1ECDng nh\u1EEFng
-        kho\u1EA3nh kh\u1EAFc \u1EA5m \xE1p."
+      sentence: "My heart\u2026 it feels soaked, heavy\u2026 but real. I\u2019ve
+        reclaimed my sorrow."
   - levelId: 4
     dialogueLineBefore:
+    - speakerName: Happy Boss
+      speakerIcon: {fileID: 1144786187, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "Ha ha! Look at you\u2014so dull and gloomy! Do you really think
+        you deserve me?"
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "M\xECnh \u0111\xE3 qu\xEAn m\u1EA5t c\u1EA3m gi\xE1c n\xE0y\u2026"
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "Gi\u1EDD th\xEC m\xECnh s\u1EBD t\xECm l\u1EA1i."
+      sentence: "I want to laugh again\u2026 to feel the joy I\u2019ve lost. Let
+        me try."
+    - speakerName: Happy Boss
+      speakerIcon: {fileID: 1144786187, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: If you want me back, prove it! Show me you can light up the darkness
+        around you!
+    - speakerName: Paintbrush
+      speakerIcon: {fileID: -1559301859, guid: 34ce69e3df652514fa82aab7bdd95690, type: 3}
+      sentence: This is it, Lino. Show us what you can do.
     dialogueLineAfter:
+    - speakerName: Happy Boss
+      speakerIcon: {fileID: 1144786187, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
+      sentence: "Perfect! That\u2019s the laughter I\u2019ve been waiting for. Take
+        me back, and never forget this feeling."
     - speakerName: Lino
       speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "Ni\u1EC1m vui\u2026 quay l\u1EA1i r\u1ED3i."
-    - speakerName: Lino
-      speakerIcon: {fileID: 2098950488, guid: 40f03d2e290d17841873099298f21598, type: 3}
-      sentence: "\u1EA4m \xE1p, th\u1EADt v\xE0 tr\xE0n \u0111\u1EA7y."
+      sentence: "Ha\u2026 ha\u2026 I\u2019m laughing? It feels so light\u2026 so
+        warm\u2026 this is my joy!"
