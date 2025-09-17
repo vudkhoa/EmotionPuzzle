@@ -834,8 +834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -182, y: 177}
-  m_SizeDelta: {x: 358.6865, y: 105.577}
+  m_AnchoredPosition: {x: -161, y: 163}
+  m_SizeDelta: {x: 361.34, y: 105.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8990655932062608167
 CanvasRenderer:
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Can transform a <color=#F06100>Missile</color> into a <color=#fd5951>Dark
+  m_text: Can transform a <color=#F06100>Firecracker</color> into a <color=#fd5951>Dark
     Bomb</color>.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1033,8 +1033,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269, y: -176}
-  m_SizeDelta: {x: 310.1278, y: 89.2879}
+  m_AnchoredPosition: {x: 275.86682, y: -176}
+  m_SizeDelta: {x: 323.8615, y: 89.2879}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2284091927210640772
 CanvasRenderer:
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To defeat the <color=#0483fd>Boss</color>, push <color=#F06100>Missile</color>
+  m_text: To defeat the <color=#0483fd>Boss</color>, push <color=#F06100>Firecracker</color>
     into it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
@@ -1168,8 +1168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -147, y: -179}
-  m_SizeDelta: {x: 355.4782, y: 105.577}
+  m_AnchoredPosition: {x: -167.7851, y: -179}
+  m_SizeDelta: {x: 397.0484, y: 105.577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4159107929443950546
 CanvasRenderer:
