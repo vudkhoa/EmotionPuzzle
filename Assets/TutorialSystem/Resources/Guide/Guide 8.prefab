@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Boss can absorb <color=#e8b858>Firecracker</color>.
+  m_text: ' Absorb <color=#e8b858>Firecracker</color>.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 589dab77c2c567a498d2181dfe084740, type: 2}
