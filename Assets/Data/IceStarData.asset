@@ -42,6 +42,3 @@ MonoBehaviour:
     - Position: {x: -5, y: 30}
       Direction: 2
       LockPosition: {x: 1, y: 29}
-    - Position: {x: -3, y: -8}
-      Direction: 3
-      LockPosition: {x: -3, y: -5}

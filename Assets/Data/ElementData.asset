@@ -31,6 +31,9 @@ MonoBehaviour:
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1
+      ElementPos: {x: -2, y: -8}
+    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
+      EmotionType: 1
       ElementPos: {x: -3, y: 12}
     - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
       EmotionType: 1
@@ -49,19 +52,10 @@ MonoBehaviour:
       ElementPos: {x: 17, y: 26}
     - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
       EmotionType: 1
-      ElementPos: {x: 16, y: 11}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 1
-      ElementPos: {x: -4, y: 21}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 1
-      ElementPos: {x: -7, y: 21}
-    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
-      EmotionType: 1
-      ElementPos: {x: -5, y: 21}
-    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
-      EmotionType: 1
       ElementPos: {x: -6, y: 21}
+    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
+      EmotionType: 1
+      ElementPos: {x: -5, y: -14}
   - ElementId: 3
     ElementDetails:
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
@@ -94,12 +88,6 @@ MonoBehaviour:
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 1
       ElementPos: {x: 7, y: -3}
-    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
-      EmotionType: 1
-      ElementPos: {x: 20, y: 20}
-    - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
-      EmotionType: 4
-      ElementPos: {x: 21, y: 22}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 4
       ElementPos: {x: 1, y: 27}
@@ -114,12 +102,6 @@ MonoBehaviour:
     - Element: {fileID: 2748706264280837740, guid: 7c4745e270a322b4e962b277e1e56085, type: 3}
       EmotionType: 3
       ElementPos: {x: -12, y: -9}
-    - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
-      EmotionType: 1
-      ElementPos: {x: -7, y: -3}
-    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
-      EmotionType: 1
-      ElementPos: {x: -6, y: -3}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1
       ElementPos: {x: 0, y: 3}
@@ -134,7 +116,7 @@ MonoBehaviour:
       ElementPos: {x: -11, y: 29}
     - Element: {fileID: -4697289501028376282, guid: 57e75479c7a2f07428d9bc8df741148d, type: 3}
       EmotionType: 2
-      ElementPos: {x: 11, y: 23}
+      ElementPos: {x: 7, y: 33}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1
       ElementPos: {x: -1, y: 21}
