@@ -44,7 +44,7 @@ public class StartUI : MonoBehaviour
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
         PlayerPrefs.SetInt(Constant.MAXLEVELID, 0);
-        LoadingManager.instance.LoadScene("BG Start");
+        LoadingManager.instance.LoadScene("Intro");
     }
 
     public void ContinueGame()

@@ -24,14 +24,43 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
         return false;
     }
 
-    public void Reload()
+    public void ResetInitData()
     {
+        initObstaclePos = new List<Vector2Int>();
+
         for (int i = -100; i <= 100; i++)
         {
             for (int j = -100; j <= 100; j++)
             {
-                if ( SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0))
-                    && IsInSave(new Vector2Int(i, j)) )
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    initObstaclePos.Add(new Vector2Int(i, j));
+                    //LockController.Instance.SetLock(new Vector3Int(i, j, 0));
+                }
+            }
+        }
+    }
+
+    public void Reload()
+    {
+        //for (int i = -100; i <= 100; i++)
+        //{
+        //    for (int j = -100; j <= 100; j++)
+        //    {
+        //        if ( SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0))
+        //            && IsInSave(new Vector2Int(i, j)) )
+        //        {
+        //            SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(i, j, 0), null);
+        //            LockController.Instance.RemoveLock(new Vector3Int(i, j, 0));
+        //        }
+        //    }
+        //}
+
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(i, j, 0)))
                 {
                     SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(i, j, 0), null);
                     LockController.Instance.RemoveLock(new Vector3Int(i, j, 0));
@@ -39,13 +68,19 @@ public class ObstacleTileController : SingletonMono<ObstacleTileController>
             }
         }
 
+        //foreach (Vector2Int pos in initObstaclePos)
+        //{
+        //    if (IsInSave(pos))
+        //    {
+        //        SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), ObstacleTile);
+        //        LockController.Instance.SetLock(new Vector3Int(pos.x, pos.y, 0));
+        //    }
+        //}
+
         foreach (Vector2Int pos in initObstaclePos)
         {
-            if (IsInSave(pos))
-            {
-                SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), ObstacleTile);
-                LockController.Instance.SetLock(new Vector3Int(pos.x, pos.y, 0));
-            }
+            SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), ObstacleTile);
+            LockController.Instance.SetLock(new Vector3Int(pos.x, pos.y, 0));
         }
     }
 

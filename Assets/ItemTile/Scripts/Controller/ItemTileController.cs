@@ -78,47 +78,83 @@ public class ItemTileController : SingletonMono<ItemTileController>
         return false;
     }
 
+    public void ResetInitData()
+    {
+        initItemPosList = new List<Vector2Int>(ItemPosList);
+        initItemTypeList = new List<ItemType>(ItemTypeList);
+    }
+
     public void Reload()
     {
-        for (int i=0; i < ItemPosList.Count; i++)
-        {
-            Vector2Int item = ItemPosList[i];
-            if (IsInSave(item))
-            {
-                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(ItemPosList[i].x, ItemPosList[i].y, 0), null);
-                ItemPosList.RemoveAt(i);
-                ItemTypeList.RemoveAt(i);
+        //for (int i=0; i < ItemPosList.Count; i++)
+        //{
+        //    Vector2Int item = ItemPosList[i];
+        //    if (IsInSave(item))
+        //    {
+        //        SlideController.Instance.itemTilemap.SetTile(new Vector3Int(ItemPosList[i].x, ItemPosList[i].y, 0), null);
+        //        ItemPosList.RemoveAt(i);
+        //        ItemTypeList.RemoveAt(i);
 
-                i--;
-            }
+        //        i--;
+        //    }
+        //}
+
+        foreach (Vector2Int cell in ItemPosList)
+        {
+            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cell.x, cell.y, 0), null);
         }
+
+        //for (int i = 0; i < initItemPosList.Count; i++)
+        //{
+        //    Vector2Int item = initItemPosList[i];
+        //    if (IsInSave(item))
+        //    {
+        //        if (initItemTypeList[i] == ItemType.None)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), NoneItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeAngry)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), AngryItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeSad)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), SadItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeHappy)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), HappyItem);
+        //        }
+
+        //        ItemPosList.Add(initItemPosList[i]);
+        //        ItemTypeList.Add(initItemTypeList[i]);
+        //    }
+        //}
 
         for (int i = 0; i < initItemPosList.Count; i++)
         {
             Vector2Int item = initItemPosList[i];
-            if (IsInSave(item))
+            
+            if (initItemTypeList[i] == ItemType.None)
             {
-                if (initItemTypeList[i] == ItemType.None)
-                {
-                    SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), NoneItem);
-                }
-                else if (initItemTypeList[i] == ItemType.MakeAngry)
-                {
-                    SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), AngryItem);
-                }
-                else if (initItemTypeList[i] == ItemType.MakeSad)
-                {
-                    SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), SadItem);
-                }
-                else if (initItemTypeList[i] == ItemType.MakeHappy)
-                {
-                    SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), HappyItem);
-                }
-
-                ItemPosList.Add(initItemPosList[i]);
-                ItemTypeList.Add(initItemTypeList[i]);
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), NoneItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeAngry)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), AngryItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeSad)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), SadItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeHappy)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), HappyItem);
             }
         }
+
+        ItemPosList = new List<Vector2Int>(initItemPosList);
+        ItemTypeList = new List<ItemType>(initItemTypeList);
     }
 
     public void SetItemPosList(List<Vector2Int> itemPosList)

@@ -71,6 +71,12 @@ public class SavePointController : SingletonMono<SavePointController>
                     isMoved[index] = true;
                 }
 
+                //Reset init data
+                ItemTileController.Instance.ResetInitData();
+                ObstacleTileController.Instance.ResetInitData();
+                RotateObjectController.Instance.ResetInitData();
+                BlockTileController.Instance.ResetInitData();
+
                 return;
             }
         }

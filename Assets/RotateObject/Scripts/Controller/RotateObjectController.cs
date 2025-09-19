@@ -26,6 +26,14 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
         return false;
     }
 
+    public void ResetInitData()
+    {
+        foreach (RotateObject o in RotateObjects)
+        {
+            o.ResetInitData();
+        }
+    }
+
     public void Reload()
     {
         foreach (RotateObject o in RotateObjects)

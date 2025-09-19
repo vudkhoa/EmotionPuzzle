@@ -11,6 +11,12 @@ public class RotateObject : MonoBehaviour
     private float initAngle;
     private List<Vector2Int> initContainPosList;
 
+    public void ResetInitData()
+    {
+        initAngle = this.transform.rotation.z;
+        initContainPosList = new List<Vector2Int>(containPosList);
+    }
+
     public void Reload()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, initAngle);
