@@ -53,7 +53,7 @@ MonoBehaviour:
     SaveId: 0
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 4
+    TutorialId: 3
     ItemId: 5
     BlockId: 0
     ElementId: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     SaveId: 3
     IsBoss: 0
     PlayerPosition: {x: -11, y: -5}
-    TutorialId: 3
+    TutorialId: 4
     ItemId: 3
     BlockId: 0
     ElementId: 3
