@@ -102,6 +102,16 @@ public abstract class Element : MonoBehaviour
                 {
                     this.ActivePowerList[count] = true;
                     go.SetActive(true);
+                    Vector3Int worldPos = new Vector3Int(this.OffsetList[count].x + this.CurrentPos.x, this.OffsetList[count].y + this.CurrentPos.y, 0);
+                    int curLevelId = SlideController.Instance.curLevelId;
+                    if (SlideController.Instance.bgSmallTilemap.HasTile(worldPos))
+                    {
+                        this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
+                    }
+                    else
+                    {
+                        this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
+                    }
                 }
                 else
                 {
