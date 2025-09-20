@@ -125,10 +125,10 @@ public class WaterElement : Element
         ReFillWater();
     }
 
-    public override void Reload()
+    public override void Reload(ElementData elementData)
     {
         ReFillWater();
-        base.Reload();
+        base.Reload(elementData);
     }
 
     public void ReFillWater()
