@@ -11,7 +11,7 @@ public class SavePointController : SingletonMono<SavePointController>
     public SavePointSO SavePointData;
     public GameObject CheckPointPrefab;
     public int id;
-    public Vector2Int curSavePoint = new Vector2Int(0, 0);
+    public Vector2Int curSavePoint = new Vector2Int(-1000, -1000);
     public Vector2Int endSavePoint;
     public Vector2Int startSavePoint;
 
@@ -85,6 +85,6 @@ public class SavePointController : SingletonMono<SavePointController>
 
     public bool IsSave()
     {
-        return curSavePoint != Vector2Int.zero;
+        return curSavePoint != new Vector2Int(-1000, -1000);
     }
 }
