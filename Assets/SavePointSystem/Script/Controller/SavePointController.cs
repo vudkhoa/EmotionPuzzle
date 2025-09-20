@@ -72,6 +72,7 @@ public class SavePointController : SingletonMono<SavePointController>
                 }
 
                 //Reset init data
+                ElementController.Instance.ResetInitData();
                 ItemTileController.Instance.ResetInitData();
                 ObstacleTileController.Instance.ResetInitData();
                 RotateObjectController.Instance.ResetInitData();

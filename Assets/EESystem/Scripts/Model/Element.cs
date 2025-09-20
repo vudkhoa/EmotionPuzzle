@@ -1,6 +1,5 @@
 ﻿using DG.Tweening;
 using SoundManager;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -26,17 +25,22 @@ public abstract class Element : MonoBehaviour
     public ParticleSystem absorbParticle;
     public VisualEffect emotionChangeVFX;
 
-    public void SetEmotionType(EmotionType emotionType)
+    //private List<Vector2Int> powerTilemapList;
+
+    public void SetEmotionType(EmotionType emotionType, bool isReActive = true)
     {
         this.EmotionType = emotionType;
 
-        if (this.EmotionType == EmotionType.Angry)
+        if (isReActive)
         {
-            this.SetActivatePower();
-        }
-        else
-        {
-            this.SetDeactivePower();
+            if (this.EmotionType == EmotionType.Angry)
+            {
+                this.SetActivatePower();
+            }
+            else
+            {
+                this.SetDeactivePower();
+            }
         }
 
         ChangeEmotionAni(emotionType);
@@ -53,17 +57,52 @@ public abstract class Element : MonoBehaviour
     public List<Vector2Int> OffsetList;
     public List<GameObject> PowerRingList;
 
+    private List<bool> tmpPowerRingList;
+
     public void SetInitInfo(EmotionType emotionType, Vector2Int currentPos)
     {
         initEmotionType = emotionType;
         initPosition = currentPos;
     }
 
+    public void ResetInitData()
+    {
+        initEmotionType = this.EmotionType;
+        initPosition = this.CurrentPos;
+
+        this.tmpPowerRingList = new List<bool>(this.ActivePowerList);
+    }
+
     public virtual void Reload()
     {
-        //Vector3Int gridPos = new Vector3Int(initPosition.x, initPosition.y, 0);
-        //this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
-        //this.Setup(initEmotionType, initPosition);
+        Vector3Int gridPos = new Vector3Int(initPosition.x, initPosition.y, 0);
+        this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+        this.CurrentPos = initPosition;
+        this.SetEmotionType(initEmotionType, false);
+        if (this.EmotionType == EmotionType.Angry)
+        {
+            int count = -1;
+            foreach (GameObject go in this.PowerRingList)
+            {
+                count++;
+                if (this.tmpPowerRingList[count])
+                {
+                    this.ActivePowerList[count] = true;
+                    go.SetActive(true);
+                }
+                else
+                {
+                    this.ActivePowerList[count] = false;
+                    go.SetActive(false);
+                }
+            }
+
+
+        }
+        else
+        {
+            this.SetDeactivePower();
+        }
     }
 
     public virtual void Setup(EmotionType emotionType, Vector2Int currentPos)
@@ -81,6 +120,8 @@ public abstract class Element : MonoBehaviour
         this.CurrentPos = currentPos;
         this.SetupLock();
     }
+
+
 
     public virtual bool InteractWithItem(ItemType itemType, Vector2Int itemPos)
     {
