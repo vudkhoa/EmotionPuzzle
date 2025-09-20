@@ -202,14 +202,14 @@ public class ElementController : SingletonMono<ElementController>
 
                 if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0))                    )
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Obstacle", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Obstacle", 1f);
 
                     return false;
                 }
 
                 if (this.CheckExistsElement(new Vector3Int(newPos.x, newPos.y, 0)))
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Element", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Element", 1f);
 
                     return false;
                 }
@@ -217,7 +217,7 @@ public class ElementController : SingletonMono<ElementController>
                 if (SlideController.Instance.IceStarId > 0 &&
                     IceStarController.Instance.CheckExistsSource(new Vector3Int(newPos.x, newPos.y, 0)))
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Ice Star", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Ice Star", 1f);
 
                     return false;
                 }
