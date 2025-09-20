@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class ObstacleTileController : SingletonMono<ObstacleTileController>
 {
     public TileBase ObstacleTile;
+    public TileBase ItemObstacleTile;
     [SerializeField] private ParticleSystem burnDownEffect;
 
     private List<Vector2Int> initObstaclePos = new List<Vector2Int>();
