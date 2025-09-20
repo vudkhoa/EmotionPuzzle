@@ -310,3 +310,12 @@ public abstract class Element : MonoBehaviour
         }
     }
 }
+
+[Serializable]
+public class ElementData
+{
+    public ElementType ElementType;
+    public EmotionType EmotionType;
+    public Vector2Int Position;
+    public List<bool> ActivePowerList;
+}
