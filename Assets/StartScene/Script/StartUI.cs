@@ -29,7 +29,6 @@ public class StartUI : MonoBehaviour
         }
 
         AnimateTitle();
-        AnimateBackground();
     }
 
     private void Update()
@@ -76,10 +75,5 @@ public class StartUI : MonoBehaviour
         title.DOAnchorPosY(title.anchoredPosition.y + 10f, 2f)
                      .SetEase(Ease.InOutSine)
                      .SetLoops(-1, LoopType.Yoyo);
-    }
-
-    void AnimateBackground()
-    {
-        
     }
 }
