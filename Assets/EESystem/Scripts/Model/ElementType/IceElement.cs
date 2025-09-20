@@ -20,10 +20,10 @@ public class IceElement : Element
         }
     }
 
-    public override void Reload()
+    public override void Reload(ElementData elementData)
     {
         ReLoadIceActive();
-        base.Reload();
+        base.Reload(elementData);
     }
 
     public void ReLoadIceActive()

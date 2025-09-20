@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using SoundManager;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -73,19 +74,30 @@ public abstract class Element : MonoBehaviour
         this.tmpPowerRingList = new List<bool>(this.ActivePowerList);
     }
 
-    public virtual void Reload()
+    public ElementData GetInitData()
     {
-        Vector3Int gridPos = new Vector3Int(initPosition.x, initPosition.y, 0);
+        ElementData data = new ElementData();
+        data.ElementType = this.ElementType;
+        data.EmotionType = this.EmotionType;
+        data.Position = this.CurrentPos;
+        data.ActivePowerList = new List<bool>(this.ActivePowerList);
+        return data;
+    }
+
+    public virtual void Reload(ElementData elementData)
+    {
+        this.ElementType = elementData.ElementType;
+        Vector3Int gridPos = new Vector3Int(elementData.Position.x, elementData.Position.y, 0);
         this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
-        this.CurrentPos = initPosition;
-        this.SetEmotionType(initEmotionType, false);
+        this.CurrentPos = elementData.Position;
+        this.SetEmotionType(elementData.EmotionType, false);
         if (this.EmotionType == EmotionType.Angry)
         {
             int count = -1;
             foreach (GameObject go in this.PowerRingList)
             {
                 count++;
-                if (this.tmpPowerRingList[count])
+                if (elementData.ActivePowerList[count])
                 {
                     this.ActivePowerList[count] = true;
                     go.SetActive(true);
@@ -350,4 +362,13 @@ public abstract class Element : MonoBehaviour
             LockController.Instance.RemoveLock(new Vector3Int(this.CurrentPos.x, this.CurrentPos.y, 0));
         }
     }
+}
+
+[Serializable]
+public class ElementData
+{
+    public ElementType ElementType;
+    public EmotionType EmotionType;
+    public Vector2Int Position;
+    public List<bool> ActivePowerList;
 }

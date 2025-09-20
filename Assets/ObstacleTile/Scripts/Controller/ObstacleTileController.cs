@@ -7,11 +7,9 @@ using UnityEngine.Tilemaps;
 public class ObstacleTileController : SingletonMono<ObstacleTileController>
 {
     public TileBase ObstacleTile;
-    public TileBase ItemObstacleTile;
     [SerializeField] private ParticleSystem burnDownEffect;
 
     private List<Vector2Int> initObstaclePos = new List<Vector2Int>();
-
     public bool IsInSave(Vector2Int pos)
     {
         if (SavePointController.Instance.startSavePoint.x <= pos.x

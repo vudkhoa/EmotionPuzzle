@@ -41,7 +41,7 @@ MonoBehaviour:
   - tutorialId: 3
     TutorialDetails: []
     PopupDetails:
-    - posInit: {x: -4, y: -11}
+    - posInit: {x: -11, y: -7}
       guideId: 5
       timeWait: 0.5
     - posInit: {x: -3, y: 10}
@@ -52,7 +52,7 @@ MonoBehaviour:
     PopupDetails:
     - posInit: {x: -15, y: -10}
       guideId: 6
-      timeWait: 0
+      timeWait: 0.5
     - posInit: {x: -12, y: 11}
       guideId: 7
       timeWait: 0

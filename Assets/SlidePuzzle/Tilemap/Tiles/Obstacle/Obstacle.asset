@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: "obstacle thi\xEAn th\u1EA1ch_1"
+  m_Name: Obstacle
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -236930272, guid: 77c865cb54879e3439c30985c1d0de05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

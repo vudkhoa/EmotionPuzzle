@@ -10,7 +10,13 @@ public class ElementController : SingletonMono<ElementController>
     public List<Element> ElementList;
 
     private List<int> elementIdHasJustMove;
-    private List<Element> initElementList;
+    private List<ElementData> initElementList;
+
+    [Header("Prefab")]
+    public Element FireElementPrefab;
+    public Element WindElementPrefab;
+    public Element WaterElementPrefab;
+    public Element IceElementPrefab;
 
 
     public bool IsInSave(Vector2Int pos)
@@ -28,25 +34,28 @@ public class ElementController : SingletonMono<ElementController>
 
     public void ResetInitData()
     {
+        initElementList = new List<ElementData>();
+
         foreach (Element e in this.ElementList)
         {
-            e.ResetInitData();
+            //e.ResetInitData();
+            initElementList.Add(e.GetInitData());
         }
     }
 
     public void Reload()
     {
-        for (int i = 0; i < ElementList.Count; i++) 
-        {
-            Element e = ElementList[i];
+        //for (int i = 0; i < ElementList.Count; i++) 
+        //{
+        //    Element e = ElementList[i];
             
-            e.Reload();
-            //Element eTemp = e;
-            //this.ElementList.Remove(e);
-            //Destroy(eTemp.gameObject);
-            //i--;
+        //    e.Reload();
+        //    //Element eTemp = e;
+        //    //this.ElementList.Remove(e);
+        //    //Destroy(eTemp.gameObject);
+        //    //i--;
             
-        }
+        //}
 
         //foreach (ElementDetail elementDetail in DataManager.Instance.ElementData.ElementLevelDetails[SlideController.Instance.elementId - 1].ElementDetails)
         //{
@@ -60,6 +69,40 @@ public class ElementController : SingletonMono<ElementController>
         //        this.ElementList.Add(eGO);
         //    }
         //}
+
+        foreach (Element e in this.ElementList)
+        {
+            Destroy(e.gameObject);
+        }
+
+        this.ElementList.Clear();
+
+        foreach (ElementData elementData in initElementList)
+        {
+            Vector3Int gridPos = new Vector3Int(elementData.Position.x, elementData.Position.y, 0);
+            Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+            Element eGO = null;
+            switch (elementData.ElementType)
+            {
+                case ElementType.Fire:
+                    eGO = Instantiate(FireElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Wind:
+                    eGO = Instantiate(WindElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Water:
+                    eGO = Instantiate(WaterElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Ice:
+                    eGO = Instantiate(IceElementPrefab, pos, Quaternion.identity);
+                    break;
+            }
+            if (eGO != null)
+            {
+                eGO.Reload(elementData);
+                this.ElementList.Add(eGO);
+            }
+        }
     }
 
     public void SpawnElement(List<ElementDetail> elementDetails)
@@ -159,14 +202,14 @@ public class ElementController : SingletonMono<ElementController>
 
                 if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0))                    )
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Obstacle", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Obstacle", 1f);
 
                     return false;
                 }
 
                 if (this.CheckExistsElement(new Vector3Int(newPos.x, newPos.y, 0)))
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Element", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Element", 1f);
 
                     return false;
                 }
@@ -174,7 +217,7 @@ public class ElementController : SingletonMono<ElementController>
                 if (SlideController.Instance.IceStarId > 0 &&
                     IceStarController.Instance.CheckExistsSource(new Vector3Int(newPos.x, newPos.y, 0)))
                 {
-                    UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Ice Star", 1f);
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Ice Star", 1f);
 
                     return false;
                 }
