@@ -58,6 +58,9 @@ MonoBehaviour:
       ElementPos: {x: 2, y: -8}
   - ElementId: 3
     ElementDetails:
+    - Element: {fileID: 6973168526655074606, guid: f46c66736a690cd43bf63c70fb4fedc0, type: 3}
+      EmotionType: 4
+      ElementPos: {x: -6, y: -7}
     - Element: {fileID: 6494333738365329872, guid: ff49b0aa85c8be74daf288073ec43981, type: 3}
       EmotionType: 1
       ElementPos: {x: -4, y: -13}

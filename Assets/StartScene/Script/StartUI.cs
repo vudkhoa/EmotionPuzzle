@@ -25,7 +25,6 @@ public class StartUI : MonoBehaviour
         if (PlayerPrefs.GetInt(Constant.MAXLEVELID, 0) == 0)
         {
             continueBtn.gameObject.SetActive(false);
-            startBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Play";
         }
 
         AnimateTitle();
