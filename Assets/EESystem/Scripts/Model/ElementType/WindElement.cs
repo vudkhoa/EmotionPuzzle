@@ -6,6 +6,11 @@ using UnityEngine.Tilemaps;
 
 public class WindElement : Element
 {
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
+
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
@@ -17,7 +22,7 @@ public class WindElement : Element
         }
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();

@@ -2,6 +2,7 @@
 using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -72,6 +73,7 @@ public class ElementController : SingletonMono<ElementController>
 
         foreach (Element e in this.ElementList)
         {
+            LockController.Instance.RemoveLock(new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0));
             Destroy(e.gameObject);
         }
 

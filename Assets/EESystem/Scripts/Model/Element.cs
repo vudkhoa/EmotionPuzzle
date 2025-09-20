@@ -90,6 +90,7 @@ public abstract class Element : MonoBehaviour
         Vector3Int gridPos = new Vector3Int(elementData.Position.x, elementData.Position.y, 0);
         this.transform.position = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
         this.CurrentPos = elementData.Position;
+        this.InitOffsetList();
         this.SetEmotionType(elementData.EmotionType, false);
         if (this.EmotionType == EmotionType.Angry)
         {
@@ -108,8 +109,6 @@ public abstract class Element : MonoBehaviour
                     go.SetActive(false);
                 }
             }
-
-
         }
         else
         {
@@ -239,7 +238,9 @@ public abstract class Element : MonoBehaviour
         }
     }
 
-    public abstract void Power(); 
+    public abstract void Power();
+
+    public abstract void InitOffsetList();
 
     public void MoveTo(Vector2Int newGridPos, Vector3 worldPos)
     {

@@ -8,6 +8,10 @@ public class WaterElement : Element
     private List<Vector3Int> _fillWaterList;
     private List<Vector3Int> _saveFillWaterList;
     [SerializeField] TileBase WaterTile;
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
 
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
@@ -21,7 +25,7 @@ public class WaterElement : Element
         this._saveFillWaterList = new List<Vector3Int>();
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();

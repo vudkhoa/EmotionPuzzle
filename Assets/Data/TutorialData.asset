@@ -21,10 +21,10 @@ MonoBehaviour:
       Time: 5
     PopupDetails:
     - posInit: {x: 12, y: -2}
-      guideId: 0
+      guideId: 1
       timeWait: 0
     - posInit: {x: 18, y: 1}
-      guideId: 1
+      guideId: 2
       timeWait: 0
   - tutorialId: 2
     TutorialDetails: []

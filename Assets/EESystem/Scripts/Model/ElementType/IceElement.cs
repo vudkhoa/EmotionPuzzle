@@ -8,6 +8,11 @@ public class IceElement : Element
     public TileBase IceTile;
     private List<Vector3Int> _iceActiveTileList;
 
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
+
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
@@ -54,7 +59,7 @@ public class IceElement : Element
         this._iceActiveTileList = tempList;
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
