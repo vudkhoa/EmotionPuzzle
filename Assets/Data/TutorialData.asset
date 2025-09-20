@@ -30,13 +30,13 @@ MonoBehaviour:
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: -6, y: -23}
-      guideId: 2
-      timeWait: 0
-    - posInit: {x: -6, y: -22}
       guideId: 3
       timeWait: 0
-    - posInit: {x: 99, y: -17}
+    - posInit: {x: -6, y: -22}
       guideId: 4
+      timeWait: 0
+    - posInit: {x: -3, y: 0}
+      guideId: 5
       timeWait: 0
   - tutorialId: 3
     TutorialDetails: []
