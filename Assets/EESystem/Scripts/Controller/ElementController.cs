@@ -10,6 +10,8 @@ public class ElementController : SingletonMono<ElementController>
     public List<Element> ElementList;
 
     private List<int> elementIdHasJustMove;
+    private List<Element> initElementList;
+
 
     public bool IsInSave(Vector2Int pos)
     {
@@ -24,33 +26,40 @@ public class ElementController : SingletonMono<ElementController>
         return false;
     }
 
+    public void ResetInitData()
+    {
+        foreach (Element e in this.ElementList)
+        {
+            e.ResetInitData();
+        }
+    }
+
     public void Reload()
     {
         for (int i = 0; i < ElementList.Count; i++) 
         {
             Element e = ElementList[i];
-            if (IsInSave(e.CurrentPos))
-            {
-                e.Reload();
-                Element eTemp = e;
-                this.ElementList.Remove(e);
-                Destroy(eTemp.gameObject);
-                i--;
-            }
+            
+            e.Reload();
+            //Element eTemp = e;
+            //this.ElementList.Remove(e);
+            //Destroy(eTemp.gameObject);
+            //i--;
+            
         }
 
-        foreach (ElementDetail elementDetail in DataManager.Instance.ElementData.ElementLevelDetails[SlideController.Instance.elementId - 1].ElementDetails)
-        {
-            if (IsInSave(elementDetail.ElementPos))
-            {
-                Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
-                Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
-                Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
-                eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
-                eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
-                this.ElementList.Add(eGO);
-            }
-        }
+        //foreach (ElementDetail elementDetail in DataManager.Instance.ElementData.ElementLevelDetails[SlideController.Instance.elementId - 1].ElementDetails)
+        //{
+        //    if (IsInSave(elementDetail.ElementPos))
+        //    {
+        //        Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
+        //        Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+        //        Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
+        //        eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
+        //        eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
+        //        this.ElementList.Add(eGO);
+        //    }
+        //}
     }
 
     public void SpawnElement(List<ElementDetail> elementDetails)
