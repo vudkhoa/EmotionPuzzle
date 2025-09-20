@@ -69,16 +69,16 @@ public class SavePointController : SingletonMono<SavePointController>
                     checkPointOb.transform.localScale = Vector3.zero;
                     checkPointOb.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
                     isMoved[index] = true;
+
+                    //Reset init data
+                    ElementController.Instance.ResetInitData();
+                    ItemTileController.Instance.ResetInitData();
+                    ObstacleTileController.Instance.ResetInitData();
+                    RotateObjectController.Instance.ResetInitData();
+                    BlockTileController.Instance.ResetInitData();
+
+                    return;
                 }
-
-                //Reset init data
-                ElementController.Instance.ResetInitData();
-                ItemTileController.Instance.ResetInitData();
-                ObstacleTileController.Instance.ResetInitData();
-                RotateObjectController.Instance.ResetInitData();
-                BlockTileController.Instance.ResetInitData();
-
-                return;
             }
         }
     }

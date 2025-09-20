@@ -30,13 +30,13 @@ MonoBehaviour:
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: -6, y: -23}
-      guideId: 2
-      timeWait: 0
-    - posInit: {x: -6, y: -22}
       guideId: 3
       timeWait: 0
-    - posInit: {x: 99, y: -17}
+    - posInit: {x: -6, y: -22}
       guideId: 4
+      timeWait: 0
+    - posInit: {x: -3, y: 0}
+      guideId: 5
       timeWait: 0
   - tutorialId: 3
     TutorialDetails: []
@@ -44,27 +44,33 @@ MonoBehaviour:
     - posInit: {x: -11, y: -7}
       guideId: 5
       timeWait: 0.5
-    - posInit: {x: -3, y: 10}
-      guideId: 9
+    - posInit: {x: 1, y: 0}
+      guideId: 6
       timeWait: 0
   - tutorialId: 4
     TutorialDetails: []
     PopupDetails:
-    - posInit: {x: -15, y: -10}
-      guideId: 6
-      timeWait: 0.5
-    - posInit: {x: -12, y: 11}
+    - posInit: {x: -11, y: -7}
       guideId: 7
-      timeWait: 0
+      timeWait: 0.5
   - tutorialId: 5
     TutorialDetails: []
     PopupDetails:
-    - posInit: {x: 1, y: 0}
+    - posInit: {x: -15, y: -10}
       guideId: 8
+      timeWait: 0.5
+    - posInit: {x: -12, y: 11}
+      guideId: 9
       timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
     PopupDetails:
     - posInit: {x: 1, y: 0}
       guideId: 10
+      timeWait: 0
+  - tutorialId: 5
+    TutorialDetails: []
+    PopupDetails:
+    - posInit: {x: 1, y: 0}
+      guideId: 11
       timeWait: 0
