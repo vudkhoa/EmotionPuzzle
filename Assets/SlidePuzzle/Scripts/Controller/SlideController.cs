@@ -824,6 +824,7 @@ public class SlideController : SingletonMono<SlideController>
         {
             if (this.RaftList[i].GetCurrentPos() == raftPos)
             {
+                this.groundTilemap.SetTile(new Vector3Int(raftPos.x, raftPos.y, 0), null);
                 Destroy(this.RaftList[i].gameObject);
                 this.RaftList.RemoveAt(i);
                 return;

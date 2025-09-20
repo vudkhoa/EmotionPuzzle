@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class WaterElement : Element
 {
-    private List<Vector3Int> _fillWaterList;
-    private List<Vector3Int> _saveFillWaterList;
+    public List<Vector3Int> _fillWaterList;
+    public List<Vector3Int> _saveFillWaterList;
     [SerializeField] TileBase WaterTile;
     //private void Awake()
     //{
@@ -126,12 +126,13 @@ public class WaterElement : Element
 
     public override void ReloadElement()
     {
-        ReFillWater();
+        //ReFillWater();
     }
 
     public override void Reload(ElementData elementData)
     {
-        ReFillWater();
+        //ReFillWater();
+
         base.Reload(elementData);
     }
 
@@ -141,6 +142,7 @@ public class WaterElement : Element
         {
             return;
         }
+        Debug.Log("ReFillWater");
 
         List<Vector3Int> tempList = new List<Vector3Int>();
 

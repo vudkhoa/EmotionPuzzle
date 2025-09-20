@@ -74,6 +74,11 @@ public class ElementController : SingletonMono<ElementController>
         foreach (Element e in this.ElementList)
         {
             LockController.Instance.RemoveLock(new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0));
+            if (e.ElementType == ElementType.Water)
+            {
+                Debug.Log("water");
+                e.GetComponent<WaterElement>().ReFillWater();
+            }
             Destroy(e.gameObject);
         }
 

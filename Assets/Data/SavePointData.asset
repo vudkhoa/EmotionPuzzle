@@ -49,8 +49,8 @@ MonoBehaviour:
       StartPoint: {x: 7, y: 19}
       EndPoint: {x: 17, y: 30}
     - SavePoint: {x: 6, y: 30}
-      StartPoint: {x: 12, y: 32}
-      EndPoint: {x: 19, y: 45}
+      StartPoint: {x: -6, y: 30}
+      EndPoint: {x: 0, y: 44}
     TileSavePoint: {fileID: 11400000, guid: f56733ada40e9d34eb4a5958cec30800, type: 2}
   - SavePointId: 4
     Points:
