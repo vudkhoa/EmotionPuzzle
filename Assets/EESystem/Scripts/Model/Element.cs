@@ -106,11 +106,11 @@ public abstract class Element : MonoBehaviour
                     int curLevelId = SlideController.Instance.curLevelId;
                     if (SlideController.Instance.bgSmallTilemap.HasTile(worldPos))
                     {
-                        this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
+                        this.PowerRingList[count].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].PowerSprite;
                     }
                     else
                     {
-                        this.PowerRingList[i].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
+                        this.PowerRingList[count].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }
                 else
