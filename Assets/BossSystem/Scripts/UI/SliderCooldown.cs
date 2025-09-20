@@ -51,7 +51,7 @@ public class SliderCooldown : MonoBehaviour
         if (bossType == BossType.HappyBoss && this.m_curTime <= 0)
         {
             BossController.Instance.Boss.ActiveSkillAfterCooldown(this.itemList, this.goList);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

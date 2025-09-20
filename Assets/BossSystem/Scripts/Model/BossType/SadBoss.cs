@@ -3,6 +3,7 @@ using SoundManager;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -33,24 +34,10 @@ public class SadBoss : Boss
         }
 
         this.IsActingSkill = true;
-        //if (CurPhase == 1)
-        //{
-        //    Invoke(nameof(ActiveSkillPhase1), 0.25f);
-        //}
-        //else
-        //{
-        //    Invoke(nameof(ActiveSkillPhase2), 0.25f);
-        //}
+       
         Invoke(nameof(SetupSkill), 0.25f);
-        // Cho Player bị khựng lại 1 nhịp cảm giác tốt hơn
         Invoke(nameof(ResetIsActingSkill), 0.35f);
     }
-
-    //public void ActiveSkillPhase1()
-    //{
-    //    this.ItemList = ItemTileController.Instance.FindItemCluster();
-    //    this.RemoveItems();
-    //}
 
     public void SetupSkill()
     {
@@ -67,8 +54,21 @@ public class SadBoss : Boss
     public IEnumerator ActiveSkillPhase1(List<Vector2Int> itemList, List<GameObject> goList)
     {
         yield return new WaitForSeconds(0.5f);
+        //this.IsActingSkill = true;
+        this.IsActingSkill = true;
+        StartCoroutine(RemoveI(itemList, goList));
+        Invoke(nameof(ResetIsActingSkill), 0.35f);
+    }
+
+
+    private IEnumerator RemoveI(List<Vector2Int> itemList, List<GameObject> goList)
+    {
+        yield return new WaitForSeconds(0.25f);
         this.RemoveItems(itemList, goList);
     }
+
+    
+
 
     private void SetupAllCooldownSkill()
     {
@@ -88,8 +88,12 @@ public class SadBoss : Boss
         posForCooldownTime.y -= 0.35f;
         GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
         sl.GetComponent<SliderCooldown>().Setup(0.5f, 1f, true);
+
+        List<GameObject> tmpObjList = new List<GameObject>();
+        sl.GetComponent<SliderCooldown>().SetupActiveSkill(this.ItemList, tmpObjList, BossType.HappyBoss);
         this.cooldownList.Add(sl);
     }
+
 
     public void RemoveItems(List<Vector2Int> itemList, List<GameObject> goList)
     {
@@ -97,6 +101,7 @@ public class SadBoss : Boss
         foreach (Vector2Int posItem in itemList)
         {
             index++;
+            Debug.Log(posItem);
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
             Destroy(goList[index].gameObject);
 

@@ -3,6 +3,7 @@ using DG.Tweening;
 using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -93,7 +94,6 @@ public class HappyBoss : Boss
         {
 
             i++;
-            Debug.Log("Setup Cooldown Skill");
             TileBase tile = SlideController.Instance.itemTilemap.GetTile(new Vector3Int(posItem.x, posItem.y, 0));
             
             SlideController.Instance.obstacleTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), tile);
@@ -115,8 +115,17 @@ public class HappyBoss : Boss
 
     public override void ActiveSkillAfterCooldown(List<Vector2Int> itemList, List<GameObject> goList)
     {
+        this.IsActingSkill = true;
+        StartCoroutine(IE(itemList, goList));
+        Invoke(nameof(ResetIsActingSkill), 0.35f);
+    }
+
+    private IEnumerator IE(List<Vector2Int> itemList, List<GameObject> goList)
+    {
+        yield return new WaitForSeconds(0.25f);
         this.CombineAndTransformItems(itemList, goList);
     }
+
 
     public override void AttackingPlayer(float time = 0.3f)
     {

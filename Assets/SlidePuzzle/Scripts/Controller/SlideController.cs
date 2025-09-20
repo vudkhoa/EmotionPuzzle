@@ -204,6 +204,11 @@ public class SlideController : SingletonMono<SlideController>
             return;
         }
 
+        if (BossId > 0 && BossController.Instance.Boss.IsActingSkill)
+        {
+            return;
+        }
+
         canSlide = false;
 
         //Setup, get cell list

@@ -591,38 +591,59 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
         Vector2Int minPos = new Vector2Int(-1000, -1000);
         float minDistance = float.MaxValue; 
-        foreach (Vector2Int pos in this.ItemPosList) 
+
+
+        //foreach (Vector2Int pos in this.ItemPosList) 
+        //{
+        //    float distance = 0;
+        //    distance = CaculateDistance(pos, SlideController.Instance.GetPlayerPos());
+        //    Vector2Int midPos = new Vector2Int(7, 7);
+        //    distance += CaculateDistance(pos, midPos);
+        //    if (minDistance > distance)
+        //    {
+        //        minDistance = distance;
+        //        minPos = pos;
+        //    }
+        //}
+
+        //List<Vector2Int> offsetList = new List<Vector2Int>();
+        //List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
+
+        //offsetList = Library.Instance.LibOffsets8;
+
+        //List<Vector2Int> tempList = new List<Vector2Int>();
+
+        ////tempList.Add(minPos);
+        ////posList.Remove(minPos);
+        //Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
+
+        //while (itemPos != new Vector2Int(-1000, -1000))
+        //{
+        //    tempList.Add(itemPos);
+        //    posList.Remove(itemPos);
+        //    itemPos = FindItemNear(tempList, posList, offsetList);
+        //}
+        
+        ////resultList = new List<Vector2Int>(tempList);
+        ///
+        //foreach (Vector2Int pos in this.ItemPosList)
+        //{
+        //    resultList.Add(pos);
+        //    break;
+        //}
+
+        foreach (Vector2Int pos in ItemTileController.Instance.ItemPosList)
         {
-            float distance = 0;
-            distance = CaculateDistance(pos, SlideController.Instance.GetPlayerPos());
-            Vector2Int midPos = new Vector2Int(7, 7);
-            distance += CaculateDistance(pos, midPos);
-            if (minDistance > distance)
+            Vector2Int posBoss = new Vector2Int(BossController.Instance.Boss.StartPos.x + 1, BossController.Instance.Boss.StartPos.y + 1);
+            float distance = this.CaculateDistance(pos, posBoss);
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 minPos = pos;
-            }
+            }   
         }
+        resultList.Add(minPos);
 
-        List<Vector2Int> offsetList = new List<Vector2Int>();
-        List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
-
-        offsetList = Library.Instance.LibOffsets8;
-
-        List<Vector2Int> tempList = new List<Vector2Int>();
-
-        tempList.Add(minPos);
-        posList.Remove(minPos);
-        Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
-
-        while (itemPos != new Vector2Int(-1000, -1000))
-        {
-            tempList.Add(itemPos);
-            posList.Remove(itemPos);
-            itemPos = FindItemNear(tempList, posList, offsetList);
-        }
-        
-        resultList = new List<Vector2Int>(tempList);
         return resultList;
     }
 

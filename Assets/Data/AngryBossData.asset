@@ -15,9 +15,8 @@ MonoBehaviour:
   BossList:
   - AngryBossId: 1
     Healths:
-    - 3
-    - 10
-    CooldownTimeSkill: 13
+    - 15
+    CooldownTimeSkill: 8
     TotalItems: 15
     StartPos: {x: 3, y: 3}
     EndPos: {x: 5, y: 5}

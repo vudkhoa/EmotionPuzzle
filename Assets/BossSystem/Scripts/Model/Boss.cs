@@ -87,10 +87,7 @@ public abstract class Boss : MonoBehaviour
             return;
         }
 
-        if (SlideController.Instance.canSlide == false)
-        {
-            return;
-        }
+        
 
         this.CaculateCooldownTimeSkill();
         this.CooldownTimeSkillUI();
@@ -136,8 +133,11 @@ public abstract class Boss : MonoBehaviour
         this.EnergyBar.value = this.curTimeSkill / this.CooldownTimeSkill;
         if (this.curTimeSkill >= this.CooldownTimeSkill)
         {
-            this.curTimeSkill = 0f;
-            this.ActiveSkill();
+            if (SlideController.Instance.canSlide != false)
+            {
+                this.curTimeSkill = 0f;
+                this.ActiveSkill();
+            }
         }
     }
 
