@@ -33,7 +33,7 @@ MonoBehaviour:
       windTime: 0
   - Id: 2
     Detail:
-      PosForFire: {x: -2, y: -9}
+      PosForFire: {x: -2, y: -17}
       haveFire: 1
       haveFirePopup: 1
       fireTime: 0.5

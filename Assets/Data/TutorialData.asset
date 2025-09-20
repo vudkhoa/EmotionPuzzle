@@ -29,13 +29,13 @@ MonoBehaviour:
   - tutorialId: 2
     TutorialDetails: []
     PopupDetails:
-    - posInit: {x: -6, y: -16}
+    - posInit: {x: -6, y: -23}
       guideId: 2
       timeWait: 0
-    - posInit: {x: -2, y: -10}
+    - posInit: {x: -6, y: -22}
       guideId: 3
       timeWait: 0
-    - posInit: {x: -3, y: 2}
+    - posInit: {x: 99, y: -17}
       guideId: 4
       timeWait: 0
   - tutorialId: 3

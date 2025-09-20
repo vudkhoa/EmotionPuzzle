@@ -34,7 +34,7 @@ MonoBehaviour:
   - LevelId: 2
     SaveId: 2
     IsBoss: 0
-    PlayerPosition: {x: -6, y: -17}
+    PlayerPosition: {x: -6, y: -24}
     TutorialId: 2
     ItemId: 2
     BlockId: 0
