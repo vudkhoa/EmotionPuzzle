@@ -38,6 +38,11 @@ public class GameplayUI : UICanvas
     public List<GameObject> buttonList;
     private int btnCount = 0;
 
+    public void HideReplayBtn()
+    {
+        replayBtn.gameObject.SetActive(false);
+    }
+
 
     private void OnEnable()
     {

@@ -694,6 +694,7 @@ public class SlideController : SingletonMono<SlideController>
         }
         else
         {
+            UIManager.Instance.GetUI<GameplayUI>().HideReplayBtn();
             SoundsManager.Instance.PlayMusic(SoundType.BossMusic);
             //Debug.Log("Boss Level: " + curLevelId);
             gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
