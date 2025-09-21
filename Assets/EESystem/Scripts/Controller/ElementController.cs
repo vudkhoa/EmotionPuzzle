@@ -79,7 +79,11 @@ public class ElementController : SingletonMono<ElementController>
                 Debug.Log("water");
                 e.GetComponent<WaterElement>().ReFillWater();
             }
-            Destroy(e.gameObject);
+            else if (e.ElementType == ElementType.Ice)
+            {
+                e.GetComponent<IceElement>().ReLoadIceActive(); 
+            }
+                Destroy(e.gameObject);
         }
 
         this.ElementList.Clear();

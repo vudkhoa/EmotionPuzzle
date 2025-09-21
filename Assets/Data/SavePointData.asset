@@ -43,11 +43,11 @@ MonoBehaviour:
       StartPoint: {x: -2, y: -3}
       EndPoint: {x: 6, y: 0}
     - SavePoint: {x: 3, y: -3}
-      StartPoint: {x: 5, y: 2}
-      EndPoint: {x: 13, y: 17}
+      StartPoint: {x: 3, y: -3}
+      EndPoint: {x: 20, y: 14}
     - SavePoint: {x: 20, y: 11}
-      StartPoint: {x: 7, y: 19}
-      EndPoint: {x: 17, y: 30}
+      StartPoint: {x: 20, y: 11}
+      EndPoint: {x: 30, y: 17}
     - SavePoint: {x: 6, y: 30}
       StartPoint: {x: -6, y: 30}
       EndPoint: {x: 0, y: 44}
@@ -58,14 +58,14 @@ MonoBehaviour:
       StartPoint: {x: -3, y: 0}
       EndPoint: {x: 8, y: 9}
     - SavePoint: {x: -1, y: -3}
-      StartPoint: {x: -6, y: 10}
-      EndPoint: {x: 0, y: 18}
+      StartPoint: {x: -4, y: 7}
+      EndPoint: {x: 1, y: 9}
     - SavePoint: {x: -7, y: 11}
       StartPoint: {x: 0, y: 18}
       EndPoint: {x: 9, y: 21}
     - SavePoint: {x: -10, y: 19}
-      StartPoint: {x: 9, y: 22}
-      EndPoint: {x: 18, y: 29}
+      StartPoint: {x: -10, y: 19}
+      EndPoint: {x: -3, y: 23}
     - SavePoint: {x: 5, y: 27}
       StartPoint: {x: 9, y: 22}
       EndPoint: {x: 18, y: 29}

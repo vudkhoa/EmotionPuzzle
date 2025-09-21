@@ -51,7 +51,7 @@ MonoBehaviour:
       windTime: 0
   - Id: 3
     Detail:
-      PosForFire: {x: 2, y: 0}
+      PosForFire: {x: -4, y: -10}
       haveFire: 1
       haveFirePopup: 0
       fireTime: 0
@@ -59,21 +59,21 @@ MonoBehaviour:
       haveWater: 1
       haveWaterPopup: 1
       waterTime: 0.5
-      PosForIce: {x: 8, y: 13}
+      PosForIce: {x: 3, y: -3}
       haveIce: 1
       haveIcePopup: 0
       iceTime: 0
-      PosForWind: {x: 0, y: 0}
-      haveWind: 0
+      PosForWind: {x: -11, y: -7}
+      haveWind: 1
       haveWindPopup: 0
       windTime: 0
   - Id: 4
     Detail:
-      PosForFire: {x: -2, y: -3}
+      PosForFire: {x: -15, y: -10}
       haveFire: 1
       haveFirePopup: 0
       fireTime: 0
-      PosForWater: {x: -2, y: -3}
+      PosForWater: {x: -15, y: -10}
       haveWater: 1
       haveWaterPopup: 0
       waterTime: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
       haveIce: 1
       haveIcePopup: 1
       iceTime: 0
-      PosForWind: {x: -2, y: -3}
+      PosForWind: {x: -13, y: -10}
       haveWind: 1
       haveWindPopup: 0
       windTime: 0

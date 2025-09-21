@@ -50,9 +50,9 @@ MonoBehaviour:
   - tutorialId: 4
     TutorialDetails: []
     PopupDetails:
-    - posInit: {x: -11, y: -7}
-      guideId: 7
-      timeWait: 0.5
+    - posInit: {x: -15, y: -10}
+      guideId: 9
+      timeWait: 0
   - tutorialId: 5
     TutorialDetails: []
     PopupDetails:
