@@ -43,10 +43,7 @@ public class RotateObjectController : SingletonMono<RotateObjectController>
 
         foreach (RotateObject o in RotateObjects)
         {
-            if (IsInSave(o.rotatePos))
-            {
-                o.Reload();
-            }
+            o.Reload();
         }
 
         foreach (RotateObject o in RotateObjects)

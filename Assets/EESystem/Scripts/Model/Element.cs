@@ -24,7 +24,7 @@ public abstract class Element : MonoBehaviour
 
     [Header(" VFX ")]
     public ParticleSystem absorbParticle;
-    public VisualEffect emotionChangeVFX;
+    public ParticleSystem emotionChangeVFX;
 
     //private List<Vector2Int> powerTilemapList;
 
