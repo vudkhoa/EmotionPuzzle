@@ -37,7 +37,7 @@ MonoBehaviour:
       haveFire: 1
       haveFirePopup: 1
       fireTime: 0.5
-      PosForWater: {x: -6, y: 10}
+      PosForWater: {x: -1, y: 27}
       haveWater: 1
       haveWaterPopup: 0
       waterTime: 0

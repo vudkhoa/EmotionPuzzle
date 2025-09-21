@@ -16,8 +16,8 @@ MonoBehaviour:
   - SadBossId: 1
     Healths:
     - 15
-    CooldownTimeSkill: 10
-    TotalItems: 30
+    CooldownTimeSkill: 5.5
+    TotalItems: 27
     StartPos: {x: 3, y: 3}
     EndPos: {x: 5, y: 5}
     BossPrefab: {fileID: 4391348671830510516, guid: 926cff596ffb9fe449bc9df7398ed2df, type: 3}

@@ -197,6 +197,8 @@ public abstract class Boss : MonoBehaviour
     }
 
     public virtual void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos) { }
-    public virtual void ActiveSkillAfterCooldown(List<Vector2Int> itemList, List<GameObject> goList) { }
+
+    public virtual void ActiveSkillAfterCooldown(List<Vector2Int> itemList = null, List<GameObject> goList = null) { }
+    public virtual void ActiveSkillAfterCooldownTime() { }
 
 }

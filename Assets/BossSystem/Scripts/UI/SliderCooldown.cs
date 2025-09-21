@@ -38,6 +38,11 @@ public class SliderCooldown : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.State != GameState.Playing)
+        {
+            return;
+        }
+
         if (this.m_offset < 0)
         {
             this.m_curTime -= Time.deltaTime;
@@ -48,9 +53,14 @@ public class SliderCooldown : MonoBehaviour
         }
 
         GetComponent<Slider>().value = this.m_curTime / this.m_time;
-        if (bossType == BossType.HappyBoss && this.m_curTime <= 0)
+        if ((bossType == BossType.HappyBoss || bossType == BossType.SadBoss) && this.m_curTime <= 0)
         {
             BossController.Instance.Boss.ActiveSkillAfterCooldown(this.itemList, this.goList);
+            Destroy(gameObject);
+        }
+        else if (bossType == BossType.AngryBoss && this.m_curTime <= 0)
+        {
+            BossController.Instance.Boss.ActiveSkillAfterCooldownTime();
             Destroy(gameObject);
         }
     }

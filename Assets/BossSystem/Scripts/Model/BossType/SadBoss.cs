@@ -48,13 +48,17 @@ public class SadBoss : Boss
         tmpList.RemoveAt(0);
         this.cooldownList = new List<GameObject>();
         SetupAllCooldownSkill();
-        StartCoroutine(ActiveSkillPhase1(this.ItemList, this.cooldownList));
+        //StartCoroutine(ActiveSkillPhase1(this.ItemList, this.cooldownList));
     }
 
-    public IEnumerator ActiveSkillPhase1(List<Vector2Int> itemList, List<GameObject> goList)
+    public override void ActiveSkillAfterCooldown(List<Vector2Int> itemList, List<GameObject> goList)
     {
-        yield return new WaitForSeconds(0.5f);
-        //this.IsActingSkill = true;
+        this.ActiveSkillPhase1(itemList, this.cooldownList);
+    }
+
+    public void ActiveSkillPhase1(List<Vector2Int> itemList, List<GameObject> goList)
+    {
+        //yield return new WaitForSeconds(0.5f);
         this.IsActingSkill = true;
         StartCoroutine(RemoveI(itemList, goList));
         Invoke(nameof(ResetIsActingSkill), 0.35f);
@@ -66,8 +70,6 @@ public class SadBoss : Boss
         yield return new WaitForSeconds(0.25f);
         this.RemoveItems(itemList, goList);
     }
-
-    
 
 
     private void SetupAllCooldownSkill()
@@ -88,9 +90,7 @@ public class SadBoss : Boss
         posForCooldownTime.y -= 0.35f;
         GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
         sl.GetComponent<SliderCooldown>().Setup(0.5f, 1f, true);
-
-        List<GameObject> tmpObjList = new List<GameObject>();
-        sl.GetComponent<SliderCooldown>().SetupActiveSkill(this.ItemList, tmpObjList, BossType.HappyBoss);
+        sl.GetComponent<SliderCooldown>().SetupActiveSkill(this.ItemList, null, BossType.SadBoss);
         this.cooldownList.Add(sl);
     }
 

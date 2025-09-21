@@ -38,9 +38,15 @@ public class AngryBoss : Boss
         posForCooldownTime.y -= 0.35f;
         GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
         sl.GetComponent<SliderCooldown>().Setup(2f, 1f, true);
+        sl.GetComponent<SliderCooldown>().SetupActiveSkill(null, null, BossType.AngryBoss);
         this.SliderGr = sl.GetComponent<Slider>();
 
-        Invoke(nameof(ActingDangerZone), 2f);
+        //Invoke(nameof(ActingDangerZone), 2f);
+    }
+
+    public override void ActiveSkillAfterCooldownTime()
+    {
+        this.ActingDangerZone();
     }
 
     public override void CooldownTimeSkillUI()
@@ -54,6 +60,7 @@ public class AngryBoss : Boss
 
     private void ActingDangerZone()
     {
+        //Debug.Log("Acting Danger Zone");
         this.IsActingSkill = true;
 
         if (CheckPlayerInDangerZone())
@@ -80,7 +87,7 @@ public class AngryBoss : Boss
         SlideController.Instance.bossTilemap.SetTile(worldPos, null);
         SoundsManager.Instance.PlaySFX(SoundType.BossDestroyGround);
         GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
-        Destroy(this.SliderGr.gameObject);
+        //Destroy(this.SliderGr.gameObject);
     }
 
     private bool CheckPlayerInDangerZone()
