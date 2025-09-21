@@ -13,7 +13,7 @@ public class RotateObject : MonoBehaviour
 
     public void ResetInitData()
     {
-        initAngle = this.transform.rotation.z;
+        initAngle = this.transform.eulerAngles.z;
         initContainPosList = new List<Vector2Int>(containPosList);
     }
 
