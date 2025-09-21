@@ -617,7 +617,30 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        PlayerPrefs.SetInt(Constant.GUIDEID, -100);
+        switch (curLevelId)
+        {
+            case 1:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 0);
+                break;
+            case 2:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 2);
+                break;
+            case 3:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 5);
+                break;
+            case 4:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 6);
+                break;
+            case 5:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 7);
+                break;
+            case 6:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 8);
+                break;
+            case 7:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 10);
+                break;
+        }
         //curLevelId = 2;
         SetTutorial();
         CreateGridPrefab();
