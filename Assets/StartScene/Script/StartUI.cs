@@ -13,6 +13,7 @@ public class StartUI : MonoBehaviour
     [SerializeField] private Button startBtn;
     [SerializeField] private Button continueBtn;
     [SerializeField] private Button quitBtn;
+    [SerializeField] private Sprite newSprite;
     [SerializeField] private GameObject cheatGO;
 
     private void Start()
@@ -25,6 +26,10 @@ public class StartUI : MonoBehaviour
         if (PlayerPrefs.GetInt(Constant.MAXLEVELID, 0) == 0)
         {
             continueBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            startBtn.GetComponent<Image>().sprite = newSprite;
         }
 
         AnimateTitle();
