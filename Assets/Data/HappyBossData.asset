@@ -15,10 +15,9 @@ MonoBehaviour:
   BossList:
   - HappyBossId: 1
     Healths:
-    - 3
     - 20
     CooldownTimeSkill: 10
-    TotalItems: 50
+    TotalItems: 40
     StartPos: {x: 3, y: 3}
     EndPos: {x: 5, y: 5}
     BossPrefab: {fileID: 5845929860949975173, guid: fd52ba9f6d0b3354f8c8ac4c249b9336, type: 3}

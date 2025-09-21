@@ -189,6 +189,10 @@ public abstract class Boss : MonoBehaviour
         deathSq.OnComplete(() => 
         { 
             Destroy(this.Body.gameObject);
+            if (this.BossType == BossType.HappyBoss)
+            {
+
+            }
         });
     }
 

@@ -39,6 +39,6 @@ EditorBuildSettings:
     path: Assets/DialogueSystem/Scene/Platform 6.unity
     guid: edb6d0a0b65cf224ab4dcca06bf4bf22
   - enabled: 1
-    path: Assets/DialogueSystem/Scene/Platform 6 After.unity
+    path: Assets/DialogueSystem/Scene/Platform 7 After.unity
     guid: c6cab6a79d00c984583d0e1a4e6e6a4d
   m_configObjects: {}

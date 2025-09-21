@@ -609,6 +609,7 @@ public class SlideController : SingletonMono<SlideController>
     public void LoadNextLevelAfterBoss()
     {
         PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 1);
+        Debug.Log("Next Level: " + (curLevelId));
         PlayerPrefs.Save();
         LoadingManager.instance.LoadScene("Platform " + curLevelId + " After");
     }

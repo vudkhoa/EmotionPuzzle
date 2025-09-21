@@ -183,20 +183,6 @@ public class HappyBoss : Boss
         }
     }
 
-    public override void CheckDie()
-    {
-        if (CurPhase < this.Healths.Count)
-        {
-            this.NextPhase();
-        }
-        else
-        {
-            this.BossState = BossState.Dead;
-            SlideController.Instance.BossId = 0; 
-            this.Die();
-        }
-    }
-
     public override void NextPhase()
     {
         this.CurPhase++;
@@ -252,6 +238,21 @@ public class HappyBoss : Boss
         }
 
         this.IndexPowerRingList.RemoveAt(index);
+    }
+
+    public override void CheckDie()
+    {
+        if (CurPhase < this.Healths.Count)
+        {
+            this.NextPhase();
+        }
+        else
+        {
+            this.BossState = BossState.Dead;
+            SlideController.Instance.BossId = 0;
+            this.Die();
+            SlideController.Instance.LoadNextLevelAfterBoss();
+        }
     }
 
 }
