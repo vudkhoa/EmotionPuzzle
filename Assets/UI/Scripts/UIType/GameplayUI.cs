@@ -118,7 +118,12 @@ public class GameplayUI : UICanvas
 
     private void GameInput_OnPause(object sender, System.EventArgs e)
     {
-        if (GameManager.Instance.State == GameState.Playing)
+        if (GameManager.Instance.State == GameState.Playing &&
+            !UIManager.Instance.IsOpened<GuideUI>() &&
+            !UIManager.Instance.IsOpened<FireGuideUI>() &&
+            !UIManager.Instance.IsOpened<WaterGuideUI>() &&
+            !UIManager.Instance.IsOpened<WindGuideUI>() &&
+            !UIManager.Instance.IsOpened<IceGuideUI>())
         {
             OnClickPauseBtn();
         }
@@ -275,6 +280,8 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 1)
         {
+            GameManager.Instance.State = GameState.Pause;
+
             if (ElementGuideManager.Instance.isShowBtn[0])
             {
                 UIManager.Instance.OpenUI<FireGuideUI>();
@@ -309,6 +316,8 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 2)
         {
+            GameManager.Instance.State = GameState.Pause;
+
             int count = 0;
 
             if (ElementGuideManager.Instance.isShowBtn[0])
@@ -361,6 +370,8 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 3)
         {
+            GameManager.Instance.State = GameState.Pause;
+
             int count = 0;
 
             if (ElementGuideManager.Instance.isShowBtn[0])
@@ -413,6 +424,8 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 4)
         {
+            GameManager.Instance.State = GameState.Pause;
+
             int count = 0;
 
             if (ElementGuideManager.Instance.isShowBtn[0])
