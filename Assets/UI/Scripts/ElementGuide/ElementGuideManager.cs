@@ -88,20 +88,20 @@ public class ElementGuideManager : SingletonMono<ElementGuideManager>
         if (haveIce && playerPos == PosForIce && !this.isShowBtn[2])
         {
             this.isShowBtn[2] = true;
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, false, true);
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, true, false);
             if (haveIcePopup)
             {
-                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false, timeWind));
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false, timeIce));
             }
         }
 
         if (haveWind && playerPos == PosForWind && !this.isShowBtn[3])
         {
             this.isShowBtn[3] = true;
-            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, true, false);
+            UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, false, true);
             if (haveWindPopup)
             {
-                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeIce));
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeWind));
             }
         }
 

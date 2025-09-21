@@ -194,7 +194,7 @@ public class GameplayUI : UICanvas
         this.isShowInforTitle = false;
     }
 
-    public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
+    public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveIce, bool haveWind)
     {
         if (!this.isShowInforTitle)
         {
@@ -223,7 +223,7 @@ public class GameplayUI : UICanvas
         }
     }
 
-    public IEnumerator ShowElementGuideUI(bool haveFire, bool haveWater, bool haveWind, bool haveIce, float time)
+    public IEnumerator ShowElementGuideUI(bool haveFire, bool haveWater, bool haveIce, bool haveWind, float time)
     {
 
         yield return new WaitForSeconds(time);
