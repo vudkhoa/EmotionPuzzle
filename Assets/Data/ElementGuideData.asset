@@ -77,11 +77,11 @@ MonoBehaviour:
       haveWater: 1
       haveWaterPopup: 0
       waterTime: 0
-      PosForIce: {x: -12, y: 28}
+      PosForIce: {x: -10, y: 21}
       haveIce: 1
       haveIcePopup: 1
       iceTime: 0
-      PosForWind: {x: -13, y: -10}
+      PosForWind: {x: -14, y: -10}
       haveWind: 1
       haveWindPopup: 0
       windTime: 0
