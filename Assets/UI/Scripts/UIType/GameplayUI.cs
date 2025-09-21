@@ -309,32 +309,50 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 2)
         {
+            int count = 0;
+
             if (ElementGuideManager.Instance.isShowBtn[0])
             {
-                UIManager.Instance.OpenUI<FireGuideUI>();
+                count++;
 
-                return;
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[1])
             {
-                UIManager.Instance.OpenUI<WaterGuideUI>();
+                count++;
 
-                return;
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[2])
             {
-                UIManager.Instance.OpenUI<IceGuideUI>();
+                count++;
 
-                return;
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[3])
             {
-                UIManager.Instance.OpenUI<WindGuideUI>();
+                count++;
 
-                return;
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
             }
         }
     }
@@ -343,32 +361,50 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 3)
         {
+            int count = 0;
+
             if (ElementGuideManager.Instance.isShowBtn[0])
             {
-                UIManager.Instance.OpenUI<FireGuideUI>();
+                count++;
 
-                return;
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[1])
             {
-                UIManager.Instance.OpenUI<WaterGuideUI>();
+                count++;
 
-                return;
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[2])
             {
-                UIManager.Instance.OpenUI<IceGuideUI>();
+                count++;
 
-                return;
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[3])
             {
-                UIManager.Instance.OpenUI<WindGuideUI>();
+                count++;
 
-                return;
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
             }
         }
     }
@@ -377,32 +413,50 @@ public class GameplayUI : UICanvas
     {
         if (btnCount >= 4)
         {
+            int count = 0;
+
             if (ElementGuideManager.Instance.isShowBtn[0])
             {
-                UIManager.Instance.OpenUI<FireGuideUI>();
+                count++;
 
-                return;
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[1])
             {
-                UIManager.Instance.OpenUI<WaterGuideUI>();
+                count++;
 
-                return;
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[2])
             {
-                UIManager.Instance.OpenUI<IceGuideUI>();
+                count++;
 
-                return;
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
             }
 
             if (ElementGuideManager.Instance.isShowBtn[3])
             {
-                UIManager.Instance.OpenUI<WindGuideUI>();
+                count++;
 
-                return;
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
             }
         }
     }

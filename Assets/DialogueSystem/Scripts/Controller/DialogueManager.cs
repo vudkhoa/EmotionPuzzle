@@ -147,7 +147,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
     public void NextLevel()
     {
         int nextLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        if (nextLevel > 6)
+        if (nextLevel > 7)
         {
             LoadingManager.instance.LoadScene("Start");
             return;
