@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class FlickerEffect : MonoBehaviour
 {
     public SpriteRenderer targetImage;   
-    private float minAlpha = 0.85f; 
+    private float minAlpha = 0.6f; 
     private float maxAlpha = 1f;   
-    private float duration = 0.5f; 
+    private float duration = 1f; 
 
     private Tween flickerTween;
 
