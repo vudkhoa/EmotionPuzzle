@@ -31,7 +31,7 @@ public class SavePointController : SingletonMono<SavePointController>
             return;
         }
         this.id = id;
-        curSavePoint = new Vector2Int(0, 0);
+        curSavePoint = new Vector2Int(-1000, -1000);
         isMoved = new List<bool>();
         foreach (PointDetail pointDetail in SavePointData.SavePointDetails[id - 1].Points)
         {
