@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/SlidePuzzle/Scene/Puzzle.unity
     guid: a7766a1473084f44aaea4a8892854340
   - enabled: 1
-    path: Assets/BG Platform/Scene/BG Start.unity
-    guid: a9448683f0d6aa14aa01db125d31eac8
+    path: Assets/BG Platform/Scene/Intro.unity
+    guid: 37f6de6d192c7a040a477d408739f294
+  - enabled: 1
+    path: Assets/UI/Scene/SelectLevelScene.unity
+    guid: 463170e3f41fb6e4da51ad7cc97c2e46
   - enabled: 1
     path: Assets/DialogueSystem/Scene/Platform 1.unity
     guid: d43b2442e8420ae429c7b650d46c9e14
@@ -36,6 +39,6 @@ EditorBuildSettings:
     path: Assets/DialogueSystem/Scene/Platform 6.unity
     guid: edb6d0a0b65cf224ab4dcca06bf4bf22
   - enabled: 1
-    path: Assets/DialogueSystem/Scene/Platform 6 After.unity
+    path: Assets/DialogueSystem/Scene/Platform 7 After.unity
     guid: c6cab6a79d00c984583d0e1a4e6e6a4d
   m_configObjects: {}

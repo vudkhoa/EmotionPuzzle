@@ -12,9 +12,99 @@ public class BlockTileController : SingletonMono<BlockTileController>
     public List<Block> blocks;
     public List<Vector3Int> unBlockTileList = new List<Vector3Int>();
 
+    private List<bool> isUnblock = new List<bool>();
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void ResetInitData()
+    {
+        for (int i= 0; i < blocks.Count; i++)
+        {
+            bool isUnblock = true;
+
+            Block block = blocks[i];
+            foreach (Vector2Int cell in block.BlockPosList)
+            {
+                Vector3Int pos = new Vector3Int(cell.x, cell.y, 0);
+                if (!this.unBlockTileList.Contains(pos))
+                {
+                    isUnblock = false;
+                    break;
+                }
+            }
+
+            this.isUnblock[i] = isUnblock;
+        }
+    }
+
+    public void Reload()
+    {
+        //foreach (Block block in blocks)
+        //{
+        //    if (IsInSave(block.BlockPosList[0]))
+        //    {
+        //        foreach (Vector2Int groundPos in block.groundPosList)
+        //        {
+        //            SlideController.Instance.groundTilemap.SetTile(new Vector3Int(groundPos.x, groundPos.y, 0), null);
+
+        //        }
+
+        //        foreach (Vector2Int bPos in block.BlockPosList)
+        //        {
+        //            SlideController.Instance.blockTilemap.SetTile(new Vector3Int(bPos.x, bPos.y, 0), blockTile);
+        //        }
+        //    }
+        //}
+
+        foreach (Block block in blocks)
+        {
+            int index = blocks.IndexOf(block);
+            if (!isUnblock[index])
+            {
+                foreach (Vector2Int groundPos in block.groundPosList)
+                {
+                    SlideController.Instance.groundTilemap.SetTile(new Vector3Int(groundPos.x, groundPos.y, 0), null);
+
+                }
+
+                foreach (Vector2Int bPos in block.BlockPosList)
+                {
+                    SlideController.Instance.blockTilemap.SetTile(new Vector3Int(bPos.x, bPos.y, 0), blockTile);
+                }
+            }
+            else
+            {
+                foreach (Vector2Int groundPos in block.groundPosList)
+                {
+                    SlideController.Instance.groundTilemap.SetTile(new Vector3Int(groundPos.x, groundPos.y, 0), block.groundTileList[0]);
+                }
+
+                foreach (Vector2Int bPos in block.BlockPosList)
+                {
+                    SlideController.Instance.blockTilemap.SetTile(new Vector3Int(bPos.x, bPos.y, 0), unBlockTile);
+                }
+            }
+        }
+    }
+
     public void Setup(List<Block> blocks)
     {
         this.blocks = new List<Block>(blocks);
+        for (int i = 0; i < blocks.Count; i++)
+        {
+            isUnblock.Add(false);
+        }
     }
 
     public void UnBlockTile()

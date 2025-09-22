@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
         currentPos = newGridPos;
         transform.DOMove(worldPos, 0.25f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
+            SavePointController.Instance.SetCheckPoint(currentPos);
+
             if (RotateObjectController.Instance.IsShowTutorial(this.currentPos))
             {
                 ShowFTutorial();
@@ -37,6 +39,31 @@ public class Player : MonoBehaviour
                 HideFTutorial();
             }
             SlideController.Instance.LoadNextLevel();
+        });
+    }
+
+    public void ErrorMove(Direction direction)
+    {
+        Vector3 curPos = this.transform.position;
+        Vector3 offset = Vector3.zero;
+        switch (direction)
+        {
+            case Direction.Up:
+                offset = new Vector3(0, 1f, 0);
+                break;
+            case Direction.Down:
+                offset = new Vector3(0, -1f, 0);
+                break;
+            case Direction.Left:
+                offset = new Vector3(-1f, 0, 0);
+                break;
+            case Direction.Right:
+                offset = new Vector3(1f, 0, 0);
+                break;
+        }
+        this.transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            this.transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
         });
     }
 
@@ -55,6 +82,8 @@ public class Player : MonoBehaviour
             // 3. Scale lớn lên để hiện  lại
             this.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutBack).OnComplete(() => 
             {
+                SavePointController.Instance.SetCheckPoint(currentPos);
+
                 if (RotateObjectController.Instance.IsShowTutorial(this.currentPos))
                 {
                     ShowFTutorial();
@@ -66,6 +95,22 @@ public class Player : MonoBehaviour
                 SlideController.Instance.LoadNextLevel();
             });
         });
+    }
+
+    public void SetPos(Vector2Int pos)
+    {
+        currentPos = pos;
+        this.transform.position = SlideController.Instance.groundTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+        // Reset F Tutorial
+        if (RotateObjectController.Instance.IsShowTutorial(currentPos))
+        {
+            ShowFTutorial();
+        }
+        else
+        {
+            HideFTutorial();
+        }
+
     }
 
     public void Shake()
@@ -89,14 +134,18 @@ public class Player : MonoBehaviour
 
     public void TakeDamage()
     {
+        Vector3 pos = this.transform.position;
+
         this.transform.DOShakePosition(
             duration: 0.1f,
-            strength: new Vector3(0.2f, 0.2f, 0),
+            strength: new Vector3(0.5f, 0.5f, 0),
             vibrato: 1000,
             randomness: 90,
             snapping: false,
             fadeOut: true
         );
+
+        this.transform.DOMove(pos, 0.1f).SetEase(Ease.InOutBack);
     }
 
     public void ShowFTutorial()

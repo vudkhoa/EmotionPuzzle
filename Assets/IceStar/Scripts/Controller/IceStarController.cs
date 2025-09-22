@@ -260,6 +260,8 @@ public class IceStarController : SingletonMono<IceStarController>
             Vector3Int pos3 = new Vector3Int(pos2.x, pos2.y, 0);
             if (posPlayer == pos3)
             {
+                //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Ice Star", 1f);
+
                 return false;
             }
         }
@@ -304,5 +306,16 @@ public class IceStarController : SingletonMono<IceStarController>
             }
         }
         return false;
+    }
+
+    public void Reload()
+    {
+        if (SlideController.Instance.IceStarId <= 0)
+        {
+            return;
+        }
+
+        this.pos2Player = SlideController.Instance.GetPlayerPos();
+        this.SetIceStars();
     }
 }

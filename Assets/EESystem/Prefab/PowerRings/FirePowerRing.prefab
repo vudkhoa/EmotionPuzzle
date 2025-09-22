@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7345128060510325693}
+  - component: {fileID: 9163932138961082196}
   m_Layer: 0
   m_Name: FirePowerRing
   m_TagString: Untagged
@@ -117,6 +118,22 @@ Transform:
   - {fileID: 3496976914086613831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9163932138961082196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577221727646326776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620e0159001b01e429c0f4ca1fc97ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 5813022744170732809}
+  minAlpha: 0.5
+  maxAlpha: 1
+  duration: 0.5
 --- !u!1 &6522870144056034199
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 ﻿using CustomUtils;
-using DG.Tweening;
 using SoundManager;
 using System;
 using System.Collections.Generic;
@@ -24,14 +23,18 @@ public class SlideController : SingletonMono<SlideController>
     public Tilemap obstacleTilemap;
     public Tilemap blockTilemap;
     public Tilemap elementTilemap;
+    public Tilemap rotateTilemap;
     public Tilemap bgWaterTilemap;
     public Tilemap waterTilemap;
     public Tilemap bgSmallTilemap;
     public Tilemap bossTilemap;
     public Tilemap iceStarTilemap;
     public Tilemap powerTilemap;
+    public Tilemap savePointTilemap;
+    public Tilemap lockTilemap;
 
     [Header(" Id Tile ")]
+    public int saveId;
     public bool isBoss;
     public int itemId;
     public int blockId;
@@ -59,34 +62,92 @@ public class SlideController : SingletonMono<SlideController>
         isElementGuideUI = false;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (GameManager.Instance.State != GameState.Playing)
-        {
-            return;
-        }
+        GameInput.Instance.OnMoveUp += GameInput_OnMoveUp;
+        GameInput.Instance.OnMoveDown += GameInput_OnMoveDown;
+        GameInput.Instance.OnMoveLeft += GameInput_OnMoveLeft;
+        GameInput.Instance.OnMoveRight += GameInput_OnMoveRight;
+        GameInput.Instance.OnFunction += GameInput_OnFunction;
+    }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) 
-        {
-            Slide(Direction.Left);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Slide(Direction.Right);
-        }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Slide(Direction.Up);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Slide(Direction.Down);
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
+    private void OnDisable()
+    {
+        GameInput.Instance.OnMoveUp -= GameInput_OnMoveUp;
+        GameInput.Instance.OnMoveDown -= GameInput_OnMoveDown;
+        GameInput.Instance.OnMoveLeft -= GameInput_OnMoveLeft;
+        GameInput.Instance.OnMoveRight -= GameInput_OnMoveRight;
+        GameInput.Instance.OnFunction -= GameInput_OnFunction;
+    }
+
+    private void GameInput_OnFunction(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
         {
             FunctionedObject();
         }
     }
+
+    private void GameInput_OnMoveUp(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Up);
+        }
+    }
+
+    private void GameInput_OnMoveDown(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Down);
+        }
+    }
+
+    private void GameInput_OnMoveLeft(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Left);
+        }
+    }
+
+    private void GameInput_OnMoveRight(object sender, EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
+        {
+            Slide(Direction.Right);
+        }
+    }
+
+    //private void Update()
+    //{
+    //    if (GameManager.Instance.State != GameState.Playing)
+    //    {
+    //        return;
+    //    }
+
+    //    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+    //    {
+    //        Slide(Direction.Left);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+    //    {
+    //        Slide(Direction.Right);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+    //    {
+    //        Slide(Direction.Up);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+    //    {
+    //        Slide(Direction.Down);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.F))
+    //    {
+    //        FunctionedObject();
+    //    }
+    //}
 
     private void FunctionedObject()
     {
@@ -139,6 +200,11 @@ public class SlideController : SingletonMono<SlideController>
         }
 
         if (isElementGuideUI)
+        {
+            return;
+        }
+
+        if (BossId > 0 && BossController.Instance.Boss.IsActingSkill)
         {
             return;
         }
@@ -268,7 +334,19 @@ public class SlideController : SingletonMono<SlideController>
         Vector3Int newPlayerGridPos = new Vector3Int(newPlayerPos.x, newPlayerPos.y, 0);
         if (!CheckPlayerCanMove(newPlayerGridPos, cellMovePosList, direction))
         {
-            _player.Shake();
+            if (cellMovePosList.Count <= 1)
+            {
+                _player.Shake();
+            }
+            else
+            {
+                _player.ErrorMove(direction);
+                GroundTileController.Instance.ErrorMoveGroundTile(cellMovePosList, direction);
+                ItemTileController.Instance.ErrorMoveItemTile(cellMovePosList, direction);
+                ElementController.Instance.ErrorMoveElement(cellMovePosList, direction);
+                ObstacleTileController.Instance.ErrorMoveObstacleTile(cellMovePosList, direction);
+            }
+
             canSlide = true;
             return;
         }
@@ -345,6 +423,8 @@ public class SlideController : SingletonMono<SlideController>
 
             if (ElementController.Instance.CheckExistsElement(cellPlayer))
             {
+                //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Element", 1f);
+
                 return false;
             }
         }
@@ -365,6 +445,11 @@ public class SlideController : SingletonMono<SlideController>
             {
                 return false;
             }
+
+            if (obstacleTilemap.HasTile(cellPlayer))
+            {
+                return false;
+            }
         }
 
         if (IceStarId > 0 && !IceStarController.Instance.CheckPlayerCanMove(cellPlayer))
@@ -372,10 +457,20 @@ public class SlideController : SingletonMono<SlideController>
             return false;
         }
 
-        if (cellMoveList.Count <= 1 || obstacleTilemap.HasTile(cellPlayer))
+        if (obstacleTilemap.HasTile(cellPlayer))
         {
+            //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Player is blocked by Obstacle", 1f);
+
             return false;
         }
+
+        if (cellMoveList.Count <= 1)
+        {
+            //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("No ground available", 1f);
+
+            return false;
+        }
+
         return true;
     }
 
@@ -395,11 +490,15 @@ public class SlideController : SingletonMono<SlideController>
 
                 if (obstacleTilemap.HasTile(cell))
                 {
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Obstacle", 1f);
+
                     return true;
                 }
 
                 if (ElementController.Instance.IsBlockItem(cell))
                 {
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Element", 1f);
+
                     return true;
                 }
 
@@ -417,6 +516,8 @@ public class SlideController : SingletonMono<SlideController>
                     {
                         if (pos2Laze == new Vector2Int(cell.x, cell.y))
                         {
+                            //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Emotion is blocked by Ice Star", 1f);
+
                             return true;
                         }
                     }
@@ -449,6 +550,10 @@ public class SlideController : SingletonMono<SlideController>
 
     public void ShowElementGuide()
     {
+        if (BossId > 0)
+        {
+            return;
+        }
         ElementGuideManager.Instance.ShowElementGuide(GetPlayerPos());
     }
 
@@ -474,9 +579,16 @@ public class SlideController : SingletonMono<SlideController>
         if (_player.GetCurrentPos() == DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos &&
             DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].NextLevelPos != new Vector2Int(0, 0))
         {
+            if (PlayerPrefs.GetInt(Constant.ISRETURNMENU) == 1)
+            {
+                LoadingManager.instance.LoadScene("Start");
+
+                return;
+            }
+
             bool returnPl = false;
 
-            if (curLevelId == 1 || curLevelId == 6)
+            if (curLevelId == 1 || curLevelId == 7)
             {
                 returnPl = true;
             }
@@ -497,6 +609,7 @@ public class SlideController : SingletonMono<SlideController>
     public void LoadNextLevelAfterBoss()
     {
         PlayerPrefs.SetInt(Constant.LEVELID, curLevelId + 1);
+        Debug.Log("Next Level: " + (curLevelId));
         PlayerPrefs.Save();
         LoadingManager.instance.LoadScene("Platform " + curLevelId + " After");
     }
@@ -504,15 +617,41 @@ public class SlideController : SingletonMono<SlideController>
     public void SpawnLevel()
     {
         curLevelId = PlayerPrefs.GetInt(Constant.LEVELID, 1);
+        switch (curLevelId)
+        {
+            case 1:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 0);
+                break;
+            case 2:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 2);
+                break;
+            case 3:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 5);
+                break;
+            case 4:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 6);
+                break;
+            case 5:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 7);
+                break;
+            case 6:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 8);
+                break;
+            case 7:
+                PlayerPrefs.SetInt(Constant.GUIDEID, 10);
+                break;
+        }
         //curLevelId = 2;
         SetTutorial();
+        CreateGridPrefab();
+        SetupSavePoint();
         this.SetElementGuide();
         this.SetGameplayUI();
         this.SetCameraFollow();
 
         //Set map
-        CreateGridPrefab();
         SetItemTile();
+        SetObstacleTile();
         SetBlockTile();
         SetElement();
         SpawnPlayer();
@@ -520,11 +659,16 @@ public class SlideController : SingletonMono<SlideController>
         // Boss
         this.SetAngryBoss();
         this.SetSadBoss();
-        //this.SetHappyBoss();
+        this.SetHappyBoss();
 
         // Mini-game Mechanics
         this.SetIceStar();
         this.SetRotateObject();
+    }
+
+    private void SetObstacleTile()
+    {
+        ObstacleTileController.Instance.Init();
     }
 
     private void SetCameraFollow()
@@ -534,8 +678,8 @@ public class SlideController : SingletonMono<SlideController>
             return;
         }
         CameraFollower.Instance.canFollow = false;
-        CameraFollower.Instance.mainCamera.transform.position = new Vector3(4.5f, 4.6f, -10f);
-        CameraFollower.Instance.mainCamera.orthographicSize = 6.5f;
+        CameraFollower.Instance.mainCamera.transform.position = new Vector3(4f, 3.5f, -10f);
+        CameraFollower.Instance.mainCamera.orthographicSize = 5.5f;
     }
 
     private void SetGameplayUI()
@@ -575,8 +719,9 @@ public class SlideController : SingletonMono<SlideController>
         }
         else
         {
+            UIManager.Instance.GetUI<GameplayUI>().HideReplayBtn();
             SoundsManager.Instance.PlayMusic(SoundType.BossMusic);
-            Debug.Log("Boss Level: " + curLevelId);
+            //Debug.Log("Boss Level: " + curLevelId);
             gridGO = Instantiate(Resources.Load<GameObject>("Boss_Level " + curLevelId.ToString()));
         }
 
@@ -596,6 +741,9 @@ public class SlideController : SingletonMono<SlideController>
                     break;
                 case "Block":
                     this.blockTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "Rotate":
+                    this.rotateTilemap = c.GetComponent<Tilemap>();
                     break;
                 case "Element":
                     this.elementTilemap = c.GetComponent<Tilemap>();
@@ -618,8 +766,21 @@ public class SlideController : SingletonMono<SlideController>
                 case "Power":
                     this.powerTilemap = c.GetComponent<Tilemap>();
                     break;
+                case "SavePoint":
+                    this.savePointTilemap = c.GetComponent<Tilemap>();
+                    break;
+                case "Lock":
+                    this.lockTilemap = c.GetComponent<Tilemap>();
+                    break;
+
             }
         }
+    }
+
+    private void SetupSavePoint()
+    {
+        saveId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].SaveId;
+        SavePointController.Instance.Setup(saveId);
     }
 
     private void SetRotateObject()
@@ -627,7 +788,8 @@ public class SlideController : SingletonMono<SlideController>
         rotateObId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].RotateObId;
         if (rotateObId != 0)
         {
-            RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
+            RotateObjectController.Instance.Init();
+            //RotateObjectController.Instance.Setup(DataManager.Instance.RotateObjectData.RotateObjectLevelDetails[rotateObId - 1].RotateObjectDetails);
         }
     }
 
@@ -636,8 +798,9 @@ public class SlideController : SingletonMono<SlideController>
         itemId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].ItemId;
         if (itemId != 0)
         {
-            ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
-            ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
+            ItemTileController.Instance.Init();
+            //ItemTileController.Instance.SetItemPosList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemPos);
+            //ItemTileController.Instance.SetItemTypeList(DataManager.Instance.ItemData.ItemDetails[itemId - 1].ItemTypes);
         }    
     }
 
@@ -681,6 +844,21 @@ public class SlideController : SingletonMono<SlideController>
         this.groundTilemap.SetTile(initRaftPos, groundNoneSprite);
     }
 
+    public void RemoveRaft(Vector2Int raftPos)
+    {
+        for (int i = 0; i < this.RaftList.Count; ++i)
+        {
+            if (this.RaftList[i].GetCurrentPos() == raftPos)
+            {
+                this.groundTilemap.SetTile(new Vector3Int(raftPos.x, raftPos.y, 0), null);
+                Destroy(this.RaftList[i].gameObject);
+                this.RaftList.RemoveAt(i);
+                return;
+            }
+        }
+        
+    }
+
     public void SetAngryBoss()
     {
         if (this.BossId > 0) { return; }
@@ -705,18 +883,18 @@ public class SlideController : SingletonMono<SlideController>
         }
     }
 
-    //public void SetHappyBoss()
-    //{
-    //    if (this.BossId > 0) { return; }
-    //    this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
-    //    if (BossId > 0)
-    //    {
-    //        HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
-    //        BossController.Instance.SpawnBoss(happyBossDetail.Health, happyBossDetail.CooldownTimeSkill, 
-    //            happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos, 
-    //            happyBossDetail.BossPrefab, happyBossDetail.TotalPhases);
-    //    }
-    //}
+    public void SetHappyBoss()
+    {
+        if (this.BossId > 0) { return; }
+        this.BossId = DataManager.Instance.LevelData.LevelDetails[curLevelId - 1].HappyBossId;
+        if (BossId > 0)
+        {
+            HappyBossDetail happyBossDetail = DataManager.Instance.HappyBossData.BossList[BossId - 1];
+            BossController.Instance.SpawnBoss(happyBossDetail.Healths, happyBossDetail.CooldownTimeSkill,
+                happyBossDetail.TotalItems, happyBossDetail.StartPos, happyBossDetail.EndPos,
+                happyBossDetail.BossPrefab);
+        }
+    }
 
     // Mini-game Mechanics
     public void SetIceStar()
@@ -734,6 +912,18 @@ public class SlideController : SingletonMono<SlideController>
         IceStarController.Instance.SetIceStars();
     }
 
+    public void Reload()
+    {
+        //LoadingManager.instance.FadeScene();
+        ItemTileController.Instance.Reload();
+        ObstacleTileController.Instance.Reload();
+        RotateObjectController.Instance.Reload();
+        BlockTileController.Instance.Reload();
+        _player.SetPos(SavePointController.Instance.curSavePoint);
+        ElementController.Instance.Reload();
+        IceStarController.Instance.Reload();
+    }
+
     // Bonus
     public Vector2Int GetPlayerPos()
     {
@@ -748,6 +938,19 @@ public class SlideController : SingletonMono<SlideController>
     public void PlayerTakeDamage()
     {
         _player.TakeDamage();
+    }
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
 

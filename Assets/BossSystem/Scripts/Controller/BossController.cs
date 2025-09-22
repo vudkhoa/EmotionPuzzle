@@ -1,7 +1,7 @@
+using CustomUtils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CustomUtils;
 using UnityEngine.Tilemaps;
 
 public enum BossType
@@ -19,7 +19,7 @@ public class BossController : SingletonMono<BossController>
 
     public Boss Boss;
     public List<Vector2Int> PosGround;
-    
+
 
     public void SpawnBoss(  List<float> healths, float cooldownTimeSkill, int totalItems,
                             Vector2Int startPos, Vector2Int endPos, Boss bossPrefab)
@@ -120,6 +120,8 @@ public class BossController : SingletonMono<BossController>
             {
                 ItemTileController.Instance.RemoveItem(itemPos);
                 this.Boss.TakeDamage(1);
+                Vector3 spawnPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(itemPos.x, itemPos.y, 0));
+                GroundTileController.Instance.ActiveBurnDownEffect(spawnPos);
                 this.Boss.DecreaseItems(1);
             }
         }

@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb904f2ac36454429a3a9052fbcc25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPosList: []
-  keyPosList: []
-  keyTypeList: 
+  NoneItem: {fileID: 11400000, guid: 431e9308f71de214b83ca559de9329e2, type: 2}
+  AngryItem: {fileID: 11400000, guid: 0e397b946cafcc3468e0fee00bb47bf9, type: 2}
+  SadItem: {fileID: 11400000, guid: 2099a0c097b61614ebf32d933eed93a2, type: 2}
+  HappyItem: {fileID: 11400000, guid: 1ebacf183d1262b458bf3928c2162b53, type: 2}
+  ItemPosList: []
+  ItemTypeList: 

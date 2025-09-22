@@ -34,6 +34,7 @@ public class GameManager : SingletonMono<GameManager>
         CreateModule("RotateObjectController", "RotateObjectController");
         CreateModule("TutorialManager", "TutorialManager");
         CreateModule("ElementGuideManager", "ElementGuideManager");
+        CreateModule("LockController", "LockController");
     }
 
     private GameObject CreateObject(string module, string nameModule)

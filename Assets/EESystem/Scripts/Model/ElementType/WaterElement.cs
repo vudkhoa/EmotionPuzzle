@@ -1,13 +1,17 @@
 ﻿using SoundManager;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class WaterElement : Element
 {
-    private List<Vector3Int> _fillWaterList;
+    public List<Vector3Int> _fillWaterList;
+    public List<Vector3Int> _saveFillWaterList;
     [SerializeField] TileBase WaterTile;
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
 
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
@@ -18,9 +22,10 @@ public class WaterElement : Element
         {
             this.SetActivatePower();
         }
+        this._saveFillWaterList = new List<Vector3Int>();
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
@@ -92,6 +97,7 @@ public class WaterElement : Element
         while (this._fillWaterList.Count > 0)
         {
             Vector3Int newFillPos = this._fillWaterList[0];
+            this._saveFillWaterList.Add(newFillPos);
             this._fillWaterList.RemoveAt(0);
             foreach (Vector2Int offset in this.OffsetList)
             {
@@ -102,6 +108,80 @@ public class WaterElement : Element
                     SlideController.Instance.waterTilemap.SetTile(newFillPos + new Vector3Int(offset.x, offset.y, 0), this.WaterTile);
                 }
             }
+        }
+    }
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public override void ReloadElement()
+    {
+        //ReFillWater();
+    }
+
+    public override void Reload(ElementData elementData)
+    {
+        //ReFillWater();
+
+        base.Reload(elementData);
+    }
+
+    public void ReFillWater()
+    {
+        if (this._saveFillWaterList == null || this._saveFillWaterList.Count <= 0)
+        {
+            return;
+        }
+        Debug.Log("ReFillWater");
+
+        List<Vector3Int> tempList = new List<Vector3Int>();
+
+        while (this._saveFillWaterList.Count > 0)
+        {
+            if (IsInSave(new Vector2Int(this._saveFillWaterList[0].x, this._saveFillWaterList[0].y))) 
+            {
+                Vector3Int newFillPos = this._saveFillWaterList[0];
+                this._saveFillWaterList.RemoveAt(0);
+                foreach (Vector2Int offset in this.OffsetList)
+                {
+                    if (SlideController.Instance.bgWaterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)) &&
+                        SlideController.Instance.waterTilemap.HasTile(newFillPos + new Vector3Int(offset.x, offset.y, 0)))
+                    {
+                        SlideController.Instance.waterTilemap.SetTile(newFillPos + new Vector3Int(offset.x, offset.y, 0), null);
+                    }
+                }
+            }
+            else
+            {
+                tempList.Add(this._saveFillWaterList[0]);
+                this._saveFillWaterList.RemoveAt(0);
+            }
+        }
+
+        this._saveFillWaterList = tempList;
+
+        List<Vector2Int> tempRaftList = new List<Vector2Int>();
+        foreach (Raft raft in SlideController.Instance.RaftList)
+        {
+            if (IsInSave(raft.GetCurrentPos()))
+            {
+                tempRaftList.Add(raft.GetCurrentPos());
+            }
+        }
+
+        foreach (Vector2Int raftPos in tempRaftList)
+        {
+            SlideController.Instance.RemoveRaft(raftPos);
         }
     }
 }

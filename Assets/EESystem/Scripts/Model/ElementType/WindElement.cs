@@ -6,6 +6,11 @@ using UnityEngine.Tilemaps;
 
 public class WindElement : Element
 {
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
+
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
@@ -17,7 +22,7 @@ public class WindElement : Element
         }
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
@@ -86,7 +91,7 @@ public class WindElement : Element
                 {
                     ObstacleTileController.Instance.ThrowObstacleTile(nearPos3, newObstaclePos);
                 }
-                if (!SlideController.Instance.obstacleTilemap.HasTile(newObstaclePos) &&
+                else if (!SlideController.Instance.obstacleTilemap.HasTile(newObstaclePos) &&
                     !ElementController.Instance.CheckExistsElement(newObstaclePos))
                 {
                     ObstacleTileController.Instance.MoveObsatcleTile(nearPos3, newObstaclePos);
@@ -98,5 +103,9 @@ public class WindElement : Element
         {
             SoundsManager.Instance.PlaySFX(SoundType.WindPower);
         }
+    }
+
+    public override void ReloadElement()
+    {
     }
 }

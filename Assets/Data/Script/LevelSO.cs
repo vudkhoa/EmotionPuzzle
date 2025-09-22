@@ -13,6 +13,7 @@ public class LevelSO : ScriptableObject
 public class LevelDetail
 {
     public int LevelId;
+    public int SaveId;
     public bool IsBoss;
     public Vector2Int PlayerPosition;
     public int TutorialId;
@@ -35,4 +36,8 @@ public class LevelDetail
 
     [Header(" Tutorial ")]
     public int ElementGuideId;
+
+    [Header(" Visual ")]
+    public Sprite LockSprite;
+    public TileBase LockTile;
 }

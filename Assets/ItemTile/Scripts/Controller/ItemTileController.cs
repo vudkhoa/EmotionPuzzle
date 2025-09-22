@@ -6,8 +6,156 @@ using UnityEngine.Tilemaps;
 
 public class ItemTileController : SingletonMono<ItemTileController>
 {
+    [Header("Default Item ")]
+    public TileBase NoneItem;
+    public const string ITEM_ANGRY = "Item_Angry";
+    public TileBase AngryItem;
+    public const string ITEM_SAD = "Item_Sad";
+    public TileBase SadItem;
+    public const string ITEM_HAPPY = "Item_Happy";
+    public TileBase HappyItem;
+
+    [Header(" Data ")]
     public List<Vector2Int> ItemPosList;
     public List<ItemType> ItemTypeList;
+
+    private List<Vector2Int> initItemPosList;
+    private List<ItemType> initItemTypeList;
+
+    public void Init()
+    {
+        ItemPosList = new List<Vector2Int>();
+        ItemTypeList = new List<ItemType>();
+
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if (SlideController.Instance.itemTilemap.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    string nameTile = SlideController.Instance.itemTilemap.GetTile(new Vector3Int(i, j, 0)).name;
+                    switch (nameTile)
+                    {
+                        case ITEM_ANGRY:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeAngry);
+
+                            break;
+                        case ITEM_SAD:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeSad);
+
+                            break;
+                        case ITEM_HAPPY:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.MakeHappy);
+
+                            break;
+                        default:
+                            ItemPosList.Add(new Vector2Int(i, j));
+                            ItemTypeList.Add(ItemType.None);
+
+                            break;
+                    }
+                }
+            }
+        }
+
+        initItemPosList = new List<Vector2Int>(ItemPosList);
+        initItemTypeList = new List<ItemType>(ItemTypeList);
+    }
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x 
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void ResetInitData()
+    {
+        initItemPosList = new List<Vector2Int>(ItemPosList);
+        initItemTypeList = new List<ItemType>(ItemTypeList);
+    }
+
+    public void Reload()
+    {
+        //for (int i=0; i < ItemPosList.Count; i++)
+        //{
+        //    Vector2Int item = ItemPosList[i];
+        //    if (IsInSave(item))
+        //    {
+        //        SlideController.Instance.itemTilemap.SetTile(new Vector3Int(ItemPosList[i].x, ItemPosList[i].y, 0), null);
+        //        ItemPosList.RemoveAt(i);
+        //        ItemTypeList.RemoveAt(i);
+
+        //        i--;
+        //    }
+        //}
+
+        foreach (Vector2Int cell in ItemPosList)
+        {
+            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cell.x, cell.y, 0), null);
+        }
+
+        //for (int i = 0; i < initItemPosList.Count; i++)
+        //{
+        //    Vector2Int item = initItemPosList[i];
+        //    if (IsInSave(item))
+        //    {
+        //        if (initItemTypeList[i] == ItemType.None)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), NoneItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeAngry)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), AngryItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeSad)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), SadItem);
+        //        }
+        //        else if (initItemTypeList[i] == ItemType.MakeHappy)
+        //        {
+        //            SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), HappyItem);
+        //        }
+
+        //        ItemPosList.Add(initItemPosList[i]);
+        //        ItemTypeList.Add(initItemTypeList[i]);
+        //    }
+        //}
+
+        for (int i = 0; i < initItemPosList.Count; i++)
+        {
+            Vector2Int item = initItemPosList[i];
+            
+            if (initItemTypeList[i] == ItemType.None)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), NoneItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeAngry)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), AngryItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeSad)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), SadItem);
+            }
+            else if (initItemTypeList[i] == ItemType.MakeHappy)
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(initItemPosList[i].x, initItemPosList[i].y, 0), HappyItem);
+            }
+        }
+
+        ItemPosList = new List<Vector2Int>(initItemPosList);
+        ItemTypeList = new List<ItemType>(initItemTypeList);
+    }
 
     public void SetItemPosList(List<Vector2Int> itemPosList)
     {
@@ -31,6 +179,11 @@ public class ItemTileController : SingletonMono<ItemTileController>
 
             this.ItemPosList.Remove(oldPos);
             this.ItemPosList.Add(newPos);
+
+            //if (SlideController.Instance.BossId > 0 && BossController.Instance.Boss.BossType == BossType.HappyBoss)
+            //{
+            //    BossController.Instance.Boss.MoveCooldownSkill(new Vector3Int(oldPos.x, oldPos.y, 0), new Vector3Int(newPos.x, newPos.y, 0));
+            //}
         }
     }
 
@@ -154,6 +307,103 @@ public class ItemTileController : SingletonMono<ItemTileController>
             }
         });
     }
+
+    public void ErrorMoveItemTile(List<Vector2Int> cellsToSlide, Direction direction)
+    {
+        if (SlideController.Instance.itemId == 0)
+        {
+            return;
+        }
+
+        //Spawn các tile động theo thứ tự cells
+        List<TileFake> clones = new List<TileFake>();
+        List<TileBase> tileOrder = new List<TileBase>();
+
+        foreach (Vector2Int cellPos in cellsToSlide)
+        {
+            Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
+
+            TileBase tile = SlideController.Instance.itemTilemap.GetTile(cell);
+            if (tile == null)
+            {
+                clones.Add(null);
+                tileOrder.Add(null);
+
+                continue;
+            }
+
+            if (tile != null && !this.ItemPosList.Contains(new Vector2Int(cell.x, cell.y)))
+            {
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cell.x, cell.y, 0), null);
+                clones.Add(null);
+                tileOrder.Add(null);
+                continue;
+            }
+
+            // Lưu thứ tự tile để xử lý logic 
+            tileOrder.Add(tile);
+
+            // Tạo GameObject clone để tween
+            TileFake obj = Instantiate(SlideController.Instance.itemTileFakePrefab, SlideController.Instance.itemTilemap.GetCellCenterWorld(cell), Quaternion.identity);
+            Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+            if (sprite != null)
+                obj.SetSprite(sprite);
+
+            obj.gridPos = cellPos;
+            clones.Add(obj);
+
+            SlideController.Instance.itemTilemap.SetTile(cell, null);
+        }
+
+        //Di chuyển các tile
+        int count = cellsToSlide.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if (clones[i] == null)
+            {
+                continue;
+            }
+
+            Vector3 curPos = clones[i].transform.position;
+            Vector3 offset = Vector3.zero;
+            switch (direction)
+            {
+                case Direction.Up:
+                    offset = new Vector3(0, 1f, 0);
+                    break;
+                case Direction.Down:
+                    offset = new Vector3(0, -1f, 0);
+                    break;
+                case Direction.Left:
+                    offset = new Vector3(-1f, 0, 0);
+                    break;
+                case Direction.Right:
+                    offset = new Vector3(1f, 0, 0);
+                    break;
+            }
+            clones[i].transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                clones[i].transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+            });
+        }
+
+        //Bước 3: Sau khi tween xong → cập nhật lại Tilemap và xóa clone
+        DOVirtual.DelayedCall(0.25f, () =>
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (tileOrder[i] == null) continue;
+
+                SlideController.Instance.itemTilemap.SetTile(new Vector3Int(cellsToSlide[i].x, cellsToSlide[i].y, 0), tileOrder[i]);
+            }
+
+            foreach (var obj in clones)
+            {
+                if (obj != null)
+                    Destroy(obj.gameObject);
+            }
+        });
+    }    
 
     public void RotateItemTile(Vector2Int pivot, List<Vector2Int> posList)
     {
@@ -338,41 +588,62 @@ public class ItemTileController : SingletonMono<ItemTileController>
     public List<Vector2Int> FindItemAbsMin()
     {
         List<Vector2Int> resultList = new List<Vector2Int>();
-        
+
         Vector2Int minPos = new Vector2Int(-1000, -1000);
         float minDistance = float.MaxValue; 
-        foreach (Vector2Int pos in this.ItemPosList) 
+
+
+        //foreach (Vector2Int pos in this.ItemPosList) 
+        //{
+        //    float distance = 0;
+        //    distance = CaculateDistance(pos, SlideController.Instance.GetPlayerPos());
+        //    Vector2Int midPos = new Vector2Int(7, 7);
+        //    distance += CaculateDistance(pos, midPos);
+        //    if (minDistance > distance)
+        //    {
+        //        minDistance = distance;
+        //        minPos = pos;
+        //    }
+        //}
+
+        //List<Vector2Int> offsetList = new List<Vector2Int>();
+        //List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
+
+        //offsetList = Library.Instance.LibOffsets8;
+
+        //List<Vector2Int> tempList = new List<Vector2Int>();
+
+        ////tempList.Add(minPos);
+        ////posList.Remove(minPos);
+        //Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
+
+        //while (itemPos != new Vector2Int(-1000, -1000))
+        //{
+        //    tempList.Add(itemPos);
+        //    posList.Remove(itemPos);
+        //    itemPos = FindItemNear(tempList, posList, offsetList);
+        //}
+        
+        ////resultList = new List<Vector2Int>(tempList);
+        ///
+        //foreach (Vector2Int pos in this.ItemPosList)
+        //{
+        //    resultList.Add(pos);
+        //    break;
+        //}
+
+        foreach (Vector2Int pos in ItemTileController.Instance.ItemPosList)
         {
-            float distance = 0;
-            distance = CaculateDistance(pos, SlideController.Instance.GetPlayerPos());
-            Vector2Int midPos = new Vector2Int(7, 7);
-            distance += CaculateDistance(pos, midPos);
-            if (minDistance > distance)
+            Vector2Int posBoss = new Vector2Int(BossController.Instance.Boss.StartPos.x + 1, BossController.Instance.Boss.StartPos.y + 1);
+            float distance = this.CaculateDistance(pos, posBoss);
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 minPos = pos;
-            }
+            }   
         }
+        resultList.Add(minPos);
 
-        List<Vector2Int> offsetList = new List<Vector2Int>();
-        List<Vector2Int> posList = new List<Vector2Int>(this.ItemPosList);
-
-        offsetList = Library.Instance.LibOffsets8;
-
-        List<Vector2Int> tempList = new List<Vector2Int>();
-
-        tempList.Add(minPos);
-        posList.Remove(minPos);
-        Vector2Int itemPos = FindItemNear(tempList, posList, offsetList);
-
-        while (itemPos != new Vector2Int(-1000, -1000))
-        {
-            tempList.Add(itemPos);
-            posList.Remove(itemPos);
-            itemPos = FindItemNear(tempList, posList, offsetList);
-        }
-        
-        resultList = new List<Vector2Int>(tempList);
         return resultList;
     }
 

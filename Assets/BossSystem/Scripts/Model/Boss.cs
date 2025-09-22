@@ -1,7 +1,10 @@
 using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BossState
@@ -33,6 +36,9 @@ public abstract class Boss : MonoBehaviour
 
     [Header(" UI ")]
     [SerializeField] private Slider EnergyBar;
+    [SerializeField] private Slider HealthBar;
+    [SerializeField] private TextMeshProUGUI HealthText;
+    [SerializeField] private GameObject Body;
 
     public virtual void Setup(  List<float> healths, float cooldownTimeSkill, int totalItems, 
                                 Vector2Int startPos, Vector2Int endPos)
@@ -51,6 +57,22 @@ public abstract class Boss : MonoBehaviour
 
         this.ItemList = new List<Vector2Int>();
         this.EnergyBar.value = 0f;
+        this.HealthBar.value = 1f;
+
+        this.AddCanvasGroup();
+        this.BlockBars();
+    }
+
+    private void AddCanvasGroup()
+    {
+        this.HealthBar.AddComponent<CanvasGroup>();
+        this.EnergyBar.AddComponent<CanvasGroup>();
+    }
+
+    private void BlockBars()
+    {
+        this.HealthBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        this.EnergyBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     private void Update()
@@ -65,7 +87,18 @@ public abstract class Boss : MonoBehaviour
             return;
         }
 
+        
+
         this.CaculateCooldownTimeSkill();
+        this.CooldownTimeSkillUI();
+    }
+
+    public virtual void CooldownTimeSkillUI() { }
+
+    public void UpdateHealthUI(float curHealth, float maxHealth)
+    {
+        this.HealthBar.value = curHealth / maxHealth;
+        this.HealthText.text = curHealth.ToString() + "/" + maxHealth.ToString();
     }
 
     public abstract void ActiveSkill();
@@ -73,9 +106,9 @@ public abstract class Boss : MonoBehaviour
     public void TakeDamage(int damage)
     {
         this.CurHealth -= damage;
-        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
+        this.UpdateHealthUI(this.CurHealth, this.Healths[this.CurPhase - 1]);
         BossController.Instance.SpawnItems();
-        SoundsManager.Instance.PlaySFX(SoundType.AttackBoss);
+        SoundsManager.Instance.PlaySFX(SoundType.ExBomb);
         this.transform.DOShakePosition(
             duration: 0.2f,
             strength: new Vector3(0.2f, 0.2f, 0),
@@ -100,8 +133,11 @@ public abstract class Boss : MonoBehaviour
         this.EnergyBar.value = this.curTimeSkill / this.CooldownTimeSkill;
         if (this.curTimeSkill >= this.CooldownTimeSkill)
         {
-            this.curTimeSkill = 0f;
-            this.ActiveSkill();
+            if (SlideController.Instance.canSlide != false)
+            {
+                this.curTimeSkill = 0f;
+                this.ActiveSkill();
+            }
         }
     }
 
@@ -115,7 +151,7 @@ public abstract class Boss : MonoBehaviour
     public virtual void NextPhase()
     {
         this.CurHealth = this.Healths[CurPhase - 1];
-        UIManager.Instance.GetUI<GameplayUI>().UpdateBossHealth(this.CurHealth, this.Healths[this.CurPhase - 1]);
+        this.UpdateHealthUI(this.CurHealth, this.Healths[this.CurPhase - 1]);
         this.CooldownTimeSkill /= 2f;
     }
 
@@ -143,4 +179,26 @@ public abstract class Boss : MonoBehaviour
     {
         UIManager.Instance.OpenUI<LoseUI>();
     }
+
+    public void Die()
+    {
+        DG.Tweening.Sequence deathSq = DOTween.Sequence();
+
+        deathSq.Append(this.Body.transform.DOShakePosition(0.2f, 0.5f, 100, 90, false, true));
+        deathSq.Join(this.Body.transform.DORotate(new Vector3(0, 0, 720f), 0.2f, RotateMode.FastBeyond360));
+        deathSq.OnComplete(() => 
+        { 
+            Destroy(this.Body.gameObject);
+            if (this.BossType == BossType.HappyBoss)
+            {
+
+            }
+        });
+    }
+
+    public virtual void MoveCooldownSkill(Vector3Int oldPos, Vector3Int newPos) { }
+
+    public virtual void ActiveSkillAfterCooldown(List<Vector2Int> itemList = null, List<GameObject> goList = null) { }
+    public virtual void ActiveSkillAfterCooldownTime() { }
+
 }

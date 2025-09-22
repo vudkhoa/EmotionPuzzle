@@ -3,10 +3,135 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomUtils;
 using SoundManager;
+using UnityEngine.Tilemaps;
 
 public class RotateObjectController : SingletonMono<RotateObjectController>
 {
     public List<RotateObject> RotateObjects;
+
+    [Header(" Prefab ")]
+    [SerializeField] private RotateObject I_Prefab;
+    [SerializeField] private RotateObject L_Prefab;
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void ResetInitData()
+    {
+        foreach (RotateObject o in RotateObjects)
+        {
+            o.ResetInitData();
+        }
+    }
+
+    public void Reload()
+    {
+        foreach (RotateObject o in RotateObjects)
+        {
+            GroundTileController.Instance.RemoveGroundTileForRotateObj(o.containPosList);
+        }
+
+        foreach (RotateObject o in RotateObjects)
+        {
+            o.Reload();
+        }
+
+        foreach (RotateObject o in RotateObjects)
+        {
+            GroundTileController.Instance.SetGroundTileForRotateObj(o.containPosList);
+        }
+    }
+
+    public void Init()
+    {
+        RotateObjects = new List<RotateObject>();
+
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                if (SlideController.Instance.rotateTilemap.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    string nameTile = SlideController.Instance.rotateTilemap.GetTile(new Vector3Int(i, j, 0)).name;
+                    Vector3 rotation = SlideController.Instance.rotateTilemap.GetTransformMatrix(new Vector3Int(i, j, 0)).rotation.eulerAngles;
+                    
+                    Vector2Int rotatePos = new Vector2Int(i, j);
+                    List<Vector2Int> containPosList = new List<Vector2Int>();
+
+                    if (nameTile.StartsWith("I"))
+                    {
+                        RotateObject obj = Instantiate(I_Prefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                        obj.transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
+                        if (rotation.z == 0)
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(1, 0);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(-1, 0);
+                            containPosList.Add(temp);
+                        }
+                        else
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(0, 1);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(0, -1);
+                            containPosList.Add(temp);
+                        }
+                        obj.SetInitAngle(rotation.z, containPosList);
+                        obj.Setup(rotatePos, containPosList);
+                        this.RotateObjects.Add(obj);
+                    }
+                    else
+                    {
+                        RotateObject obj = Instantiate(L_Prefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(new Vector3Int(i, j, 0)), Quaternion.identity);
+                        obj.transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
+                        if (rotation.z == 0)
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(-1, 0);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(0, 1);
+                            containPosList.Add(temp);
+                        }
+                        else if (rotation.z == 90)
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(-1, 0);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(0, -1);
+                            containPosList.Add(temp);
+                        }
+                        else if (rotation.z == 180)
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(1, 0);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(0, -1);
+                            containPosList.Add(temp);
+                        }
+                        else
+                        {
+                            Vector2Int temp = rotatePos + new Vector2Int(1, 0);
+                            containPosList.Add(temp);
+                            temp = rotatePos + new Vector2Int(0, 1);
+                            containPosList.Add(temp);
+                        }
+                        obj.SetInitAngle(rotation.z, containPosList);
+                        obj.Setup(rotatePos, containPosList);
+                        this.RotateObjects.Add(obj);
+                    }
+
+                    SlideController.Instance.rotateTilemap.SetTile(new Vector3Int(i, j, 0), null);
+                }
+            }
+        }
+    }
 
     public void Setup(List<RotateObjectDetail> RotateObjects)
     {

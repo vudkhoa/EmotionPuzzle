@@ -81,6 +81,85 @@ public class GroundTileController : SingletonMono<GroundTileController>
         });
     }
 
+    public void ErrorMoveGroundTile(List<Vector2Int> cellsToSlides, Direction direction)
+    {
+        List<Vector2Int> cellsToSlide = new List<Vector2Int>(cellsToSlides);
+
+        for (int i = cellsToSlide.Count - 1; i >= 0; i--)
+        {
+            Vector2Int cell = cellsToSlide[i];
+            Vector3Int gridPos = new Vector3Int(cell.x, cell.y, 0);
+            TileBase tile = SlideController.Instance.groundTilemap.GetTile(gridPos);
+            if (SlideController.Instance.GetSpriteFromTile(tile) == null)
+            {
+                cellsToSlide.Remove(cell);
+            }
+        }
+
+        //Spawn các tile động theo thứ tự cells
+        List<TileFake> clones = new List<TileFake>();
+        List<TileBase> tileOrder = new List<TileBase>();
+
+        foreach (Vector2Int cellPos in cellsToSlide)
+        {
+            Vector3Int cell = new Vector3Int(cellPos.x, cellPos.y, 0);
+            TileBase tile = SlideController.Instance.groundTilemap.GetTile(cell);
+            if (tile == null) continue;
+
+            // Lưu thứ tự tile để xử lý logic 
+            tileOrder.Add(tile);
+
+            // Tạo GameObject clone để tween
+            TileFake obj = Instantiate(SlideController.Instance.groudTileFakePrefab, SlideController.Instance.groundTilemap.GetCellCenterWorld(cell), Quaternion.identity);
+            Sprite sprite = SlideController.Instance.GetSpriteFromTile(tile);
+            if (sprite != null)
+                obj.SetSprite(sprite);
+
+            obj.gridPos = cellPos;
+            clones.Add(obj);
+
+            SlideController.Instance.groundTilemap.SetTile(cell, null);
+        }
+
+        //Di chuyển các tile
+        int count = cellsToSlide.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 curPos = clones[i].transform.position;
+            Vector3 offset = Vector3.zero;
+            switch (direction)
+            {
+                case Direction.Up:
+                    offset = new Vector3(0, 1f, 0);
+                    break;
+                case Direction.Down:
+                    offset = new Vector3(0, -1f, 0);
+                    break;
+                case Direction.Left:
+                    offset = new Vector3(-1f, 0, 0);
+                    break;
+                case Direction.Right:
+                    offset = new Vector3(1f, 0, 0);
+                    break;
+            }
+            clones[i].transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                clones[i].transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+            });
+        }
+
+        DOVirtual.DelayedCall(0.25f, () =>
+        {
+            for (int i = 0; i < count; i++)
+            {
+                SlideController.Instance.groundTilemap.SetTile(new Vector3Int(cellsToSlide[i].x, cellsToSlide[i].y, 0), tileOrder[i]);
+            }
+
+            foreach (var obj in clones)
+                Destroy(obj.gameObject);
+        });
+    }
+
     public void SetGroundTileForRaft(Vector2Int posRaft)
     {
         Vector3Int p = new Vector3Int(posRaft.x, posRaft.y, 0);
@@ -130,8 +209,15 @@ public class GroundTileController : SingletonMono<GroundTileController>
 
     public void RemoveGroundTile(Vector2Int pos)
     {
-        Instantiate(burnDownEffect, SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0)), Quaternion.identity);
+        Vector3 spawnPos = SlideController.Instance.obstacleTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+        this.ActiveBurnDownEffect(spawnPos);
         SlideController.Instance.groundTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
         SlideController.Instance.bgSmallTilemap.SetTile(new Vector3Int(pos.x, pos.y, 0), null);
+    }
+
+    public void ActiveBurnDownEffect(Vector3 spawnPos)
+    {
+        
+        Instantiate(burnDownEffect, spawnPos, Quaternion.identity);
     }
 }

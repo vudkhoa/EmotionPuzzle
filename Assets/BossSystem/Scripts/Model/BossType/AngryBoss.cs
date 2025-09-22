@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class AngryBoss : Boss
 {
     [Header(" Tile ")]
     [SerializeField] private TileBase FlagAttack;
+    [SerializeField] private GameObject CooldownTimePrefab;
+    [SerializeField] private Transform BarParent;
 
+    public Slider SliderGr;
     private Vector2Int dangerZonePos;
 
     public override void Setup(List<float> healths, float cooldownTimeSkill, int totalItems, 
@@ -19,7 +23,8 @@ public class AngryBoss : Boss
         this.dangerZonePos = new Vector2Int(-1, -1);
         this.CurPhase = 1;
         this.CurHealth = this.Healths[CurPhase - 1];
-        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Angry Boss", this.CurHealth, this.TotalItems);
+        UIManager.Instance.GetUI<GameplayUI>().SetupBoss("Angry Boss", this.TotalItems);
+        this.UpdateHealthUI(this.CurHealth, this.CurHealth);
     }
 
     public override void ActiveSkill()
@@ -28,11 +33,34 @@ public class AngryBoss : Boss
         Vector3Int worldPos = new Vector3Int(posPlayer.x, posPlayer.y, 0);
         this.dangerZonePos = posPlayer;
         SlideController.Instance.bossTilemap.SetTile(worldPos, this.FlagAttack);
-        Invoke(nameof(ActingDangerZone), 2f);
+
+        Vector3 posForCooldownTime = SlideController.Instance.bgSmallTilemap.CellToWorld(worldPos) + SlideController.Instance.groundTilemap.cellSize / 2;
+        posForCooldownTime.y -= 0.35f;
+        GameObject sl = Instantiate(CooldownTimePrefab, posForCooldownTime, Quaternion.identity, this.BarParent);
+        sl.GetComponent<SliderCooldown>().Setup(2f, 1f, true);
+        sl.GetComponent<SliderCooldown>().SetupActiveSkill(null, null, BossType.AngryBoss);
+        this.SliderGr = sl.GetComponent<Slider>();
+
+        //Invoke(nameof(ActingDangerZone), 2f);
+    }
+
+    public override void ActiveSkillAfterCooldownTime()
+    {
+        this.ActingDangerZone();
+    }
+
+    public override void CooldownTimeSkillUI()
+    {
+        base.CooldownTimeSkillUI();
+        if (this.SliderGr == null)
+        {
+            return;
+        }
     }
 
     private void ActingDangerZone()
     {
+        //Debug.Log("Acting Danger Zone");
         this.IsActingSkill = true;
 
         if (CheckPlayerInDangerZone())
@@ -59,6 +87,7 @@ public class AngryBoss : Boss
         SlideController.Instance.bossTilemap.SetTile(worldPos, null);
         SoundsManager.Instance.PlaySFX(SoundType.BossDestroyGround);
         GroundTileController.Instance.RemoveGroundTile(new Vector2Int(worldPos.x, worldPos.y));
+        //Destroy(this.SliderGr.gameObject);
     }
 
     private bool CheckPlayerInDangerZone()
@@ -76,7 +105,7 @@ public class AngryBoss : Boss
         {
             this.BossState = BossState.Dead;
             SlideController.Instance.BossId = 0;
-            Destroy(this.gameObject); // Chưa viết hiệu ứng boss chết
+            this.Die();
             SlideController.Instance.LoadNextLevelAfterBoss();
         }
     }

@@ -76,3 +76,6 @@ MonoBehaviour:
   - ItemId: 5
     ItemTypes: 
     ItemPos: []
+  - ItemId: 6
+    ItemTypes: 
+    ItemPos: []

@@ -3,6 +3,7 @@ using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class GameplayUI : UICanvas
     [SerializeField] private float hideTime = 5f;
 
     [SerializeField] private Button pauseBtn;
+    [SerializeField] private Button replayBtn;
     [SerializeField] private Button tutorialBtn;
     [SerializeField] private Transform messageListTf;
     [SerializeField] private GuideMessage messagePrefab;
@@ -20,6 +22,8 @@ public class GameplayUI : UICanvas
     [SerializeField] private Button water;
     [SerializeField] private Button ice;
     [SerializeField] private Button wind;
+    [SerializeField] private GameObject InforTitle;
+    private bool isShowInforTitle = false;
 
     [Header(" ElementPower ")]
     [SerializeField] private GameObject ElementPower;
@@ -27,21 +31,38 @@ public class GameplayUI : UICanvas
     [Header(" Boss ")]
     [SerializeField] private BossUI BossUI; 
     [SerializeField] private TextMeshProUGUI BossName;
-    [SerializeField] private Slider BossHealthBar;
-    [SerializeField] private TextMeshProUGUI BossHealthText;
     [SerializeField] private Slider PlayerHealthBar;
     [SerializeField] private TextMeshProUGUI PlayerHealthText;
+
+    [Header(" Button Number Count ")]
+    public List<GameObject> buttonList;
+    private int btnCount = 0;
+
+    public void HideReplayBtn()
+    {
+        replayBtn.gameObject.SetActive(false);
+    }
 
 
     private void OnEnable()
     {
         pauseBtn.onClick.AddListener(OnClickPauseBtn);
+        GameInput.Instance.OnPause += GameInput_OnPause;
+
+        replayBtn.onClick.AddListener(OnClickReplayBtn);
+
         tutorialBtn.onClick.AddListener(OnClickTutorialBtn);
+        GameInput.Instance.OnTutorial += GameInput_OnTutorial;
 
         fire.onClick.AddListener(OnClickFireButton);
         water.onClick.AddListener(OnClickWaterButton);
         wind.onClick.AddListener(OnClickWindButton);
         ice.onClick.AddListener(OnClickIceButton);
+
+        GameInput.Instance.OnOneButton += GameInput_OnOneButton;
+        GameInput.Instance.OnTWoButton += GameInput_OnTWoButton;
+        GameInput.Instance.OnThreeButton += GameInput_OnThreeButton;
+        GameInput.Instance.OnFourButton += GameInput_OnFourButton;
 
         HideElementGuideBtn();
     }
@@ -49,23 +70,62 @@ public class GameplayUI : UICanvas
     private void OnDisable()
     {
         pauseBtn.onClick.RemoveListener(OnClickPauseBtn);
+        GameInput.Instance.OnPause -= GameInput_OnPause;
+
+        replayBtn.onClick.RemoveListener(OnClickReplayBtn);
+
         tutorialBtn.onClick.RemoveListener(OnClickTutorialBtn);
+        GameInput.Instance.OnTutorial -= GameInput_OnTutorial;
 
         fire.onClick.RemoveListener(OnClickFireButton);
         water.onClick.RemoveListener(OnClickWaterButton);
         wind.onClick.RemoveListener(OnClickWindButton);
         ice.onClick.RemoveListener(OnClickIceButton);
+
+        GameInput.Instance.OnOneButton -= GameInput_OnOneButton;
+        GameInput.Instance.OnTWoButton -= GameInput_OnTWoButton;
+        GameInput.Instance.OnThreeButton -= GameInput_OnThreeButton;
+        GameInput.Instance.OnFourButton -= GameInput_OnFourButton;
     }
 
-    private void Update()
+    private void GameInput_OnFourButton(object sender, System.EventArgs e)
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            OnClickPauseBtn();
-        }
-        else if (Input.GetKeyUp(KeyCode.T))
+        OnClickFourButton();
+    }
+
+    private void GameInput_OnThreeButton(object sender, System.EventArgs e)
+    {
+        OnClickThreeButton();
+    }
+
+    private void GameInput_OnTWoButton(object sender, System.EventArgs e)
+    {
+        OnClickTwoButton();
+    }
+
+    private void GameInput_OnOneButton(object sender, System.EventArgs e)
+    {
+        OnClickOneButton();
+    }
+
+    private void GameInput_OnTutorial(object sender, System.EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing)
         {
             OnClickTutorialBtn();
+        }
+    }
+
+    private void GameInput_OnPause(object sender, System.EventArgs e)
+    {
+        if (GameManager.Instance.State == GameState.Playing &&
+            !UIManager.Instance.IsOpened<GuideUI>() &&
+            !UIManager.Instance.IsOpened<FireGuideUI>() &&
+            !UIManager.Instance.IsOpened<WaterGuideUI>() &&
+            !UIManager.Instance.IsOpened<WindGuideUI>() &&
+            !UIManager.Instance.IsOpened<IceGuideUI>())
+        {
+            OnClickPauseBtn();
         }
     }
 
@@ -76,32 +136,46 @@ public class GameplayUI : UICanvas
         UIManager.Instance.OpenUI<PauseUI>();
     }
 
+    private void OnClickReplayBtn()
+    {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        if (SavePointController.Instance.IsSave())
+        {
+            SlideController.Instance.Reload();
+        }
+    }
+
     private void OnClickTutorialBtn()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Book);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<GuideUI>().Init();
     }
 
     private void OnClickFireButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<FireGuideUI>();
     }
     private void OnClickWaterButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<WaterGuideUI>();
     }
 
     private void OnClickWindButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<WindGuideUI>();
     }
 
     private void OnClickIceButton()
     {
         SoundsManager.Instance.PlaySFX(SoundType.Click);
+        GameManager.Instance.State = GameState.Pause;
         UIManager.Instance.OpenUI<IceGuideUI>();
     }
 
@@ -117,10 +191,17 @@ public class GameplayUI : UICanvas
         water.gameObject.SetActive(false);
         wind.gameObject.SetActive(false);
         ice.gameObject.SetActive(false);
+        this.isShowInforTitle = false;
     }
 
-    public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveWind, bool haveIce)
+    public void ShowElementGuideBtn(bool haveFire, bool haveWater, bool haveIce, bool haveWind)
     {
+        if (!this.isShowInforTitle)
+        {
+            this.isShowInforTitle = true;
+            this.InforTitle.gameObject.SetActive(true);
+        }
+
         if (haveFire)
         {
             fire.gameObject.SetActive(true);
@@ -142,7 +223,7 @@ public class GameplayUI : UICanvas
         }
     }
 
-    public IEnumerator ShowElementGuideUI(bool haveFire, bool haveWater, bool haveWind, bool haveIce, float time)
+    public IEnumerator ShowElementGuideUI(bool haveFire, bool haveWater, bool haveIce, bool haveWind, float time)
     {
 
         yield return new WaitForSeconds(time);
@@ -173,25 +254,240 @@ public class GameplayUI : UICanvas
         }
     }
 
+    public void UpdateElementButtonNumberGuide()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            this.buttonList[i].gameObject.SetActive(false);
+        }
+
+        btnCount = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (SlideController.Instance.isBoss && BossController.Instance.Boss.BossState == BossState.Dead)
+            {
+                return;
+            }
+            if (ElementGuideManager.Instance.isShowBtn[i])
+            {
+                btnCount++;
+                this.buttonList[btnCount - 1].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void OnClickOneButton()
+    {
+        if (btnCount >= 1)
+        {
+            GameManager.Instance.State = GameState.Pause;
+
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                UIManager.Instance.OpenUI<FireGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                UIManager.Instance.OpenUI<WaterGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                UIManager.Instance.OpenUI<IceGuideUI>();
+
+                return;
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                UIManager.Instance.OpenUI<WindGuideUI>();
+
+                return;
+            }
+        }
+    }
+
+    public void OnClickTwoButton()
+    {
+        if (btnCount >= 2)
+        {
+            GameManager.Instance.State = GameState.Pause;
+
+            int count = 0;
+
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                count++;
+
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                count++;
+
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                count++;
+
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                count++;
+
+                if (count == 2)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
+            }
+        }
+    }
+
+    public void OnClickThreeButton()
+    {
+        if (btnCount >= 3)
+        {
+            GameManager.Instance.State = GameState.Pause;
+
+            int count = 0;
+
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                count++;
+
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                count++;
+
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                count++;
+
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                count++;
+
+                if (count == 3)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
+            }
+        }
+    }
+
+    public void OnClickFourButton()
+    {
+        if (btnCount >= 4)
+        {
+            GameManager.Instance.State = GameState.Pause;
+
+            int count = 0;
+
+            if (ElementGuideManager.Instance.isShowBtn[0])
+            {
+                count++;
+
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<FireGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[1])
+            {
+                count++;
+
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<WaterGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[2])
+            {
+                count++;
+
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<IceGuideUI>();
+                    return;
+                }
+            }
+
+            if (ElementGuideManager.Instance.isShowBtn[3])
+            {
+                count++;
+
+                if (count == 4)
+                {
+                    UIManager.Instance.OpenUI<WindGuideUI>();
+                    return;
+                }
+            }
+        }
+    }
+
     public void SetPowerAndBossUI(bool haveElementPower)
     {
         this.ElementPower.SetActive(haveElementPower);
         this.BossUI.gameObject.SetActive(!haveElementPower);
     }
 
-    public void SetupBoss(string bossName, float bossHealth, int playerHealth)
+    public void SetupBoss(string bossName, int playerHealth)
     {
-        this.BossName.text = bossName;
-        this.BossHealthBar.value = 1f;
-        this.PlayerHealthBar.value = 1f;
-        this.BossHealthText.text = bossHealth.ToString() + "/" + bossHealth.ToString();
-        this.PlayerHealthText.text = playerHealth.ToString() + "/" + playerHealth.ToString();
-    }
+        this.PlayerHealthBar.AddComponent<CanvasGroup>();
+        this.PlayerHealthBar.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-    public void UpdateBossHealth(float curHealth, float maxHealth)
-    {
-        this.BossHealthBar.value = curHealth / maxHealth;
-        this.BossHealthText.text = curHealth.ToString() + "/" + maxHealth.ToString();
+        this.BossName.text = bossName;
+        this.PlayerHealthBar.value = 1f;
+        this.PlayerHealthText.text = playerHealth.ToString() + "/" + playerHealth.ToString();
     }
 
     public void UpdatePlayerHealth(float curHealth, float maxHealth)

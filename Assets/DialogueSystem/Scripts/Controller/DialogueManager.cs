@@ -8,6 +8,9 @@ using SoundManager;
 
 public class DialogueManager : SingletonMono<DialogueManager>
 {
+    [Header(" Player ")]
+    public PlayerController player;
+
     [Header(" Config ")]
     [SerializeField] private DialogueSO DialogueData;
     [SerializeField] private int levelId;
@@ -36,6 +39,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
         isEnded = false;
         if (isAfter)
         {
+            player.canControll = false;
             Invoke(nameof(StartDialogueThisState), 1f);
         }
     }
@@ -43,6 +47,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
     public void StartDialogueThisState()
     {
         isShowing = true;
+        player.canControll = false;
         DialogueLevelDetail levelDetail = DialogueData.DialogueLevelDetails[levelId - 1];
         if (isAfter)
         {
@@ -111,7 +116,10 @@ public class DialogueManager : SingletonMono<DialogueManager>
             sentenceText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
+        yield return new WaitForSeconds(.5f);
         isTyping = false;
+
+        DisplayNextLine();
     }
 
     void EndDialogue()
@@ -127,6 +135,7 @@ public class DialogueManager : SingletonMono<DialogueManager>
         if (isAfter)
         {
             isShowing = false;
+            player.canControll = true;
         }
         else
         {
@@ -138,14 +147,20 @@ public class DialogueManager : SingletonMono<DialogueManager>
     public void NextLevel()
     {
         int nextLevel = PlayerPrefs.GetInt(Constant.LEVELID, 1);
-        if (nextLevel > 6)
+        if (nextLevel > 7)
         {
             LoadingManager.instance.LoadScene("Start");
             return;
         }
         PlayerPrefs.SetInt(Constant.LEVELID, nextLevel);
+        if (nextLevel > PlayerPrefs.GetInt(Constant.MAXLEVELID, 0))
+        {
+            PlayerPrefs.SetInt(Constant.ISUNLOCKLEVEL, 1);
+            PlayerPrefs.SetInt(Constant.MAXLEVELID,  nextLevel);
+        }
         PlayerPrefs.Save();
-        LoadingManager.instance.LoadScene("Platform " + nextLevel);
+        LoadingManager.instance.LoadScene("SelectLevelScene");
+        //LoadingManager.instance.LoadScene("Platform " + nextLevel);
     }
 
     // Gọi hàm này khi người chơi bấm nút Next

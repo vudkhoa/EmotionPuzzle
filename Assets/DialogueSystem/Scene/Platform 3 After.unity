@@ -357,7 +357,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: a26825101600a3645b43e9640d80f002, type: 3}
+  m_Sprite: {fileID: -128234622, guid: 7afd2bb0d471eb846b39cb40b7d09123, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -378,7 +378,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.8199997, y: 1.36, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -778,6 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db58c11bd1f694409a110e020d1b098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1711547276}
   DialogueData: {fileID: 11400000, guid: d97f784acaaea994bb5f483cacbabd8a, type: 2}
   levelId: 2
   isAfter: 1
@@ -844,6 +845,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8eed04bcd29414eb9bfce08d08841f, type: 3}
+--- !u!114 &1711547276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 796851020441979500, guid: ae8eed04bcd29414eb9bfce08d08841f, type: 3}
+  m_PrefabInstance: {fileID: 1711547275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a32b9545669874fb2ccc19c7468c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1797656007
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3b56d97cc522746b12bbd22440ddc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RotateObjects: []
+  I_Prefab: {fileID: 2431479982790835138, guid: f99e2d3c7aece8e4ca90b64498ca538d, type: 3}
+  L_Prefab: {fileID: 2149550877939964769, guid: 2369337a4ef70e24cbd5a5c392d894d5, type: 3}

@@ -2,6 +2,7 @@
 using DG.Tweening;
 using SoundManager;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +11,110 @@ public class ElementController : SingletonMono<ElementController>
     public List<Element> ElementList;
 
     private List<int> elementIdHasJustMove;
+    private List<ElementData> initElementList;
+
+    [Header("Prefab")]
+    public Element FireElementPrefab;
+    public Element WindElementPrefab;
+    public Element WaterElementPrefab;
+    public Element IceElementPrefab;
+
+
+    public bool IsInSave(Vector2Int pos)
+    {
+        if (SavePointController.Instance.startSavePoint.x <= pos.x
+            && SavePointController.Instance.startSavePoint.y <= pos.y
+            && SavePointController.Instance.endSavePoint.x >= pos.x
+            && SavePointController.Instance.endSavePoint.y >= pos.y)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void ResetInitData()
+    {
+        initElementList = new List<ElementData>();
+
+        foreach (Element e in this.ElementList)
+        {
+            //e.ResetInitData();
+            initElementList.Add(e.GetInitData());
+        }
+    }
+
+    public void Reload()
+    {
+        //for (int i = 0; i < ElementList.Count; i++) 
+        //{
+        //    Element e = ElementList[i];
+            
+        //    e.Reload();
+        //    //Element eTemp = e;
+        //    //this.ElementList.Remove(e);
+        //    //Destroy(eTemp.gameObject);
+        //    //i--;
+            
+        //}
+
+        //foreach (ElementDetail elementDetail in DataManager.Instance.ElementData.ElementLevelDetails[SlideController.Instance.elementId - 1].ElementDetails)
+        //{
+        //    if (IsInSave(elementDetail.ElementPos))
+        //    {
+        //        Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
+        //        Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+        //        Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
+        //        eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
+        //        eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
+        //        this.ElementList.Add(eGO);
+        //    }
+        //}
+
+        foreach (Element e in this.ElementList)
+        {
+            LockController.Instance.RemoveLock(new Vector3Int(e.CurrentPos.x, e.CurrentPos.y, 0));
+            if (e.ElementType == ElementType.Water)
+            {
+                Debug.Log("water");
+                e.GetComponent<WaterElement>().ReFillWater();
+            }
+            else if (e.ElementType == ElementType.Ice)
+            {
+                e.GetComponent<IceElement>().ReLoadIceActive(); 
+            }
+                Destroy(e.gameObject);
+        }
+
+        this.ElementList.Clear();
+
+        foreach (ElementData elementData in initElementList)
+        {
+            Vector3Int gridPos = new Vector3Int(elementData.Position.x, elementData.Position.y, 0);
+            Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
+            Element eGO = null;
+            switch (elementData.ElementType)
+            {
+                case ElementType.Fire:
+                    eGO = Instantiate(FireElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Wind:
+                    eGO = Instantiate(WindElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Water:
+                    eGO = Instantiate(WaterElementPrefab, pos, Quaternion.identity);
+                    break;
+                case ElementType.Ice:
+                    eGO = Instantiate(IceElementPrefab, pos, Quaternion.identity);
+                    break;
+            }
+            if (eGO != null)
+            {
+                eGO.Reload(elementData);
+                this.ElementList.Add(eGO);
+            }
+        }
+    }
 
     public void SpawnElement(List<ElementDetail> elementDetails)
     {
@@ -18,6 +123,7 @@ public class ElementController : SingletonMono<ElementController>
             Vector3Int gridPos = new Vector3Int(elementDetail.ElementPos.x, elementDetail.ElementPos.y, 0);
             Vector3 pos = SlideController.Instance.elementTilemap.GetCellCenterWorld(gridPos);
             Element eGO = Instantiate(elementDetail.Element, pos, Quaternion.identity);
+            eGO.SetInitInfo(elementDetail.EmotionType, elementDetail.ElementPos);
             eGO.Setup(elementDetail.EmotionType, elementDetail.ElementPos);
             this.ElementList.Add(eGO);
         }
@@ -105,16 +211,25 @@ public class ElementController : SingletonMono<ElementController>
                     newPos = e.CurrentPos + offset;
                 }
 
-                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0)) ||
-                    this.CheckExistsElement(new Vector3Int(newPos.x, newPos.y, 0))
-                    )
+                if (SlideController.Instance.obstacleTilemap.HasTile(new Vector3Int(newPos.x, newPos.y, 0))                    )
                 {
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Obstacle", 1f);
+
+                    return false;
+                }
+
+                if (this.CheckExistsElement(new Vector3Int(newPos.x, newPos.y, 0)))
+                {
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Element", 1f);
+
                     return false;
                 }
 
                 if (SlideController.Instance.IceStarId > 0 &&
                     IceStarController.Instance.CheckExistsSource(new Vector3Int(newPos.x, newPos.y, 0)))
                 {
+                    //UIManager.Instance.GetUI<GameplayUI>().ShowTutorialText("Element is blocked by Ice Star", 1f);
+
                     return false;
                 }
             }
@@ -167,6 +282,87 @@ public class ElementController : SingletonMono<ElementController>
         Invoke(nameof(SadFunction), 0.28f);
     }
 
+    public void ErrorMoveElement(List<Vector2Int> cellsToSlide, Direction direction)
+    {
+        if (SlideController.Instance.elementId <= 0)
+        {
+            return;
+        }
+
+        int count = cellsToSlide.Count;
+        foreach (Element e in this.ElementList)
+        {
+            if (e.EmotionType != EmotionType.Happy && e.EmotionType != EmotionType.Angry)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (e.CurrentPos == cellsToSlide[i])
+                    {
+                        Vector2Int prevPos = Vector2Int.zero;
+                        if (i == cellsToSlide.Count - 1)
+                        {
+                            prevPos = cellsToSlide[0];
+                        }
+                        else
+                        {
+                            prevPos = cellsToSlide[i + 1];
+                        }
+
+                        if (!ItemTileController.Instance.ItemPosList.Contains(prevPos)
+                            && !this.CheckErrorMoveElement(prevPos)
+                            && SlideController.Instance.GetPlayerPos() != prevPos)
+                        {
+                            continue;
+                        }
+
+                        e.transform.DOShakePosition(
+                            duration: 0.2f,
+                            strength: new Vector3(0.1f, 0.1f, 0),
+                            vibrato: 10,
+                            randomness: 90,
+                            snapping: false,
+                            fadeOut: true
+                        );
+
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (e.CurrentPos == cellsToSlide[i])
+                    {
+                        Vector3 curPos = e.transform.position;
+                        Vector3 offset = Vector3.zero;
+                        switch (direction)
+                        {
+                            case Direction.Up:
+                                offset = new Vector3(0, 1f, 0);
+                                break;
+                            case Direction.Down:
+                                offset = new Vector3(0, -1f, 0);
+                                break;
+                            case Direction.Left:
+                                offset = new Vector3(-1f, 0, 0);
+                                break;
+                            case Direction.Right:
+                                offset = new Vector3(1f, 0, 0);
+                                break;
+                        }
+                        e.transform.DOMove(curPos + offset * 0.17f, 0.1f).SetEase(Ease.OutQuad).OnComplete(() =>
+                        {
+                            e.transform.DOMove(curPos, 0.15f).SetEase(Ease.OutBack, 2f);
+                        });
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public void RotateElement(Vector2Int pivot, List<Vector2Int> posList)
     {
         for (int i = 0; i < this.ElementList.Count; i++)
@@ -187,6 +383,19 @@ public class ElementController : SingletonMono<ElementController>
                 }
             }
         }
+    }
+
+    public bool CheckErrorMoveElement(Vector2Int pos)
+    {
+        foreach (Element element in this.ElementList)
+        {
+            if (element.CurrentPos == pos &&
+                (element.EmotionType == EmotionType.Happy || element.EmotionType == EmotionType.Angry))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool CheckExistsElement(Vector3Int pos)
@@ -228,6 +437,9 @@ public class ElementController : SingletonMono<ElementController>
                 Vector2Int posItem = ItemTileController.Instance.ItemPosList[index];
                 SlideController.Instance.itemTilemap.SetTile(new Vector3Int(posItem.x, posItem.y, 0), null);
                 ItemTileController.Instance.RemoveItem(posItem);
+
+                //VFX
+                e.absorbParticle.Play();
             }
         }
 
@@ -342,14 +554,6 @@ public class ElementController : SingletonMono<ElementController>
         }
 
         return null;
-    }
-
-    public void SetPowerRingAll()
-    {
-        foreach (Element e in this.ElementList)
-        {
-            e.SetPowerRing(e.CurrentPos);
-        }
     }
 
     public bool IsBlockItem(Vector3Int cell)

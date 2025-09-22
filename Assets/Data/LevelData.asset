@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
+    SaveId: 0
     IsBoss: 0
-    PlayerPosition: {x: 9, y: -20}
+    PlayerPosition: {x: 12, y: -20}
     TutorialId: 1
     ItemId: 1
     BlockId: 0
@@ -25,12 +26,15 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 0
-    NextLevelPos: {x: 23, y: 20}
+    NextLevelPos: {x: 28, y: 22}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 1
+    LockSprite: {fileID: -1104999520, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 4909250839ac83e4a865c3082c89f2de, type: 2}
   - LevelId: 2
+    SaveId: 2
     IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
+    PlayerPosition: {x: -8, y: -24}
     TutorialId: 2
     ItemId: 2
     BlockId: 0
@@ -40,13 +44,16 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 1
     RotateObId: 1
-    NextLevelPos: {x: 23, y: 18}
+    NextLevelPos: {x: 23, y: 33}
     PowerSprite: {fileID: -849548177, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 2
+    LockSprite: {fileID: -1104999520, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 4909250839ac83e4a865c3082c89f2de, type: 2}
   - LevelId: 3
+    SaveId: 0
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
-    TutorialId: 4
+    TutorialId: 3
     ItemId: 5
     BlockId: 0
     ElementId: 0
@@ -58,10 +65,13 @@ MonoBehaviour:
     NextLevelPos: {x: 0, y: 0}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 0
+    LockSprite: {fileID: -1104999520, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 4909250839ac83e4a865c3082c89f2de, type: 2}
   - LevelId: 4
+    SaveId: 3
     IsBoss: 0
-    PlayerPosition: {x: 0, y: 0}
-    TutorialId: 0
+    PlayerPosition: {x: -11, y: -5}
+    TutorialId: 4
     ItemId: 3
     BlockId: 0
     ElementId: 3
@@ -70,10 +80,13 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 2
-    NextLevelPos: {x: 19, y: 45}
+    NextLevelPos: {x: 0, y: 44}
     PowerSprite: {fileID: -2078846808, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 3
+    LockSprite: {fileID: 1054789677, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 98299a4f9e8ec094b873cb0194dc7cdf, type: 2}
   - LevelId: 5
+    SaveId: 0
     IsBoss: 1
     PlayerPosition: {x: 0, y: 0}
     TutorialId: 5
@@ -88,10 +101,13 @@ MonoBehaviour:
     NextLevelPos: {x: 0, y: 0}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 0
+    LockSprite: {fileID: 1054789677, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 98299a4f9e8ec094b873cb0194dc7cdf, type: 2}
   - LevelId: 6
+    SaveId: 4
     IsBoss: 0
-    PlayerPosition: {x: -3, y: -3}
-    TutorialId: 3
+    PlayerPosition: {x: -15, y: -9}
+    TutorialId: 6
     ItemId: 4
     BlockId: 1
     ElementId: 4
@@ -100,6 +116,26 @@ MonoBehaviour:
     HappyBossId: 0
     IceStarId: 0
     RotateObId: 3
-    NextLevelPos: {x: 18, y: 29}
+    NextLevelPos: {x: 14, y: 39}
     PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
     ElementGuideId: 4
+    LockSprite: {fileID: -1077738524, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 576ddb84ac3f5a24fa62fc32873e871c, type: 2}
+  - LevelId: 7
+    SaveId: 0
+    IsBoss: 1
+    PlayerPosition: {x: 0, y: 0}
+    TutorialId: 7
+    ItemId: 6
+    BlockId: 0
+    ElementId: 0
+    AngryBossId: 0
+    SadBossId: 0
+    HappyBossId: 1
+    IceStarId: 0
+    RotateObId: 0
+    NextLevelPos: {x: 0, y: 0}
+    PowerSprite: {fileID: -1063126596, guid: a03ae49cb1f025a48b80ce2652ff7c21, type: 3}
+    ElementGuideId: 0
+    LockSprite: {fileID: -1077738524, guid: 1d9a467315c1ff04b8a3f1d79fa98b6b, type: 3}
+    LockTile: {fileID: 11400000, guid: 576ddb84ac3f5a24fa62fc32873e871c, type: 2}

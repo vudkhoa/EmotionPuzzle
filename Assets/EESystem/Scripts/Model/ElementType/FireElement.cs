@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class FireElement : Element
 {
+    //private void Awake()
+    //{
+    //    InitOffsetList();
+    //}
+
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
@@ -16,7 +21,7 @@ public class FireElement : Element
         }
     }
 
-    private void InitOffsetList()
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
@@ -78,5 +83,9 @@ public class FireElement : Element
         {
             SoundsManager.Instance.PlaySFX(SoundType.FirePower);
         }
+    }
+
+    public override void ReloadElement()
+    {
     }
 }

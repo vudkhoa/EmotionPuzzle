@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public float jumpForce;
 
-    //private variable
-    private bool canControll = true;
+    [Header(" Controll ")]
+    public bool canControll = true;
 
     private void Awake()
     {

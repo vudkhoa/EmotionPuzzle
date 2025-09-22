@@ -1,4 +1,4 @@
-using SoundManager;
+﻿using SoundManager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +9,14 @@ public class PauseUI : UICanvas
     [SerializeField] private Button continueBtn;
     [SerializeField] private Button replayBtn;
     [SerializeField] private Button settingBtn;
+    [SerializeField] private Button homeBtn;
 
     private void OnEnable()
     {
         continueBtn.onClick.AddListener(OnClickContinueBtn);
         replayBtn.onClick.AddListener(OnClickReplayBtn);
         settingBtn.onClick.AddListener(OnClickSettingBtn);
+        homeBtn.onClick.AddListener(OnClickHomeBtn);
     }
 
     private void OnDisable()
@@ -22,6 +24,13 @@ public class PauseUI : UICanvas
         continueBtn.onClick.RemoveListener(OnClickContinueBtn);
         replayBtn.onClick.RemoveListener(OnClickReplayBtn);
         settingBtn.onClick.RemoveListener(OnClickSettingBtn);
+        homeBtn.onClick.RemoveListener(OnClickHomeBtn);
+    }
+
+    private void OnClickHomeBtn()
+    {
+        SoundsManager.Instance.PlaySFX(SoundType.Click);
+        LoadingManager.instance.LoadScene("Start");
     }
 
     private void OnClickSettingBtn()
@@ -32,8 +41,8 @@ public class PauseUI : UICanvas
 
     private void OnClickReplayBtn()
     {
-        SoundsManager.Instance.PlaySFX(SoundType.Click);
         LoadingManager.instance.LoadScene("Puzzle");
+        UIManager.Instance.CloseUI<PauseUI>();
     }
 
     private void OnClickContinueBtn()

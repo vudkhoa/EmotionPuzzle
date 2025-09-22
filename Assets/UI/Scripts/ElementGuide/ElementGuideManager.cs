@@ -85,25 +85,28 @@ public class ElementGuideManager : SingletonMono<ElementGuideManager>
             }
         }
 
-        if (haveWind && playerPos == PosForWind && !this.isShowBtn[2])
+        if (haveIce && playerPos == PosForIce && !this.isShowBtn[2])
         {
             this.isShowBtn[2] = true;
             UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, true, false);
-            if (haveWindPopup)
+            if (haveIcePopup)
             {
-                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false, timeWind));
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, true, false, timeIce));
             }
         }
 
-        if (haveIce && playerPos == PosForIce && !this.isShowBtn[3])
+        if (haveWind && playerPos == PosForWind && !this.isShowBtn[3])
         {
             this.isShowBtn[3] = true;
             UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideBtn(false, false, false, true);
-            if (haveIcePopup)
+            if (haveWindPopup)
             {
-                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeIce));
+                StartCoroutine(UIManager.Instance.GetUI<GameplayUI>().ShowElementGuideUI(false, false, false, true, timeWind));
             }
         }
+
+        //Button Number 
+        UIManager.Instance.GetUI<GameplayUI>().UpdateElementButtonNumberGuide();
     }
 
     public void ResetIsElementGuide()

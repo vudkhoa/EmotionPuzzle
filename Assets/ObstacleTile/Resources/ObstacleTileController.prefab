@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08e2d0137252b4c8f8dc2cb9e637bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObstacleTile: {fileID: 11400000, guid: c6459e2113c35a1439c57deb50ddae90, type: 2}
   burnDownEffect: {fileID: 1675108850642248862, guid: 0570e3315dd21b34094ca0475d3310a7, type: 3}
+  initObstaclePos: []

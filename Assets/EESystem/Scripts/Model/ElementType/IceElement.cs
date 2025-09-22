@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 public class IceElement : Element
 {
     public TileBase IceTile;
+    public List<Vector3Int> IceActiveTileList;
 
     public override void Setup(EmotionType emotionType, Vector2Int currentPos)
     {
         base.Setup(emotionType, currentPos);
         InitOffsetList();
+        this.IceActiveTileList = new List<Vector3Int>();
         this.ElementType = ElementType.Ice;
         if (this.EmotionType == EmotionType.Angry)
         {
@@ -18,7 +20,47 @@ public class IceElement : Element
         }
     }
 
-    private void InitOffsetList()
+    public override void Reload(ElementData elementData)
+    {
+        Debug.Log("Reload Ice");
+        foreach (Vector3Int pos in this.IceActiveTileList)
+        {
+            Debug.Log(pos);
+        }
+        ReLoadIceActive();
+        base.Reload(elementData);
+    }
+
+    public void ReLoadIceActive()
+    {
+        if (this.IceActiveTileList == null || this.IceActiveTileList.Count <= 0)
+        {
+            return;
+        }
+
+        List<Vector3Int> tempList = new List<Vector3Int>();
+
+        while (this.IceActiveTileList.Count > 0)
+        {
+            if (SlideController.Instance.IsInSave(new Vector2Int(this.IceActiveTileList[0].x, this.IceActiveTileList[0].y)))
+            {
+                Debug.Log(this.IceActiveTileList[0]);
+                Vector3Int newFillPos = this.IceActiveTileList[0];
+                this.IceActiveTileList.RemoveAt(0);
+                SlideController.Instance.powerTilemap.SetTile(newFillPos, null);
+
+            }
+            else
+            {
+                tempList.Add(this.IceActiveTileList[0]);
+                this.IceActiveTileList.RemoveAt(0);
+            }
+        }
+
+        this.IceActiveTileList = tempList;
+    }
+
+    public override void InitOffsetList()
     {
         this.OffsetList = new List<Vector2Int>();
         this.ActivePowerList = new List<bool>();
@@ -72,8 +114,18 @@ public class IceElement : Element
             if (ItemTileController.Instance.ItemPosList.Contains(scopePosList[i]) &&
                 SlideController.Instance.itemTilemap.HasTile(nearPos3))
             {
+                Debug.Log("Ice Power at: " + nearPos3);
                 isPower = true;
-
+                if (this.IceActiveTileList == null)
+                {      
+                    Debug.Log("Init IceActiveTileList");
+                    this.IceActiveTileList = new List<Vector3Int>();
+                }
+                if (!this.IceActiveTileList.Contains(nearPos3) || this.IceActiveTileList.Count <= 0)
+                {
+                    Debug.Log("Add IceActiveTileList: " + nearPos3);
+                    this.IceActiveTileList.Add(nearPos3);
+                }
                 TileBase itemTileBase = SlideController.Instance.itemTilemap.GetTile(nearPos3);
                 SlideController.Instance.obstacleTilemap.SetTile(nearPos3, itemTileBase);
                 SlideController.Instance.itemTilemap.SetTile(nearPos3, null);
@@ -87,4 +139,5 @@ public class IceElement : Element
             isIceMove = false;
         }
     }
+    public override void ReloadElement(){ }
 }
