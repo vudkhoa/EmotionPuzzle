@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelDetails:
   - LevelId: 1
-    SaveId: 1
+    SaveId: 0
     IsBoss: 0
     PlayerPosition: {x: 12, y: -20}
     TutorialId: 1
