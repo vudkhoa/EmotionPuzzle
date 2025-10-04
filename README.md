@@ -4,5 +4,5 @@
 [![Author](https://contrib.rocks/image?repo=vudkhoa/SlidePuzzle)](https://github.com/thinhkl123/SlidePuzzle/graphs/contributors)
 
 ## Links:
-[Itch](https://vudkhoa.itch.io/feel-24july25) </br>
-[Achievement](https://web.facebook.com/share/p/1CmSxPCjpZ/)
+[itch.io](https://vudkhoa.itch.io/feel-24july25)
+[Demo](https://drive.google.com/file/d/10oPstet3jRqQ0g3iW6eQG3RgDJEb47wr/view?t=10)
